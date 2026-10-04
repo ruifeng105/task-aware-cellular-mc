@@ -1,0 +1,44 @@
+{
+  "status": "passed",
+  "mode": "full",
+  "started_utc": "2026-10-04T13:18:44.815278+00:00",
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "matplotlib": "3.10.8",
+    "openpyxl": "3.1.5"
+  },
+  "steps": [
+    {
+      "name": "fit_and_predict",
+      "return_code": 0,
+      "elapsed_seconds": 7.506,
+      "log": "reproduction/logs/fit_and_predict.log"
+    },
+    {
+      "name": "verify_data_and_scores",
+      "return_code": 0,
+      "elapsed_seconds": 0.757,
+      "log": "reproduction/logs/verify_data_and_scores.log"
+    },
+    {
+      "name": "build_paper_assets",
+      "return_code": 0,
+      "elapsed_seconds": 1.298,
+      "log": "reproduction/logs/build_paper_assets.log"
+    }
+  ],
+  "controller_evaluated": false,
+  "b3_original_simulator_rerun": false,
+  "scope": "Fixed pilot reproduction; B3 original-author exports are reused.",
+  "manuscript_reference": {
+    "status": "passed",
+    "entries_compared": 69,
+    "max_absolute_error": 0.0,
+    "relative_tolerance": 1e-08,
+    "absolute_tolerance": 1e-10
+  },
+  "calibration_result_sha256": "10aee3a3daa631d9b41395b03f75c2710d93c4e7836500dc692fc7ed918ba6ce",
+  "finished_utc": "2026-10-04T13:18:54.388174+00:00"
+}

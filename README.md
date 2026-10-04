@@ -1,59 +1,89 @@
-# Application-first AI in molecular communication: real-data pilot
+# 论文初稿与仿真合并包
 
-Date: 2026-10-04. This package contains an executed identification/forecasting pilot on author-exported experimental FGF2/ERK trajectories, source provenance, a targeted novelty audit, and prospective experimental plans. It contains 606 cell trajectories (53,998 measurements; 2-minute sampling), not raw microscope images or a complete Mendeley archive. It does not contain a novel trained controller or new live laboratory experiments.
+**History-Aware Learning for Task-Aware Cellular Molecular Communication**  
+整理日期：2026-10-04。
 
-Read `AI_MC_Application_First_Review_ZH.md` first. `dataset_registry.json` distinguishes accessible records from numerically inspected files. Existing physical-channel calibration in the previous ICC2027-MBMC package remains separate.
+本包把七页英文论文初稿、LaTeX 源码、真实数据学习试验、响应模型拟合、作者仿真参照和结果核查放在同一项目中。可先打开 `paper/AI_MC_Cellular_Receivers_Draft.pdf` 阅读论文，再按下方入口复现。中文研究说明见 `Paper_Notes_ZH.md`，论文与程序的逐项对应见 `Paper_Simulation_Map_ZH.md`。
 
-## Reproduce the completed FGF2 pilot
+## 快速运行
 
-Install `requirements.txt`, then run from this directory:
+在解压后的 `task-aware-cellular-mc/` 中运行：
 
 ```bash
-python code/calibrate_fgf2.py
-python code/verify_fgf2_pipeline.py
+python -m pip install -r requirements.txt
+python scripts/reproduce.py --mode verify
 ```
 
-The source is the paper-linked author repository `Mijan/LFNS_MSB`, pinned commit `5c917abda0618d75c00c9cab45f24ed893dd71f1`. All 47 saved original files verify against their Git blob hashes in `public_data/fgf2_source_manifest.json`. Experimental normalized responses and original-author simulated B3 prediction exports are separate roles. The related Mendeley record is CC BY 4.0; no additional code license was found at the repository root, and this package assigns no new license to author files.
+`verify` 检查 47 个作者来源文件、输入时序、历史特征的因果性、混合条件归一化及保存预测的评分，并将数值与论文对应的固定参照比较。它不重新训练。
 
-Training uses whole sustained and 3/20 pulse condition blocks; validation uses single 5-minute pulse blocks; test uses mixed blocks. No random cell/window split is used. Independent experimental-day IDs are unavailable, so condition-equal metrics do not imply independent-day generalization. Models know the same future planned commands and use observed responses only up to the prediction time. Command concentration is not measured local concentration or molecule count.
+完整重跑已经规定的模型拟合、预测、核查和论文图表：
 
-`results/fgf2_pilot/` includes prediction CSVs, input-output curves, exploratory matched-history pairs, numerical results, source/causality checks, a scientific figure, and runtime versions. The measured-response history ridge baseline gives 10-minute test RMSE 0.026817 versus 0.029229 for current input/response/clock; no confidence interval or policy benefit is established. History scales are computational features, not biochemical rate estimates.
+```bash
+python scripts/reproduce.py --mode full
+```
 
-The B3 reference reuses the original authors' predictive exports. Those mixed/single-pulse conditions participated in their architecture selection, so this is not a fresh blind B3 test or a same-feedback controller comparison. The current pilot test has been viewed; new model choices should be validated on new independent sessions/days.
+命令会更新 `simulation/results/fgf2_pilot/` 和论文图表，输出简短状态；详细日志及运行报告在 `reproduction/`。脚本也可从其他目录以绝对路径调用。打包时的固定参照保存在 `reproduction/reference_metrics.json`；修改模型后不要覆盖它来让核查通过。
 
-The mixed pulse annotations agree with the author XML: `[1,4)`, `[24,54)`, `[114,119)` minutes. The manuscript prose lists durations in a different order; the executable pilot follows the numerical annotations. Mixed normalization uses an original pre-export 10-30 minute baseline, verified from unnormalized exports within text rounding. Other protocols retain author preprocessing.
+## 内容与完成状态
 
-`novelty_audit.json` records 18 targeted neighbors and explicit body/supplement gaps. `configs/prospective_receiver_reuse.json` is a proposed experiment, with target thresholds, flow, and session IDs deliberately unfilled pending independent calibration. Prediction improvements are not proof of a novel biological mechanism, repeated-command success, or dose savings.
+| 路径 | 内容 |
+|---|---|
+| `paper/AI_MC_Cellular_Receivers_Draft.pdf` | 已编译的七页英文初稿 |
+| `paper/main.tex`、`paper/references.bib`、`paper/IEEEtran.cls` | LaTeX 源码、11 篇主要参考文献与排版类文件 |
+| `paper/figures/`、`paper/tables/` | 两组结果图和四张表；系统图、算法框位于 `main.tex` |
+| `simulation/code/` | 响应模型、预测基线、数据检查与通用分析程序 |
+| `simulation/public_data/` | 47 个作者原始导出文件及来源清单 |
+| `simulation/results/fgf2_pilot/` | 预测 CSV、响应曲线、匹配分析和数值核查结果 |
+| `simulation/novelty_audit.json`、`simulation/AI_MC_Application_First_Review_ZH.md` | 18 项相关工作定向核查、应用标定分析和仍待补齐的全文证据 |
+| `simulation/configs/` | 已执行的数据划分，以及尚未执行的生物/工业扩展方案 |
+| `scripts/reproduce.py` | 统一核查、复现和可选论文编译入口 |
+| `release_manifest.json` | 合并包文件的 SHA-256 与大小清单 |
 
-## Generic biological data workflow for additional sources
+**已执行算法**是按条件加权的因果历史岭回归：利用截至预测时刻的输入和响应历史，以及共同已知的未来命令，预测单细胞响应。另有简单开环命令到响应模型的拟合与曲线计算。训练、验证、测试使用完整条件块，不随机拆分细胞或滑动窗口。
 
-1. Obtain the raw files through the cited official dataset pages. Preserve the original filenames, README, units, stimulation timestamps, cell exclusions and experiment dates. For yeast, start with Dryad `10.5061/dryad.4f4qrfjn0`; for PC-12 signaling, use Mendeley `10.17632/ccnxn84w8z.2` and the publisher's source-data archives.
-2. Inspect workbook structure without guessing its semantics:
+**B3 参照**重用原作者导出的预测样本及均值。没有在本包中重新执行 B3 参数推断或原始生化仿真器；原研究曾使用这些条件选择模型结构，因此该参照不是新盲测，也不是同反馈信息条件的预测比较。
 
-   `python code/inspect_workbooks.py /absolute/path/raw_data --output results/workbook_inventory.json`
+**拟议任务控制**包含准备度、幅度/持续时间/等待时间优化与序列可靠性约束，目前只有论文算法流程和配置草案。尚无实现或闭环控制结果。新颖性核查保留了全文/补充材料缺口，不能据此宣称已证明开创性或优先权。
 
-3. Manually verify and export a long-format CSV with these columns:
+## 论文对应的固定结果
 
-   `run_id,cell_id,history_id,time_s,input_concentration,input_unit,response,response_unit,eligible`
+数据包含 606 条单细胞轨迹、53,998 个观测点，采样间隔 2 分钟。训练为持续刺激和 3 分钟开/20 分钟关条件，验证为单次 5 分钟刺激，测试为混合刺激。
 
-   `run_id` must identify the largest relevant independent session/day; cells from a shared chamber/day stay in one split. `history_id` identifies a complete stimulation regimen. Time is in seconds. Keep input units explicit (nM for yeast versus ng/ml in the PC-12 paper). Response is the measured continuous DfU or FRET ratio, **not a fabricated bit label**. `eligible=false` represents terminal exclusion such as leaving G1; an internal out-of-focus observation remains eligible with a missing response. Keep missing observations missing. Do not fill cell-cycle exclusions with zero or infer receptor occupancy from fluorescence without a measurement model.
-4. Fill `configs/biological_split_template.json` with actual run IDs before examining test performance. The harness requires all runs to be assigned and splits to be disjoint. Fix any normalization using only the appropriate pre-stimulation measurements or training data.
-5. Execute the grouped baselines, choosing `max-gap-s` from the actual acquisition interval and allowable missed-frame rule:
+| 指标 | 固定结果 |
+|---|---:|
+| 10 分钟预测：因果历史 RMSE | 0.026817 |
+| 10 分钟预测：当前输入/响应/时钟 RMSE | 0.029229 |
+| 上述 RMSE 的相对改善 | 8.25% |
+| 2 分钟预测：因果历史 RMSE | 0.015391 |
 
-   `python code/history_baselines.py --data /absolute/path/verified_long.csv --split configs/biological_split_template.json --max-gap-s 120 --output results/biological_baselines`
+这些是按条件等权的点估计。当前数据没有已核实的独立实验日标识，不能把细胞或窗口数当作独立重复数。测试结果已经查看；后续模型开发应使用新的独立实验数据。命令浓度不等于已测局部浓度或释放分子数；预测改善不能证明新生物记忆机制、任务成功率或剂量节省。
 
-   The example 120 s is **not** a verified yeast frame interval. Replace it after inspection. The EMA scales 60/600/3600 s are computational baseline features, not measured reaction constants. Tune only on validation data if changing them.
+## 编译论文
 
-The four comparators are persistence, instantaneous input, current input plus current measured response, and causal input/response history. They forecast the next observation during unchanged recorded stimulation. They are deliberately small baselines to assess whether a proposed more complex AI method is justified. Their output cannot evaluate unexecuted control actions or establish biological causal mechanisms. Run-equal MSE/MAE and individual run errors are reported; independent experiment counts must be used for uncertainty, not the number of windows or cells.
+已附 PDF，运行 Python 核查无需 LaTeX。安装含常用宏包的 TeX Live 或 MiKTeX 后，可在项目根目录运行：
 
-## Industrial data workflow
+```bash
+python scripts/reproduce.py --mode verify --compile-paper
+```
 
-`configs/plif_run_plan.json` records the ten actual run IDs and the observed flow/location combinations from the 2026 descriptor. It specifies a frozen flow-shift test and a separate location-shift test. The light-based concentration reference has 20 Hz native measurements; 1 kHz interpolated labels do not establish 1 kHz reference accuracy. Score at directly measured PLIF timestamps, fit scaling and any lag only on training data, and expose saturation and latency separately.
+也可直接进入 `paper/`：
 
-RedVAPOR uses real experimentally generated gas plumes; “synthetic plume” does not mean a numerical CFD dataset. Sequentially scanned voxel maps cannot be treated as simultaneously measured time-varying concentration fields for arbitrary robot trajectories.
+```bash
+latexmk -pdf -interaction=nonstopmode -halt-on-error -jobname=AI_MC_Cellular_Receivers_Draft main.tex
+```
 
-## Functional verification
+没有 `latexmk` 时，依次运行 `pdflatex`、`bibtex AI_MC_Cellular_Receivers_Draft`、再运行两次 `pdflatex`；各次 `pdflatex` 使用上述相同参数。Overleaf 上传 `paper/` 下的文件并选择 `main.tex`。本稿使用 IEEEtran 1.8b conference 布局，保留页码及初稿提示，尚未按特定投稿会议要求调整。
 
-`python code/smoke_check.py`
+仅重建论文图表可运行 `python scripts/build_paper_assets.py`；该步骤读取保存结果，不重新训练。
 
-This uses **synthetic fixtures only** to check feature causality, grouped splitting, missing-target handling, and baseline execution. It is not a biological training result or a novelty demonstration. The recorded verification is in `results/software_verification.json`.
+## 环境、来源与署名
+
+固定试验的历史环境记录在 `simulation/results/fgf2_pilot/runtime_versions.json`；本次合并复现的实际环境记录在 `reproduction/run_report.json`。`requirements.txt` 列出 Python 依赖；LaTeX 是可选的独立依赖。程序运行不需要联网下载数据。
+
+如需使用本次复现的精确 Python 包版本，可改用 `python -m pip install -r requirements-reproduced.txt`。本次环境为 Python 3.12.14；版本文件记录 NumPy、pandas、openpyxl 和 matplotlib。
+
+实验时间序列与 B3 仿真导出来自 Blum 等，*Molecular Systems Biology*，2019，DOI `10.15252/msb.20198947`，及论文关联的 `Mijan/LFNS_MSB` 仓库：分支 `MSB_version`，固定提交 `5c917abda0618d75c00c9cab45f24ed893dd71f1`。相关 Mendeley Data 记录为 Maciej Dobrzyński 与 Yannick Blum，v2，2020-05-13，DOI `10.17632/ccnxn84w8z.2`，CC BY 4.0。
+
+本包使用仓库中的数值子集，不包含完整 Mendeley 压缩包或显微图像。保留作者文件名与来源身份；不为作者仓库文件或整个合并包附加统一的新许可。未修改的 `paper/IEEEtran.cls` 为 Michael Shell 的 1.8b 版本，保留版权和 LaTeX Project Public License 声明，来自 `bardsoftware/template-ieee-transactions` 公共镜像。
+
+后续推进顺序：补齐新颖性全文证据与可反驳的 gap → 新独立实验日和局部输运标定 → 强基线与历史增量验证 → 实现并评估任务控制 → 再扩展数据规模和应用场景。

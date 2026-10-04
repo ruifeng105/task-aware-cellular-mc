@@ -1,0 +1,5 @@
+# Exact Python package versions used for the merged-package reproduction.
+numpy==2.3.5
+pandas==2.2.3
+openpyxl==3.1.5
+matplotlib==3.10.8

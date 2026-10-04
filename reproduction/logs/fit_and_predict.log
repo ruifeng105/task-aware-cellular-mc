@@ -1,0 +1,131 @@
+{
+  "n_cells": 606,
+  "n_measurements": 53998,
+  "forecast_test_rmse": {
+    "2.0": {
+      "persistence": 0.01588346907593857,
+      "current_input": 0.046024483002162504,
+      "current_response": 0.01553676732419559,
+      "current_response_clock": 0.01560072635010008,
+      "local_slope": 0.015855483486033883,
+      "causal_history": 0.015391008211466805
+    },
+    "10.0": {
+      "persistence": 0.031054825152710283,
+      "current_input": 0.045983598051143326,
+      "current_response": 0.029596913567824224,
+      "current_response_clock": 0.02922913114759912,
+      "local_slope": 0.029580577338934596,
+      "causal_history": 0.0268171307260999
+    }
+  },
+  "input_output_test_rmse": {
+    "stable_filter_bank": 0.021493101483310306,
+    "positive_single_lag": 0.05410141642615031
+  },
+  "published_reference": {
+    "2-5ng": {
+      "n_author_exported_predictive_samples": 1000,
+      "time_min": [
+        0.0,
+        180.0
+      ],
+      "mean_curve_rmse": 0.011463542332259184,
+      "note": "Original authors B3 predictive export reused as context; not refitted here, not a same-feedback comparison. The source study used these mixed/single-pulse conditions in architecture selection, so this reference is not a fresh blind test."
+    },
+    "250ng": {
+      "n_author_exported_predictive_samples": 1000,
+      "time_min": [
+        0.0,
+        180.0
+      ],
+      "mean_curve_rmse": 0.013619830904286109,
+      "note": "Original authors B3 predictive export reused as context; not refitted here, not a same-feedback comparison. The source study used these mixed/single-pulse conditions in architecture selection, so this reference is not a fresh blind test."
+    }
+  },
+  "washout": {
+    "2-5ng": {
+      "concentration_command_at_both_times_ng_ml": 0.0,
+      "mean_y_54min": 1.07733,
+      "mean_y_66min": 1.0957923076923075,
+      "mean_within_cell_change": 0.018462307692307688,
+      "fraction_cells_with_positive_change": 0.7435897435897436,
+      "n_cells": 78,
+      "interpretation": "Illustrative contrast chosen after waveform inspection, not preregistered. Washout behavior already reported in the source biology paper. No independent-day inference or matched-state causality."
+    },
+    "250ng": {
+      "concentration_command_at_both_times_ng_ml": 0.0,
+      "mean_y_54min": 1.0165451315789473,
+      "mean_y_66min": 1.0741673684210529,
+      "mean_within_cell_change": 0.05762223684210527,
+      "fraction_cells_with_positive_change": 0.9605263157894737,
+      "n_cells": 76,
+      "interpretation": "Illustrative contrast chosen after waveform inspection, not preregistered. Washout behavior already reported in the source biology paper. No independent-day inference or matched-state causality."
+    }
+  },
+  "matching": {
+    "analyses": {
+      "2-5ng_current_only": {
+        "n_matched_cells": 60,
+        "n_eligible_cells": 78,
+        "current_y_tolerance": 0.005,
+        "slope_tolerance_per_min": null,
+        "mean_absolute_current_y_difference": 0.0009066666666666704,
+        "mean_late_minus_early_target": 0.014404499999999992,
+        "median_late_minus_early_target": 0.017699999999999938
+      },
+      "2-5ng_current_and_slope": {
+        "n_matched_cells": 14,
+        "n_eligible_cells": 78,
+        "current_y_tolerance": 0.005,
+        "slope_tolerance_per_min": 0.002,
+        "mean_absolute_current_y_difference": 0.002214285714285724,
+        "mean_late_minus_early_target": 0.020185714285714283,
+        "median_late_minus_early_target": 0.021250000000000102
+      },
+      "250ng_current_only": {
+        "n_matched_cells": 69,
+        "n_eligible_cells": 76,
+        "current_y_tolerance": 0.005,
+        "slope_tolerance_per_min": null,
+        "mean_absolute_current_y_difference": 0.0007660869565217297,
+        "mean_late_minus_early_target": -0.015529420289855057,
+        "median_late_minus_early_target": -0.008700000000000152
+      },
+      "250ng_current_and_slope": {
+        "n_matched_cells": 17,
+        "n_eligible_cells": 76,
+        "current_y_tolerance": 0.005,
+        "slope_tolerance_per_min": 0.002,
+        "mean_absolute_current_y_difference": 0.0014017647058823018,
+        "mean_late_minus_early_target": -0.0012129411764705866,
+        "median_late_minus_early_target": -0.005300000000000082
+      }
+    },
+    "limitations": [
+      "Exploratory matching rule set after inspecting these data.",
+      "Within-cell matching controls cell identity but not age, protocol time, unmeasured physiology, or regression-to-the-mean.",
+      "Some support is sparse. No p-value or independent-day confidence interval is justified.",
+      "Differences are candidates for prospective randomized preconditioning, not proof of a novel hidden mechanism."
+    ]
+  },
+  "common_window": {
+    "time_min": [
+      0.0,
+      180.0
+    ],
+    "condition_rmse": {
+      "2-5ng": {
+        "positive_single_lag": 0.053954841933047976,
+        "stable_filter_bank": 0.020710597735364655,
+        "published_B3_predictive_mean": 0.011463542332259184
+      },
+      "250ng": {
+        "positive_single_lag": 0.05675389784672538,
+        "stable_filter_bank": 0.022446996701922402,
+        "published_B3_predictive_mean": 0.013619830904286109
+      }
+    },
+    "note": "Matched time window and population-mean output. B3 is an original-author fit/export, not an independently retrained model or policy result. The source study used these conditions in architecture selection; B3 is not a fresh blind benchmark."
+  }
+}

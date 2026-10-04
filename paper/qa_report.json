@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-04",
+  "status": "passed",
+  "pdf_pages": 7,
+  "visual_review": "All seven final pages inspected; formulas, tables, plots, references and final-column balance checked.",
+  "latex_overfull_boxes": 0,
+  "undefined_references": 0,
+  "source_git_blobs_verified": 47,
+  "numerical_scores_recomputed": true,
+  "draft_core_numbers_checked": true,
+  "controller_evaluated": false,
+  "IEEEtran_class_git_blob_sha": "8d2b1c6478f81e0e2f65cb62debabbf236fb0304",
+  "bibliography_notes": "Mendeley v2 metadata corrected to Dobrzyński and Blum, 2020; Barros final issue year is 2020.",
+  "scope": "Document quality and frozen-pilot consistency; no independent-day or policy validation."
+}

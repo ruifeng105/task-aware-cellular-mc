@@ -1,0 +1,95 @@
+{
+  "status": "passed",
+  "source_git_blobs_verified": 47,
+  "n_cells": 606,
+  "n_measurements": 53998,
+  "xml_commands": {
+    "max_command_errors_ng_ml": {
+      "fgf_sus_2-5ng": 0.0,
+      "fgf_sus_250ng": 0.0,
+      "fgf_3_20_2-5ng": 0.0,
+      "fgf_3_20_250ng": 0.0,
+      "fgf_sp_5_2-5ng": 0.0,
+      "fgf_sp_5_250ng": 0.0,
+      "fgf_mixed_2-5ng": 0.0,
+      "fgf_mixed_250ng": 0.0
+    },
+    "mixed_exposure_minutes": 38.0,
+    "mixed_pulse_annotations_agree_with_xml": true,
+    "mixed_pulse_intervals_min": [
+      [
+        1.0,
+        4.0
+      ],
+      [
+        24.0,
+        54.0
+      ],
+      [
+        114.0,
+        119.0
+      ]
+    ],
+    "exposure_unit": "ng min / ml; molecular release requires measured flow"
+  },
+  "feature_causality": {
+    "forecast_horizons_min": {
+      "2.0": {
+        "past_feature_rows_checked": 82,
+        "future_targets_changed": true,
+        "feature_columns_checked": 22,
+        "split_condition_counts": {
+          "train": 4,
+          "validation": 2,
+          "test": 2
+        }
+      },
+      "10.0": {
+        "past_feature_rows_checked": 82,
+        "future_targets_changed": true,
+        "feature_columns_checked": 26,
+        "split_condition_counts": {
+          "train": 4,
+          "validation": 2,
+          "test": 2
+        }
+      }
+    },
+    "scope": "Feature generation is causal conditional on author-exported normalized inputs. Future commanded input is intentionally available."
+  },
+  "mixed_normalization": {
+    "exported_origin_original_min": 42.0,
+    "normalization_baseline_original_min": [
+      10.0,
+      30.0
+    ],
+    "all_normalization_baseline_precedes_exported_origin": true,
+    "max_reconstruction_error": {
+      "2-5ng": 0.0001402809039341424,
+      "250ng": 0.00013545647558377283
+    },
+    "scope": "Mixed protocol checked from unnormalized source export and normalize_data.m. Other protocols retain author-preprocessed measurements."
+  },
+  "recomputed_test_rmse": {
+    "2.0": {
+      "persistence": 0.01588346907593857,
+      "current_input": 0.04602448300216247,
+      "current_response": 0.01553676732419559,
+      "current_response_clock": 0.01560072635010008,
+      "local_slope": 0.015855483486033883,
+      "causal_history": 0.015391008211466807
+    },
+    "10.0": {
+      "persistence": 0.031054825152710283,
+      "current_input": 0.045983598051143285,
+      "current_response": 0.029596913567824224,
+      "current_response_clock": 0.029229131147599122,
+      "local_slope": 0.0295805773389346,
+      "causal_history": 0.026817130726099897
+    }
+  },
+  "limitations": [
+    "No assertion of independent experimental days.",
+    "No new live experiment, transport calibration, biochemical parameter inference or policy effect."
+  ]
+}

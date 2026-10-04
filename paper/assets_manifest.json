@@ -1,0 +1,15 @@
+{
+  "source_result_sha256": "10aee3a3daa631d9b41395b03f75c2710d93c4e7836500dc692fc7ed918ba6ce",
+  "generated_tables": [
+    "forecast_rmse.tex",
+    "inventory.tex",
+    "matched_history.tex",
+    "open_loop_rmse.tex"
+  ],
+  "generated_figures": [
+    "forecast_mean_10min.pdf",
+    "mixed_response.pdf"
+  ],
+  "fitted_models": false,
+  "note": "Plots summarize saved pilot outputs; B3 is an original-author selection-exposed reference."
+}
