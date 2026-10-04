@@ -1,0 +1,6 @@
+{
+  "train": [],
+  "validation": [],
+  "test": [],
+  "instruction": "Fill actual independent experiment/day IDs after inspecting the raw files; do not assign random windows or individual cells. Empty lists intentionally prevent accidental training."
+}

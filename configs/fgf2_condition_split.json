@@ -1,0 +1,16 @@
+{
+  "train": [
+    "fgf_sus_2-5ng",
+    "fgf_sus_250ng",
+    "fgf_3_20_2-5ng",
+    "fgf_3_20_250ng"
+  ],
+  "validation": [
+    "fgf_sp_5_2-5ng",
+    "fgf_sp_5_250ng"
+  ],
+  "test": [
+    "fgf_mixed_2-5ng",
+    "fgf_mixed_250ng"
+  ]
+}

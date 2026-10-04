@@ -1,0 +1,77 @@
+{
+  "status": "proposed_not_executed",
+  "date": "2026-10-04",
+  "application": "PC-12 FGF2/ERK chemical command and repeated receiver use; yeast as separate extension",
+  "current_pilot_test_seen": true,
+  "require_new_unseen_experimental_days": true,
+  "conditioning": {
+    "history_arms": [
+      "short exposure",
+      "long exposure"
+    ],
+    "primary_concentration_ng_ml": 2.5,
+    "separate_validation_concentration_ng_ml": 250,
+    "randomize_at": "Independent chamber/session; counterbalance protocol time and cell age",
+    "common_support_features": [
+      "Measured local concentration",
+      "Current normalized reporter",
+      "Causal reporter slope",
+      "Cell eligibility/age/protocol time"
+    ],
+    "matching_warning": "Post-stimulation matching is a prognostic/common-support analysis; it does not identify a controlled direct causal history effect."
+  },
+  "second_command": {
+    "candidate_waits_min": [
+      6,
+      12,
+      24,
+      48
+    ],
+    "candidate_test_pulse_duration_min": 5,
+    "commanded_concentration_ng_ml": null,
+    "target_response_band": null,
+    "required_hold_min": null,
+    "deadline_min": null,
+    "false_activation_rule": null,
+    "note": "Durations/waits are pilot candidates. Freeze target definitions and settings using separate calibration before formal tests."
+  },
+  "transport": {
+    "flow_rate": null,
+    "stock_concentration": null,
+    "local_delivery_reference": null,
+    "dye_vs_signal_transfer_validated": false
+  },
+  "baselines": [
+    "Fixed waiting interval",
+    "Observed-response threshold reset",
+    "Mechanistic B3 state estimator and MPC with matched feedback",
+    "Current-state plus slope plus clock predictor",
+    "Causal-history plus clock predictor",
+    "Learning residual/state model only if incremental value is reproducible"
+  ],
+  "primary_comparison": "Chemical dose and completion time at matched reliability for an ordered sequence of at least two commands",
+  "independence": {
+    "session_ids": [],
+    "independent_day_ids": [],
+    "pilot_days": null,
+    "formal_sample_size": null,
+    "sample_size_note": "Estimate independent-day variance and effect from a separate pilot. Cell/window counts are not independent intervention counts."
+  },
+  "data_logging": [
+    "Command and actual valve/pump timestamps",
+    "Calibrated flow and stock concentration",
+    "Local delivery/washout curve",
+    "Single-cell reporter with eligibility/quality flags",
+    "Feedback arrival time",
+    "First and second task outcomes defined before test",
+    "All interventions including failures",
+    "Independent session/day and preparation IDs"
+  ],
+  "go_no_go": [
+    "Stop hidden-history claim if it fails to improve independent-day predictions over current state/slope/clock and mechanistic estimator",
+    "Stop AI-benefit claim if matched-information mechanistic MPC reaches same reliability/cost",
+    "Do not evaluate unsupported new actions by offline replay of these open-loop curves",
+    "Do not claim molecular savings without measured flow/delivery",
+    "Close relevant nearest full-text/supplement overlap before first/pioneering claims"
+  ]
+}

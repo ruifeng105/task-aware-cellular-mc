@@ -1,0 +1,134 @@
+<model>
+	<type>DET</type>
+    <model>./FGF_Model_B3.txt</model>
+	<initialvalue>./initial_states_B3.txt</initialvalue>
+	<measurement>./measurement_FRET_B3.txt</measurement>
+</model>
+<parameters>
+	<scales>
+        <parameters scale="linear">nfb_init, fgfr_init_mean, h_init_mean</parameters>
+    </scales>
+    <bounds>
+        <bound>
+                <parameters>k_1_2, k_2_1, k_3_4, k_4_3, k_5_6, k_6_5, k_7_8, k_8_7, f_1_2, f_2_1, fgf_input, r_3_4, r_4_3, r_5_6, r_6_5, r_5_7, r_7_5</parameters>
+                <lowerbounds>1e-6</lowerbounds>
+                <upperbounds>1e2</upperbounds>
+            </bound>
+            <bound>
+                <parameters>K_1_2, K_2_1, K_3_4, K_NFB, K_4_3, K_5_6, K_6_5, K_7_8, K_8_7, F_1_2, F_2_1</parameters>
+                <lowerbounds>1e-6</lowerbounds>
+                <upperbounds>1e1</upperbounds>
+            </bound>
+            <bound>
+                <parameters>r_h</parameters>
+                <lowerbounds>1e-5</lowerbounds>
+                <upperbounds>1</upperbounds>
+            </bound>
+            <bound>
+                <parameters>h_nfb</parameters>
+                <lowerbounds>0.5</lowerbounds>
+                <upperbounds>6</upperbounds>
+            </bound>
+            <bound>
+                <parameters>nfb_init, fgfr_init_mean, h_init_mean</parameters>
+                <lowerbounds>0</lowerbounds>
+                <upperbounds>2</upperbounds>
+            </bound>
+            <bound>
+                <parameters>FRET_sigma, FRET_E</parameters>
+                <lowerbounds>1e-4, 1e-2</lowerbounds>
+                <upperbounds>1e-1,1</upperbounds>
+            </bound>
+            <bound>
+                <parameters>erk_max, erk_initial</parameters>
+                <lowerbounds>0.5 1e-6</lowerbounds>
+                <upperbounds>1 0.5</upperbounds>
+            </bound>
+    </bounds>
+    <fixedparams>
+        <parameters>fgf_input, erk_max, erk_initial</parameters>
+        <values>0 0.8 0</values>
+    </fixedparams>
+</parameters>
+<data>
+	<dataset>
+		<experiments>sus_2-5ng sus_250ng 3_20_2-5ng 3_20_250ng</experiments>
+		<datafile>../data/fgf_sus/2-5ng_mean_trunc.txt ../data/fgf_sus/250ng_mean_trunc.txt ../data/fgf_3_20/2-5ng_mean_trunc.txt ../data/fgf_3_20/250ng_mean_trunc.txt</datafile>
+		<timefile>../data/fgf_sus/time_trunc.txt</timefile>
+    </dataset>
+    <dataset>
+        <experiments>sp_5_2-5ng sp_5_25ng sp_5_250ng</experiments>
+        <datafile>../data/fgf_sp_5/2-5ng_mean_trunc.txt</datafile>
+        <timefile>../data/fgf_sp_5/time_trunc.txt</timefile>
+    </dataset>
+    <dataset>
+        <experiments>mixed_2-5ng mixed_25ng mixed_250ng</experiments>
+        <datafile>../data/fgf_mixed/2-5ng_mean_trunc.txt ./data/fgf_mixed/25ng_mean_trunc.txt ../data/fgf_mixed/250ng_mean_trunc.txt</datafile>
+        <timefile>../data/fgf_mixed/time_trunc.txt</timefile>
+    </dataset>
+</data>
+<inputs>
+    <input>
+        <experiments>sus_2-5ng sus_250ng 3_20_2-5ng 3_20_250ng sp_10_0-25ng sp_10_2-5ng sp_10_25ng sp_10_250ng sp_5_0-25ng sp_5_2-5ng sp_5_25ng sp_5_250ng sus_0-25ng 3_20_25ng</experiments>
+        <period>10000000 10000000 23 23 1000 1000 1000 1000 1000 1000 1000 1000 10000 23</period>
+        <strength>2.5 250 2.5 250 0.25 2.5 25 250 0.25 2.5 25 250 0.25 25</strength>
+        <duration>100000000 100000000 3 3 10 10 10 10 5 5 5 5 100000000 3</duration>
+        <numpulses>1 1 100000 10000 1 1 1 1 1 1 1 1 1 100</numpulses>
+        <inputparam>fgf_input</inputparam>
+        <startingtime>0</startingtime>
+    </input>
+    <input>
+        <experiments>mixed_2-5ng mixed_25ng mixed_250ng</experiments>
+        <period>1000 1000 1000</period>
+        <strength>2.5 25 250</strength>
+        <duration>3 3 3</duration>
+        <numpulses>1 1 1</numpulses>
+        <inputparam>fgf_input</inputparam>
+        <startingtime>1</startingtime>
+    </input>
+    <input>
+        <experiments>mixed_2-5ng mixed_25ng mixed_250ng</experiments>
+        <period>1000 1000 1000</period>
+        <strength>2.5 25 250</strength>
+        <duration>30 30 30</duration>
+        <numpulses>1 1 1</numpulses>
+        <inputparam>fgf_input</inputparam>
+        <startingtime>24</startingtime>
+    </input>
+    <input>
+        <experiments>mixed_2-5ng mixed_25ng mixed_250ng</experiments>
+        <period>1000 1000 1000</period>
+        <strength>2.5 25 250</strength>
+        <duration>5 5 5</duration>
+        <numpulses>1 1 1</numpulses>
+        <inputparam>fgf_input</inputparam>
+        <startingtime>114</startingtime>
+    </input>
+</inputs>
+<Simulation>
+    <experiments>sus_2-5ng sus_250ng 3_20_2-5ng 3_20_250ng sp_10_0-25ng sp_10_2-5ng sp_10_25ng sp_10_250ng sp_5_0-25ng sp_5_2-5ng sp_5_25ng sp_5_250ng sus_0-25ng 3_20_25ng mixed_2-5ng mixed_25ng mixed_250ng</experiments>
+    <minstepsize>1e-12</minstepsize>
+    <reltol>1e-10</reltol>
+    <abstol>1e-10</abstol>
+    <initialtime>0</initialtime>
+    <finaltime>180</finaltime>
+    <interval>2</interval>
+    <parameter>92.357 0.0050872 0.00040029 0.021421 0.41483 0.068246 0.00030682 0.14798 5.366 0.01899 3.8105e-06 4.1479e-05 1.742e-06 92.559 0.025589 2.5236 0.01674 47.259 96.886 0.034929 0.00046015 0.023257 0.073573 8.9298e-06 22.864 0.038908 6.7382 0.77478 0.051948 0.087142 0.0000046507 0.26512</parameter>
+</Simulation>
+<ComputeLikelihood>
+	<modelconfigurations>sp_5_2-5ng sp_5_250ng mixed_2-5ng mixed_250ng</modelconfigurations>
+	<parameter>1.8341 0.093465 1.1269e-05 0.0078775 0.63537 0.001303 0.0059241 0.0016623 0.00013627 18.487 0.63423 1.085e-05 4.6878 0.40238 0.01315 11.205 2.7123 3.7178 0.11024 0.79678 0.035219 5.0849e-05 1.3154 2.5226 12.131 0.15316 0.3732 0.00064859 0.35942 5.8909e-06 0.092647 0.3618 0.05278 0.025063 0.020398</parameter>
+	<minstepsize>1e-12</minstepsize>
+	<reltol>1e-10</reltol>
+	<abstol>1e-10</abstol>
+</ComputeLikelihood>
+<LFNS>
+	<experiments>sus_2-5ng sus_250ng 3_20_2-5ng 3_20_250ng</experiments>
+	<N>1000</N>
+	<H>1</H>
+    <r>500</r>
+	<tolerance>0.000000000001</tolerance>
+	<minstepsize>1e-12</minstepsize>
+	<reltol>1e-10</reltol>
+	<abstol>1e-10</abstol>
+</LFNS>

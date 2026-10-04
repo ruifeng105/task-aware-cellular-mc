@@ -1,0 +1,23 @@
+Parameters:
+k_1_2, K_1_2, k_2_1, K_2_1, k_3_4, K_3_4, K_NFB, k_4_3, K_4_3, k_5_6, K_5_6, k_6_5, K_6_5, k_7_8, K_7_8, k_8_7, K_8_7, f_1_2, F_1_2, f_2_1, F_2_1, h_nfb, fgf_input, r_h, r_3_4, r_4_3, r_5_6, r_6_5, r_5_7, r_7_5
+
+Species:
+Ras, Ras_star, Raf, Raf_star, Mek, Mek_star, Erk, Erk_star, Nfb, Nfb_star, FgfR, FgfR_star, H, H_F, H_F_R
+
+Reactions:
+Ras 		--> 	Ras_star	Variables: k_1_2, H_F_R, Ras, K_1_2, r_h			Propensity: k_1_2 * (r_h * H_F_R + (1 - r_h) * FgfR_star) * (Ras / (K_1_2 + Ras)) 
+Ras_star	-->	Ras		Variables: k_2_1, Ras_star, K_2_1				Propensity: k_2_1 * (Ras_star / (K_2_1 + Ras_star))
+Raf		-->	Raf_star	Variables: k_3_4, Ras_star, Raf, K_3_4, K_NFB, Nfb_star, h_nfb	Propensity: k_3_4 * Ras_star * (Raf / (K_3_4 + Raf)) * (K_NFB^h_nfb / (K_NFB^h_nfb + Nfb_star^h_nfb))
+Raf_star 	-->	Raf		Variables: k_4_3, Raf_star, K_4_3				Propensity: k_4_3 * (Raf_star / (K_4_3 + Raf_star))
+Mek 		--> 	Mek_star	Variables: k_5_6, Raf_star, Mek, K_5_6				Propensity: k_5_6 * Raf_star * (Mek / (K_5_6 + Mek)) 
+Mek_star 	--> 	Mek		Variables: k_6_5, Mek_star, K_6_5				Propensity: k_6_5 * (Mek_star / (K_6_5 + Mek_star))
+Erk 		--> 	Erk_star	Variables: k_7_8, Mek_star, K_7_8, Erk				Propensity: k_7_8 * Mek_star * (Erk / (K_7_8 + Erk)) 
+Erk_star 	--> 	Erk		Variables: k_8_7, K_8_7, Erk_star				Propensity: k_8_7 * (Erk_star / (K_8_7 + Erk_star))
+Nfb 		--> 	Nfb_star	Variables: f_1_2, Erk_star, Nfb, F_1_2, h_hfr, F_hfr, H_F_R, FgfR_star, F_fgfr, h_fgfr		Propensity: f_1_2 * Erk_star * (Nfb / (F_1_2 + Nfb))
+Nfb_star 	--> 	Nfb		Variables: f_2_1, Nfb_star, F_2_1				Propensity: f_2_1 * (Nfb_star / (F_2_1 + Nfb_star))
+FgfR 		--> 	FgfR_star 	Variables: r_3_4, FgfR, fgf_input				Propensity: r_3_4 * fgf_input * FgfR
+FgfR_star	--> 	FgfR		Variables: r_4_3, FgfR_star					Propensity: r_4_3 * FgfR_star
+H		-->	H_F		Variables: r_5_6, H, fgf_input					Propensity: r_5_6 * H * fgf_input
+H_F 		--> 	H		Variables: r_6_5, H_F						Propensity: r_6_5 * H_F 
+H_F + FgfR	--> 	H_F_R		Variables: r_5_7, H_F, FgfR					Propensity: r_5_7 * H_F * FgfR
+H_F_R 		--> 	H_F + FgfR	Variables: r_7_5, H_F_R						Propensity: r_7_5 * H_F_R

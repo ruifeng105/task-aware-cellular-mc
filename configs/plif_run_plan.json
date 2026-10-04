@@ -1,0 +1,35 @@
+{
+  "status": "Prospective plan from published experimental table; not executed",
+  "source": "https://arxiv.org/html/2604.19626v1",
+  "source_table": "Table 3",
+  "reference_native_hz": 20,
+  "sensor_hz": 1000,
+  "observed_runs": [
+    {"run_id":"r56","location":"C","velocity_cm_s":10},
+    {"run_id":"r57","location":"C","velocity_cm_s":15},
+    {"run_id":"r58","location":"C","velocity_cm_s":20},
+    {"run_id":"r59","location":"C","velocity_cm_s":10},
+    {"run_id":"r60","location":"C","velocity_cm_s":15},
+    {"run_id":"r61","location":"C","velocity_cm_s":20},
+    {"run_id":"r70","location":"R","velocity_cm_s":10},
+    {"run_id":"r71","location":"R","velocity_cm_s":10},
+    {"run_id":"r75","location":"U","velocity_cm_s":10},
+    {"run_id":"r76","location":"U","velocity_cm_s":10}
+  ],
+  "frozen_plan": {
+    "train":["r56","r57","r59"],
+    "validation":["r60"],
+    "test_flow_shift":["r58","r61"],
+    "test_location_shift_at_known_flow":["r70","r71","r75","r76"]
+  },
+  "rules": [
+    "Split by complete run before window generation",
+    "Any hyperparameter, scaling, phase correction, or lag uses train/validation only",
+    "Reference labels score directly measured PLIF frames; explicitly retain the native/interpolated flag",
+    "Only legitimate past/current sensor inputs; no test concentration, future sensor samples or zero-phase filtering",
+    "Do not claim held-out combined flow+location generalization from this incomplete factorial design",
+    "Inspect sensor saturation; prioritize channels 1/4/5/8 according to descriptor, and disclose this choice",
+    "Report each run; two replications per condition do not become many independent trials through windowing",
+    "No active thermal control, source-encoded BER, or arbitrary path evaluation from fixed recorded conditions"
+  ]
+}

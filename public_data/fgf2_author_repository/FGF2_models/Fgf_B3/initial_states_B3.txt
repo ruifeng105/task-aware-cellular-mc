@@ -1,0 +1,20 @@
+Parameters:
+fgfr_init_mean, nfb_init, h_init_mean
+
+Initial Values:
+Ras:	0.1
+Raf:	0.7
+Mek: 	0.68
+Erk:	0.26
+FgfR: 	fgfr_init_mean
+FgfR_star: 0
+Nfb:	nfb_init
+Ras_star:	0
+Raf_star:	0
+Mek_star:	0
+Erk_star:	0
+Nfb_star:	0
+H:	h_init_mean
+H_F:	0
+H_F_R:	0
+_t: 0

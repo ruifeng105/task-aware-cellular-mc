@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-04",
+  "command": "python code/smoke_check.py",
+  "exit_code": 0,
+  "data_used": "Synthetic functional fixtures only",
+  "checks_passed": ["future values do not alter past features", "overlapping runs rejected", "missing targets not relabeled", "baseline execution"],
+  "scientific_training_result": false,
+  "novel_policy_implemented": false,
+  "real_data_policy_evaluated": false
+}

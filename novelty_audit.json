@@ -1,0 +1,255 @@
+{
+  "reviewed_on": "2026-10-04",
+  "scope": "Targeted novelty audit of application-first AI molecular communication; not exhaustive absence proof",
+  "evidence_definitions": {
+    "F": "Relevant public body methods/results reviewed; not all supplements or word-by-word final version",
+    "F_limited": "Relevant body reviewed with explicit access/section limits",
+    "R": "Author repository/data record",
+    "P": "Metadata, abstract or fragments; relevant full article pending"
+  },
+  "records": [
+    {
+      "id": "P1",
+      "title": "Multiscale Modeling of Bistability in the Yeast Polarity Circuit",
+      "url": "https://doi.org/10.3390/cells13161358",
+      "evidence": "P",
+      "scope": "Publisher body fragments and Dryad README; complete relevant equations/supplement not acquired",
+      "overlap": "History-dependent yeast polarity, bistability and mechanistic models",
+      "reviewed_on": "2026-10-04"
+    },
+    {
+      "id": "P2",
+      "title": "Temporal perturbation of ERK dynamics reveals network architecture of FGF2/MAPK signaling",
+      "url": "https://link.springer.com/article/10.15252/msb.20198947",
+      "evidence": "F",
+      "scope": "Public HTML: model selection, training/validation, receptor/feedback mechanisms, Methods and data availability; pinned author data/model exports",
+      "overlap": "Unseen-pulse prediction already published; mixed and single-pulse conditions also used to discriminate model architecture",
+      "reviewed_on": "2026-10-04"
+    },
+    {
+      "id": "P3",
+      "title": "Odour sensing in turbulent plumes with high-speed electronic nose and non-invasive ground truth",
+      "url": "https://arxiv.org/html/2604.19626v1",
+      "evidence": "F",
+      "scope": "arXiv v1: experimental methods, run table and dataset structure",
+      "overlap": "Real synchronized concentration reference and electronic-nose data; archive not acquired",
+      "reviewed_on": "2026-10-04"
+    },
+    {
+      "id": "P4",
+      "title": "Frequency modulation of ERK activation dynamics rewires cell fate",
+      "url": "https://link.springer.com/article/10.15252/msb.20156458",
+      "evidence": "F",
+      "scope": "Public main text: feedback, pulse design, cell-fate experiments, Methods",
+      "overlap": "Chemical waveform design for biological tasks already demonstrated",
+      "reviewed_on": "2026-10-04"
+    },
+    {
+      "id": "P5",
+      "title": "Real-Time Genetic Compensation Defines the Dynamic Demands of Feedback Control",
+      "url": "https://doi.org/10.1016/j.cell.2018.09.044",
+      "evidence": "P",
+      "scope": "Publisher abstract and public archive record; body not closed",
+      "overlap": "Real closed-loop optogenetic compensation",
+      "reviewed_on": "2026-10-04"
+    },
+    {
+      "id": "P6",
+      "title": "Building Semantic Communication System via Molecules: An End-to-End Training Approach",
+      "url": "https://arxiv.org/html/2404.09595v1",
+      "evidence": "F",
+      "scope": "arXiv v1: channel/network, training, image experiments",
+      "overlap": "Task-oriented end-to-end AI MC already studied; channel simulated",
+      "reviewed_on": "2026-10-04"
+    },
+    {
+      "id": "P7",
+      "title": "Semantic Learning for Molecular Communication in Internet of Bio-Nano Things",
+      "url": "https://arxiv.org/html/2502.08426v2",
+      "evidence": "F",
+      "scope": "arXiv v2 sections II-IV",
+      "overlap": "Real medical message source with learned/simulated molecular channel is not measured biological reception",
+      "reviewed_on": "2026-10-04"
+    },
+    {
+      "id": "P8",
+      "title": "Interpretable Reaction–Diffusion Learning for Molecular Communication via Graph Kolmogorov–Arnold Networks",
+      "url": "https://github.com/ProfessorDong/RD-GKAN",
+      "evidence": "R",
+      "scope": "Author README and DATA.md; publisher DOI 10.1109/TMBMC.2026.3731398 not full-text checked",
+      "overlap": "Author repository reports reaction-diffusion learning and real biological datasets; exact published overlap remains pending",
+      "reviewed_on": "2026-10-04"
+    },
+    {
+      "id": "P9",
+      "title": "A Yeast Pheromone Testbed for Molecular Communication Validation",
+      "url": "https://molecularcommunications.org/wp-content/uploads/2022/07/A-Yeast-Pheromone-Testbed-for-Molecular-Communication-Validation.pdf",
+      "evidence": "F",
+      "scope": "Two-page author conference paper",
+      "overlap": "Yeast MC testbed and nonlinear biological receiver are not empty topics",
+      "reviewed_on": "2026-10-04"
+    },
+    {
+      "id": "P10",
+      "title": "Noise Characterization and Robust Signal Detection in Yeast Pheromone Molecular Communication",
+      "url": "https://ktisis.cut.ac.cy/entities/publication/1dcc57e2-afa5-49b3-97ee-8b4155c6ce29",
+      "evidence": "P",
+      "scope": "University metadata, DOI 10.1109/TMBMC.2025.3554640; no readable article body acquired",
+      "overlap": "Real yeast MC noise and robust symbol/sequence detection",
+      "reviewed_on": "2026-10-04"
+    },
+    {
+      "id": "P11",
+      "title": "BioRxToolbox: a computational framework to streamline genetic circuit design in molecular data communications",
+      "url": "https://doi.org/10.1093/synbio/ysae015",
+      "evidence": "P/R",
+      "scope": "Abstract and author repository https://github.com/dissys/biorxtoolbox; full article not closed",
+      "overlap": "Genetic receiver dynamics, dual-input pre-equalization and design optimization",
+      "reviewed_on": "2026-10-04"
+    },
+    {
+      "id": "P12",
+      "title": "Fast Measurements with MOX Sensors: A Least-Squares Approach to Blind Deconvolution",
+      "url": "https://doi.org/10.3390/s19184029",
+      "evidence": "P",
+      "scope": "Abstract/body fragments; complete relevant paper not closed",
+      "overlap": "Nonlinear sensor identification and blind deconvolution",
+      "reviewed_on": "2026-10-04"
+    },
+    {
+      "id": "P13",
+      "title": "Deep model predictive control of gene expression in thousands of single cells",
+      "url": "https://www.nature.com/articles/s41467-024-46361-1",
+      "evidence": "F_limited",
+      "scope": "Public main-text front/model/results and initial PDF pages read; control algorithm and chemical-extension discussion located via searches in primary article; later PDF access unstable; supplements not fully read",
+      "overlap": "Learned cell-history encoding and high-throughput live closed-loop control; chemical microfluidic extension explicitly anticipated",
+      "reviewed_on": "2026-10-04"
+    },
+    {
+      "id": "P14",
+      "title": "Regulation of Gene Expression and Signaling Pathway Activity in Mammalian Cells by Automated Microfluidics Feedback Control",
+      "url": "https://research-information.bris.ac.uk/ws/files/174318585/Manuscript_2_.pdf",
+      "evidence": "F",
+      "scope": "18-page university author accepted manuscript, core main-text control/experiments; detailed supplement not acquired; DOI 10.1021/acssynbio.8b00235",
+      "overlap": "Live chemical actuation, feedback, constrained microfluidic and cell-response MPC",
+      "reviewed_on": "2026-10-04"
+    },
+    {
+      "id": "P15",
+      "title": "Long-term model predictive control of gene expression at the population and single-cell levels",
+      "url": "https://doi.org/10.1073/pnas.1206810109",
+      "evidence": "P",
+      "scope": "Primary abstract/indexed passages; publisher/PMC complete body inaccessible in this round",
+      "overlap": "Chemical stimulation, state estimation and long-term MPC",
+      "reviewed_on": "2026-10-04"
+    },
+    {
+      "id": "P16",
+      "title": "Closed-Loop Long-Term Experimental Molecular Communication System",
+      "url": "https://arxiv.org/html/2502.00831v2",
+      "evidence": "F",
+      "scope": "arXiv v2: platform, eraser/ISI/bleaching and long-duration experiments; DOI 10.1109/TMBMC.2025.3615924",
+      "overlap": "Molecular reuse and recovery/lifetime trade-offs already studied; closed loop is fluid recirculation, not automatically feedback-adaptive transmission",
+      "reviewed_on": "2026-10-04"
+    },
+    {
+      "id": "P17",
+      "title": "Cell signaling error control for reliable molecular communications",
+      "url": "https://www.frontiersin.org/journals/communications-and-networks/articles/10.3389/frcmn.2024.1332379/full",
+      "evidence": "F",
+      "scope": "Frontiers main text: CELLEC model, adaptive control and performance; DOI 10.3389/frcmn.2024.1332379",
+      "overlap": "Adaptive error control for cellular MC using literature-informed models and simulation, not new live closed-loop measurements",
+      "reviewed_on": "2026-10-04"
+    },
+    {
+      "id": "P18",
+      "title": "Feed-forward and Feedback Control in Astrocytes for Ca2+-based Molecular Communications Nanonetworks",
+      "url": "https://mural.maynoothuniversity.ie/12697/1/SD_feed-forward.pdf",
+      "evidence": "F",
+      "scope": "15-page university author accepted manuscript dated 2018; equations/controller, MC architecture, refractory-period/data-rate results; DOI 10.1109/TCBB.2018.2887222",
+      "overlap": "Controlling intracellular recovery/refractoriness and reducing repeated-transmission waiting already studied theoretically and in simulation",
+      "reviewed_on": "2026-10-04"
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "First AI history-based live cell control",
+      "status": "not_defensible",
+      "prior": [
+        "P13",
+        "P14"
+      ]
+    },
+    {
+      "id": "C2",
+      "claim": "First chemical-actuation cellular MPC or hidden-state control",
+      "status": "not_defensible",
+      "prior": [
+        "P14",
+        "P15"
+      ]
+    },
+    {
+      "id": "C3",
+      "claim": "First receptor/cell recovery or waiting-time control in MC",
+      "status": "not_defensible",
+      "prior": [
+        "P18",
+        "P16",
+        "P11"
+      ]
+    },
+    {
+      "id": "C4",
+      "claim": "First biological-data physics-constrained learning for MC",
+      "status": "do_not_claim; exact closest-body overlap remains pending",
+      "prior": [
+        "P8"
+      ]
+    },
+    {
+      "id": "C5",
+      "claim": "Task-specific next-command readiness under partial observation with experimentally verified dose/wait/reliability gains",
+      "status": "candidate_not_established",
+      "required": [
+        "Prospective identical-next-command tests at overlapping observed states",
+        "Independent experimental-day validation",
+        "Same-information mechanistic state-estimation/MPC comparison",
+        "Actual flow/delivery and chemical-dose measurement",
+        "New adaptive-policy experiments",
+        "Close nearest full-text and supplement gaps"
+      ]
+    },
+    {
+      "id": "C6",
+      "claim": "Current pilot proves an innovative controller or dose savings",
+      "status": "false; prediction/identification only",
+      "prior": []
+    }
+  ],
+  "priority_fulltext_gaps": [
+    "P1",
+    "P8",
+    "P10",
+    "P11",
+    "P15"
+  ],
+  "other_fulltext_gaps": [
+    "P5",
+    "P12"
+  ],
+  "supplement_or_section_limits": [
+    "P13",
+    "P14"
+  ],
+  "search_queries_this_round": [
+    "\"molecular communication\" receptor recovery refractory adaptive transmission",
+    "\"molecular communication\" \"reset\" \"biological receiver\"",
+    "\"molecular communication\" \"desensitization\" control",
+    "\"molecular communication\" \"refractory\" learning",
+    "\"molecular communication\" \"receiver\" \"recovery\" control",
+    "\"ERK\" \"model predictive control\" chemical stimulation"
+  ],
+  "access_limits": "Publisher/PMC/attachments returned cookies, authorization redirects, captcha or access errors. Such failures are not evidence of no prior work."
+}

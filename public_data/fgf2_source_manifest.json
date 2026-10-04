@@ -1,0 +1,385 @@
+[
+  {
+    "path": "FGF2_models/Fgf_B3/FGF_Model_B3.txt",
+    "blob_sha": "42986702c611249a83c11da3cebb8ae3d12f9379",
+    "source_size_bytes": 2107,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/Fgf_B3/FGF_Model_B3.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/Fgf_B3/config_fgf_sus_3_20.xml",
+    "blob_sha": "72c57c29b963bedff4f9d445ddc9a61911b109b1",
+    "source_size_bytes": 6040,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/Fgf_B3/config_fgf_sus_3_20.xml",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/Fgf_B3/initial_states_B3.txt",
+    "blob_sha": "e73e9718acb44e394cf62ba2f35db8a02f2fb468",
+    "source_size_bytes": 252,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/Fgf_B3/initial_states_B3.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/Fgf_B3/measurement_FRET_B3.txt",
+    "blob_sha": "26556a6a69b5e61420dcbf79b1e08ff6e0b85474",
+    "source_size_bytes": 801,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/Fgf_B3/measurement_FRET_B3.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_3_20/2-5ng.txt",
+    "blob_sha": "4799e0abdc760f71cbae850cab952e72594d83b8",
+    "source_size_bytes": 49664,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_3_20/2-5ng.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_3_20/2-5ng_mean_trunc.txt",
+    "blob_sha": "7d96aecfdbfa101d8a0dfdf03f79bc537e86abda",
+    "source_size_bytes": 544,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_3_20/2-5ng_mean_trunc.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_3_20/2-5ng_trunc.txt",
+    "blob_sha": "f3aca11d4a6788ba7fea6e1e6c06ad6bf0b1df24",
+    "source_size_bytes": 38327,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_3_20/2-5ng_trunc.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_3_20/250ng.txt",
+    "blob_sha": "81717a7bcf35591cba2954ccdf37e9512083afa7",
+    "source_size_bytes": 56004,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_3_20/250ng.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_3_20/250ng_mean_trunc.txt",
+    "blob_sha": "1d4c70301f5e0daddc1dc77ee129315db3c6859f",
+    "source_size_bytes": 541,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_3_20/250ng_mean_trunc.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_3_20/250ng_trunc.txt",
+    "blob_sha": "15ae5a14f2102719344d431855ed2655e5d25bb4",
+    "source_size_bytes": 43179,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_3_20/250ng_trunc.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_3_20/time.txt",
+    "blob_sha": "9e4f89d57e598732fc151120078b20fc76e3d47a",
+    "source_size_bytes": 349,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_3_20/time.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_3_20/time_trunc.txt",
+    "blob_sha": "2ca37cca29bd3480dd276895352d4b727fab3537",
+    "source_size_bytes": 261,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_3_20/time_trunc.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_mixed/2-5ng_mean_trunc.txt",
+    "blob_sha": "2d1ec52a7bb6437767eb2b80013bd0bc4bf015e5",
+    "source_size_bytes": 892,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_mixed/2-5ng_mean_trunc.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_mixed/2-5ng_trunc.txt",
+    "blob_sha": "e3b187288265d75f6e446aeb317b20ab63d22a2a",
+    "source_size_bytes": 70691,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_mixed/2-5ng_trunc.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_mixed/2-5ng_unnormalized.txt",
+    "blob_sha": "92a3f00112818c8b606a84672653544815da8184",
+    "source_size_bytes": 80010,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_mixed/2-5ng_unnormalized.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_mixed/250ng_mean_trunc.txt",
+    "blob_sha": "a4af51e49c8160a0d82be90ed6f96eb2ddafa0b6",
+    "source_size_bytes": 894,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_mixed/250ng_mean_trunc.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_mixed/250ng_trunc.txt",
+    "blob_sha": "270301dcb942b4941b19ad01d62874f5ac79200b",
+    "source_size_bytes": 68601,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_mixed/250ng_trunc.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_mixed/250ng_unnormalized.txt",
+    "blob_sha": "60613d7fa192124555baeb5e1f2801cd469ab08e",
+    "source_size_bytes": 78014,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_mixed/250ng_unnormalized.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_mixed/normalize_data.m",
+    "blob_sha": "9027810af513b6f4fcf24e817823b51e4373acfe",
+    "source_size_bytes": 872,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_mixed/normalize_data.m",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_mixed/pulses.txt",
+    "blob_sha": "1c299b1f81943425d0165155c088a47e76f09c7c",
+    "source_size_bytes": 19,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_mixed/pulses.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_mixed/pulses_trunc.txt",
+    "blob_sha": "9ae37adecd9f116bf52b7c21972747936f4cce36",
+    "source_size_bytes": 17,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_mixed/pulses_trunc.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_mixed/time.txt",
+    "blob_sha": "d27d791a70f05771f080659069ded792859745d7",
+    "source_size_bytes": 549,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_mixed/time.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_mixed/time_trunc.txt",
+    "blob_sha": "2db2e511cec438d777454953b84b4c122f463e7e",
+    "source_size_bytes": 465,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_mixed/time_trunc.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_sp_5/2-5ng.txt",
+    "blob_sha": "384bcfb16da53029b7e396292d59ef3ecb88879d",
+    "source_size_bytes": 56737,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_sp_5/2-5ng.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_sp_5/2-5ng_mean_trunc.txt",
+    "blob_sha": "b312e5a60519ecc528dcb8bd1b43e6adf2821777",
+    "source_size_bytes": 473,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_sp_5/2-5ng_mean_trunc.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_sp_5/2-5ng_trunc.txt",
+    "blob_sha": "12083efb8ce4b12219e50bc57e8afadbd99fb838",
+    "source_size_bytes": 42432,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_sp_5/2-5ng_trunc.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_sp_5/250ng.txt",
+    "blob_sha": "7a6dbb46bf1f3a16e3334a579ae504c38d2f88da",
+    "source_size_bytes": 54414,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_sp_5/250ng.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_sp_5/250ng_mean_trunc.txt",
+    "blob_sha": "0468b1d635c5fa19f9ebeccbe8413c425ae85cf5",
+    "source_size_bytes": 473,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_sp_5/250ng_mean_trunc.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_sp_5/250ng_trunc.txt",
+    "blob_sha": "bb5b17437ce4acd462b74eb7a998efb937838b95",
+    "source_size_bytes": 40555,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_sp_5/250ng_trunc.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_sp_5/time.txt",
+    "blob_sha": "766a71ebab9c48918d4ae3dbd1077174913ca2b6",
+    "source_size_bytes": 309,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_sp_5/time.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_sp_5/time_trunc.txt",
+    "blob_sha": "b140d2ed7bf702c8e9cfeaab2745237f38e41cb1",
+    "source_size_bytes": 221,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_sp_5/time_trunc.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_sus/2-5ng.txt",
+    "blob_sha": "7d30d2146fb6a2ca586626928b16b1df88d19a55",
+    "source_size_bytes": 41807,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_sus/2-5ng.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_sus/2-5ng_mean_trunc.txt",
+    "blob_sha": "957ec9fc03920957bff4d41b7c11905f0c941a7b",
+    "source_size_bytes": 547,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_sus/2-5ng_mean_trunc.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_sus/2-5ng_trunc.txt",
+    "blob_sha": "76902748c6884236cd6f96d42d477ccd97d74dbb",
+    "source_size_bytes": 32219,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_sus/2-5ng_trunc.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_sus/250ng.txt",
+    "blob_sha": "6d5cca9866867b2eb7bf7cc4ba88248e8f11d386",
+    "source_size_bytes": 50836,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_sus/250ng.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_sus/250ng_mean_trunc.txt",
+    "blob_sha": "81112286ae5c565d2bd60221834bb97359a69f5c",
+    "source_size_bytes": 540,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_sus/250ng_mean_trunc.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_sus/250ng_trunc.txt",
+    "blob_sha": "d4d4d05e451ab4e1304bef971f43797a88d15127",
+    "source_size_bytes": 39314,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_sus/250ng_trunc.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_sus/time.txt",
+    "blob_sha": "9e4f89d57e598732fc151120078b20fc76e3d47a",
+    "source_size_bytes": 349,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_sus/time.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "FGF2_models/data/fgf_sus/time_trunc.txt",
+    "blob_sha": "2ca37cca29bd3480dd276895352d4b727fab3537",
+    "source_size_bytes": 261,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/FGF2_models/data/fgf_sus/time_trunc.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "path": "README.txt",
+    "blob_sha": "8c1625ef2e1be0c7e9f89ee5936cd1a6df0856a1",
+    "source_size_bytes": 2562,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/README.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "note": "Author-provided processed experimental measurements/model inputs; not new measurements"
+  },
+  {
+    "repository": "Mijan/LFNS_MSB",
+    "ref": "MSB_version",
+    "commit_sha": "5c917abda0618d75c00c9cab45f24ed893dd71f1",
+    "primary_paper_doi": "10.15252/msb.20198947",
+    "license_note": "Paper open access; linked Mendeley dataset CC BY 4.0. Repository root has no code LICENSE. Original model source retained for research comparison with attribution."
+  },
+  {
+    "path": "Inference_results/Fgf_B3/parameter_bounds.txt",
+    "blob_sha": "486abfb8e87bf03f0a565ec06d666448e236aa8c",
+    "source_size_bytes": 1563,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/Inference_results/Fgf_B3/parameter_bounds.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "data_role": "Original authors' model parameter metadata or prediction grid"
+  },
+  {
+    "path": "Inference_results/Fgf_B3/results/sus_3_20/sim_post_mixed_2-5ng_measurements.txt",
+    "blob_sha": "8fe0393635df79d38aa3329a57e829fe1ef27cbc",
+    "source_size_bytes": 808332,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/Inference_results/Fgf_B3/results/sus_3_20/sim_post_mixed_2-5ng_measurements.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "data_role": "Original authors' posterior/predictive simulated output; NOT experimental measurement"
+  },
+  {
+    "path": "Inference_results/Fgf_B3/results/sus_3_20/sim_post_mixed_250ng_measurements.txt",
+    "blob_sha": "9192cf748d274e431675e244c89ae2b831e7a4f4",
+    "source_size_bytes": 808273,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/Inference_results/Fgf_B3/results/sus_3_20/sim_post_mixed_250ng_measurements.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "data_role": "Original authors' posterior/predictive simulated output; NOT experimental measurement"
+  },
+  {
+    "path": "Inference_results/Fgf_B3/results/sus_3_20/sim_post_times.txt",
+    "blob_sha": "8109e2cf2c14d1d92639b453e1bf6792f2f02326",
+    "source_size_bytes": 399,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/Inference_results/Fgf_B3/results/sus_3_20/sim_post_times.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "data_role": "Original authors' model parameter metadata or prediction grid"
+  },
+  {
+    "path": "Inference_results/Fgf_B3/results/sus_3_20/sim_pred_measurements_mixed_2-5ng.txt",
+    "blob_sha": "9f67f00a81273f80aa6c0a1c5363af94482165a9",
+    "source_size_bytes": 801,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/Inference_results/Fgf_B3/results/sus_3_20/sim_pred_measurements_mixed_2-5ng.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "data_role": "Original authors' posterior/predictive simulated output; NOT experimental measurement"
+  },
+  {
+    "path": "Inference_results/Fgf_B3/results/sus_3_20/sim_pred_measurements_mixed_250ng.txt",
+    "blob_sha": "41ac7807ca2e50c6524a99745bbedf35223de5b4",
+    "source_size_bytes": 797,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/Inference_results/Fgf_B3/results/sus_3_20/sim_pred_measurements_mixed_250ng.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "data_role": "Original authors' posterior/predictive simulated output; NOT experimental measurement"
+  },
+  {
+    "path": "Inference_results/Fgf_B3/results/sus_3_20/sim_pred_times.txt",
+    "blob_sha": "1d35368bfac909eec0da7dae446d2ff0b6cce81b",
+    "source_size_bytes": 394,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/Inference_results/Fgf_B3/results/sus_3_20/sim_pred_times.txt",
+    "retrieved_utc_date": "2026-10-04",
+    "data_role": "Original authors' model parameter metadata or prediction grid"
+  }
+]

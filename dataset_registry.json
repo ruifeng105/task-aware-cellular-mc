@@ -1,0 +1,167 @@
+{
+  "verified_on": "2026-10-04",
+  "scope": "Biological and industrial application datasets with actual chemical input/transport/response; not limited to MC bitstream testbeds",
+  "datasets": [
+    {
+      "id": "D1",
+      "name": "Polarization of yeast cells under different pheromone induction regimens",
+      "record_url": "https://datadryad.org/dataset/doi:10.5061/dryad.4f4qrfjn0",
+      "doi": "10.5061/dryad.4f4qrfjn0",
+      "published": "2024-07-27",
+      "measurement_type": "Real controlled microfluidic alpha-factor stimulation and single-cell polarity imaging",
+      "input_unit": "nM",
+      "response": "Continuous polarity metric; consult Data_Information.docx before parsing",
+      "verified_record_size": "1.22 MB",
+      "verified_file_names": [
+        "1-StepUp_0-0nM.xlsx",
+        "2-StepUp_0-4nM.xlsx",
+        "3-StepUp_0-5nM.xlsx",
+        "4-StepUp_0-6nM.xlsx",
+        "5-StepUp_0-10nM.xlsx",
+        "6-StepUp_0-50nM.xlsx",
+        "7-Incremental_50-10-0nM.xlsx",
+        "8-StepDown_50-0nM.xlsx",
+        "9-StepDown_50-4nM.xlsx",
+        "10-StepDown_50-5nM.xlsx",
+        "11-StepDown_50-6nM.xlsx",
+        "12-StepDown_10-0nM.xlsx",
+        "13-StepDown_10-5nM.xlsx",
+        "Data_Information.docx",
+        "README.md"
+      ],
+      "record_inspected": true,
+      "numeric_archive_acquired": false,
+      "numeric_schema_verified": false,
+      "priority": "Biological extension, conditional on numerical attachment retrieval",
+      "limitations": [
+        "Terminal NaN indicates G1 exclusion; internal NaN indicates out-of-focus frame",
+        "Cell counts, acquisition interval and independent date/run coverage remain unverified",
+        "No coded message stream or arbitrary adaptive-action outcomes",
+        "Transport calibration is separate from receiver response"
+      ]
+    },
+    {
+      "id": "D2",
+      "name": "Temporal perturbation of Erk dynamics reveals network architecture of FGF2-MAPK signaling",
+      "record_url": "https://data.mendeley.com/datasets/ccnxn84w8z/2",
+      "doi": "10.17632/ccnxn84w8z.2",
+      "published": "2020-05-13",
+      "version": 2,
+      "license": "CC BY 4.0",
+      "measurement_type": "Real controlled growth-factor inputs and PC-12 single-cell FRET reporter responses",
+      "input_unit": "ng/ml",
+      "input_types_in_paper": [
+        "EGF",
+        "NGF",
+        "FGF2"
+      ],
+      "publisher_source_data": "https://link.springer.com/article/10.15252/msb.20198947",
+      "record_inspected": true,
+      "numeric_archive_acquired": false,
+      "numeric_schema_verified": true,
+      "priority": "Current executed biological pilot",
+      "limitations": [
+        "Only a paper-linked author GitHub numerical subset was acquired, not the complete Mendeley archive",
+        "Author-preprocessed normalized FRET is not a molecule count or a cell-fate endpoint",
+        "Experimental-day independence is not identifiable from these exports",
+        "Local delivered concentration and flow are not measured by this pilot",
+        "B3 is an original-author reference selected partly using these validation conditions, not a fresh blind comparator",
+        "No arbitrary new-action outcomes or novel closed-loop policy benefit"
+      ],
+      "numeric_subset_acquired": true,
+      "acquired_subset": {
+        "repository": "Mijan/LFNS_MSB",
+        "ref": "MSB_version",
+        "commit": "5c917abda0618d75c00c9cab45f24ed893dd71f1",
+        "source_git_blobs_verified": 47,
+        "stimulus": "FGF2 only",
+        "concentrations_ng_ml": [
+          2.5,
+          250
+        ],
+        "n_cell_trajectories": 606,
+        "n_measurements": 53998,
+        "interval_min": 2,
+        "source_manifest": "public_data/fgf2_source_manifest.json",
+        "author_preprocessed": true,
+        "raw_images_acquired": false,
+        "independent_day_ids_available": false
+      },
+      "license_scope_note": "CC BY 4.0 is the Mendeley record license. Author-repository code has no separately found root license; no new license is assigned."
+    },
+    {
+      "id": "D3",
+      "name": "Rasterized Experimental Data: Vapor Advection Plumes for Open Research",
+      "record_url": "https://zenodo.org/records/18299926",
+      "doi": "10.5281/zenodo.18299926",
+      "published": "2026-01-20",
+      "version": "v2",
+      "measurement_type": "Real wind-tunnel gas plume, MOS/PID recordings, spatial scans and fly-through trajectories",
+      "author_code": "https://github.com/DLR-KN/red-vapor",
+      "verified_record_files": {
+        "csv_header_specification.pdf": "82.9 kB",
+        "data_records_csv.zip": "840.9 MB",
+        "experiments.pkl": "1.3 GB",
+        "overview_table.csv": "3.9 kB",
+        "supplementary_material.zip": "261.9 MB",
+        "voxel_maps.pkl": "9.0 MB"
+      },
+      "record_inspected": true,
+      "numeric_archive_acquired": false,
+      "overview_partial_preview_inspected": true,
+      "priority": "Industrial backup / transfer validation",
+      "limitations": [
+        "Synthetic plume means experimentally generated, not simulated",
+        "Sequential scanned maps are not instantaneous dynamic field truth",
+        "No arbitrary unexecuted robot-path outcomes",
+        "PID is a reference instrument, not noise-free concentration truth"
+      ]
+    },
+    {
+      "id": "D4",
+      "name": "Odour sensing in turbulent plumes with high-speed electronic nose and non-invasive ground truth",
+      "record_url": "https://hdl.handle.net/20.500.11850/782611",
+      "paper_url": "https://arxiv.org/html/2604.19626v1",
+      "paper_version": "arXiv:2604.19626v1, 2026-04-21",
+      "measurement_type": "Real synchronized acetone PLIF concentration fields and MEMS MOx responses",
+      "native_reference_hz": 20,
+      "sensor_hz": 1000,
+      "reported_run_count": 10,
+      "reported_sensor_temperature_C": 400,
+      "record_inspected": false,
+      "paper_methods_and_data_structure_inspected": true,
+      "numeric_archive_acquired": false,
+      "author_code_from_paper": "https://github.com/molecularsensing/enose-plif-datadescriptor",
+      "priority": "Promising industrial benchmark, conditional on archive retrieval",
+      "limitations": [
+        "Data/code endpoints could not be independently expanded in this session",
+        "Interpolated 1 kHz concentration labels are not 1 kHz native ground truth",
+        "Actual observed design is five flow/location combinations, not a full 3x3 factorial",
+        "Fixed-temperature recordings do not validate active heater-control actions",
+        "No intentionally encoded source bitstream"
+      ]
+    },
+    {
+      "id": "D5",
+      "name": "Modular Open-Source Stirred Tank Reactor (MOSTR) experiment/calibration files",
+      "record_url": "https://doi.org/10.17632/z24ggxmg5f.3",
+      "paper_url": "https://doi.org/10.1016/j.ohx.2026.e00776",
+      "reported_files": [
+        "MOSTR_Pump_Flow_Relations.xlsx",
+        "MOSTR_Teaching_Session_Data.xlsx"
+      ],
+      "measurement_type": "Real conductivity tracer, pump flow, stirrer speed and temperature",
+      "record_inspected": false,
+      "publisher_text_about_files_inspected": true,
+      "numeric_archive_acquired": false,
+      "priority": "Small experimental transport-calibration backup",
+      "limitations": [
+        "Head-height HH varied and was not recorded in teaching experiment",
+        "Limited teaching-session coverage; not an established large intervention dataset"
+      ]
+    }
+  ],
+  "experimental_data_baseline_training_completed": true,
+  "new_lab_experiment_completed": false,
+  "novel_controller_training_completed": false
+}

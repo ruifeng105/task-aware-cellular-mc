@@ -1,0 +1,1228 @@
+{
+  "status": "experimental_data_pilot_complete",
+  "source_git_blobs_verified": 47,
+  "inventory": [
+    {
+      "condition_id": "fgf_sus_2-5ng",
+      "n_cells": 59,
+      "n_times": 79,
+      "n_measurements": 4661,
+      "time_min": [
+        1.0,
+        157.0
+      ],
+      "interval_min": 2.0,
+      "finite": true,
+      "original_mean_max_difference": 5.271186440669595e-05,
+      "original_mean_rms_difference": 2.8893700782222205e-05
+    },
+    {
+      "condition_id": "fgf_sus_250ng",
+      "n_cells": 71,
+      "n_times": 79,
+      "n_measurements": 5609,
+      "time_min": [
+        1.0,
+        157.0
+      ],
+      "interval_min": 2.0,
+      "finite": true,
+      "original_mean_max_difference": 0.0005643661971830305,
+      "original_mean_rms_difference": 8.912146319197351e-05
+    },
+    {
+      "condition_id": "fgf_3_20_2-5ng",
+      "n_cells": 70,
+      "n_times": 79,
+      "n_measurements": 5530,
+      "time_min": [
+        1.0,
+        157.0
+      ],
+      "interval_min": 2.0,
+      "finite": true,
+      "original_mean_max_difference": 5.499999999969418e-05,
+      "original_mean_rms_difference": 2.9003647584984843e-05
+    },
+    {
+      "condition_id": "fgf_3_20_250ng",
+      "n_cells": 79,
+      "n_times": 79,
+      "n_measurements": 6241,
+      "time_min": [
+        1.0,
+        157.0
+      ],
+      "interval_min": 2.0,
+      "finite": true,
+      "original_mean_max_difference": 5.278481012704894e-05,
+      "original_mean_rms_difference": 3.1088987814434204e-05
+    },
+    {
+      "condition_id": "fgf_sp_5_2-5ng",
+      "n_cells": 88,
+      "n_times": 69,
+      "n_measurements": 6072,
+      "time_min": [
+        1.0,
+        137.0
+      ],
+      "interval_min": 2.0,
+      "finite": true,
+      "original_mean_max_difference": 5.113636363662799e-05,
+      "original_mean_rms_difference": 2.859671573551446e-05
+    },
+    {
+      "condition_id": "fgf_sp_5_250ng",
+      "n_cells": 85,
+      "n_times": 69,
+      "n_measurements": 5865,
+      "time_min": [
+        1.0,
+        137.0
+      ],
+      "interval_min": 2.0,
+      "finite": true,
+      "original_mean_max_difference": 4.9411764706075445e-05,
+      "original_mean_rms_difference": 2.7532807042098118e-05
+    },
+    {
+      "condition_id": "fgf_mixed_2-5ng",
+      "n_cells": 78,
+      "n_times": 130,
+      "n_measurements": 10140,
+      "time_min": [
+        0.0,
+        258.0
+      ],
+      "interval_min": 2.0,
+      "finite": true,
+      "original_mean_max_difference": 5.974358974381033e-05,
+      "original_mean_rms_difference": 2.8855210062087795e-05
+    },
+    {
+      "condition_id": "fgf_mixed_250ng",
+      "n_cells": 76,
+      "n_times": 130,
+      "n_measurements": 9880,
+      "time_min": [
+        0.0,
+        258.0
+      ],
+      "interval_min": 2.0,
+      "finite": true,
+      "original_mean_max_difference": 5.578947368412024e-05,
+      "original_mean_rms_difference": 2.9666778196057182e-05
+    }
+  ],
+  "n_cells": 606,
+  "n_measurements": 53998,
+  "split": {
+    "train": [
+      "fgf_sus_2-5ng",
+      "fgf_sus_250ng",
+      "fgf_3_20_2-5ng",
+      "fgf_3_20_250ng"
+    ],
+    "validation": [
+      "fgf_sp_5_2-5ng",
+      "fgf_sp_5_250ng"
+    ],
+    "test": [
+      "fgf_mixed_2-5ng",
+      "fgf_mixed_250ng"
+    ]
+  },
+  "forecasting": [
+    {
+      "horizon_min": 2.0,
+      "split": {
+        "train": [
+          "fgf_sus_2-5ng",
+          "fgf_sus_250ng",
+          "fgf_3_20_2-5ng",
+          "fgf_3_20_250ng"
+        ],
+        "validation": [
+          "fgf_sp_5_2-5ng",
+          "fgf_sp_5_250ng"
+        ],
+        "test": [
+          "fgf_mixed_2-5ng",
+          "fgf_mixed_250ng"
+        ]
+      },
+      "models": {
+        "persistence": {
+          "test": {
+            "run_equal_mse": 0.00025228458988629684,
+            "run_equal_mae": 0.010916104830547212,
+            "n_runs": 2,
+            "n_transitions": 19096,
+            "per_run": {
+              "fgf_mixed_2-5ng": {
+                "mse": 0.0002730476263027295,
+                "mae": 0.010992847394540943
+              },
+              "fgf_mixed_250ng": {
+                "mse": 0.00023152155346986417,
+                "mae": 0.01083936226655348
+              }
+            }
+          }
+        },
+        "current_input": {
+          "model": {
+            "columns": [
+              "c",
+              "c2",
+              "future_dose_0",
+              "end_c",
+              "horizon_s"
+            ],
+            "alpha": 100.0,
+            "mean": [
+              70.90753424657574,
+              17553.12499999988,
+              141.81506849315147,
+              70.90753424657574,
+              119.99999999999962
+            ],
+            "scale": [
+              111.91624809236038,
+              28086.445665878226,
+              220.94481516497066,
+              111.91624809236038,
+              1.0
+            ],
+            "beta": [
+              -0.00016757869134419144,
+              -0.00016797723689213577,
+              -0.00016909664809488614,
+              -0.0001661344747949392,
+              4.869678434173315e-31
+            ],
+            "intercept": 1.0681083119841654
+          },
+          "validation_condition_equal_mse": 0.0018986956054131826,
+          "test": {
+            "run_equal_mse": 0.0021182530356163454,
+            "run_equal_mae": 0.03599438170777038,
+            "n_runs": 2,
+            "n_transitions": 19096,
+            "per_run": {
+              "fgf_mixed_2-5ng": {
+                "mse": 0.002659661666728089,
+                "mae": 0.039954736391123784
+              },
+              "fgf_mixed_250ng": {
+                "mse": 0.001576844404504602,
+                "mae": 0.03203402702441698
+              }
+            }
+          }
+        },
+        "current_response": {
+          "model": {
+            "columns": [
+              "c",
+              "c2",
+              "current_y",
+              "y2",
+              "cy",
+              "future_dose_0",
+              "end_c",
+              "horizon_s"
+            ],
+            "alpha": 1e-06,
+            "mean": [
+              70.90753424657574,
+              17553.12499999988,
+              1.0681544904395306,
+              1.1429641719472123,
+              73.80727641379318,
+              141.81506849315147,
+              70.90753424657574,
+              119.99999999999962
+            ],
+            "scale": [
+              111.91624809236038,
+              28086.445665878226,
+              0.04483476888619922,
+              0.09617206773061414,
+              116.53274493828181,
+              220.94481516497066,
+              111.91624809236038,
+              1.0
+            ],
+            "beta": [
+              0.04016667395835438,
+              -0.051298673340204194,
+              0.07236116867614277,
+              -0.03142980176381928,
+              0.005611197368060902,
+              0.004348316825107977,
+              -0.00035755359820446896,
+              1.713605918388984e-22
+            ],
+            "intercept": 1.0681083119841654
+          },
+          "validation_condition_equal_mse": 0.00018792820893805476,
+          "test": {
+            "run_equal_mse": 0.0002413911388861918,
+            "run_equal_mae": 0.010891963664240969,
+            "n_runs": 2,
+            "n_transitions": 19096,
+            "per_run": {
+              "fgf_mixed_2-5ng": {
+                "mse": 0.00026403729437520954,
+                "mae": 0.011081386227164125
+              },
+              "fgf_mixed_250ng": {
+                "mse": 0.00021874498339717407,
+                "mae": 0.010702541101317815
+              }
+            }
+          }
+        },
+        "current_response_clock": {
+          "model": {
+            "columns": [
+              "c",
+              "c2",
+              "current_y",
+              "y2",
+              "cy",
+              "future_dose_0",
+              "end_c",
+              "horizon_s",
+              "time_min",
+              "time2"
+            ],
+            "alpha": 1e-06,
+            "mean": [
+              70.90753424657574,
+              17553.12499999988,
+              1.0681544904395306,
+              1.1429641719472123,
+              73.80727641379318,
+              141.81506849315147,
+              70.90753424657574,
+              119.99999999999962,
+              82.99999999999994,
+              8665.000000000004
+            ],
+            "scale": [
+              111.91624809236038,
+              28086.445665878226,
+              0.04483476888619922,
+              0.09617206773061414,
+              116.53274493828181,
+              220.94481516497066,
+              111.91624809236038,
+              1.0,
+              42.14261501141093,
+              7173.658480858982
+            ],
+            "beta": [
+              0.04275027137682336,
+              -0.0525755912470388,
+              0.06782795957149207,
+              -0.02701308947758729,
+              0.00463732334505098,
+              0.0038759157180478726,
+              -0.00027325156845618356,
+              1.779156363347169e-22,
+              0.004078809811962403,
+              -0.003301764922512907
+            ],
+            "intercept": 1.0681083119841654
+          },
+          "validation_condition_equal_mse": 0.00018915706712791186,
+          "test": {
+            "run_equal_mse": 0.00024338266265070698,
+            "run_equal_mae": 0.010935207922903518,
+            "n_runs": 2,
+            "n_transitions": 19096,
+            "per_run": {
+              "fgf_mixed_2-5ng": {
+                "mse": 0.0002641467670690229,
+                "mae": 0.011063608960493842
+              },
+              "fgf_mixed_250ng": {
+                "mse": 0.00022261855823239106,
+                "mae": 0.010806806885313195
+              }
+            }
+          }
+        },
+        "local_slope": {
+          "model": {
+            "columns": [
+              "c",
+              "c2",
+              "current_y",
+              "y2",
+              "cy",
+              "future_dose_0",
+              "end_c",
+              "horizon_s",
+              "slope"
+            ],
+            "alpha": 1e-06,
+            "mean": [
+              70.90753424657574,
+              17553.12499999988,
+              1.0681544904395306,
+              1.1429641719472123,
+              73.80727641379318,
+              141.81506849315147,
+              70.90753424657574,
+              119.99999999999962,
+              -0.00016043901296792755
+            ],
+            "scale": [
+              111.91624809236038,
+              28086.445665878226,
+              0.04483476888619922,
+              0.09617206773061414,
+              116.53274493828181,
+              220.94481516497066,
+              111.91624809236038,
+              1.0,
+              0.008490608392664984
+            ],
+            "beta": [
+              0.051692232318465474,
+              -0.06369384198727379,
+              0.08263380377952158,
+              -0.042461610141641015,
+              0.006151958332909953,
+              0.004549585368824245,
+              -0.0005130269750081318,
+              2.0695093069203808e-22,
+              0.003559684570634931
+            ],
+            "intercept": 1.0681083119841654
+          },
+          "validation_condition_equal_mse": 0.0002007777600391265,
+          "test": {
+            "run_equal_mse": 0.00025139635657589314,
+            "run_equal_mae": 0.011200892034170854,
+            "n_runs": 2,
+            "n_transitions": 19096,
+            "per_run": {
+              "fgf_mixed_2-5ng": {
+                "mse": 0.00027801346238959414,
+                "mae": 0.011477622033506413
+              },
+              "fgf_mixed_250ng": {
+                "mse": 0.0002247792507621921,
+                "mae": 0.010924162034835296
+              }
+            }
+          }
+        },
+        "causal_history": {
+          "model": {
+            "columns": [
+              "c",
+              "c2",
+              "current_y",
+              "y2",
+              "cy",
+              "future_dose_0",
+              "end_c",
+              "horizon_s",
+              "slope",
+              "past_dose",
+              "input_filter_2",
+              "input_filter_10",
+              "input_filter_60",
+              "response_ema_2",
+              "response_ema_10",
+              "response_ema_60"
+            ],
+            "alpha": 1e-06,
+            "mean": [
+              70.90753424657574,
+              17553.12499999988,
+              1.0681544904395306,
+              1.1429641719472123,
+              73.80727641379318,
+              141.81506849315147,
+              70.90753424657574,
+              119.99999999999962,
+              -0.00016043901296792758,
+              6004.657534246568,
+              70.92105188186125,
+              69.59771773484876,
+              49.11891931688623,
+              1.0683510698223995,
+              1.0671491832551885,
+              1.0506023670735818
+            ],
+            "scale": [
+              111.91624809236038,
+              28086.445665878226,
+              0.04483476888619922,
+              0.09617206773061414,
+              116.53274493828181,
+              220.94481516497066,
+              111.91624809236038,
+              1.0,
+              0.008490608392664984,
+              10106.108011812252,
+              107.53255576985973,
+              101.9980613645893,
+              75.7156631818072,
+              0.04344215369325748,
+              0.038986700199801896,
+              0.03204680864948823
+            ],
+            "beta": [
+              0.012153703862133129,
+              0.007420649324980612,
+              0.11010238187030012,
+              -0.031471558097088924,
+              -0.015484828839420373,
+              0.001357959669697511,
+              0.0002550259731187565,
+              1.0692671743854658e-22,
+              -0.0006820391586538772,
+              -0.006490586632272883,
+              -0.011748660646490765,
+              -0.0033598231508601894,
+              0.014793398082115265,
+              -0.054892129351335056,
+              0.019625579791492185,
+              -0.001035464104098771
+            ],
+            "intercept": 1.0681083119841654
+          },
+          "validation_condition_equal_mse": 0.0001897490964699412,
+          "test": {
+            "run_equal_mse": 0.00023688313376543863,
+            "run_equal_mae": 0.010855459116714736,
+            "n_runs": 2,
+            "n_transitions": 19096,
+            "per_run": {
+              "fgf_mixed_2-5ng": {
+                "mse": 0.0002628237840776463,
+                "mae": 0.01109332159235988
+              },
+              "fgf_mixed_250ng": {
+                "mse": 0.00021094248345323094,
+                "mae": 0.010617596641069593
+              }
+            }
+          }
+        }
+      },
+      "information": "All predictors know the future commanded waveform. Only observed responses up to t are features.",
+      "score_note": "run_id denotes a condition block here, NOT a verified independent experiment."
+    },
+    {
+      "horizon_min": 10.0,
+      "split": {
+        "train": [
+          "fgf_sus_2-5ng",
+          "fgf_sus_250ng",
+          "fgf_3_20_2-5ng",
+          "fgf_3_20_250ng"
+        ],
+        "validation": [
+          "fgf_sp_5_2-5ng",
+          "fgf_sp_5_250ng"
+        ],
+        "test": [
+          "fgf_mixed_2-5ng",
+          "fgf_mixed_250ng"
+        ]
+      },
+      "models": {
+        "persistence": {
+          "test": {
+            "run_equal_mse": 0.0009644021652654072,
+            "run_equal_mae": 0.021129043915879442,
+            "n_runs": 2,
+            "n_transitions": 18480,
+            "per_run": {
+              "fgf_mixed_2-5ng": {
+                "mse": 0.00100803218232906,
+                "mae": 0.021252245726495728
+              },
+              "fgf_mixed_250ng": {
+                "mse": 0.0009207721482017545,
+                "mae": 0.02100584210526316
+              }
+            }
+          }
+        },
+        "current_input": {
+          "model": {
+            "columns": [
+              "c",
+              "c2",
+              "future_dose_0",
+              "future_dose_1",
+              "future_dose_2",
+              "future_dose_3",
+              "future_dose_4",
+              "end_c",
+              "horizon_s"
+            ],
+            "alpha": 100.0,
+            "mean": [
+              71.35869565217342,
+              17664.809782608594,
+              142.7173913043468,
+              142.71739130434682,
+              142.7173913043468,
+              142.7173913043468,
+              142.7173913043468,
+              71.35869565217342,
+              600.0000000000019
+            ],
+            "scale": [
+              112.12825842502461,
+              28140.62408289764,
+              221.20613424581447,
+              221.20613424581447,
+              221.20613424581447,
+              221.20613424581447,
+              221.20613424581447,
+              112.12825842502461,
+              1.9326762412674685e-12
+            ],
+            "beta": [
+              -0.00018531361267698585,
+              -0.00018584577058185846,
+              -0.00018897679521996333,
+              -0.00019181619949624283,
+              -0.0001842300405711293,
+              -0.00016946777797439302,
+              -0.00016020404240348285,
+              -0.0001570241015457427,
+              -7.701494700167851e-19
+            ],
+            "intercept": 1.0686463937006145
+          },
+          "validation_condition_equal_mse": 0.0019359317276768878,
+          "test": {
+            "run_equal_mse": 0.0021144912897291123,
+            "run_equal_mae": 0.035992826603717276,
+            "n_runs": 2,
+            "n_transitions": 18480,
+            "per_run": {
+              "fgf_mixed_2-5ng": {
+                "mse": 0.0026720062875757247,
+                "mae": 0.04012673793513534
+              },
+              "fgf_mixed_250ng": {
+                "mse": 0.0015569762918824996,
+                "mae": 0.031858915272299206
+              }
+            }
+          }
+        },
+        "current_response": {
+          "model": {
+            "columns": [
+              "c",
+              "c2",
+              "current_y",
+              "y2",
+              "cy",
+              "future_dose_0",
+              "future_dose_1",
+              "future_dose_2",
+              "future_dose_3",
+              "future_dose_4",
+              "end_c",
+              "horizon_s"
+            ],
+            "alpha": 1e-06,
+            "mean": [
+              71.35869565217342,
+              17664.809782608594,
+              1.0676797970990777,
+              1.141957682981398,
+              74.2333479293248,
+              142.7173913043468,
+              142.71739130434682,
+              142.7173913043468,
+              142.7173913043468,
+              142.7173913043468,
+              71.35869565217342,
+              600.0000000000019
+            ],
+            "scale": [
+              112.12825842502461,
+              28140.62408289764,
+              0.04491696614720866,
+              0.09632000459617152,
+              116.6854451484332,
+              221.20613424581447,
+              221.20613424581447,
+              221.20613424581447,
+              221.20613424581447,
+              221.20613424581447,
+              112.12825842502461,
+              1.9326762412674685e-12
+            ],
+            "beta": [
+              0.3559967827155979,
+              -0.3831544705615539,
+              0.1560789268180538,
+              -0.12863284552295318,
+              0.017470325511719828,
+              -0.001616778601697182,
+              -0.009768697183371653,
+              -0.0058541420056042225,
+              0.0038823641148633316,
+              0.004308229124546626,
+              0.010829559795359194,
+              3.930838594813936e-16
+            ],
+            "intercept": 1.0686463937006145
+          },
+          "validation_condition_equal_mse": 0.0006819012582143351,
+          "test": {
+            "run_equal_mse": 0.0008759772927412577,
+            "run_equal_mae": 0.022459465434209434,
+            "n_runs": 2,
+            "n_transitions": 18480,
+            "per_run": {
+              "fgf_mixed_2-5ng": {
+                "mse": 0.0009496267016938794,
+                "mae": 0.02345766484139541
+              },
+              "fgf_mixed_250ng": {
+                "mse": 0.0008023278837886361,
+                "mae": 0.021461266027023456
+              }
+            }
+          }
+        },
+        "current_response_clock": {
+          "model": {
+            "columns": [
+              "c",
+              "c2",
+              "current_y",
+              "y2",
+              "cy",
+              "future_dose_0",
+              "future_dose_1",
+              "future_dose_2",
+              "future_dose_3",
+              "future_dose_4",
+              "end_c",
+              "horizon_s",
+              "time_min",
+              "time2"
+            ],
+            "alpha": 1e-06,
+            "mean": [
+              71.35869565217342,
+              17664.809782608594,
+              1.0676797970990777,
+              1.141957682981398,
+              74.2333479293248,
+              142.7173913043468,
+              142.71739130434682,
+              142.7173913043468,
+              142.7173913043468,
+              142.7173913043468,
+              71.35869565217342,
+              600.0000000000019,
+              78.99999999999999,
+              7827.666666666666
+            ],
+            "scale": [
+              112.12825842502461,
+              28140.62408289764,
+              0.04491696614720866,
+              0.09632000459617152,
+              116.6854451484332,
+              221.20613424581447,
+              221.20613424581447,
+              221.20613424581447,
+              221.20613424581447,
+              221.20613424581447,
+              112.12825842502461,
+              1.9326762412674685e-12,
+              39.83298465677241,
+              6451.533633348135
+            ],
+            "beta": [
+              0.36256524679821883,
+              -0.38529174875252176,
+              0.14520419564682654,
+              -0.1180381196185208,
+              0.01388757815398162,
+              -0.00262647719532197,
+              -0.009615458112279233,
+              -0.00611294801728567,
+              0.003977398295954468,
+              0.004083626842953166,
+              0.011070168569849102,
+              3.057329746101327e-16,
+              0.007926506602118846,
+              -0.0056848579323544755
+            ],
+            "intercept": 1.0686463937006145
+          },
+          "validation_condition_equal_mse": 0.0007013779753544649,
+          "test": {
+            "run_equal_mse": 0.000854342107643549,
+            "run_equal_mae": 0.021919708163055097,
+            "n_runs": 2,
+            "n_transitions": 18480,
+            "per_run": {
+              "fgf_mixed_2-5ng": {
+                "mse": 0.000929688097420361,
+                "mae": 0.022803144344984635
+              },
+              "fgf_mixed_250ng": {
+                "mse": 0.0007789961178667371,
+                "mae": 0.021036271981125558
+              }
+            }
+          }
+        },
+        "local_slope": {
+          "model": {
+            "columns": [
+              "c",
+              "c2",
+              "current_y",
+              "y2",
+              "cy",
+              "future_dose_0",
+              "future_dose_1",
+              "future_dose_2",
+              "future_dose_3",
+              "future_dose_4",
+              "end_c",
+              "horizon_s",
+              "slope"
+            ],
+            "alpha": 1e-06,
+            "mean": [
+              71.35869565217342,
+              17664.809782608594,
+              1.0676797970990777,
+              1.141957682981398,
+              74.2333479293248,
+              142.7173913043468,
+              142.71739130434682,
+              142.7173913043468,
+              142.7173913043468,
+              142.7173913043468,
+              71.35869565217342,
+              600.0000000000019,
+              -0.00020964179063197904
+            ],
+            "scale": [
+              112.12825842502461,
+              28140.62408289764,
+              0.04491696614720866,
+              0.09632000459617152,
+              116.6854451484332,
+              221.20613424581447,
+              221.20613424581447,
+              221.20613424581447,
+              221.20613424581447,
+              221.20613424581447,
+              112.12825842502461,
+              1.9326762412674685e-12,
+              0.00852270006405255
+            ],
+            "beta": [
+              0.34767134076181017,
+              -0.37731375450217836,
+              0.145538360474059,
+              -0.11741409258904761,
+              0.01985411164190773,
+              -0.0019319676886284398,
+              -0.00985267137134013,
+              -0.006131870035354181,
+              0.004171684781989903,
+              0.00463342050924558,
+              0.011355035981566855,
+              3.10039059188253e-16,
+              -0.0031597649513580304
+            ],
+            "intercept": 1.0686463937006145
+          },
+          "validation_condition_equal_mse": 0.000671323936922146,
+          "test": {
+            "run_equal_mse": 0.000875010555704691,
+            "run_equal_mae": 0.022323701733945277,
+            "n_runs": 2,
+            "n_transitions": 18480,
+            "per_run": {
+              "fgf_mixed_2-5ng": {
+                "mse": 0.0009418038193304658,
+                "mae": 0.023215595780844426
+              },
+              "fgf_mixed_250ng": {
+                "mse": 0.0008082172920789161,
+                "mae": 0.02143180768704613
+              }
+            }
+          }
+        },
+        "causal_history": {
+          "model": {
+            "columns": [
+              "c",
+              "c2",
+              "current_y",
+              "y2",
+              "cy",
+              "future_dose_0",
+              "future_dose_1",
+              "future_dose_2",
+              "future_dose_3",
+              "future_dose_4",
+              "end_c",
+              "horizon_s",
+              "slope",
+              "past_dose",
+              "input_filter_2",
+              "input_filter_10",
+              "input_filter_60",
+              "response_ema_2",
+              "response_ema_10",
+              "response_ema_60"
+            ],
+            "alpha": 1e-06,
+            "mean": [
+              71.35869565217342,
+              17664.809782608594,
+              1.0676797970990777,
+              1.141957682981398,
+              74.2333479293248,
+              142.7173913043468,
+              142.71739130434682,
+              142.7173913043468,
+              142.7173913043468,
+              142.7173913043468,
+              71.35869565217342,
+              600.0000000000019,
+              -0.00020964179063197904,
+              5719.673913043479,
+              71.35278074338501,
+              69.61322283202654,
+              48.162681147368076,
+              1.0679243343541767,
+              1.0667209439779903,
+              1.04966595855195
+            ],
+            "scale": [
+              112.12825842502461,
+              28140.62408289764,
+              0.04491696614720866,
+              0.09632000459617152,
+              116.6854451484332,
+              221.20613424581447,
+              221.20613424581447,
+              221.20613424581447,
+              221.20613424581447,
+              221.20613424581447,
+              112.12825842502461,
+              1.9326762412674685e-12,
+              0.00852270006405255,
+              9599.582408197932,
+              107.50721769623276,
+              101.834589880481,
+              74.28055463393933,
+              0.043519370820160504,
+              0.038955645727794426,
+              0.03168235467340579
+            ],
+            "beta": [
+              0.20854546239683502,
+              -0.2403101427682237,
+              0.111619815374111,
+              -0.03540467241416554,
+              0.027792182500155475,
+              -0.006048835489126931,
+              -0.012164446076858636,
+              -0.007294838339055254,
+              -0.00012726738658392652,
+              0.0020273049277136136,
+              0.002809705315026276,
+              1.2199538196538142e-16,
+              -0.004557573145447831,
+              -0.015190802449524362,
+              -0.02339570355012863,
+              0.028309166989962845,
+              0.030245149723118144,
+              -0.09987129029027554,
+              0.06275980842412672,
+              -0.00521959604322098
+            ],
+            "intercept": 1.0686463937006145
+          },
+          "validation_condition_equal_mse": 0.0006017771821250613,
+          "test": {
+            "run_equal_mse": 0.0007191585003807313,
+            "run_equal_mae": 0.019646093569482576,
+            "n_runs": 2,
+            "n_transitions": 18480,
+            "per_run": {
+              "fgf_mixed_2-5ng": {
+                "mse": 0.0008142248451320792,
+                "mae": 0.02045252683449615
+              },
+              "fgf_mixed_250ng": {
+                "mse": 0.0006240921556293833,
+                "mae": 0.018839660304469003
+              }
+            }
+          }
+        }
+      },
+      "information": "All predictors know the future commanded waveform. Only observed responses up to t are features.",
+      "score_note": "run_id denotes a condition block here, NOT a verified independent experiment."
+    }
+  ],
+  "input_output_identification": {
+    "stable_filter_bank": {
+      "model": {
+        "columns": [
+          "f_2-5ng_1",
+          "f_250ng_1",
+          "f_2-5ng_2",
+          "f_250ng_2",
+          "f_2-5ng_4",
+          "f_250ng_4",
+          "f_2-5ng_8",
+          "f_250ng_8",
+          "f_2-5ng_16",
+          "f_250ng_16",
+          "f_2-5ng_32",
+          "f_250ng_32",
+          "f_2-5ng_64",
+          "f_250ng_64",
+          "f_2-5ng_128",
+          "f_250ng_128"
+        ],
+        "alpha": 100.0,
+        "mean": [
+          0.28261265663852386,
+          0.28261265663852386,
+          0.2805784502676708,
+          0.2805784502676708,
+          0.27711365329821225,
+          0.27711365329821225,
+          0.27020156564230985,
+          0.27020156564230985,
+          0.2560181387955407,
+          0.2560181387955407,
+          0.227829705823201,
+          0.227829705823201,
+          0.17972894951786372,
+          0.17972894951786372,
+          0.12176655599150037,
+          0.12176655599150037
+        ],
+        "scale": [
+          0.43915092139787654,
+          0.43915092139787665,
+          0.4284576421322849,
+          0.4284576421322852,
+          0.4171183618530396,
+          0.4171183618530398,
+          0.4052842052040824,
+          0.40528420520408254,
+          0.3885179697145478,
+          0.38851796971454766,
+          0.355341870887547,
+          0.3553418708875471,
+          0.2912283707739451,
+          0.29122837077394514,
+          0.2043858363620844,
+          0.20438583636208427
+        ],
+        "beta": [
+          8.710396140892968e-05,
+          -0.0001491954046395668,
+          9.720938039075364e-05,
+          -0.00015462116805246612,
+          0.00010806793582518553,
+          -0.00016362202954340392,
+          0.00011261246649551169,
+          -0.00016971201348789283,
+          0.00011193960119645528,
+          -0.00016771874286722444,
+          0.00010973215454493562,
+          -0.00015733671620827793,
+          0.00010688005929239508,
+          -0.0001436103498907214,
+          0.00010415635877896161,
+          -0.00013265794418038936
+        ],
+        "intercept": 0.06876261551568612
+      },
+      "validation_condition_equal_mse": 0.0007588670558163503,
+      "test": {
+        "run_equal_mse": 0.00046195341137187566,
+        "run_equal_mae": 0.01673355293481646,
+        "n_runs": 2,
+        "n_transitions": 260,
+        "per_run": {
+          "fgf_mixed_2-5ng": {
+            "mse": 0.0005397643120158449,
+            "mae": 0.020476811178181512
+          },
+          "fgf_mixed_250ng": {
+            "mse": 0.00038414251072790644,
+            "mae": 0.012990294691451406
+          }
+        }
+      }
+    },
+    "positive_single_lag": {
+      "tau_min": 13.158664493151367,
+      "gains": {
+        "2-5ng": 0.1024648934456497,
+        "250ng": 0.047705492266981446
+      },
+      "validation_condition_equal_mse": 0.0035768286633591027,
+      "test": {
+        "run_equal_mse": 0.0029269632593157268,
+        "run_equal_mae": 0.05082117782700443,
+        "n_runs": 2,
+        "n_transitions": 260,
+        "per_run": {
+          "fgf_mixed_2-5ng": {
+            "mse": 0.002539282086747061,
+            "mae": 0.04686318352341608
+          },
+          "fgf_mixed_250ng": {
+            "mse": 0.0033146444318843927,
+            "mae": 0.05477917213059279
+          }
+        }
+      }
+    }
+  },
+  "published_reference": {
+    "2-5ng": {
+      "n_author_exported_predictive_samples": 1000,
+      "time_min": [
+        0.0,
+        180.0
+      ],
+      "mean_curve_rmse": 0.011463542332259184,
+      "note": "Original authors B3 predictive export reused as context; not refitted here, not a same-feedback comparison. The source study used these mixed/single-pulse conditions in architecture selection, so this reference is not a fresh blind test."
+    },
+    "250ng": {
+      "n_author_exported_predictive_samples": 1000,
+      "time_min": [
+        0.0,
+        180.0
+      ],
+      "mean_curve_rmse": 0.013619830904286109,
+      "note": "Original authors B3 predictive export reused as context; not refitted here, not a same-feedback comparison. The source study used these mixed/single-pulse conditions in architecture selection, so this reference is not a fresh blind test."
+    }
+  },
+  "washout_description": {
+    "2-5ng": {
+      "concentration_command_at_both_times_ng_ml": 0.0,
+      "mean_y_54min": 1.07733,
+      "mean_y_66min": 1.0957923076923075,
+      "mean_within_cell_change": 0.018462307692307688,
+      "fraction_cells_with_positive_change": 0.7435897435897436,
+      "n_cells": 78,
+      "interpretation": "Illustrative contrast chosen after waveform inspection, not preregistered. Washout behavior already reported in the source biology paper. No independent-day inference or matched-state causality."
+    },
+    "250ng": {
+      "concentration_command_at_both_times_ng_ml": 0.0,
+      "mean_y_54min": 1.0165451315789473,
+      "mean_y_66min": 1.0741673684210529,
+      "mean_within_cell_change": 0.05762223684210527,
+      "fraction_cells_with_positive_change": 0.9605263157894737,
+      "n_cells": 76,
+      "interpretation": "Illustrative contrast chosen after waveform inspection, not preregistered. Washout behavior already reported in the source biology paper. No independent-day inference or matched-state causality."
+    }
+  },
+  "exploratory_history_matching": {
+    "analyses": {
+      "2-5ng_current_only": {
+        "n_matched_cells": 60,
+        "n_eligible_cells": 78,
+        "current_y_tolerance": 0.005,
+        "slope_tolerance_per_min": null,
+        "mean_absolute_current_y_difference": 0.0009066666666666704,
+        "mean_late_minus_early_target": 0.014404499999999992,
+        "median_late_minus_early_target": 0.017699999999999938
+      },
+      "2-5ng_current_and_slope": {
+        "n_matched_cells": 14,
+        "n_eligible_cells": 78,
+        "current_y_tolerance": 0.005,
+        "slope_tolerance_per_min": 0.002,
+        "mean_absolute_current_y_difference": 0.002214285714285724,
+        "mean_late_minus_early_target": 0.020185714285714283,
+        "median_late_minus_early_target": 0.021250000000000102
+      },
+      "250ng_current_only": {
+        "n_matched_cells": 69,
+        "n_eligible_cells": 76,
+        "current_y_tolerance": 0.005,
+        "slope_tolerance_per_min": null,
+        "mean_absolute_current_y_difference": 0.0007660869565217297,
+        "mean_late_minus_early_target": -0.015529420289855057,
+        "median_late_minus_early_target": -0.008700000000000152
+      },
+      "250ng_current_and_slope": {
+        "n_matched_cells": 17,
+        "n_eligible_cells": 76,
+        "current_y_tolerance": 0.005,
+        "slope_tolerance_per_min": 0.002,
+        "mean_absolute_current_y_difference": 0.0014017647058823018,
+        "mean_late_minus_early_target": -0.0012129411764705866,
+        "median_late_minus_early_target": -0.005300000000000082
+      }
+    },
+    "limitations": [
+      "Exploratory matching rule set after inspecting these data.",
+      "Within-cell matching controls cell identity but not age, protocol time, unmeasured physiology, or regression-to-the-mean.",
+      "Some support is sparse. No p-value or independent-day confidence interval is justified.",
+      "Differences are candidates for prospective randomized preconditioning, not proof of a novel hidden mechanism."
+    ]
+  },
+  "common_window_open_loop_comparison": {
+    "time_min": [
+      0.0,
+      180.0
+    ],
+    "condition_rmse": {
+      "2-5ng": {
+        "positive_single_lag": 0.053954841933047976,
+        "stable_filter_bank": 0.020710597735364655,
+        "published_B3_predictive_mean": 0.011463542332259184
+      },
+      "250ng": {
+        "positive_single_lag": 0.05675389784672538,
+        "stable_filter_bank": 0.022446996701922402,
+        "published_B3_predictive_mean": 0.013619830904286109
+      }
+    },
+    "note": "Matched time window and population-mean output. B3 is an original-author fit/export, not an independently retrained model or policy result. The source study used these conditions in architecture selection; B3 is not a fresh blind benchmark."
+  },
+  "limitations": [
+    "Author-exported, normalized fluorescence time courses; not molecular counts.",
+    "Command schedule follows source XML; local concentration/transport are not calibrated.",
+    "Condition blocks are disjoint but experimental-day independence cannot be verified.",
+    "Filter time scales are computational basis constants, not identifiable biochemical rates.",
+    "History prediction gains do not establish a matched-state causal hidden-memory effect.",
+    "No novel controller, repeated-command success, dose savings, or new live experiment was evaluated."
+  ]
+}

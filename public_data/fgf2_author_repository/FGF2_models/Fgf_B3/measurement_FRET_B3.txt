@@ -1,0 +1,14 @@
+Species:
+Erk, Erk_star
+
+Parameters:
+FRET_sigma, FRET_E, erk_max, erk_initial
+
+Random numbers:
+r_1 = Normal(0, 1)
+
+Measurement:
+fret_measure  = (0.15 * Erk_star + erk_initial * (-1.15 * Erk - 1.15 * Erk_star + FRET_E * Erk_star) + erk_max * ((1 + 0.15 * FRET_E * erk_initial) * Erk + (1 - 1.15 * FRET_E + 0.15 * FRET_E * erk_initial) * Erk_star))/((erk_max - erk_initial) * (Erk + Erk_star - FRET_E * Erk_star)) + r_1 * FRET_sigma
+
+Loglikelihood:
+fret_measure: - (fret_measure - (0.15 * Erk_star + erk_initial * (-1.15 * Erk - 1.15 * Erk_star + FRET_E * Erk_star) + erk_max * ((1 + 0.15 * FRET_E * erk_initial) * Erk + (1 - 1.15 * FRET_E + 0.15 * FRET_E * erk_initial) * Erk_star))/((erk_max - erk_initial) * (Erk + Erk_star - FRET_E * Erk_star)))^2 / (2*FRET_sigma^2) - log(FRET_sigma *sqrt(2 * _pi))
