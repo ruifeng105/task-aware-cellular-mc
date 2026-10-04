@@ -59,7 +59,7 @@
       "record_inspected": true,
       "numeric_archive_acquired": false,
       "numeric_schema_verified": true,
-      "priority": "Current executed biological pilot",
+      "priority": "Current executed biological pilot and pre-registered expanded fresh test",
       "limitations": [
         "Only a paper-linked author GitHub numerical subset was acquired, not the complete Mendeley archive",
         "Author-preprocessed normalized FRET is not a molecule count or a cell-fate endpoint",
@@ -87,7 +87,36 @@
         "raw_images_acquired": false,
         "independent_day_ids_available": false
       },
-      "license_scope_note": "CC BY 4.0 is the Mendeley record license. Author-repository code has no separately found root license; no new license is assigned."
+      "license_scope_note": "CC BY 4.0 is the Mendeley record license. Author-repository code has no separately found root license; no new license is assigned.",
+      "expanded_subset": {
+        "repository": "Mijan/LFNS_MSB",
+        "commit": "5c917abda0618d75c00c9cab45f24ed893dd71f1",
+        "protocol": "configs/fgf2_expanded_protocol.json (frozen before download; sha256 in results/fgf2_expanded/protocol_freeze.json)",
+        "additional_source_git_blobs_verified": 56,
+        "source_manifest": "public_data/fgf2_expanded_source_manifest.json",
+        "n_conditions": 22,
+        "n_cell_trajectories": 1565,
+        "concentrations_ng_ml": [
+          0.25,
+          2.5,
+          25,
+          250
+        ],
+        "protocols": [
+          "sustained",
+          "3/20 pulses",
+          "single 5 min",
+          "single 10 min",
+          "single 60 min (timing inferred from author B3 simulations)",
+          "mixed pulses"
+        ],
+        "excluded": [
+          "NaClO3 perturbation (250 ng/ml)",
+          "single 60 min at 0.25 ng/ml (mean only)"
+        ],
+        "independent_day_ids_available": false,
+        "note": "Mixed 0.25 and 25 ng/ml were recorded as further channels of the inspected mixed experiment."
+      }
     },
     {
       "id": "D3",

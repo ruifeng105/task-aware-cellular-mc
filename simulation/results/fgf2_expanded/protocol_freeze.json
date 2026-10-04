@@ -1,0 +1,6 @@
+{
+  "protocol_path": "simulation/configs/fgf2_expanded_protocol.json",
+  "protocol_sha256": "fe919ef8ee766522d62d2fff4d5c412771c41a2cfd7fb818f4800a698a873331",
+  "frozen_utc": "2026-10-04T13:54:35+00:00",
+  "statement": "Recorded before any newly listed upstream response file was downloaded. The expanded analysis refuses to run if the protocol hash differs."
+}

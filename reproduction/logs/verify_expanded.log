@@ -1,0 +1,77 @@
+{
+  "status": "passed",
+  "protocol_sha256": "fe919ef8ee766522d62d2fff4d5c412771c41a2cfd7fb818f4800a698a873331",
+  "expanded_source_git_blobs_verified": 56,
+  "n_conditions": 22,
+  "n_cells": 1565,
+  "xml_commands": {
+    "checked_against_xml": {
+      "fgf_sus_0-25ng": 0.0,
+      "fgf_sus_2-5ng": 0.0,
+      "fgf_sus_250ng": 0.0,
+      "fgf_3_20_2-5ng": 0.0,
+      "fgf_3_20_25ng": 0.0,
+      "fgf_3_20_250ng": 0.0,
+      "fgf_sp_5_0-25ng": 0.0,
+      "fgf_sp_5_2-5ng": 0.0,
+      "fgf_sp_5_25ng": 0.0,
+      "fgf_sp_5_250ng": 0.0,
+      "fgf_sp_10_0-25ng": 0.0,
+      "fgf_sp_10_2-5ng": 0.0,
+      "fgf_sp_10_25ng": 0.0,
+      "fgf_sp_10_250ng": 0.0,
+      "fgf_mixed_25ng": 0.0,
+      "fgf_mixed_2-5ng": 0.0,
+      "fgf_mixed_250ng": 0.0
+    },
+    "not_defined_in_xml": [
+      "fgf_mixed_0-25ng",
+      "fgf_sp_60_2-5ng",
+      "fgf_sp_60_250ng",
+      "fgf_sp_60_25ng",
+      "fgf_sus_25ng"
+    ]
+  },
+  "sp60_timing": {
+    "pulses": {
+      "sp_10_2-5ng": {
+        "max_difference_until_end": 0.00014599999999997948,
+        "first_time_difference_above_0_005": 20.0
+      },
+      "sp_60_2-5ng": {
+        "max_difference_until_end": 0.000360000000000138,
+        "first_time_difference_above_0_005": 78.0
+      },
+      "sp_10_25ng": {
+        "max_difference_until_end": 0.00015999999999993797,
+        "first_time_difference_above_0_005": 18.0
+      },
+      "sp_60_25ng": {
+        "max_difference_until_end": 0.000280000000000058,
+        "first_time_difference_above_0_005": 68.0
+      },
+      "sp_10_250ng": {
+        "max_difference_until_end": 0.0002420000000000755,
+        "first_time_difference_above_0_005": 16.0
+      },
+      "sp_60_250ng": {
+        "max_difference_until_end": 0.00025999999999992696,
+        "first_time_difference_above_0_005": 64.0
+      }
+    },
+    "scope": "Brackets the pulse end between the last equal and first diverging sample; the exact minute is not identified, hence the +/-1 min sensitivity."
+  },
+  "feature_causality": {
+    "past_feature_rows_checked": {
+      "2.0": 227,
+      "10.0": 227
+    }
+  },
+  "saved_scores": {
+    "role_model_scores_recomputed": 70
+  },
+  "limitations": [
+    "No independent experimental days.",
+    "The 60-min pulse timing is inferred from author simulations, not annotated."
+  ]
+}

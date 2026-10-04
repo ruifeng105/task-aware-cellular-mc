@@ -73,19 +73,19 @@
   "recomputed_test_rmse": {
     "2.0": {
       "persistence": 0.01588346907593857,
-      "current_input": 0.04602448300216247,
-      "current_response": 0.01553676732419559,
-      "current_response_clock": 0.01560072635010008,
-      "local_slope": 0.015855483486033883,
-      "causal_history": 0.015391008211466807
+      "current_input": 0.046024483002162456,
+      "current_response": 0.015536767324195658,
+      "current_response_clock": 0.015600726350100121,
+      "local_slope": 0.01585548348603393,
+      "causal_history": 0.015391008211466875
     },
     "10.0": {
       "persistence": 0.031054825152710283,
       "current_input": 0.045983598051143285,
-      "current_response": 0.029596913567824224,
-      "current_response_clock": 0.029229131147599122,
-      "local_slope": 0.0295805773389346,
-      "causal_history": 0.026817130726099897
+      "current_response": 0.02959691356782422,
+      "current_response_clock": 0.02922913114759907,
+      "local_slope": 0.029580577338934606,
+      "causal_history": 0.02681713072609999
     }
   },
   "limitations": [

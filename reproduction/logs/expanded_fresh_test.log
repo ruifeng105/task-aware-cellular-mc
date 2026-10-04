@@ -1,0 +1,82 @@
+{
+  "H1": true,
+  "H2": true,
+  "rmse": {
+    "2": {
+      "test_new_protocol": {
+        "persistence": 0.013022,
+        "current_input": 0.046206,
+        "current_response": 0.013075,
+        "current_response_clock": 0.01309,
+        "local_slope": 0.013415,
+        "causal_history": 0.012835,
+        "history_clock": 0.012853
+      },
+      "test_new_protocol_inferred_timing": {
+        "persistence": 0.014311,
+        "current_input": 0.049298,
+        "current_response": 0.014082,
+        "current_response_clock": 0.014005,
+        "local_slope": 0.014124,
+        "causal_history": 0.013976,
+        "history_clock": 0.014088
+      },
+      "test_new_concentration_same_session": {
+        "persistence": 0.014307,
+        "current_input": 0.051414,
+        "current_response": 0.014208,
+        "current_response_clock": 0.014272,
+        "local_slope": 0.014385,
+        "causal_history": 0.014225,
+        "history_clock": 0.014754
+      },
+      "viewed_reference": {
+        "persistence": 0.015883,
+        "current_input": 0.046745,
+        "current_response": 0.015584,
+        "current_response_clock": 0.015635,
+        "local_slope": 0.015746,
+        "causal_history": 0.015285,
+        "history_clock": 0.015569
+      }
+    },
+    "10": {
+      "test_new_protocol": {
+        "persistence": 0.022869,
+        "current_input": 0.04667,
+        "current_response": 0.024771,
+        "current_response_clock": 0.024899,
+        "local_slope": 0.024423,
+        "causal_history": 0.022699,
+        "history_clock": 0.022858
+      },
+      "test_new_protocol_inferred_timing": {
+        "persistence": 0.026507,
+        "current_input": 0.04924,
+        "current_response": 0.027107,
+        "current_response_clock": 0.02709,
+        "local_slope": 0.027153,
+        "causal_history": 0.025676,
+        "history_clock": 0.026239
+      },
+      "test_new_concentration_same_session": {
+        "persistence": 0.028759,
+        "current_input": 0.051358,
+        "current_response": 0.028392,
+        "current_response_clock": 0.027916,
+        "local_slope": 0.028254,
+        "causal_history": 0.027779,
+        "history_clock": 0.030207
+      },
+      "viewed_reference": {
+        "persistence": 0.031055,
+        "current_input": 0.046733,
+        "current_response": 0.02946,
+        "current_response_clock": 0.028955,
+        "local_slope": 0.029473,
+        "causal_history": 0.026874,
+        "history_clock": 0.028534
+      }
+    }
+  }
+}

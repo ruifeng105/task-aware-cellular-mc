@@ -1,0 +1,1 @@
+{"fixture": "synthetic; no scientific performance claim", "checks_passed": ["response EMA decays across missing frames", "input EMA uses the dose hold", "future values do not alter past features", "overlapping runs rejected", "missing targets not relabeled", "baseline execution"]}

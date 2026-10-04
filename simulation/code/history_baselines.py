@@ -75,23 +75,27 @@ EMA initialization is computational, not an inferred physical initial state.
         y = g.response.to_numpy(float)
         ec = np.repeat(c[0], len(TAUS_S))
         ey = np.zeros(len(TAUS_S))
-        has_y = False
+        last_y_time = None
         dose = 0.0
         for i in range(len(g)):
-            dt = 0.0 if i == 0 else t[i] - t[i - 1]
             if i > 0:
+                dt = t[i] - t[i - 1]
                 if dt <= 0:
                     raise ValueError("Timestamps must increase")
-                # Piecewise-constant input, explicitly assumed between samples.
+                # Piecewise-constant input c[i-1] held over [t[i-1], t[i]),
+                # the same assumption for cumulative input and its EMA.
                 dose += c[i - 1] * dt
                 decay = np.exp(-dt / np.asarray(TAUS_S))
-                ec = decay * ec + (1.0 - decay) * c[i]
+                ec = decay * ec + (1.0 - decay) * c[i - 1]
             if np.isfinite(y[i]) and eligible[i]:
-                if not has_y:
+                if last_y_time is None:
                     ey[:] = y[i]
-                    has_y = True
-                elif i > 0:
-                    ey = decay * ey + (1.0 - decay) * y[i]
+                else:
+                    # Decay over the time since the last valid response, so a
+                    # missing frame does not shorten the elapsed time.
+                    decay_y = np.exp(-(t[i] - last_y_time) / np.asarray(TAUS_S))
+                    ey = decay_y * ey + (1.0 - decay_y) * y[i]
+                last_y_time = t[i]
             if i + 1 == len(g) or not (eligible[i] and eligible[i + 1]):
                 continue
             horizon = t[i + 1] - t[i]

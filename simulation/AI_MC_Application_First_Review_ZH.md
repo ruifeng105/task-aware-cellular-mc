@@ -91,7 +91,7 @@ B3参考在这两组曲线上优于本轮简化开环模型，说明已有机制
 
 正式新实验应事先冻结B3结构/参数拟合规则、状态估计器、MPC代价与信息可用性，再和学习方法比较。仅超过非负一阶模型不足以体现创新。
 
-![实测混合刺激响应与辨识基线](sandbox:/workspace/scratch/8ef7ec1d35de/application_mc_v1/results/fgf2_pilot/fgf2_calibration.png)
+![实测混合刺激响应与辨识基线](results/fgf2_pilot/fgf2_calibration.png)
 
 图中黑线为单细胞测量均值，蓝/橙线为本轮拟合，紫线为作者B3预测参考。输入图表示命令浓度。测试条件独立于本轮拟合/调参，但不是已核验的独立实验日，也不是新策略的闭环记录。
 

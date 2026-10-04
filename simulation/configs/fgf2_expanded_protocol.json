@@ -1,0 +1,74 @@
+{
+  "name": "FGF2 expanded fresh-test protocol",
+  "version": 1,
+  "status": "frozen_before_data_download",
+  "date": "2026-10-04",
+  "known_at_freezing": [
+    "Upstream file names, sizes and Git blob SHAs at the pinned commit (GitHub tree API).",
+    "Time grids (time_trunc.txt) of fgf_sp_5, fgf_sp_10 and fgf_sp_60, stimulation annotations and model XML.",
+    "Original-author B3 simulation exports, used only to infer the fgf_sp_60 timing.",
+    "Pilot results on the eight previously used conditions; the mixed 2.5/250 ng/ml test was already viewed.",
+    "No response value of any newly listed condition had been loaded or viewed."
+  ],
+  "source": {
+    "repository": "https://github.com/Mijan/LFNS_MSB",
+    "commit": "5c917abda0618d75c00c9cab45f24ed893dd71f1",
+    "data_root": "FGF2_models/data"
+  },
+  "concentration_tokens_ng_ml": {"0-25ng": 0.25, "2-5ng": 2.5, "25ng": 25.0, "250ng": 250.0},
+  "roles": {
+    "train": ["fgf_sus_0-25ng", "fgf_sus_2-5ng", "fgf_sus_25ng", "fgf_sus_250ng",
+              "fgf_3_20_2-5ng", "fgf_3_20_25ng", "fgf_3_20_250ng"],
+    "validation": ["fgf_sp_5_0-25ng", "fgf_sp_5_2-5ng", "fgf_sp_5_25ng", "fgf_sp_5_250ng"],
+    "test_new_protocol": ["fgf_sp_10_0-25ng", "fgf_sp_10_2-5ng", "fgf_sp_10_25ng", "fgf_sp_10_250ng"],
+    "test_new_protocol_inferred_timing": ["fgf_sp_60_2-5ng", "fgf_sp_60_25ng", "fgf_sp_60_250ng"],
+    "test_new_concentration_same_session": ["fgf_mixed_0-25ng", "fgf_mixed_25ng"],
+    "viewed_reference": ["fgf_mixed_2-5ng", "fgf_mixed_250ng"]
+  },
+  "excluded": {
+    "fgf_NaClO3_250ng": "Pharmacological HSGAG perturbation: a different receiver condition, outside this protocol.",
+    "fgf_sp_60_0-25ng": "No single-cell export at the pinned commit (population mean only)."
+  },
+  "schedules": {
+    "fgf_sus": "[0, end) from the B3 XML.",
+    "fgf_3_20": "3 min on every 23 min from 0, from the B3 XML.",
+    "fgf_sp_5": "[0, 5) from the B3 XML.",
+    "fgf_sp_10": "[0, 10) from the B3 XML sp_10 inputs.",
+    "fgf_sp_60": "[0, 60) inferred: the authors' B3 simulations of sp_60 equal their sustained simulations until about 62 min, the same lag seen for sp_10 at about 12-16 min. No XML input exists at the pinned commit.",
+    "fgf_mixed": "[1, 4), [24, 54), [114, 119) from pulses_trunc.txt and the B3 XML."
+  },
+  "session_notes": [
+    "Raw file names Ch01-Ch04_FGF__{250,25,2.5,0.25}_ngml_3_20_30_50_5_120_val.csv indicate that the four mixed concentrations were channels of one experiment, so the new mixed concentrations share a session with the viewed reference.",
+    "Independent experimental-day identifiers are unavailable for all conditions."
+  ],
+  "data_rules": {
+    "hashes": "Every downloaded file must match its upstream Git blob SHA; otherwise abort.",
+    "time_grid": "Use *_trunc.txt with the folder's time_trunc.txt; require uniform 2-min spacing, otherwise exclude the condition and report.",
+    "nonfinite": "Exclude any cell row containing a non-finite value and report the count per condition.",
+    "means": "Recompute population means from single cells and report the maximum difference to the author *_mean_trunc.txt (report only).",
+    "normalization": "For fgf_mixed 0.25 and 25 ng/ml, attempt the pilot's 10-30 min per-cell median reconstruction from *_unnormalized.txt and report the error; the analysis uses the author *_trunc.txt regardless."
+  },
+  "features": "Identical to the pilot: forecasting_rows() and model_features() in calibrate_fgf2.py, a 10-min observed warmup, and the future commanded waveform known to every predictor.",
+  "models": ["persistence", "current_input", "current_response", "current_response_clock",
+             "local_slope", "causal_history", "history_clock"],
+  "history_clock": "causal_history features plus time_min and time2: the nested ablation against current_response_clock.",
+  "horizons_min": [2, 10],
+  "ridge_alphas": [1e-8, 1e-6, 1e-4, 1e-2, 1, 100, 10000],
+  "selection": "Per model and horizon, the alpha minimizing condition-equal validation MSE; fit on train only; validation is never added to training.",
+  "metrics": "Condition-equal RMSE per role, per-condition MSE, and a test time-support split at the maximum training forecast origin.",
+  "primary_hypotheses": {
+    "H1": "10-min condition-equal RMSE on test_new_protocol: causal_history < current_response_clock.",
+    "H2": "10-min condition-equal RMSE on test_new_protocol: history_clock < current_response_clock (nested ablation)."
+  },
+  "secondary": [
+    "H1 and H2 on test_new_protocol_inferred_timing and on test_new_concentration_same_session.",
+    "The same comparisons at the 2-min horizon.",
+    "Number of test conditions in which causal_history beats current_response_clock and persistence."
+  ],
+  "robustness": {
+    "leave_one_protocol_out": "For each protocol in {fgf_sus, fgf_3_20, fgf_sp_5, fgf_sp_10, fgf_sp_60, fgf_mixed new concentrations}: train on all other listed protocols (all concentrations; viewed reference excluded), alpha fixed at the primary selection, and report the 10-min RMSE of persistence, current_response_clock, causal_history and history_clock.",
+    "sp_60_timing": "Rescore test_new_protocol_inferred_timing with the onset shifted by -1 and +1 min (fgf_sp_60_onset-1, fgf_sp_60_onset+1) using the unchanged fitted models."
+  },
+  "inference": "No significance tests or confidence intervals: conditions are not independent replicates and experimental-day identifiers are unavailable.",
+  "reporting": "All primary, secondary and robustness results are reported whatever their direction; the viewed reference is context only."
+}

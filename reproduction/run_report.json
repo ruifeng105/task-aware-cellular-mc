@@ -1,32 +1,62 @@
 {
   "status": "passed",
   "mode": "full",
-  "started_utc": "2026-10-04T13:18:44.815278+00:00",
+  "started_utc": "2026-10-04T14:21:05.240227+00:00",
   "environment": {
-    "python": "3.12.14",
-    "numpy": "2.3.5",
-    "pandas": "2.2.3",
-    "matplotlib": "3.10.8",
+    "python": "3.13.3",
+    "numpy": "2.3.2",
+    "pandas": "2.3.2",
+    "matplotlib": "3.10.6",
     "openpyxl": "3.1.5"
   },
   "steps": [
     {
       "name": "fit_and_predict",
       "return_code": 0,
-      "elapsed_seconds": 7.506,
-      "log": "reproduction/logs/fit_and_predict.log"
+      "elapsed_seconds": 6.085,
+      "log": "reproduction\\logs\\fit_and_predict.log"
+    },
+    {
+      "name": "expanded_fresh_test",
+      "return_code": 0,
+      "elapsed_seconds": 14.331,
+      "log": "reproduction\\logs\\expanded_fresh_test.log"
     },
     {
       "name": "verify_data_and_scores",
       "return_code": 0,
-      "elapsed_seconds": 0.757,
-      "log": "reproduction/logs/verify_data_and_scores.log"
+      "elapsed_seconds": 0.896,
+      "log": "reproduction\\logs\\verify_data_and_scores.log"
+    },
+    {
+      "name": "verify_expanded",
+      "return_code": 0,
+      "elapsed_seconds": 8.5,
+      "log": "reproduction\\logs\\verify_expanded.log"
+    },
+    {
+      "name": "synthetic_checks",
+      "return_code": 0,
+      "elapsed_seconds": 0.448,
+      "log": "reproduction\\logs\\synthetic_checks.log"
     },
     {
       "name": "build_paper_assets",
       "return_code": 0,
-      "elapsed_seconds": 1.298,
-      "log": "reproduction/logs/build_paper_assets.log"
+      "elapsed_seconds": 1.217,
+      "log": "reproduction\\logs\\build_paper_assets.log"
+    },
+    {
+      "name": "pipeline_checks",
+      "return_code": 0,
+      "elapsed_seconds": 0.621,
+      "log": "reproduction\\logs\\pipeline_checks.log"
+    },
+    {
+      "name": "compile_paper",
+      "return_code": 0,
+      "elapsed_seconds": 2.045,
+      "log": "reproduction\\logs\\compile_paper.log"
     }
   ],
   "controller_evaluated": false,
@@ -34,11 +64,12 @@
   "scope": "Fixed pilot reproduction; B3 original-author exports are reused.",
   "manuscript_reference": {
     "status": "passed",
-    "entries_compared": 69,
-    "max_absolute_error": 0.0,
+    "entries_compared": 416,
+    "max_absolute_error": 9.020562075079397e-17,
     "relative_tolerance": 1e-08,
     "absolute_tolerance": 1e-10
   },
-  "calibration_result_sha256": "10aee3a3daa631d9b41395b03f75c2710d93c4e7836500dc692fc7ed918ba6ce",
-  "finished_utc": "2026-10-04T13:18:54.388174+00:00"
+  "calibration_result_sha256": "780f2768582a19224350d3783d19ccd3da52b1fca5d98f6a0776270df87bc6cb",
+  "expanded_result_sha256": "c538d3b4f7dc8d2033e251a098b316b106b6cf18c488734dbdbe4ed465521971",
+  "finished_utc": "2026-10-04T14:21:39.415500+00:00"
 }

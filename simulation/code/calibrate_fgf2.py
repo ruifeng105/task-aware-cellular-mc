@@ -38,16 +38,24 @@ def segments(protocol, until=1000.):
 
     These are commanded concentrations, not measured local concentrations.
     Half-open pulse intervals fix the convention at exact switching times.
-    Any history before the exported origin remains unknown.
+    Any history before the exported origin remains unknown. The 10-min pulse
+    follows the same XML; the pinned commit has no XML input for the 60-min
+    pulse, whose [0, 60) timing is inferred from the authors' B3 simulation
+    exports (they match the sustained simulation until ~62 min). The two
+    shifted variants exist only for the pre-registered timing sensitivity.
     """
     if protocol == 'fgf_sus':
         return [(0., until)]
     if protocol == 'fgf_3_20':
         return [(float(t), float(t + 3)) for t in range(0, int(until) + 1, 23)]
-    if protocol == 'fgf_sp_5':
-        return [(0., 5.)]
+    single_pulse_min = {'fgf_sp_5': 5., 'fgf_sp_10': 10., 'fgf_sp_60': 60.}
+    if protocol in single_pulse_min:
+        return [(0., single_pulse_min[protocol])]
     if protocol == 'fgf_mixed':
         return [(1., 4.), (24., 54.), (114., 119.)]
+    shifted = {'fgf_sp_60_onset-1': [(-1., 59.)], 'fgf_sp_60_onset+1': [(1., 61.)]}
+    if protocol in shifted:
+        return shifted[protocol]
     raise ValueError(protocol)
 
 
@@ -140,12 +148,11 @@ def forecasting_rows(blocks, horizon_min):
     return pd.DataFrame(rows)
 
 
-def forecasting(blocks, horizon):
-    rows = forecasting_rows(blocks, horizon)
-    parts = validate_split(rows, SPLIT)
+def model_features(horizon):
+    """Feature sets of the pilot predictors; the expanded analysis reuses them."""
     future = [f'future_dose_{k}' for k in range(int(horizon/2))] + ['end_c', 'horizon_s']
     current = ['c', 'c2', 'current_y', 'y2', 'cy'] + future
-    models = {
+    return {
         'current_input': ['c', 'c2'] + future,
         'current_response': current,
         'current_response_clock': current + ['time_min', 'time2'],
@@ -153,9 +160,30 @@ def forecasting(blocks, horizon):
         'causal_history': current + ['slope', 'past_dose']
           + [f'{prefix}_{tau:g}' for prefix in ('input_filter', 'response_ema') for tau in HISTORY_TAUS_MIN],
     }
+
+
+def time_support_metric(rows, prediction, max_train_origin_min):
+    """Split test scores by whether the forecast origin lies inside the
+    range of training origins, which extrapolating clock terms depend on."""
+    within = rows.time_min.to_numpy() <= max_train_origin_min
+    split = {'max_train_origin_min': float(max_train_origin_min)}
+    for name, mask in (('within', within), ('beyond', ~within)):
+        split[name] = run_metric(rows[mask], prediction[mask]) if mask.any() else None
+    return split
+
+
+def forecasting(blocks, horizon):
+    rows = forecasting_rows(blocks, horizon)
+    parts = validate_split(rows, SPLIT)
+    models = model_features(horizon)
+    support = parts['train'].time_min.max()
     predictions = parts['test'][['run_id','cell_id','time_s','target','current_y']].copy()
-    results = {'persistence': {'test': run_metric(parts['test'], parts['test'].current_y.to_numpy())}}
-    predictions['persistence'] = parts['test'].current_y.to_numpy()
+    persistence = parts['test'].current_y.to_numpy()
+    results = {'persistence': {
+        'validation_condition_equal_mse': run_metric(parts['validation'], parts['validation'].current_y.to_numpy())['run_equal_mse'],
+        'test': dict(run_metric(parts['test'], persistence),
+                     time_support=time_support_metric(parts['test'], persistence, support))}}
+    predictions['persistence'] = persistence
     for name, features in models.items():
         candidates = []
         for alpha in ALPHAS:
@@ -165,9 +193,10 @@ def forecasting(blocks, horizon):
         score, model = min(candidates, key=lambda x:x[0])
         yp = predict(parts['test'], model)
         results[name] = dict(model=model, validation_condition_equal_mse=score,
-                            test=run_metric(parts['test'], yp))
+                            test=dict(run_metric(parts['test'], yp),
+                                      time_support=time_support_metric(parts['test'], yp, support)))
         predictions[name] = yp
-    predictions.to_csv(OUT / f'forecasts_{horizon:g}min.csv', index=False)
+    predictions.to_csv(OUT / f'forecasts_{horizon:g}min.csv', index=False, lineterminator='\n')
     return dict(horizon_min=horizon, split=SPLIT, models=results,
                 information='All predictors know the future commanded waveform. Only observed responses up to t are features.',
                 score_note='run_id denotes a condition block here, NOT a verified independent experiment.')
@@ -232,7 +261,12 @@ def input_output_identification(blocks):
     result['positive_single_lag']=dict(tau_min=tau1,gains=gains1,validation_condition_equal_mse=val1,
                                       test=run_metric(parts['test'],np.array(one_preds)))
     curves['positive_single_lag']=np.array(one_preds)+1
-    curves.to_csv(OUT/'input_output_test_curves.csv',index=False)
+    # Input-free reference: the condition-equal training mean response.
+    constant=float(np.mean([blocks[key]['y'].mean(0).mean()-1 for key in train_keys]))
+    result['training_mean_constant']=dict(value=1+constant,
+                                          test=run_metric(parts['test'],np.full(len(parts['test']),constant)))
+    curves['training_mean_constant']=1+constant
+    curves.to_csv(OUT/'input_output_test_curves.csv',index=False,lineterminator='\n')
     return result,curves
 
 
@@ -310,7 +344,7 @@ def matched_history_pilot(blocks):
                 mean_absolute_current_y_difference=float(np.mean([p['current_y_distance'] for p in pairs])) if pairs else None,
                 mean_late_minus_early_target=float(np.mean([p['late_minus_early_target'] for p in pairs])) if pairs else None,
                 median_late_minus_early_target=float(np.median([p['late_minus_early_target'] for p in pairs])) if pairs else None)
-    pd.DataFrame(all_pairs).to_csv(OUT/'exploratory_matched_history_pairs.csv',index=False)
+    pd.DataFrame(all_pairs).to_csv(OUT/'exploratory_matched_history_pairs.csv',index=False,lineterminator='\n')
     return dict(analyses=summaries,
                 limitations=['Exploratory matching rule set after inspecting these data.',
                 'Within-cell matching controls cell identity but not age, protocol time, unmeasured physiology, or regression-to-the-mean.',
@@ -327,6 +361,7 @@ def common_window_reference(curves, reference):
         result[token]={name:float(np.sqrt(np.mean((pred-measured)**2))) for name,pred in
                        [('positive_single_lag',table.positive_single_lag.to_numpy()),
                         ('stable_filter_bank',table.stable_filter_bank.to_numpy()),
+                        ('training_mean_constant',table.training_mean_constant.to_numpy()),
                         ('published_B3_predictive_mean',yp)]}
     return dict(time_min=[0.,180.],condition_rmse=result,
                 note='Matched time window and population-mean output. B3 is an original-author fit/export, not an independently retrained model or policy result. The source study used these conditions in architecture selection; B3 is not a fresh blind benchmark.')
@@ -380,8 +415,8 @@ def main():
                 'Filter time scales are computational basis constants, not identifiable biochemical rates.',
                 'History prediction gains do not establish a matched-state causal hidden-memory effect.',
                 'No novel controller, repeated-command success, dose savings, or new live experiment was evaluated.'])
-    (OUT/'calibration_results.json').write_text(json.dumps(result,indent=2))
-    (ROOT/'configs/fgf2_condition_split.json').write_text(json.dumps(SPLIT,indent=2))
+    (OUT/'calibration_results.json').write_text(json.dumps(result,indent=2),newline='\n')
+    (ROOT/'configs/fgf2_condition_split.json').write_text(json.dumps(SPLIT,indent=2),newline='\n')
     summary=dict(n_cells=result['n_cells'],n_measurements=result['n_measurements'],
                  forecast_test_rmse={str(f['horizon_min']):{k:float(np.sqrt(v['test']['run_equal_mse'])) for k,v in f['models'].items()} for f in forecasts},
                  input_output_test_rmse={k:float(np.sqrt(v['test']['run_equal_mse'])) for k,v in io.items()},

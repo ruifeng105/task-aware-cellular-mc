@@ -6,14 +6,19 @@ Date: 2026-10-04. This package contains an executed identification/forecasting p
 
 Read `AI_MC_Application_First_Review_ZH.md` first. `dataset_registry.json` distinguishes accessible records from numerically inspected files. Existing physical-channel calibration in the previous ICC2027-MBMC package remains separate.
 
-## Reproduce the completed FGF2 pilot
+## Reproduce the completed FGF2 pilot and the pre-registered expansion
 
-Install `requirements.txt`, then run from this directory:
+Install `requirements.txt` (Python >= 3.10), then run from this directory:
 
 ```bash
 python code/calibrate_fgf2.py
 python code/verify_fgf2_pipeline.py
+python code/expanded_fgf2.py
+python code/verify_expanded_fgf2.py
+python code/smoke_check.py
 ```
+
+The expansion (2026-10-04) adds 14 previously unused author conditions from the same pinned commit (22 conditions, 1,565 cells): 0.25 and 25 ng/ml, single 10-min and 60-min pulses. `configs/fgf2_expanded_protocol.json` was frozen before any new response file was downloaded; its SHA-256 and UTC time are in `results/fgf2_expanded/protocol_freeze.json`, and `expanded_fgf2.py` refuses to run if the protocol changes. The 56 added files are listed in `public_data/fgf2_expanded_source_manifest.json` (the pilot manifest is unchanged); `code/fetch_expanded_sources.py` optionally re-downloads and re-verifies them. Roles: train sustained and 3/20 pulses at all concentrations; validate single 5-min pulses; test A single 10-min pulses (new protocol); test B single 60-min pulses (new protocol; timing inferred from the authors' B3 simulations, +/-1 min sensitivity); test C mixed pulses at 0.25/25 ng/ml (new concentrations, recorded as further channels of the inspected mixed experiment). On test A, causal history beat input/response/clock at 10 min (H1, 8.8%) and history plus clock did too (H2, 8.2%), but the gain over persistence was 0.7% (1 of 4 conditions). Leave-one-protocol-out with five training protocols favored history in all six folds.
 
 The source is the paper-linked author repository `Mijan/LFNS_MSB`, pinned commit `5c917abda0618d75c00c9cab45f24ed893dd71f1`. All 47 saved original files verify against their Git blob hashes in `public_data/fgf2_source_manifest.json`. Experimental normalized responses and original-author simulated B3 prediction exports are separate roles. The related Mendeley record is CC BY 4.0; no additional code license was found at the repository root, and this package assigns no new license to author files.
 
@@ -44,7 +49,7 @@ The mixed pulse annotations agree with the author XML: `[1,4)`, `[24,54)`, `[114
 
    `python code/history_baselines.py --data /absolute/path/verified_long.csv --split configs/biological_split_template.json --max-gap-s 120 --output results/biological_baselines`
 
-   The example 120 s is **not** a verified yeast frame interval. Replace it after inspection. The EMA scales 60/600/3600 s are computational baseline features, not measured reaction constants. Tune only on validation data if changing them.
+   The example 120 s is **not** a verified yeast frame interval. Replace it after inspection. The EMA scales 60/600/3600 s are computational baseline features, not measured reaction constants. Tune only on validation data if changing them. Since 2026-10-04 the response EMA decays by the time since the last valid (non-missing) response, and the input EMA uses the same zero-order hold of the previous input as the cumulative dose; `code/smoke_check.py` tests both.
 
 The four comparators are persistence, instantaneous input, current input plus current measured response, and causal input/response history. They forecast the next observation during unchanged recorded stimulation. They are deliberately small baselines to assess whether a proposed more complex AI method is justified. Their output cannot evaluate unexecuted control actions or establish biological causal mechanisms. Run-equal MSE/MAE and individual run errors are reported; independent experiment counts must be used for uncertainty, not the number of windows or cells.
 

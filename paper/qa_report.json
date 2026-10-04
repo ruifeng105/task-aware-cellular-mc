@@ -1,15 +1,20 @@
 {
   "date": "2026-10-04",
   "status": "passed",
-  "pdf_pages": 7,
-  "visual_review": "All seven final pages inspected; formulas, tables, plots, references and final-column balance checked.",
+  "pdf_pages": 5,
+  "visual_review": "All pages rendered with pdftoppm and inspected: title block, equations, five tables, Figs. 1-3 and the reference list fit without overflow; references end on the last page.",
   "latex_overfull_boxes": 0,
+  "latex_underfull_boxes": 5,
   "undefined_references": 0,
+  "bibtex_warnings": 0,
+  "bibliography_style": "IEEEtran",
   "source_git_blobs_verified": 47,
+  "expanded_source_git_blobs_verified": 56,
   "numerical_scores_recomputed": true,
-  "draft_core_numbers_checked": true,
+  "manuscript_numbers_checked": "All 24 numbers with at least four decimals match frozen or saved values; percentages recomputed from the result files.",
   "controller_evaluated": false,
   "IEEEtran_class_git_blob_sha": "8d2b1c6478f81e0e2f65cb62debabbf236fb0304",
-  "bibliography_notes": "Mendeley v2 metadata corrected to Dobrzyński and Blum, 2020; Barros final issue year is 2020.",
-  "scope": "Document quality and frozen-pilot consistency; no independent-day or policy validation."
+  "bibliography_notes": "Scherer et al. updated to TMBMC vol. 12, pp. 22-41, 2026 (Crossref); Mendeley v2 creator is M. Dobrzynski (DataCite) with Y. Blum as contributor; Postiglione et al. pages added; Barros final issue year 2020.",
+  "page_limit_note": "Six-page limit assumed from past IEEE ICC practice; confirm against the ICC 2027 call before submission.",
+  "scope": "Document quality and frozen-result consistency; no independent-day or policy validation."
 }

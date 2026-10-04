@@ -1,12 +1,12 @@
-\begin{tabular}{lrr}
+\begin{tabular}{lrrrrr}
 \toprule
-Predictor & 2 min & 10 min \\
+Predictor & 2 min & 10 min & Val. & $\le$147 & $>$147 \\
 \midrule
-Persistence & 0.015883 & 0.031055 \\
-Current input & 0.046024 & 0.045984 \\
-Current input + response & 0.015537 & 0.029597 \\
-Current input + response + clock & 0.015601 & 0.029229 \\
-Current input + response + slope & 0.015855 & 0.029581 \\
-Causal-history ridge & \textbf{0.015391} & \textbf{0.026817} \\
+Persistence & 0.01588 & 0.03105 & 0.02492 & 0.03698 & \textbf{0.02047} \\
+Input only & 0.04602 & 0.04598 & 0.04400 & 0.04725 & 0.04422 \\
+Input+response (IR) & 0.01554 & 0.02960 & 0.02611 & 0.03364 & 0.02302 \\
+IR + clock & 0.01560 & 0.02923 & 0.02648 & 0.03354 & 0.02209 \\
+IR + slope & 0.01586 & 0.02958 & 0.02591 & 0.03386 & 0.02253 \\
+Causal history & \textbf{0.01539} & \textbf{0.02682} & \textbf{0.02453} & \textbf{0.03060} & 0.02062 \\
 \bottomrule
 \end{tabular}

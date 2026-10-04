@@ -4,24 +4,25 @@
   "forecast_test_rmse": {
     "2.0": {
       "persistence": 0.01588346907593857,
-      "current_input": 0.046024483002162504,
-      "current_response": 0.01553676732419559,
-      "current_response_clock": 0.01560072635010008,
-      "local_slope": 0.015855483486033883,
-      "causal_history": 0.015391008211466805
+      "current_input": 0.04602448300216246,
+      "current_response": 0.015536767324195658,
+      "current_response_clock": 0.015600726350100121,
+      "local_slope": 0.015855483486033925,
+      "causal_history": 0.015391008211466875
     },
     "10.0": {
       "persistence": 0.031054825152710283,
       "current_input": 0.045983598051143326,
-      "current_response": 0.029596913567824224,
-      "current_response_clock": 0.02922913114759912,
-      "local_slope": 0.029580577338934596,
-      "causal_history": 0.0268171307260999
+      "current_response": 0.029596913567824217,
+      "current_response_clock": 0.02922913114759907,
+      "local_slope": 0.029580577338934606,
+      "causal_history": 0.02681713072609999
     }
   },
   "input_output_test_rmse": {
     "stable_filter_bank": 0.021493101483310306,
-    "positive_single_lag": 0.05410141642615031
+    "positive_single_lag": 0.05410141642615031,
+    "training_mean_constant": 0.021709723434641497
   },
   "published_reference": {
     "2-5ng": {
@@ -118,11 +119,13 @@
       "2-5ng": {
         "positive_single_lag": 0.053954841933047976,
         "stable_filter_bank": 0.020710597735364655,
+        "training_mean_constant": 0.020905292358315064,
         "published_B3_predictive_mean": 0.011463542332259184
       },
       "250ng": {
         "positive_single_lag": 0.05675389784672538,
         "stable_filter_bank": 0.022446996701922402,
+        "training_mean_constant": 0.023059335356950424,
         "published_B3_predictive_mean": 0.013619830904286109
       }
     },

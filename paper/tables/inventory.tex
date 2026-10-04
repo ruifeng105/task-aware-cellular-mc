@@ -1,10 +1,12 @@
-\begin{tabular}{llrrr}
+\begin{tabular}{llrrrrr}
 \toprule
-Partition & Protocol & Low $n$ & High $n$ & Frames \\
+Protocol & Role & 0.25 & 2.5 & 25 & 250 & Frames \\
 \midrule
-Train & Sustained & 59 & 71 & 79 \\
-Train & 3/20 pulses & 70 & 79 & 79 \\
-Validation & Single 5-min & 88 & 85 & 69 \\
-Test & Mixed pulses & 78 & 76 & 130 \\
+Sustained & Train & 64 & 59 & 54 & 71 & 79 \\
+3/20 pulses & Train & -- & 70 & 58 & 79 & 79 \\
+Single 5 min & Val. & 105 & 88 & 92 & 85 & 69 \\
+Single 10 min & Test A & 56 & 67 & 64 & 61 & 69 \\
+Single 60 min & Test B & -- & 66 & 63 & 38 & 69 \\
+Mixed pulses & Test C & 87 & 78$^\dagger$ & 84 & 76$^\dagger$ & 130 \\
 \bottomrule
 \end{tabular}

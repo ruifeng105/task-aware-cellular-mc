@@ -1,0 +1,8 @@
+# Source files are verified by Git blob / SHA-256 hashes, so text must be
+# byte-identical on every platform (Git for Windows defaults to autocrlf=true).
+* text=auto eol=lf
+*.png binary
+*.pdf binary
+*.mat binary
+*.fig binary
+*.ods binary

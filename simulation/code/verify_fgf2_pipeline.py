@@ -136,7 +136,7 @@ def main():
                   limitations=['No assertion of independent experimental days.',
                                'No new live experiment, transport calibration, biochemical parameter inference or policy effect.'])
     target = c.OUT / 'verification_results.json'
-    target.write_text(json.dumps(report, indent=2) + '\n')
+    target.write_text(json.dumps(report, indent=2) + '\n', newline='\n')
     print(json.dumps(report, indent=2))
 
 

@@ -16,7 +16,31 @@ def fixture():
     return pd.DataFrame(rows)
 
 
+def one_cell(time_s, concentration, response):
+    return pd.DataFrame(dict(run_id="r", cell_id="c", history_id="h", time_s=time_s,
+                             input_concentration=concentration, input_unit="fixture",
+                             response=response, response_unit="fixture"))
+
+
+def check_response_ema_spans_missing_frame():
+    # One out-of-focus frame at 60 s: the 120 s since the last valid
+    # response must decay the EMA, not the 60 s since the previous frame.
+    rows, _ = prepare(one_cell([0., 60., 120., 180.], 1.0, [0.0, np.nan, 1.0, 1.0]), 600)
+    got = rows.set_index("time_s").loc[120., "ema_y_60s"]
+    assert np.isclose(got, 1 - np.exp(-2.0)), got
+
+
+def check_input_ema_uses_dose_hold():
+    # Cumulative input holds c[i-1] over [t[i-1], t[i]); the input EMA must too.
+    rows, _ = prepare(one_cell([0., 60., 120.], [0.0, 1.0, 1.0], [0.0, 0.0, 0.0]), 600)
+    row = rows.set_index("time_s").loc[60.]
+    assert row.cumulative_input == 0.0, row.cumulative_input
+    assert np.isclose(row.ema_c_60s, 0.0), row.ema_c_60s
+
+
 def main():
+    check_response_ema_spans_missing_frame()
+    check_input_ema_uses_dose_hold()
     df = fixture()
     base, _ = prepare(df, 90)
     changed = df.copy()
@@ -41,7 +65,8 @@ def main():
     results, _ = run_baselines(base, {"train":["a","b"], "validation":["c"], "test":["d"]})
     assert all(np.isfinite(x["test"]["run_equal_mse"]) for x in results.values())
     print(json.dumps({"fixture": "synthetic; no scientific performance claim", "checks_passed":
-        ["future values do not alter past features", "overlapping runs rejected", "missing targets not relabeled", "baseline execution"]}))
+        ["response EMA decays across missing frames", "input EMA uses the dose hold",
+         "future values do not alter past features", "overlapping runs rejected", "missing targets not relabeled", "baseline execution"]}))
 
 
 if __name__ == "__main__":
