@@ -1,0 +1,24 @@
+{
+  "name": "In-silico task readiness and adaptive waiting on the authors' B3 model",
+  "version": 2,
+  "status": "frozen_before_running_policies",
+  "date": "2026-10-05",
+  "supersedes": "configs/b3_readiness_protocol.json (version 1, sha256 ae204f6f75d6f9f62db4527930ee617ccd80716218489c9c914b9a11d030ae81)",
+  "reason_for_version_2": [
+    "Version 1 was run once and was degenerate: with 25 ng/ml commands no posterior sample recovered 0.8 of its naive probe response within 120 min (median maximum recovered fraction 0.67 after the short and 0.63 after the long history), and no state returned within 0.01 of baseline, so every policy, including the oracle, had 0% success. These results are kept in results/b3/readiness_results_v1.json.",
+    "The changes below were chosen from feasibility diagnostics of the simulated tables (recovered fractions and reporter decay) before any version-2 policy outcome was computed."
+  ],
+  "changes_from_version_1": {
+    "task_success": "rise >= 0.5 x the same sample's rise to a 5-min probe on an unstimulated receiver (was 0.8).",
+    "threshold_reset": "probe at the first decision time where the observed rise above baseline (y - 1) is <= 0.5 x its running maximum since the previous command ended (half decay); otherwise at 120. (Version 1 used y <= 1.01, which never occurred.)",
+    "S1": "Readiness at matched current reporter: noise-free reporter rise (f - 1) binned in width-0.005 bins from 0.030 to 0.070; readiness per bin and history, and the state-weighted mean difference long minus short over bins populated by both histories. (Version 1 used baseline-returned states, which did not occur.)"
+  },
+  "unchanged": "Dose 25 ng/ml, histories, probe, 0-120 min grid in 2-min steps, 20-min task window, deadline 140 min, observation noise 0.005 and seeds, policy definitions other than threshold_reset, kernel sd 0.005, q = 0.9, fixed waits {6, 12, 24, 48}, metrics and reporting rules of version 1.",
+  "simulation_tables": "Reuses results/b3/readiness_tables.npz from the version-1 run (identical simulation settings); success is recomputed from the saved rises with the new threshold.",
+  "statements": {
+    "S1": "At matched current reporter, readiness differs between short and long histories.",
+    "S2": "readiness_history reaches its success rate with a shorter mean completion time than the fixed wait that matches that success rate.",
+    "S3": "readiness_history versus readiness_current: success rate and mean completion time."
+  },
+  "reporting": "All statements and the version-1 outcome are reported whatever their direction; simulation of one published model, not evidence about measured cells."
+}

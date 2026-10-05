@@ -1,0 +1,31 @@
+[
+  {
+    "repository": "Mijan/LFNS_MSB",
+    "commit_sha": "5c917abda0618d75c00c9cab45f24ed893dd71f1",
+    "scope": "Author B3 posterior and simulation summaries for b3_model.py"
+  },
+  {
+    "path": "Inference_results/Fgf_B3/results/sus_3_20/posterior.txt",
+    "blob_sha": "c0dcfc9076efe7c55514f456b02c68060728be20",
+    "source_size_bytes": 289681,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/Inference_results/Fgf_B3/results/sus_3_20/posterior.txt",
+    "retrieved_utc_date": "2026-10-05",
+    "data_role": "1000 posterior parameter samples (34 named parameters, linear scale) that generated the sim_post exports"
+  },
+  {
+    "path": "Inference_results/Fgf_B3/results/sus_3_20/sim_post_model_summary.txt",
+    "blob_sha": "ca9be6ad8f59c67863c4491babb743f4101d339c",
+    "source_size_bytes": 11176,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/Inference_results/Fgf_B3/results/sus_3_20/sim_post_model_summary.txt",
+    "retrieved_utc_date": "2026-10-05",
+    "data_role": "Author simulation summary: parameter order, experiment schedules and reactions for sim_post"
+  },
+  {
+    "path": "Inference_results/Fgf_B3/results/sus_3_20/sim_model_summary.txt",
+    "blob_sha": "395f31d010e9d459d1c4c53d5828b914a1c9b7d7",
+    "source_size_bytes": 11926,
+    "source_url": "https://github.com/Mijan/LFNS_MSB/blob/5c917abda0618d75c00c9cab45f24ed893dd71f1/Inference_results/Fgf_B3/results/sus_3_20/sim_model_summary.txt",
+    "retrieved_utc_date": "2026-10-05",
+    "data_role": "Author simulation summary with a single named parameter vector"
+  }
+]

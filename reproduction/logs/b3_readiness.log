@@ -1,0 +1,67 @@
+{
+  "S1": 0.006346805708194989,
+  "policies": {
+    "fixed_6": {
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0,
+      "mean_wait_min": 6.0
+    },
+    "fixed_12": {
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0,
+      "mean_wait_min": 12.0
+    },
+    "fixed_24": {
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0,
+      "mean_wait_min": 24.0
+    },
+    "fixed_48": {
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0,
+      "mean_wait_min": 48.0
+    },
+    "threshold_reset": {
+      "success_rate": 0.021,
+      "mean_completion_min": 139.34,
+      "mean_wait_min": 53.242
+    },
+    "readiness_current": {
+      "success_rate": 0.756,
+      "mean_completion_min": 119.733,
+      "mean_wait_min": 90.267
+    },
+    "readiness_history": {
+      "success_rate": 0.9,
+      "mean_completion_min": 113.818,
+      "mean_wait_min": 90.95
+    },
+    "oracle": {
+      "success_rate": 0.993,
+      "mean_completion_min": 104.86,
+      "mean_wait_min": 84.86
+    }
+  },
+  "matched": {
+    "threshold_reset": {
+      "wait_min": 66.0,
+      "success_rate": 0.036,
+      "mean_completion_min": 138.056
+    },
+    "readiness_current": {
+      "wait_min": 92.0,
+      "success_rate": 0.779,
+      "mean_completion_min": 118.188
+    },
+    "readiness_history": {
+      "wait_min": 100.0,
+      "success_rate": 0.9125,
+      "mean_completion_min": 121.75
+    },
+    "oracle": {
+      "wait_min": 120.0,
+      "success_rate": 0.9925,
+      "mean_completion_min": 140.0
+    }
+  }
+}

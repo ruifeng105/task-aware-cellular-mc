@@ -1,0 +1,42 @@
+{
+  "name": "In-silico task readiness and adaptive waiting on the authors' B3 model",
+  "version": 1,
+  "status": "frozen_before_running",
+  "date": "2026-10-05",
+  "context": [
+    "Simulation on one published model structure (B3, the authors' 1000 posterior samples); results describe that model, not measured cells, and are never reported as experimental benefits.",
+    "Posterior samples express population-mean uncertainty, not cell heterogeneity. Controllers use the other 999 samples (leave-one-out), so they share the plant's structure: an optimistic setting without structural mismatch.",
+    "Doses, durations and waits follow the candidate design of validation_kit/configs/validation_registration_draft.json. No readiness or policy outcome had been simulated when this protocol was frozen."
+  ],
+  "prerequisite": "results/b3/verification_results.json status passed.",
+  "command_ng_per_ml": 25.0,
+  "histories": {"short": [[-3.0, 0.0]], "long": [[-30.0, 0.0]]},
+  "history_note": "The previous command ends at time 0; the probe is applied after a wait w.",
+  "probe": {"duration_min": 5.0, "waits_min": "0 to 120 in steps of 2"},
+  "task": {
+    "response": "incremental rise: maximum noise-free FRET over [w, w+20] minus FRET at w (1-min grid)",
+    "success": "rise >= 0.8 x the same sample's rise to a 5-min probe on an unstimulated receiver",
+    "completion_min": "w + 20 for success; deadline D = 140 for failure (failure-penalized completion time)"
+  },
+  "observations": "Plant FRET of the history-only trajectory at decision times 0, 2, ..., 120 min plus Gaussian noise sd 0.005 (seed 20261005 + plant index), available at the decision time.",
+  "policies": {
+    "fixed_wait": "probe at w in {6, 12, 24, 48} (registered candidates); the full fixed-wait curve over the grid is also reported.",
+    "threshold_reset": "probe at the first decision time with observed FRET <= 1.01, otherwise at 120.",
+    "readiness_current": "probe at the first decision time where the estimated success probability >= 0.9, estimated from the current observation only: kernel weights exp(-(y_obs - f)^2 / (2 x 0.005^2)) over all (sample, history, wait) states of the other samples.",
+    "readiness_history": "probe at the first decision time where the estimated success probability >= 0.9, using the known command history and all observations so far: sample weights proportional to exp(-sum (y_obs - f_j)^2 / (2 x 0.005^2)) over the other samples simulated under the same history.",
+    "oracle": "probe at the first wait at which the plant itself succeeds (lower bound; not implementable)."
+  },
+  "reliability_target_q": 0.9,
+  "metrics": [
+    "Readiness curves R(w | history): fraction of samples that succeed when probed at w.",
+    "Readiness among states whose noise-free reporter has returned to within 0.01 of baseline, by history.",
+    "Per policy and history: success rate, mean failure-penalized completion time, mean wait.",
+    "Matched reliability: for each adaptive policy, the shortest fixed wait whose success rate is at least as high, and its mean completion time."
+  ],
+  "statements": {
+    "S1": "Readiness of baseline-returned states differs between short and long histories.",
+    "S2": "readiness_history reaches its success rate with a shorter mean completion time than the fixed wait that matches that success rate.",
+    "S3": "readiness_history versus readiness_current: success rate and mean completion time."
+  },
+  "reporting": "All statements are reported whatever their outcome; no significance testing (deterministic simulation of one model)."
+}

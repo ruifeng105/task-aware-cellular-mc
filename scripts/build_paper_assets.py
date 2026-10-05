@@ -38,7 +38,13 @@ names = {
     "local_slope": "IR + slope",
     "causal_history": "Causal history",
     "history_clock": "History + clock",
+    "M2_b3_feedback": "B3 + feedback (M2)",
+    "M3_history_plus_b3": "History + B3 (M3)",
 }
+B3_RESULTS = PILOT / "results/b3"
+b3_forecast = json.loads((B3_RESULTS / "forecast_results.json").read_text(encoding="utf-8"))
+readiness = json.loads((B3_RESULTS / "readiness_results.json").read_text(encoding="utf-8"))
+example = json.loads((B3_RESULTS / "readiness_example.json").read_text(encoding="utf-8"))
 
 
 def write_table(name, spec, header, body):
@@ -67,7 +73,7 @@ pilot = {int(r["horizon_min"]): r["models"] for r in results["forecasting"]}
 boundary = pilot[10]["causal_history"]["test"]["time_support"]["max_train_origin_min"]
 write_table("forecast_rmse", "lrrrrr",
             rf"Predictor & 2 min & 10 min & Val. & $\le${boundary:g} & $>${boundary:g}",
-            rmse_rows([m for m in names if m != "history_clock"],
+            rmse_rows([m for m in names if m in pilot[10]],
                       [lambda m: pilot[2][m]["test"]["run_equal_mse"],
                        lambda m: pilot[10][m]["test"]["run_equal_mse"],
                        lambda m: pilot[10][m]["validation_condition_equal_mse"],
@@ -78,16 +84,25 @@ scored = expanded["horizons"]["10"]["roles"]
 roles = ("validation", "test_new_protocol", "test_new_protocol_inferred_timing", "test_new_concentration_same_session")
 
 
-def wins(role, rival):
-    history, other = scored[role]["causal_history"]["per_run"], scored[role][rival]["per_run"]
-    return f"{sum(history[k]['mse'] < other[k]['mse'] for k in history)}/{len(history)}"
+b3_scored = b3_forecast["scores"]["10"]
 
 
-fresh = ["persistence", "current_response", "current_response_clock", "local_slope", "causal_history", "history_clock"]
-body = rmse_rows(fresh, [lambda m, r=r: scored[r][m]["run_equal_mse"] for r in roles])
+def metric(role, model):
+    return (b3_scored if model in ("M2_b3_feedback", "M3_history_plus_b3") else scored)[role][model]
+
+
+def wins(role, model, rival):
+    ours, other = metric(role, model)["per_run"], metric(role, rival)["per_run"]
+    return f"{sum(ours[k]['mse'] < other[k]['mse'] for k in ours)}/{len(ours)}"
+
+
+fresh = ["persistence", "current_response", "current_response_clock", "local_slope", "causal_history", "history_clock",
+         "M2_b3_feedback", "M3_history_plus_b3"]
+body = rmse_rows(fresh, [lambda m, r=r: metric(r, m)["run_equal_mse"] for r in roles])
 body += [r"\midrule",
-         "History beats clock & " + " & ".join(wins(r, "current_response_clock") for r in roles),
-         "History beats persistence & " + " & ".join(wins(r, "persistence") for r in roles)]
+         "History beats clock & " + " & ".join(wins(r, "causal_history", "current_response_clock") for r in roles),
+         "History beats persistence & " + " & ".join(wins(r, "causal_history", "persistence") for r in roles),
+         "M3 beats M2 & " + " & ".join(wins(r, "M3_history_plus_b3", "M2_b3_feedback") for r in roles)]
 write_table("expanded_rmse", "lrrrr", r"10-min predictor & Val. & A & B & C", body)
 
 labels = {"fgf_sus": "Sustained", "fgf_3_20": "3/20 pulses", "fgf_sp_5": "Single 5 min",
@@ -164,7 +179,7 @@ for j, (token, dose) in enumerate((("2-5ng", 2.5), ("250ng", 250.0))):
 handles, labels = axes[0,0].get_legend_handles_labels()
 fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(.5, 1.03), ncol=4, frameon=False)
 fig.subplots_adjust(left=.075, right=.99, bottom=.14, top=.83, hspace=.18, wspace=.20)
-fig.savefig(FIG / "mixed_response.pdf", bbox_inches="tight", pad_inches=.02)
+fig.savefig(FIG / "mixed_response.pdf", bbox_inches="tight", pad_inches=.02, metadata={"CreationDate": None})
 fig.savefig(FIG / "mixed_response.png", bbox_inches="tight", pad_inches=.02)
 plt.close(fig)
 
@@ -186,13 +201,112 @@ axes[1].set_xlabel("Target protocol time (min)")
 handles, labels = axes[0].get_legend_handles_labels()
 fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(.5, 1.035), ncol=3, frameon=False, fontsize=6.6)
 fig.subplots_adjust(left=.15, right=.98, bottom=.16, top=.84, hspace=.4)
-fig.savefig(FIG / "forecast_mean_10min.pdf", bbox_inches="tight", pad_inches=.02)
+fig.savefig(FIG / "forecast_mean_10min.pdf", bbox_inches="tight", pad_inches=.02, metadata={"CreationDate": None})
 fig.savefig(FIG / "forecast_mean_10min.png", bbox_inches="tight", pad_inches=.02)
+plt.close(fig)
+
+# In-silico readiness study on B3 (reference-palette slots 1-2 plus line style and marker).
+SERIES = {"short": ("#2a78d6", "-", "o", "3-min history"), "long": ("#eb6834", "--", "s", "30-min history")}
+INK, MUTED, BAND = "#0b0b0b", "#52514e", "#f0efec"
+fig, axes = plt.subplots(1, 3, figsize=(7.08, 2.1))
+ax = axes[0]
+waits = np.array(readiness["readiness_curves"]["waits_min"])
+ax.axvspan(6, 48, color=BAND, zorder=0, lw=0)
+ax.text(27, .55, "candidate\nwaits", ha="center", va="center", fontsize=6.5, color=MUTED)
+for name, (color, style, marker, label) in SERIES.items():
+    ax.plot(waits, readiness["readiness_curves"][name], color=color, ls=style, lw=1.3, marker=marker,
+            markevery=10, ms=3.5, label=label)
+ax.set(xlim=(0, 120), ylim=(-.03, 1.03), xlabel="Wait after previous command (min)", ylabel="Readiness")
+ax.set_title("(a) Readiness vs wait", loc="left")
+ax = axes[1]
+bins = readiness["matched_reporter_readiness"]["bins"]
+centre = [(b["reporter_rise_from"] + b["reporter_rise_to"]) / 2 for b in bins]
+for name, (color, style, marker, label) in SERIES.items():
+    ax.plot(centre, [b[name]["readiness"] for b in bins], color=color, ls=style, lw=1.3, marker=marker, ms=3.5)
+ax.set(ylim=(-.03, 1.03), xlabel="Current reporter rise (FRET $-$ 1)")
+ax.set_title("(b) Readiness vs current reporter", loc="left")
+ax = axes[2]
+curve = readiness["fixed_wait_curve"]
+ax.plot([q["mean_completion_min"] for q in curve], [q["success_rate"] for q in curve], color=MUTED, lw=1.0, zorder=1)
+for q in curve:
+    if q["wait_min"] in (80., 100., 120.):
+        ax.plot(q["mean_completion_min"], q["success_rate"], marker=".", color=MUTED, ms=5)
+        offset = (-34, -6) if q["wait_min"] == 120. else (3, -8)
+        ax.annotate(f"fixed {q['wait_min']:g}", (q["mean_completion_min"], q["success_rate"]), textcoords="offset points",
+                    xytext=offset, fontsize=6, color=MUTED)
+ax.axhline(.9, color=MUTED, lw=.6, ls=":", zorder=0)
+ax.text(99.5, .915, "q", fontsize=6.5, color=MUTED)
+policy_marks = {"oracle": ("*", "oracle", (5, -3)), "readiness_history": ("o", "history-aware", (-30, -12)),
+                "readiness_current": ("^", "current only", (6, -3)), "threshold_reset": ("x", "half-decay reset", (-62, 4))}
+for key, (marker, label, offset) in policy_marks.items():
+    point = readiness["policies"][key]
+    ax.plot(point["mean_completion_min"], point["success_rate"], marker=marker, color=INK, ms=5.5, ls="none", zorder=3)
+    ax.annotate(label, (point["mean_completion_min"], point["success_rate"]), textcoords="offset points", xytext=offset,
+                fontsize=6.5, color=INK)
+ax.set(xlim=(98, 143), ylim=(-.03, 1.05), xlabel="Mean completion time (min)", ylabel="Task success rate")
+ax.set_title("(c) Waiting policies", loc="left")
+for a in axes:
+    a.grid(axis="y", alpha=.15)
+handles, labels = axes[0].get_legend_handles_labels()
+fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(.5, 1.06), ncol=2, frameon=False)
+fig.subplots_adjust(left=.07, right=.99, bottom=.22, top=.82, wspace=.32)
+fig.savefig(FIG / "readiness_policies.pdf", bbox_inches="tight", pad_inches=.02, metadata={"CreationDate": None})
+fig.savefig(FIG / "readiness_policies.png", bbox_inches="tight", pad_inches=.02)
+plt.close(fig)
+
+# Fig. 2: readiness-aware waiting on one B3 sample (30-min history colour as in Fig. 3; policies in neutral ink).
+color = SERIES[example["history"]][0]
+grid, ready = np.array(example["grid_min"]), np.array(example["ready"], dtype=bool)
+first_ready = grid[ready][0]
+fig, (top, bottom) = plt.subplots(2, 1, figsize=(3.45, 2.45), sharex=True, gridspec_kw=dict(height_ratios=[1.45, 1]))
+for a in (top, bottom):
+    a.axvspan(6, 48, color=BAND, zorder=0, lw=0)
+    a.axvspan(first_ready, grid[-1] + 2, color=MUTED, alpha=.12, zorder=0, lw=0)
+top.axvspan(example["reporter"]["times_min"][0], 0, color=color, alpha=.15, zorder=0, lw=0)
+top.text(-15, 1.012, f"{example['command_ng_per_ml']:g} ng/ml\ncommand", ha="center", va="bottom", fontsize=6, color=MUTED)
+top.text(27, 1.152, "candidate\nwaits", ha="center", va="top", fontsize=6, color=MUTED)
+top.plot(example["reporter"]["times_min"], example["reporter"]["fret"], color=color, lw=1.2, label="noise-free reporter")
+top.plot(grid, example["observed"], ls="none", marker="o", ms=2.2, color=color, alpha=.75, mew=0,
+         label="observations (2 min)")
+BRANCH = {"fixed": (MUTED, ":", ".", "fixed 48"), "current": (INK, "--", "^", "current only"),
+          "history": (INK, "-", "o", "history-aware")}
+for name, (ink, style, marker, label) in BRANCH.items():
+    branch = example["branches"][name]
+    t, fret = np.array(branch["times_min"]), np.array(branch["fret"])
+    top.plot(t, fret, color=ink, ls=style, lw=1.0)
+    top.plot(t[0], fret[0], marker=marker, color=ink, ms=4, ls="none", zorder=3)
+    top.hlines(fret[0] + example["required_rise"], t[0], t[-1], color=ink, lw=.7, ls=style, alpha=.8)
+    mark = "✓" if branch["success"] else "✗"
+    x, y, align = {"fixed": (58, 1.14, "center"), "current": (82, 1.112, "right"), "history": (106, 1.14, "center")}[name]
+    top.text(x, y, f"{label} {mark}", fontsize=6, color=ink, ha=align)
+top.set(ylim=(.995, 1.155), ylabel="FRET ratio")
+top.set_title("(a) Reporter and probe responses at three waits", loc="left")
+top.legend(loc="lower left", bbox_to_anchor=(.2, 0), frameon=False, fontsize=6, handlelength=1.6, borderaxespad=.2)
+bottom.plot(grid, example["probability"]["history"], color=INK, lw=1.2, label="all observations")
+bottom.plot(grid, example["probability"]["current"], color=INK, lw=.8, ls="--", label="current observation")
+for name, (ink, style, marker, label) in BRANCH.items():
+    if name != "fixed":
+        k = int(np.flatnonzero(grid == example["branches"][name]["wait_min"])[0])
+        bottom.plot(grid[k], example["probability"][name][k], marker=marker, color=ink, ms=4, ls="none", zorder=3)
+bottom.axhline(example["q"], color=MUTED, lw=.6, ls=":")
+bottom.text(-30, example["q"] + .03, f"q = {example['q']:g}", fontsize=6, color=MUTED)
+bottom.text(first_ready + 2, .08, "ready", fontsize=6, color=MUTED)
+bottom.set(ylim=(-.03, 1.05), xlim=(-32, 122), xlabel="Time after the command ends (min)", ylabel="Est. success prob.")
+bottom.set_title("(b) Readiness estimate and probe decisions", loc="left")
+bottom.legend(loc="upper left", bbox_to_anchor=(0, .86), frameon=False, fontsize=6, handlelength=1.6, borderaxespad=.2)
+for a in (top, bottom):
+    a.grid(axis="y", alpha=.15)
+fig.subplots_adjust(left=.15, right=.98, bottom=.14, top=.93, hspace=.32)
+fig.savefig(FIG / "readiness_example.pdf", bbox_inches="tight", pad_inches=.02, metadata={"CreationDate": None})
+fig.savefig(FIG / "readiness_example.png", bbox_inches="tight", pad_inches=.02)
 plt.close(fig)
 
 audit = {
     "source_result_sha256": hashlib.sha256((OUT / "calibration_results.json").read_bytes()).hexdigest(),
     "expanded_result_sha256": hashlib.sha256((EXPANDED / "expanded_results.json").read_bytes()).hexdigest(),
+    "b3_forecast_result_sha256": hashlib.sha256((B3_RESULTS / "forecast_results.json").read_bytes()).hexdigest(),
+    "b3_readiness_result_sha256": hashlib.sha256((B3_RESULTS / "readiness_results.json").read_bytes()).hexdigest(),
+    "b3_readiness_example_sha256": hashlib.sha256((B3_RESULTS / "readiness_example.json").read_bytes()).hexdigest(),
     "generated_tables": [p.name for p in sorted(TAB.glob("*.tex"))],
     "generated_figures": [p.name for p in sorted(FIG.glob("*.pdf"))],
     "fitted_models": False,

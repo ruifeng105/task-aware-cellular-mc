@@ -1,0 +1,6 @@
+{
+  "protocol_path": "simulation/configs/b3_forecast_protocol.json",
+  "protocol_sha256": "54e810c770afc73c74eae3d2ae106099a5a2c46b10f8ecbee6b0cdcbe4d28acf",
+  "frozen_utc": "2026-10-05T19:52:33+00:00",
+  "statement": "Recorded before any B3-based forecast was scored on data. b3_forecast.py refuses to run if the protocol hash differs."
+}

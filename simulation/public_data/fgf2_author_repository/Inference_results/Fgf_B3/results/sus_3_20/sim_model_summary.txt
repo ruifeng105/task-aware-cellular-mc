@@ -1,0 +1,229 @@
+Config file: /home/jan/crypt/Dropbox/BSSE/ERK/Models_paper/../Models_paper_2/Fgf_B3/problem_fgf_all.xml
+Output file: /home/jan/crypt/Dropbox/BSSE/ERK/Models_paper/Fgf_B3/results/sus_3_20/sim.txt
+
+
+---------- Simulation Settings ----------
+
+Parameters for simulation:
+         Name         simulation value
+         k_1_2                 0.17983
+         K_1_2              0.00034363
+         k_2_1                 0.51401
+         K_2_1                 0.64348
+         k_3_4                  2.1251
+         K_3_4              0.00010092
+         K_NFB              7.9237e-06
+         k_4_3                0.058363
+         K_4_3               0.0051924
+         k_5_6                 34.3875
+         K_5_6                 0.15889
+         k_6_5                 0.20789
+         K_6_5                 0.13295
+         k_7_8                 0.42425
+         K_7_8              8.3307e-06
+         k_8_7                  3.0977
+         K_8_7                  1.8444
+         f_1_2              2.8077e-05
+         F_1_2               0.0092886
+         f_2_1              1.0782e-05
+         F_2_1               8.053e-05
+         h_nfb                 0.74022
+           r_h                 0.81717
+         r_3_4                0.063087
+         r_4_3                0.046734
+         r_5_6                 0.01334
+         r_6_5                0.081762
+         r_5_7                 89.1764
+         r_7_5                  1.8483
+fgfr_init_mean                 0.40487
+      nfb_init                 0.42902
+   h_init_mean                  1.9705
+    FRET_sigma                  0.0001
+        FRET_E                0.012115
+
+Experiments for simulation: sus_0-25ng, sus_2-5ng, sus_25ng, sus_250ng, 3_20_2-5ng, 3_20_25ng, 3_20_250ng, sp_60_0-25ng, sp_60_2-5ng, sp_60_25ng, sp_60_250ng, sp_10_0-25ng, sp_10_2-5ng, sp_10_25ng, sp_10_250ng, 3_20_250ngNaCl, mixed_0-25ng, mixed_2-5ng, mixed_25ng, mixed_250ng, sp_5_0-25ng, sp_5_2-5ng, sp_5_25ng, sp_5_250ng, 
+
+---------- Model Settings ----------
+Model file:	/home/jan/crypt/Dropbox/BSSE/ERK/Models_paper/../Models_paper_2/Fgf_B3/./FGF_Model_B3.txt
+Initial value file:	/home/jan/crypt/Dropbox/BSSE/ERK/Models_paper/../Models_paper_2/Fgf_B3/./initial_states_B3.txt
+Measurement file:	/home/jan/crypt/Dropbox/BSSE/ERK/Models_paper/../Models_paper_2/Fgf_B3/./measurement_FRET_B3.txt
+
+An ODE simulator will be used
+Model parameters 
+         k_1_2
+         K_1_2
+         k_2_1
+         K_2_1
+         k_3_4
+         K_3_4
+         K_NFB
+         k_4_3
+         K_4_3
+         k_5_6
+         K_5_6
+         k_6_5
+         K_6_5
+         k_7_8
+         K_7_8
+         k_8_7
+         K_8_7
+         f_1_2
+         F_1_2
+         f_2_1
+         F_2_1
+         h_nfb
+     fgf_input              fixed to 0
+           r_h
+         r_3_4
+         r_4_3
+         r_5_6
+         r_6_5
+         r_5_7
+         r_7_5
+fgfr_init_mean
+      nfb_init
+   h_init_mean
+    FRET_sigma
+        FRET_E
+       erk_max            fixed to 0.8
+   erk_initial              fixed to 0
+
+
+The following experiments will be performed: 
+Experiment 3_20_2-5ng: 
+pulses of strength 2.5 of parameter fgf_input for 3 time units, every 23, starting from 0
+Experiment 3_20_250ng: 
+pulses of strength 250 of parameter fgf_input for 3 time units, every 23, starting from 0
+Experiment 3_20_250ngNaCl: 
+pulses of strength 250 of parameter fgf_input for 3 time units, every 23, starting from 0
+pulses of strength 0 of parameter h_init_mean for 1e+08 time units, every 1e+08, starting from 0
+Experiment 3_20_25ng: 
+pulses of strength 25 of parameter fgf_input for 3 time units, every 23, starting from 0
+Experiment mixed_0-25ng: 
+pulses of strength 0.25 of parameter fgf_input for 3 time units, every 1000, starting from 1
+pulses of strength 0.25 of parameter fgf_input for 30 time units, every 1000, starting from 24
+pulses of strength 0.25 of parameter fgf_input for 5 time units, every 1000, starting from 114
+Experiment mixed_2-5ng: 
+pulses of strength 2.5 of parameter fgf_input for 3 time units, every 1000, starting from 1
+pulses of strength 2.5 of parameter fgf_input for 30 time units, every 1000, starting from 24
+pulses of strength 2.5 of parameter fgf_input for 5 time units, every 1000, starting from 114
+Experiment mixed_250ng: 
+pulses of strength 250 of parameter fgf_input for 3 time units, every 1000, starting from 1
+pulses of strength 250 of parameter fgf_input for 30 time units, every 1000, starting from 24
+pulses of strength 250 of parameter fgf_input for 5 time units, every 1000, starting from 114
+Experiment mixed_25ng: 
+pulses of strength 25 of parameter fgf_input for 3 time units, every 1000, starting from 1
+pulses of strength 25 of parameter fgf_input for 30 time units, every 1000, starting from 24
+pulses of strength 25 of parameter fgf_input for 5 time units, every 1000, starting from 114
+Experiment sp_10_0-25ng: 
+pulses of strength 0.25 of parameter fgf_input for 10 time units, every 1000, starting from 0
+Experiment sp_10_2-5ng: 
+pulses of strength 2.5 of parameter fgf_input for 10 time units, every 1000, starting from 0
+Experiment sp_10_250ng: 
+pulses of strength 250 of parameter fgf_input for 10 time units, every 1000, starting from 0
+Experiment sp_10_25ng: 
+pulses of strength 25 of parameter fgf_input for 10 time units, every 1000, starting from 0
+Experiment sp_5_0-25ng: 
+pulses of strength 0.25 of parameter fgf_input for 5 time units, every 100000, starting from 0
+Experiment sp_5_2-5ng: 
+pulses of strength 2.5 of parameter fgf_input for 5 time units, every 100000, starting from 0
+Experiment sp_5_250ng: 
+pulses of strength 250 of parameter fgf_input for 5 time units, every 100000, starting from 0
+Experiment sp_5_25ng: 
+pulses of strength 25 of parameter fgf_input for 5 time units, every 100000, starting from 0
+Experiment sp_60_0-25ng: 
+pulses of strength 0.25 of parameter fgf_input for 60 time units, every 100000, starting from 0
+Experiment sp_60_2-5ng: 
+pulses of strength 2.5 of parameter fgf_input for 60 time units, every 100000, starting from 0
+Experiment sp_60_250ng: 
+pulses of strength 250 of parameter fgf_input for 60 time units, every 100000, starting from 0
+Experiment sp_60_25ng: 
+pulses of strength 25 of parameter fgf_input for 60 time units, every 100000, starting from 0
+Experiment sus_0-25ng: 
+pulses of strength 0.25 of parameter fgf_input for 1000 time units, every 10000, starting from 0
+Experiment sus_2-5ng: 
+pulses of strength 2.5 of parameter fgf_input for 1000 time units, every 10000, starting from 0
+Experiment sus_250ng: 
+pulses of strength 250 of parameter fgf_input for 1000 time units, every 10000, starting from 0
+Experiment sus_25ng: 
+pulses of strength 25 of parameter fgf_input for 1000 time units, every 10000, starting from 0
+
+
+
+
+-----------   Model   -----------
+Parameters: k_1_2 K_1_2 k_2_1 K_2_1 k_3_4 K_3_4 K_NFB k_4_3 K_4_3 k_5_6 K_5_6 k_6_5 K_6_5 k_7_8 K_7_8 k_8_7 K_8_7 f_1_2 F_1_2 f_2_1 F_2_1 h_nfb fgf_input r_h r_3_4 r_4_3 r_5_6 r_6_5 r_5_7 r_7_5 
+
+Species: Ras Ras_star Raf Raf_star Mek Mek_star Erk Erk_star Nfb Nfb_star FgfR FgfR_star H H_F H_F_R 
+
+
+Reaction  0:	Propencity:                        k_1_2*(r_h*H_F_R+(1-r_h)*FgfR_star)*(Ras/(K_1_2+Ras)) 		Stoichiometry: Ras -1, Ras_star +1, 
+Reaction  1:	Propencity:                                            k_2_1*(Ras_star/(K_2_1+Ras_star)) 		Stoichiometry: Ras +1, Ras_star -1, 
+Reaction  2:	Propencity:  k_3_4*Ras_star*(Raf/(K_3_4+Raf))*(K_NFB^h_nfb/(K_NFB^h_nfb+Nfb_star^h_nfb)) 		Stoichiometry: Raf -1, Raf_star +1, 
+Reaction  3:	Propencity:                                            k_4_3*(Raf_star/(K_4_3+Raf_star)) 		Stoichiometry: Raf +1, Raf_star -1, 
+Reaction  4:	Propencity:                                             k_5_6*Raf_star*(Mek/(K_5_6+Mek)) 		Stoichiometry: Mek -1, Mek_star +1, 
+Reaction  5:	Propencity:                                            k_6_5*(Mek_star/(K_6_5+Mek_star)) 		Stoichiometry: Mek +1, Mek_star -1, 
+Reaction  6:	Propencity:                                             k_7_8*Mek_star*(Erk/(K_7_8+Erk)) 		Stoichiometry: Erk -1, Erk_star +1, 
+Reaction  7:	Propencity:                                            k_8_7*(Erk_star/(K_8_7+Erk_star)) 		Stoichiometry: Erk +1, Erk_star -1, 
+Reaction  8:	Propencity:                                             f_1_2*Erk_star*(Nfb/(F_1_2+Nfb)) 		Stoichiometry: Nfb -1, Nfb_star +1, 
+Reaction  9:	Propencity:                                            f_2_1*(Nfb_star/(F_2_1+Nfb_star)) 		Stoichiometry: Nfb +1, Nfb_star -1, 
+Reaction 10:	Propencity:                                                         r_3_4*fgf_input*FgfR 		Stoichiometry: FgfR -1, FgfR_star +1, 
+Reaction 11:	Propencity:                                                              r_4_3*FgfR_star 		Stoichiometry: FgfR +1, FgfR_star -1, 
+Reaction 12:	Propencity:                                                            r_5_6*H*fgf_input 		Stoichiometry: H -1, H_F +1, 
+Reaction 13:	Propencity:                                                                    r_6_5*H_F 		Stoichiometry: H +1, H_F -1, 
+Reaction 14:	Propencity:                                                               r_5_7*H_F*FgfR 		Stoichiometry: FgfR -1, H_F -1, H_F_R +1, 
+Reaction 15:	Propencity:                                                                  r_7_5*H_F_R 		Stoichiometry: FgfR +1, H_F +1, H_F_R -1, 
+
+
+Ode equations:
+      (d Ras)/dt = -(k_1_2*(r_h*H_F_R+(1-r_h)*FgfR_star)*(Ras/(K_1_2+Ras)))+(k_2_1*(Ras_star/(K_2_1+Ras_star))) 
+ (d Ras_star)/dt = (k_1_2*(r_h*H_F_R+(1-r_h)*FgfR_star)*(Ras/(K_1_2+Ras)))-(k_2_1*(Ras_star/(K_2_1+Ras_star))) 
+      (d Raf)/dt = -(k_3_4*Ras_star*(Raf/(K_3_4+Raf))*(K_NFB^h_nfb/(K_NFB^h_nfb+Nfb_star^h_nfb)))+(k_4_3*(Raf_star/(K_4_3+Raf_star))) 
+ (d Raf_star)/dt = (k_3_4*Ras_star*(Raf/(K_3_4+Raf))*(K_NFB^h_nfb/(K_NFB^h_nfb+Nfb_star^h_nfb)))-(k_4_3*(Raf_star/(K_4_3+Raf_star))) 
+      (d Mek)/dt = -(k_5_6*Raf_star*(Mek/(K_5_6+Mek)))+(k_6_5*(Mek_star/(K_6_5+Mek_star))) 
+ (d Mek_star)/dt = (k_5_6*Raf_star*(Mek/(K_5_6+Mek)))-(k_6_5*(Mek_star/(K_6_5+Mek_star))) 
+      (d Erk)/dt = -(k_7_8*Mek_star*(Erk/(K_7_8+Erk)))+(k_8_7*(Erk_star/(K_8_7+Erk_star))) 
+ (d Erk_star)/dt = (k_7_8*Mek_star*(Erk/(K_7_8+Erk)))-(k_8_7*(Erk_star/(K_8_7+Erk_star))) 
+      (d Nfb)/dt = -(f_1_2*Erk_star*(Nfb/(F_1_2+Nfb)))+(f_2_1*(Nfb_star/(F_2_1+Nfb_star))) 
+ (d Nfb_star)/dt = (f_1_2*Erk_star*(Nfb/(F_1_2+Nfb)))-(f_2_1*(Nfb_star/(F_2_1+Nfb_star))) 
+     (d FgfR)/dt = -(r_3_4*fgf_input*FgfR)+(r_4_3*FgfR_star)-(r_5_7*H_F*FgfR)+(r_7_5*H_F_R) 
+(d FgfR_star)/dt = (r_3_4*fgf_input*FgfR)-(r_4_3*FgfR_star) 
+        (d H)/dt = -(r_5_6*H*fgf_input)+(r_6_5*H_F) 
+      (d H_F)/dt = (r_5_6*H*fgf_input)-(r_6_5*H_F)-(r_5_7*H_F*FgfR)+(r_7_5*H_F_R) 
+    (d H_F_R)/dt = (r_5_7*H_F*FgfR)-(r_7_5*H_F_R) 
+
+
+
+----------   Initial Values   ---------- 
+Parameters: fgfr_init_mean nfb_init h_init_mean 
+      State Ras:	0.1 
+      State Raf:	0.7 
+      State Mek:	0.68 
+      State Erk:	0.26 
+     State FgfR:	fgfr_init_mean 
+State FgfR_star:	0 
+      State Nfb:	nfb_init 
+ State Ras_star:	0 
+ State Raf_star:	0 
+ State Mek_star:	0 
+ State Erk_star:	0 
+ State Nfb_star:	0 
+        State H:	h_init_mean 
+      State H_F:	0 
+    State H_F_R:	0 
+           Time:	0 
+
+----------   Measurement Model   ----------
+Parameters: FRET_sigma FRET_E erk_max erk_initial 
+
+Species: Erk Erk_star 
+
+Normal numbers:
+r_1:	mean: 0	std: 1
+
+
+Measurements:
+       fret_measure = (0.15*Erk_star+erk_initial*(-1.15*Erk-1.15*Erk_star+FRET_E*Erk_star)+erk_max*((1+0.15*FRET_E*erk_initial)*Erk+(1-1.15*FRET_E+0.15*FRET_E*erk_initial)*Erk_star))/((erk_max-erk_initial)*(Erk+Erk_star-FRET_E*Erk_star))+r_1*FRET_sigma 
+
+Log Likelihood:
+       fret_measure:	-(fret_measure-(0.15*Erk_star+erk_initial*(-1.15*Erk-1.15*Erk_star+FRET_E*Erk_star)+erk_max*((1+0.15*FRET_E*erk_initial)*Erk+(1-1.15*FRET_E+0.15*FRET_E*erk_initial)*Erk_star))/((erk_max-erk_initial)*(Erk+Erk_star-FRET_E*Erk_star)))^2/(2*FRET_sigma^2)-log(FRET_sigma*sqrt(2*_pi)) 

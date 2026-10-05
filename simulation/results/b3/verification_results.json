@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "b3_source_git_blobs_verified": 3,
+  "structure": {
+    "species": 15,
+    "reactions": 16,
+    "free_parameters": 34
+  },
+  "conservation": {
+    "samples_checked": 20,
+    "max_conservation_error": 1.509903313490213e-14
+  },
+  "unstimulated": {
+    "samples_checked": 20,
+    "max_deviation_from_baseline": 0.0
+  },
+  "schedules": {
+    "explicit_equals_named": true,
+    "pre_origin_history_applied": true
+  },
+  "acceptance": {
+    "gate_max_abs": 0.001,
+    "conditions": {
+      "2-5ng": {
+        "max_abs_mean_difference": 7.869598689369539e-06,
+        "median_samplewise_rmse": 9.9649689286257e-05,
+        "n_samples": 1000,
+        "passes": true
+      },
+      "250ng": {
+        "max_abs_mean_difference": 8.52343784929488e-06,
+        "median_samplewise_rmse": 9.963561513488505e-05,
+        "n_samples": 1000,
+        "passes": true
+      }
+    }
+  },
+  "scope": "Execution of the original-author B3 files; no parameter is refit here."
+}

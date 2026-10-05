@@ -1,0 +1,87 @@
+{
+  "2": {
+    "validation": {
+      "b3_open_loop": 0.03858,
+      "b3_anchored": 0.01358,
+      "M2_b3_feedback": 0.01352,
+      "M0_current_clock": 0.01379,
+      "M1_causal_history": 0.01367,
+      "M3_history_plus_b3": 0.01335
+    },
+    "test_new_protocol": {
+      "b3_open_loop": 0.03877,
+      "b3_anchored": 0.0129,
+      "M2_b3_feedback": 0.01284,
+      "M0_current_clock": 0.01309,
+      "M1_causal_history": 0.01283,
+      "M3_history_plus_b3": 0.0126
+    },
+    "test_new_protocol_inferred_timing": {
+      "b3_open_loop": 0.04673,
+      "b3_anchored": 0.0139,
+      "M2_b3_feedback": 0.01385,
+      "M0_current_clock": 0.014,
+      "M1_causal_history": 0.01398,
+      "M3_history_plus_b3": 0.01375
+    },
+    "test_new_concentration_same_session": {
+      "b3_open_loop": 0.04803,
+      "b3_anchored": 0.01437,
+      "M2_b3_feedback": 0.01421,
+      "M0_current_clock": 0.01427,
+      "M1_causal_history": 0.01423,
+      "M3_history_plus_b3": 0.01401
+    },
+    "viewed_reference": {
+      "b3_open_loop": 0.04347,
+      "b3_anchored": 0.01523,
+      "M2_b3_feedback": 0.01515,
+      "M0_current_clock": 0.01564,
+      "M1_causal_history": 0.01529,
+      "M3_history_plus_b3": 0.01504
+    }
+  },
+  "10": {
+    "validation": {
+      "b3_open_loop": 0.03849,
+      "b3_anchored": 0.02296,
+      "M2_b3_feedback": 0.02266,
+      "M0_current_clock": 0.02561,
+      "M1_causal_history": 0.02346,
+      "M3_history_plus_b3": 0.02195
+    },
+    "test_new_protocol": {
+      "b3_open_loop": 0.03819,
+      "b3_anchored": 0.02337,
+      "M2_b3_feedback": 0.02286,
+      "M0_current_clock": 0.0249,
+      "M1_causal_history": 0.0227,
+      "M3_history_plus_b3": 0.02098
+    },
+    "test_new_protocol_inferred_timing": {
+      "b3_open_loop": 0.04731,
+      "b3_anchored": 0.02461,
+      "M2_b3_feedback": 0.02447,
+      "M0_current_clock": 0.02709,
+      "M1_causal_history": 0.02568,
+      "M3_history_plus_b3": 0.02439
+    },
+    "test_new_concentration_same_session": {
+      "b3_open_loop": 0.04799,
+      "b3_anchored": 0.02886,
+      "M2_b3_feedback": 0.02792,
+      "M0_current_clock": 0.02792,
+      "M1_causal_history": 0.02778,
+      "M3_history_plus_b3": 0.02656
+    },
+    "viewed_reference": {
+      "b3_open_loop": 0.0431,
+      "b3_anchored": 0.02756,
+      "M2_b3_feedback": 0.02704,
+      "M0_current_clock": 0.02895,
+      "M1_causal_history": 0.02687,
+      "M3_history_plus_b3": 0.02516
+    }
+  }
+}
+{"C1_primary_M3_beats_M2": true, "C2_M2_beats_M0": true, "C3_M2_beats_M1": false} sigma: {'2': '0.005', '10': '0.005'} consistency: {'2': 0.0, '10': 0.0}

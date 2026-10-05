@@ -3,7 +3,7 @@
 **Toward Task-Aware Reuse of Cellular Molecular Receivers: History-Aware Prediction on Experimental FGF2–ERK Data**
 整理日期：2026-10-04（ICC 投稿修订版）。
 
-本包把五页英文论文初稿、LaTeX 源码、真实数据学习试验、预先登记的扩展检验、作者仿真参照和结果核查，以及前瞻验证方案与规划工具包（2026-10-05 整合）放在同一项目中。可先打开 `paper/AI_MC_Cellular_Receivers_Draft.pdf` 阅读论文，再按下方入口复现。中文研究说明见 `Paper_Notes_ZH.md`，论文与程序的逐项对应见 `Paper_Simulation_Map_ZH.md`。
+本包把六页英文论文初稿、LaTeX 源码、真实数据学习试验、预先登记的扩展检验、作者仿真参照和结果核查，以及前瞻验证方案与规划工具包（2026-10-05 整合）放在同一项目中。可先打开 `paper/AI_MC_Cellular_Receivers_Draft.pdf` 阅读论文，再按下方入口复现。中文研究说明见 `Paper_Notes_ZH.md`，论文与程序的逐项对应见 `Paper_Simulation_Map_ZH.md`。
 
 ## 快速运行
 
@@ -14,7 +14,7 @@ python -m pip install -r requirements.txt
 python scripts/reproduce.py --mode verify
 ```
 
-`verify` 不重新训练，依次核查：试点的 47 个作者来源文件、输入时序、特征因果性、混合条件归一化和保存评分；扩展检验的 56 个新增来源文件、冻结方案哈希、10 分钟单脉冲时序（对照 XML）、60 分钟单脉冲时序推断、特征因果性和从保存系数重算的 70 个评分；合成数据单元检查；最后与 416 项论文数值固定参照逐项比较，确认正文中所有四位以上小数都在固定参照中，并检查生成文件均为 LF 换行。
+`verify` 不重新训练，依次核查：试点的 47 个作者来源文件、输入时序、特征因果性、混合条件归一化和保存评分；扩展检验的 56 个新增来源文件、冻结方案哈希、10 分钟单脉冲时序（对照 XML）、60 分钟单脉冲时序推断、特征因果性和从保存系数重算的 70 个评分；B3 机制模型的来源、结构、守恒律与复现验收，B3 同反馈预测（M0–M3）和仿真准备度研究的重算；合成数据单元检查；最后与 561 项论文数值固定参照逐项比较，确认正文中所有四位以上小数都在固定参照中，并检查生成文件均为 LF 换行。
 
 完整重跑模型拟合、扩展检验、核查和论文图表：
 
@@ -30,12 +30,14 @@ python scripts/reproduce.py --mode full
 
 | 路径 | 内容 |
 |---|---|
-| `paper/AI_MC_Cellular_Receivers_Draft.pdf` | 已编译的五页英文初稿 |
+| `paper/AI_MC_Cellular_Receivers_Draft.pdf` | 已编译的六页英文初稿 |
 | `paper/main.tex`、`paper/references.bib`、`paper/IEEEtran.cls` | LaTeX 源码、11 篇参考文献（IEEEtran 文献样式）与排版类文件 |
 | `paper/figures/`、`paper/tables/` | 结果图和五张表，均由脚本从保存结果生成 |
 | `simulation/code/` | 试点（`calibrate_fgf2.py`）、扩展检验（`expanded_fgf2.py`）、核查、合成单元检查与通用分析程序 |
 | `simulation/configs/fgf2_expanded_protocol.json` | 下载新数据前冻结的扩展检验方案 |
 | `simulation/results/fgf2_pilot/`、`simulation/results/fgf2_expanded/` | 试点与扩展检验的结果、冻结记录和核查报告 |
+| `simulation/code/b3_model.py` 等 | 直接执行作者 B3 模型文件（不手抄方程）；`b3_forecast.py` 同反馈预测与 M0–M3；`b3_readiness.py` 仿真准备度研究，`b3_readiness_example.py` 生成图 2 的单样本示例；各有对应的 `verify_*.py` |
+| `simulation/configs/b3_*_protocol*.json`、`simulation/results/b3/` | B3 参照比较与准备度研究的冻结方案、冻结记录、结果与核查报告 |
 | `simulation/public_data/` | 作者原始导出文件；试点 47 个与扩展 56 个分别列在两份来源清单中 |
 | `simulation/novelty_audit.json`、`simulation/AI_MC_Application_First_Review_ZH.md` | 18 项相关工作定向核查与应用标定分析 |
 | `AI_MC_Complete_Validation_Plan_ZH.md` | 完整前瞻验证与推进方案（P0–P6），2026-10-04 版 |
@@ -45,9 +47,9 @@ python scripts/reproduce.py --mode full
 
 **已执行算法**是按条件加权的因果历史岭回归：利用截至预测时刻的输入和响应历史，以及各模型共同已知的未来命令，预测单细胞响应；另有"历史 + 时钟"嵌套对照、开环命令到响应模型和训练均值常数基线。划分使用完整条件块，不随机拆分细胞或滑动窗口。
 
-**B3 参照**重用原作者导出的预测样本均值，没有重新执行 B3 参数推断。原研究曾用这些条件选择模型结构，因此它不是新盲测。
+**B3 参照**：开环比较重用原作者导出的预测样本均值；同反馈预测和准备度仿真直接执行作者的 B3 模型文件。两者都没有重新推断 B3 参数。原研究曾用这些条件选择模型结构，因此它不是新盲测。
 
-**拟议任务控制**（准备度、幅度/持续时间/等待时间优化、序列可靠性约束）目前只有算法流程和配置草案，没有实现或闭环结果。
+**拟议任务控制**（准备度、幅度/持续时间/等待时间优化、序列可靠性约束）在真实接收器上只有方法设计和配置草案；只在 B3 上仿真了其中的等待策略（论文图 2、图 3）。
 
 ## 论文对应的主要结果
 
@@ -62,6 +64,17 @@ python scripts/reproduce.py --mode full
 | C：混合刺激 0.25/25 ng/ml（新浓度，与已看测试同一批次） | 0.02876 | 0.02792 | 0.02778 | 0.03021 |
 
 主要假设 H1、H2 成立：在 A 上，历史模型比当前响应 + 时钟降低 8.8%，历史 + 时钟降低 8.2%。但相对"不变预测"只好 0.7%，且只在 4 个浓度中的 1 个更好。留一方案检验中，用 5 类方案训练时，历史特征在 6 个留出方案上 RMSE 都最低，比"不变预测"好 5.8%–13.6%。
+
+**B3 机制参照**（2026-10-05）：从作者文件直接执行 B3 模型，用作者的 1000 组后验参数复现其导出的预测，均值最大差 8.5e-6（预先设定的验收门槛为 1e-3）。在事后参考比较中（方案在任何 B3 预测打分之前冻结），10 分钟预测、新方案 A 上：同反馈 B3（M2）0.02286，约等于不变预测的 0.02287；历史特征加上 B3 增量（M3）为 0.02098，比 M2 低 8.2%，4 个浓度全部更好。M3 在所有角色、两个预测时长上都最好。
+
+**B3 上的仿真准备度**（25 ng/ml）：预先登记的第 1 版要求恢复到初始响应的 80%，结果所有样本在 120 分钟内都达不到，如实保留为 `readiness_results_v1.json`。第 2 版改为 50%：
+
+- 登记的候选等待 6–48 分钟全部失败；
+- 准备度几乎只由当前报告量决定；
+- 看完整历史的等待策略成功率 90.0%，平均完成时间 113.8 分钟，同等可靠性的固定等待需要 121.8 分钟；
+- 优势来自对带噪观测的滤波，而不是报告量之外的隐藏记忆；论文图 2 用一个按固定规则选出的样本展示了这一点。
+
+这只是一个模型结构上的仿真，不是对真实细胞的证据。
 
 这些都是按条件等权的点估计。数据没有独立实验日标识，不能把细胞或窗口数当作独立重复数，也不报告显著性。命令浓度不等于已测局部浓度；预测改善不能证明新生物记忆机制、任务成功率或剂量节省。
 
@@ -98,7 +111,7 @@ python scripts/verify_planning_tools.py
 python scripts/reproduce.py --mode verify --compile-paper
 ```
 
-也可在 `paper/` 中运行 `latexmk -pdf -interaction=nonstopmode -halt-on-error -jobname=AI_MC_Cellular_Receivers_Draft main.tex`。没有 `latexmk` 时，依次运行 `pdflatex`、`bibtex AI_MC_Cellular_Receivers_Draft`，再运行两次 `pdflatex`。Overleaf 上传 `paper/` 下的文件并选择 `main.tex`。本稿使用 IEEEtran 会议版式，共 5 页；投稿前请按目标会议的征稿要求核对页数与格式。
+也可在 `paper/` 中运行 `latexmk -pdf -interaction=nonstopmode -halt-on-error -jobname=AI_MC_Cellular_Receivers_Draft main.tex`。没有 `latexmk` 时，依次运行 `pdflatex`、`bibtex AI_MC_Cellular_Receivers_Draft`，再运行两次 `pdflatex`。Overleaf 上传 `paper/` 下的文件并选择 `main.tex`。本稿使用 IEEEtran 会议版式，共 6 页；投稿前请按目标会议的征稿要求核对页数与格式。
 
 仅重建论文图表可运行 `python scripts/build_paper_assets.py`，该步骤读取保存结果，不重新训练。
 
@@ -110,4 +123,4 @@ python scripts/reproduce.py --mode verify --compile-paper
 
 本包使用仓库中的数值子集，不包含完整 Mendeley 压缩包或显微图像。作者文件保留原文件名与来源身份。作者仓库根目录没有代码许可证，本包不为这些文件或整个合并包附加新的许可；若公开发布仓库，请先确认这些文件可以再分发。未修改的 `paper/IEEEtran.cls` 为 Michael Shell 的 1.8b 版本，保留其 LaTeX Project Public License 声明。
 
-后续推进顺序（与验证方案 P0–P6 一致）：投稿版定稿 → P0/P1 平台确认与递送标定 → P2 同钟历史—探测预试 → P3 机制信念估计器（B3 具名参数映射，以复现作者 `sim_post` 导出为验收）与同信息 M0–M3 → P4 压力模拟 → P5 前瞻两任务控制 → P6 全文查新收敛。全文查新可与其他阶段并行。
+后续推进顺序（与验证方案 P0–P6 一致）：投稿版定稿 → P0/P1 平台确认与递送标定 → P2 同钟历史—探测预试（按 B3 结果，候选等待应延长到 60–120 分钟量级）→ P3 同信息 M0–M3（B3 执行与验收已完成，下一步是带过程噪声和细胞异质性的状态估计器）→ P4 压力模拟（已有单一结构的仿真，还需结构失配，例如 B1/B2）→ P5 前瞻两任务控制 → P6 全文查新收敛。全文查新可与其他阶段并行。

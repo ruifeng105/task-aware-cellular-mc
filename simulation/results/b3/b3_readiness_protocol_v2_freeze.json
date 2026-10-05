@@ -1,0 +1,6 @@
+{
+  "protocol_path": "simulation/configs/b3_readiness_protocol_v2.json",
+  "protocol_sha256": "081edc8ca9e8d8b62668966191f54cef8ecb152940c0da5347cbbe917ed771cd",
+  "frozen_utc": "2026-10-05T20:09:22+00:00",
+  "statement": "Recorded after the degenerate version-1 run and before any version-2 policy outcome was computed."
+}

@@ -1,0 +1,36 @@
+{
+  "name": "B3 matched-feedback reference and nested history residual (M0-M3)",
+  "version": 1,
+  "status": "frozen_before_scoring",
+  "date": "2026-10-05",
+  "context": [
+    "All forecast roles were already inspected for the ridge models, so this is a post hoc reference comparison. Its only tuned quantities (the likelihood scale sigma and the ridge penalty) are chosen on validation by the fixed rules below.",
+    "B3 parameters are the original authors' 1000 posterior samples, fitted to sustained and 3/20 population means at 2.5 and 250 ng/ml; mixed and single 5-min conditions at 2.5 and 250 ng/ml entered their architecture selection. Single 10-min and 60-min pulses and the 0.25 and 25 ng/ml blocks were not used to fit these samples.",
+    "The posterior samples describe uncertainty about the population-mean model, not cell-to-cell heterogeneity; the feedback forecaster uses them as a fixed particle set.",
+    "No B3-based forecast had been scored on any data when this protocol was frozen."
+  ],
+  "prerequisite": "results/b3/verification_results.json status passed (acceptance gate on the authors' sim_post exports).",
+  "data_roles": "Identical to configs/fgf2_expanded_protocol.json (sha256 fe919ef8ee766522d62d2fff4d5c412771c41a2cfd7fb818f4800a698a873331), including its data rules and 10-min warmup.",
+  "simulation": "Each condition's commanded schedule from calibrate_fgf2.segments, simulated for every posterior sample on a 1-min grid; f_s(t) is the noise-free FRET output of sample s.",
+  "forecasters": {
+    "b3_open_loop": "mean over samples of f_s(t+h); no reporter feedback.",
+    "b3_anchored": "y_t + mean over samples of [f_s(t+h) - f_s(t)].",
+    "M2_b3_feedback": "y_t + sum_s w_s [f_s(t+h) - f_s(t)], with w_s proportional to exp(-sum over observations t_i <= t of (y_i - f_s(t_i))^2 / (2 sigma^2)).",
+    "M3_history_plus_b3": "Ridge on the causal_history features of the expanded protocol plus the M2 increment sum_s w_s [f_s(t+h) - f_s(t)] as one extra feature; trained on the training role.",
+    "M0_current_clock": "current_response_clock refit under the expanded protocol (same rows).",
+    "M1_causal_history": "causal_history refit under the expanded protocol (same rows)."
+  },
+  "sigma_grid": [0.002, 0.005, 0.01, 0.02, 0.05, 0.1, "equal_weights"],
+  "ridge_alphas": [1e-8, 1e-6, 1e-4, 1e-2, 1, 100, 10000],
+  "selection": "Per horizon, sigma minimizing the condition-equal validation MSE of M2; M3 uses that sigma and the alpha minimizing its validation MSE; M0 and M1 select alpha exactly as in the expanded protocol.",
+  "horizons_min": [2, 10],
+  "metrics": "Condition-equal RMSE per role and per-condition MSE on identical rows for every forecaster.",
+  "comparisons": {
+    "C1_primary": "10-min test_new_protocol: M3 RMSE < M2 RMSE (history adds information beyond the matched-feedback mechanistic estimator).",
+    "C2": "10-min test_new_protocol: M2 RMSE < M0 RMSE.",
+    "C3": "10-min test_new_protocol: M2 versus M1, reported without a pre-specified direction."
+  },
+  "secondary": "The same comparisons on test_new_protocol_inferred_timing, test_new_concentration_same_session, validation and viewed_reference, at both horizons, with per-condition direction counts.",
+  "inference": "No significance tests or confidence intervals: conditions are not independent replicates and experimental-day identifiers are unavailable.",
+  "reporting": "All comparisons are reported whatever their direction."
+}

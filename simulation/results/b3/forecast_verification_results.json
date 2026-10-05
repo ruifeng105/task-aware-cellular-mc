@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "protocol_sha256": "54e810c770afc73c74eae3d2ae106099a5a2c46b10f8ecbee6b0cdcbe4d28acf",
+  "weights": {
+    "normalized": true,
+    "past_only": true,
+    "equal_weights_uniform": true
+  },
+  "saved_scores": {
+    "role_model_scores_recomputed": 60
+  },
+  "scope": "Post hoc reference comparison on inspected roles; sigma and alpha were chosen on validation."
+}

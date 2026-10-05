@@ -1,0 +1,756 @@
+{
+  "status": "complete",
+  "protocol_sha256": "ae204f6f75d6f9f62db4527930ee617ccd80716218489c9c914b9a11d030ae81",
+  "frozen_utc": "2026-10-05T20:00:11+00:00",
+  "n_samples": 1000,
+  "statements": {
+    "S1_baseline_readiness": {
+      "short": {
+        "states": 0,
+        "readiness": null
+      },
+      "long": {
+        "states": 0,
+        "readiness": null
+      }
+    },
+    "S2_history_policy_vs_matching_fixed_wait": {
+      "policy": {
+        "success_rate": 0.0,
+        "mean_completion_min": 140.0
+      },
+      "matching_fixed_wait": {
+        "wait_min": 0.0,
+        "success_rate": 0.0,
+        "mean_completion_min": 140.0
+      },
+      "shorter": false
+    },
+    "S3_history_vs_current": {
+      "history": {
+        "success_rate": 0.0,
+        "mean_completion_min": 140.0,
+        "mean_wait_min": 120.0,
+        "by_history": {
+          "short": {
+            "success_rate": 0.0,
+            "mean_completion_min": 140.0,
+            "mean_wait_min": 120.0
+          },
+          "long": {
+            "success_rate": 0.0,
+            "mean_completion_min": 140.0,
+            "mean_wait_min": 120.0
+          }
+        }
+      },
+      "current": {
+        "success_rate": 0.0,
+        "mean_completion_min": 140.0,
+        "mean_wait_min": 120.0,
+        "by_history": {
+          "short": {
+            "success_rate": 0.0,
+            "mean_completion_min": 140.0,
+            "mean_wait_min": 120.0
+          },
+          "long": {
+            "success_rate": 0.0,
+            "mean_completion_min": 140.0,
+            "mean_wait_min": 120.0
+          }
+        }
+      }
+    }
+  },
+  "policies": {
+    "fixed_6": {
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0,
+      "mean_wait_min": 6.0,
+      "by_history": {
+        "short": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 6.0
+        },
+        "long": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 6.0
+        }
+      }
+    },
+    "fixed_12": {
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0,
+      "mean_wait_min": 12.0,
+      "by_history": {
+        "short": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 12.0
+        },
+        "long": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 12.0
+        }
+      }
+    },
+    "fixed_24": {
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0,
+      "mean_wait_min": 24.0,
+      "by_history": {
+        "short": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 24.0
+        },
+        "long": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 24.0
+        }
+      }
+    },
+    "fixed_48": {
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0,
+      "mean_wait_min": 48.0,
+      "by_history": {
+        "short": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 48.0
+        },
+        "long": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 48.0
+        }
+      }
+    },
+    "threshold_reset": {
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0,
+      "mean_wait_min": 119.995,
+      "by_history": {
+        "short": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 119.99
+        },
+        "long": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 120.0
+        }
+      }
+    },
+    "readiness_current": {
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0,
+      "mean_wait_min": 120.0,
+      "by_history": {
+        "short": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 120.0
+        },
+        "long": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 120.0
+        }
+      }
+    },
+    "readiness_history": {
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0,
+      "mean_wait_min": 120.0,
+      "by_history": {
+        "short": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 120.0
+        },
+        "long": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 120.0
+        }
+      }
+    },
+    "oracle": {
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0,
+      "mean_wait_min": 120.0,
+      "by_history": {
+        "short": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 120.0
+        },
+        "long": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 120.0
+        }
+      }
+    }
+  },
+  "fixed_wait_curve": [
+    {
+      "wait_min": 0.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 2.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 4.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 6.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 8.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 10.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 12.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 14.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 16.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 18.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 20.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 22.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 24.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 26.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 28.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 30.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 32.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 34.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 36.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 38.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 40.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 42.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 44.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 46.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 48.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 50.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 52.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 54.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 56.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 58.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 60.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 62.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 64.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 66.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 68.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 70.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 72.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 74.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 76.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 78.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 80.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 82.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 84.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 86.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 88.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 90.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 92.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 94.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 96.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 98.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 100.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 102.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 104.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 106.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 108.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 110.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 112.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 114.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 116.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 118.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    },
+    {
+      "wait_min": 120.0,
+      "success_rate": 0.0,
+      "mean_completion_min": 140.0
+    }
+  ],
+  "matched_reliability": {
+    "threshold_reset": {
+      "policy_success_rate": 0.0,
+      "policy_mean_completion_min": 140.0,
+      "matching_fixed_wait": {
+        "wait_min": 0.0,
+        "success_rate": 0.0,
+        "mean_completion_min": 140.0
+      }
+    },
+    "readiness_current": {
+      "policy_success_rate": 0.0,
+      "policy_mean_completion_min": 140.0,
+      "matching_fixed_wait": {
+        "wait_min": 0.0,
+        "success_rate": 0.0,
+        "mean_completion_min": 140.0
+      }
+    },
+    "readiness_history": {
+      "policy_success_rate": 0.0,
+      "policy_mean_completion_min": 140.0,
+      "matching_fixed_wait": {
+        "wait_min": 0.0,
+        "success_rate": 0.0,
+        "mean_completion_min": 140.0
+      }
+    },
+    "oracle": {
+      "policy_success_rate": 0.0,
+      "policy_mean_completion_min": 140.0,
+      "matching_fixed_wait": {
+        "wait_min": 0.0,
+        "success_rate": 0.0,
+        "mean_completion_min": 140.0
+      }
+    }
+  },
+  "readiness_curves": {
+    "waits_min": [
+      0.0,
+      2.0,
+      4.0,
+      6.0,
+      8.0,
+      10.0,
+      12.0,
+      14.0,
+      16.0,
+      18.0,
+      20.0,
+      22.0,
+      24.0,
+      26.0,
+      28.0,
+      30.0,
+      32.0,
+      34.0,
+      36.0,
+      38.0,
+      40.0,
+      42.0,
+      44.0,
+      46.0,
+      48.0,
+      50.0,
+      52.0,
+      54.0,
+      56.0,
+      58.0,
+      60.0,
+      62.0,
+      64.0,
+      66.0,
+      68.0,
+      70.0,
+      72.0,
+      74.0,
+      76.0,
+      78.0,
+      80.0,
+      82.0,
+      84.0,
+      86.0,
+      88.0,
+      90.0,
+      92.0,
+      94.0,
+      96.0,
+      98.0,
+      100.0,
+      102.0,
+      104.0,
+      106.0,
+      108.0,
+      110.0,
+      112.0,
+      114.0,
+      116.0,
+      118.0,
+      120.0
+    ],
+    "short": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "long": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "baseline_returned_readiness": {
+    "short": {
+      "states": 0,
+      "readiness": null
+    },
+    "long": {
+      "states": 0,
+      "readiness": null
+    }
+  },
+  "limitations": [
+    "Simulation of one published model structure; not evidence about measured cells.",
+    "Posterior samples are population-mean uncertainty, not cell heterogeneity.",
+    "Controllers share the plant structure (leave-one-out samples): no structural mismatch.",
+    "Task band and windows are illustrative, not an application calibration."
+  ]
+}

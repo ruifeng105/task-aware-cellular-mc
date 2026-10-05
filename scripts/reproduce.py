@@ -17,6 +17,7 @@ import time
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "simulation/results/fgf2_pilot"
 EXPANDED = ROOT / "simulation/results/fgf2_expanded"
+B3 = ROOT / "simulation/results/b3"
 REPRO = ROOT / "reproduction"
 CODE = ROOT / "simulation/code"
 KIT = ROOT / "validation_kit/scripts"
@@ -93,10 +94,49 @@ def expanded_metrics(result):
     return values
 
 
+def b3_metrics():
+    """Every B3 number cited in the manuscript: acceptance, M0-M3 forecasts, readiness study."""
+    load = lambda name: json.loads((B3 / name).read_text(encoding="utf-8"))
+    values = {}
+    for token, row in load("verification_results.json")["acceptance"]["conditions"].items():
+        values[f"b3/acceptance/{token}/max_abs_mean_difference"] = row["max_abs_mean_difference"]
+        values[f"b3/acceptance/{token}/median_samplewise_rmse"] = row["median_samplewise_rmse"]
+    forecast = load("forecast_results.json")
+    for horizon, roles in forecast["scores"].items():
+        for role, models in roles.items():
+            for name, metric in models.items():
+                values[f"b3/forecast/{horizon}min/{role}/{name}/rmse"] = math.sqrt(metric["run_equal_mse"])
+    for horizon, roles in forecast["comparisons"]["by_horizon"].items():
+        for role, comparison in roles.items():
+            for key in ("M3_beats_M2", "M2_beats_M0", "M2_beats_M1"):
+                values[f"b3/forecast/{horizon}min/{role}/{key}/conditions"] = comparison[key]["conditions"]
+    for key in ("C1_primary_M3_beats_M2", "C2_M2_beats_M0", "C3_M2_beats_M1"):
+        values[f"b3/forecast/{key}"] = forecast["comparisons"][key]
+    readiness = load("readiness_results.json")
+    for policy, row in readiness["policies"].items():
+        for key in ("success_rate", "mean_completion_min", "mean_wait_min"):
+            values[f"b3/readiness/{policy}/{key}"] = row[key]
+    for policy, row in readiness["matched_reliability"].items():
+        if row["matching_fixed_wait"] is not None:
+            for key in ("wait_min", "success_rate", "mean_completion_min"):
+                values[f"b3/readiness/matched/{policy}/{key}"] = row["matching_fixed_wait"][key]
+    values["b3/readiness/S1_weighted_difference"] = readiness["matched_reporter_readiness"]["weighted_mean_difference_long_minus_short"]
+    for key, value in readiness["version1_check"].items():
+        values[f"b3/readiness/version1/{key}"] = value
+    example = load("readiness_example.json")
+    for key in ("plant", "group_size", "current_later"):
+        values[f"b3/readiness/example/{key}"] = example[key]
+    for name, branch in example["branches"].items():
+        values[f"b3/readiness/example/{name}/wait_min"] = branch["wait_min"]
+        values[f"b3/readiness/example/{name}/success"] = branch["success"]
+    return values
+
+
 def compare_reference():
     expected = json.loads((REPRO / "reference_metrics.json").read_text(encoding="utf-8"))["metrics"]
     actual = paper_metrics(json.loads((OUT / "calibration_results.json").read_text(encoding="utf-8")))
     actual.update(expanded_metrics(json.loads((EXPANDED / "expanded_results.json").read_text(encoding="utf-8"))))
+    actual.update(b3_metrics())
     if actual.keys() != expected.keys():
         raise ValueError("Manuscript metric keys differ from the frozen reference.")
     max_error = 0.0
@@ -109,10 +149,11 @@ def compare_reference():
             agrees = math.isclose(value, reference, rel_tol=1e-8, abs_tol=1e-10)
         if not agrees:
             raise ValueError(f"Reference mismatch: {name}: {value} versus {reference}")
-    for directory in (OUT, EXPANDED):
-        verification = json.loads((directory / "verification_results.json").read_text(encoding="utf-8"))
-        if verification["status"] != "passed":
-            raise ValueError(f"Verification in {directory.relative_to(ROOT)} did not pass.")
+    for path in (OUT / "verification_results.json", EXPANDED / "verification_results.json",
+                 B3 / "verification_results.json", B3 / "forecast_verification_results.json",
+                 B3 / "readiness_verification_results.json"):
+        if json.loads(path.read_text(encoding="utf-8"))["status"] != "passed":
+            raise ValueError(f"Verification {path.relative_to(ROOT)} did not pass.")
     return {"status": "passed", "entries_compared": len(actual),
             "max_absolute_error": max_error,
             "relative_tolerance": 1e-8, "absolute_tolerance": 1e-10}
@@ -158,6 +199,13 @@ def main():
             run_step("expanded_fresh_test", [sys.executable, str(CODE / "expanded_fgf2.py")])
         run_step("verify_data_and_scores", [sys.executable, str(CODE / "verify_fgf2_pipeline.py")])
         run_step("verify_expanded", [sys.executable, str(CODE / "verify_expanded_fgf2.py")])
+        run_step("verify_b3_model", [sys.executable, str(CODE / "verify_b3.py")])
+        if args.mode == "full":
+            run_step("b3_forecast", [sys.executable, str(CODE / "b3_forecast.py")])
+            run_step("b3_readiness", [sys.executable, str(CODE / "b3_readiness.py")])
+            run_step("b3_readiness_example", [sys.executable, str(CODE / "b3_readiness_example.py")])
+        run_step("verify_b3_forecast", [sys.executable, str(CODE / "verify_b3_forecast.py")])
+        run_step("verify_b3_readiness", [sys.executable, str(CODE / "verify_b3_readiness.py")])
         run_step("synthetic_checks", [sys.executable, str(CODE / "smoke_check.py")])
         report["manuscript_reference"] = compare_reference()
         print(f"Passed frozen manuscript comparison ({report['manuscript_reference']['entries_compared']} entries)", flush=True)

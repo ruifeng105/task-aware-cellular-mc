@@ -1,0 +1,15 @@
+{
+  "plant": 231,
+  "group_size": 194,
+  "current_later": 321,
+  "waits": {
+    "fixed": 48.0,
+    "history": 96.0,
+    "current": 84.0
+  },
+  "success": {
+    "fixed": false,
+    "history": true,
+    "current": false
+  }
+}

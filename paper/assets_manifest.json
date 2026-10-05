@@ -1,6 +1,9 @@
 {
   "source_result_sha256": "780f2768582a19224350d3783d19ccd3da52b1fca5d98f6a0776270df87bc6cb",
   "expanded_result_sha256": "c538d3b4f7dc8d2033e251a098b316b106b6cf18c488734dbdbe4ed465521971",
+  "b3_forecast_result_sha256": "e639c47ed22703d1edfe483f64cf2a4a8bac4c28f56d0bcc822674496952013c",
+  "b3_readiness_result_sha256": "3e1bb9ef0e2f9900d003d56f7e62c12048a65c0341ba31313ec5d68f34e69684",
+  "b3_readiness_example_sha256": "591616f4a1a74858484c0e4eaeebd1576a9d951579343a065e4e63bd2341b88e",
   "generated_tables": [
     "expanded_rmse.tex",
     "forecast_rmse.tex",
@@ -11,7 +14,9 @@
   ],
   "generated_figures": [
     "forecast_mean_10min.pdf",
-    "mixed_response.pdf"
+    "mixed_response.pdf",
+    "readiness_example.pdf",
+    "readiness_policies.pdf"
   ],
   "fitted_models": false,
   "note": "Plots summarize saved pilot outputs; B3 is an original-author selection-exposed reference."

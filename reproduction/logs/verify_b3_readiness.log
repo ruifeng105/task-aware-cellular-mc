@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "protocol_sha256": "081edc8ca9e8d8b62668966191f54cef8ecb152940c0da5347cbbe917ed771cd",
+  "rules": {
+    "first_crossing": true,
+    "deadline_fallback": true,
+    "threshold_rule": true,
+    "past_only": true
+  },
+  "resimulation": {
+    "entries_resimulated": 60,
+    "max_abs_difference": 5.9581427791499664e-08
+  },
+  "version1": {
+    "max_recovered_fraction": 0.7916608197645788,
+    "states_within_0_01_of_baseline": 0
+  },
+  "recomputation": {
+    "decisions_recomputed": 16000,
+    "policies_checked": 8
+  },
+  "example": {
+    "plant": 231,
+    "group_size": 194,
+    "max_abs_rise_difference": 1.2505587676514551e-09
+  },
+  "scope": "Simulation of the published B3 model; not evidence about measured cells."
+}

@@ -6,3 +6,4 @@
 *.mat binary
 *.fig binary
 *.ods binary
+*.npz binary
