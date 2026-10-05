@@ -7,10 +7,8 @@ Latexmk: applying rule 'pdflatex'...
 Rule 'pdflatex':  Reasons for rerun
 Changed files or newly in use/created:
   figures/mixed_response.pdf
-  main.tex
 Category 'changed_user':
   figures/mixed_response.pdf
-  main.tex
 
 ------------
 Run number 1 of rule 'pdflatex'
@@ -178,26 +176,22 @@ brarypositioning.code.tex)
 ) (c:/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 (c:/texlive/2025/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
 (./AI_MC_Cellular_Receivers_Draft.out) (./AI_MC_Cellular_Receivers_Draft.out)
-Underfull \hbox (badness 3449) in paragraph at lines 39--40
-\T1/ptm/m/n/10 response his-tory im-proves pre-dic-tion be-yond ac-ces-si-ble
-
 (c:/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (c:/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd)
-Underfull \vbox (badness 10000) has occurred while \output is active
 [1{c:/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/texlive/202
 5/texmf-dist/fonts/enc/dvips/base/8r.enc}]
-
-[2] (c:/texlive/2025/texmf-dist/tex/latex/psnfss/t1pcr.fd)
-Underfull \hbox (badness 10000) in paragraph at lines 139--140
+(c:/texlive/2025/texmf-dist/tex/latex/psnfss/t1pcr.fd)
+Underfull \hbox (badness 10000) in paragraph at lines 137--138
 []\T1/ptm/m/n/10 All nu-mer-i-cal files come from the paper-linked
 
-Underfull \hbox (badness 1960) in paragraph at lines 139--140
+Underfull \hbox (badness 1960) in paragraph at lines 137--138
 \T1/ptm/m/n/10 Com-mands fol-low the au-thors' model XML and pulse
 
-Underfull \hbox (badness 1496) in paragraph at lines 139--140
+Underfull \hbox (badness 1496) in paragraph at lines 137--138
 \T1/ptm/m/n/10 on ev-ery 23 min, sin-gle pulses start at 0, and mixed
 
-(./tables/inventory.tex) (./tables/forecast_rmse.tex)
+[2] (./tables/inventory.tex)
+(./tables/forecast_rmse.tex)
 [3] (./tables/expanded_rmse.tex) (./tables/lopo_rmse.tex)
 (./tables/open_loop_rmse.tex)
 [4] (./AI_MC_Cellular_Receivers_Draft.bbl
@@ -236,7 +230,7 @@ onts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2025/texmf-dist/fonts/type1
 b><c:/texlive/2025/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/202
 5/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2025/texmf-dist/fonts
 /type1/urw/times/utmri8a.pfb>
-Output written on AI_MC_Cellular_Receivers_Draft.pdf (5 pages, 304079 bytes).
+Output written on AI_MC_Cellular_Receivers_Draft.pdf (5 pages, 303926 bytes).
 Transcript written on AI_MC_Cellular_Receivers_Draft.log.
 Latexmk: Getting log file 'AI_MC_Cellular_Receivers_Draft.log'
 Latexmk: Examining 'AI_MC_Cellular_Receivers_Draft.fls'

@@ -3,7 +3,7 @@
 **Toward Task-Aware Reuse of Cellular Molecular Receivers: History-Aware Prediction on Experimental FGF2–ERK Data**
 整理日期：2026-10-04（ICC 投稿修订版）。
 
-本包把五页英文论文初稿、LaTeX 源码、真实数据学习试验、预先登记的扩展检验、作者仿真参照和结果核查放在同一项目中。可先打开 `paper/AI_MC_Cellular_Receivers_Draft.pdf` 阅读论文，再按下方入口复现。中文研究说明见 `Paper_Notes_ZH.md`，论文与程序的逐项对应见 `Paper_Simulation_Map_ZH.md`。
+本包把五页英文论文初稿、LaTeX 源码、真实数据学习试验、预先登记的扩展检验、作者仿真参照和结果核查，以及前瞻验证方案与规划工具包（2026-10-05 整合）放在同一项目中。可先打开 `paper/AI_MC_Cellular_Receivers_Draft.pdf` 阅读论文，再按下方入口复现。中文研究说明见 `Paper_Notes_ZH.md`，论文与程序的逐项对应见 `Paper_Simulation_Map_ZH.md`。
 
 ## 快速运行
 
@@ -22,7 +22,7 @@ python scripts/reproduce.py --mode verify
 python scripts/reproduce.py --mode full
 ```
 
-命令会更新 `simulation/results/` 和论文图表，详细日志及运行报告在 `reproduction/`。固定参照保存在 `reproduction/reference_metrics.json`：原 69 项保持冻结值，新增条目及原因记录在其 `extensions` 字段；修改模型后不要覆盖它来让核查通过。
+命令会更新 `simulation/results/`、论文图表和 `validation_kit/planning_outputs/`（这一步需要 SciPy），详细日志及运行报告在 `reproduction/`。固定参照保存在 `reproduction/reference_metrics.json`：原 69 项保持冻结值，新增条目及原因记录在其 `extensions` 字段；修改模型后不要覆盖它来让核查通过。
 
 仓库的 `.gitattributes` 强制文本文件使用 LF。来源文件按 Git blob 和 SHA-256 哈希核验，Windows 默认的 CRLF 转换会让全新克隆的核验全部失败，因此不要删除该文件。
 
@@ -38,6 +38,8 @@ python scripts/reproduce.py --mode full
 | `simulation/results/fgf2_pilot/`、`simulation/results/fgf2_expanded/` | 试点与扩展检验的结果、冻结记录和核查报告 |
 | `simulation/public_data/` | 作者原始导出文件；试点 47 个与扩展 56 个分别列在两份来源清单中 |
 | `simulation/novelty_audit.json`、`simulation/AI_MC_Application_First_Review_ZH.md` | 18 项相关工作定向核查与应用标定分析 |
+| `AI_MC_Complete_Validation_Plan_ZH.md` | 完整前瞻验证与推进方案（P0–P6），2026-10-04 版 |
+| `validation_kit/` | 验证规划工具包：登记草案、10/54 候选设计生成、样本规划、登记与数据结构审计、7 张空白记录模板 |
 | `scripts/reproduce.py` | 统一核查、复现和可选论文编译入口 |
 | `release_manifest.json` | 合并包文件的 SHA-256 与大小清单 |
 
@@ -63,6 +65,31 @@ python scripts/reproduce.py --mode full
 
 这些都是按条件等权的点估计。数据没有独立实验日标识，不能把细胞或窗口数当作独立重复数，也不报告显著性。命令浓度不等于已测局部浓度；预测改善不能证明新生物记忆机制、任务成功率或剂量节省。
 
+## 前瞻验证方案与规划工具包
+
+`AI_MC_Complete_Validation_Plan_ZH.md` 给出下一阶段的完整验证路线：
+
+- **P0–P1**：平台确认与递送标定，按 L0–L3 分级。
+- **P2**：同钟历史—探测实验，预试 10 个条件、主设计 27 个条件 × 2 个时钟块，并设匹配的"仅预刺激"、"仅探测"和全缓冲对照。
+- **P3–P4**：同信息嵌套模型 M0–M3，主比较为"机制状态 + 历史残差"对"同反馈机制状态"，主指标为组级 Brier 分数；之后做压力模拟。
+- **P5**：前瞻的两任务控制比较，先只开放自适应等待；主成本为按失败惩罚的完成时间。
+- **P6**：最近邻全文查新与论文主张。
+
+`validation_kit/` 是对应的规划软件。在该目录运行：
+
+```bash
+python scripts/design_candidates.py --stage pilot
+python scripts/design_candidates.py --stage main
+python scripts/sample_size.py
+python scripts/audit_registration.py
+python scripts/audit_data_contract.py
+python scripts/verify_planning_tools.py
+```
+
+登记草案目前是 `draft_not_ready`，`audit_registration.py --require-ready` 会按预期返回退出码 2。数据模板只有表头，空数据审计返回 `awaiting_actual_records`。工具包**没有新增任何实验记录**，也没有实现粒子滤波、历史残差或闭环控制。`python scripts/reproduce.py --mode verify` 会检查规划输出与当前登记草案一致、模板保持空白，以及收到的文件与 `validation_kit/source_package_manifest.json` 相符。整合时只把 5 个脚本的写文件方式改为固定 LF，CSV 只统一了换行符。
+
+方案与本仓库现状之间的差异和衔接，见 `Paper_Notes_ZH.md` 的"与前瞻验证方案的衔接"一节。
+
 ## 编译论文
 
 已附 PDF，运行 Python 核查无需 LaTeX。安装 TeX Live 或 MiKTeX 后，可在项目根目录运行：
@@ -83,4 +110,4 @@ python scripts/reproduce.py --mode verify --compile-paper
 
 本包使用仓库中的数值子集，不包含完整 Mendeley 压缩包或显微图像。作者文件保留原文件名与来源身份。作者仓库根目录没有代码许可证，本包不为这些文件或整个合并包附加新的许可；若公开发布仓库，请先确认这些文件可以再分发。未修改的 `paper/IEEEtran.cls` 为 Michael Shell 的 1.8b 版本，保留其 LaTeX Project Public License 声明。
 
-后续推进顺序：投稿版定稿 → B3 数字孪生（复现作者 `sim_post` 导出作为验收）→ 仿真评估任务控制 → 新独立实验日和局部输运标定 → 活细胞控制实验。
+后续推进顺序（与验证方案 P0–P6 一致）：投稿版定稿 → P0/P1 平台确认与递送标定 → P2 同钟历史—探测预试 → P3 机制信念估计器（B3 具名参数映射，以复现作者 `sim_post` 导出为验收）与同信息 M0–M3 → P4 压力模拟 → P5 前瞻两任务控制 → P6 全文查新收敛。全文查新可与其他阶段并行。

@@ -1,0 +1,64 @@
+{
+  "scope": "Planning only. Set multiplicity-adjusted alpha and pilot variance before a fixed formal test.",
+  "actual_success_trials": 0,
+  "reliability_examples": [
+    {
+      "target": 0.9,
+      "alpha_one_sided": 0.05,
+      "n_independent_all_success_trials": 29,
+      "lower_bound_if_all_success": 0.9018553723227043,
+      "assumption": "Independent Bernoulli units and zero failures; not cells in shared chambers."
+    },
+    {
+      "target": 0.95,
+      "alpha_one_sided": 0.05,
+      "n_independent_all_success_trials": 59,
+      "lower_bound_if_all_success": 0.950492390111773,
+      "assumption": "Independent Bernoulli units and zero failures; not cells in shared chambers."
+    },
+    {
+      "target": 0.99,
+      "alpha_one_sided": 0.05,
+      "n_independent_all_success_trials": 299,
+      "lower_bound_if_all_success": 0.9900308532071007,
+      "assumption": "Independent Bernoulli units and zero failures; not cells in shared chambers."
+    }
+  ],
+  "paired_day_normal_approximation": [
+    {
+      "standardized_paired_day_effect": 0.2,
+      "alpha_one_sided": 0.05,
+      "power": 0.8,
+      "normal_approximation_independent_days": 155,
+      "assumption": "Known paired-day SD and normal mean difference; optimistic planning approximation, not a verified sample size."
+    },
+    {
+      "standardized_paired_day_effect": 0.3,
+      "alpha_one_sided": 0.05,
+      "power": 0.8,
+      "normal_approximation_independent_days": 69,
+      "assumption": "Known paired-day SD and normal mean difference; optimistic planning approximation, not a verified sample size."
+    },
+    {
+      "standardized_paired_day_effect": 0.5,
+      "alpha_one_sided": 0.05,
+      "power": 0.8,
+      "normal_approximation_independent_days": 25,
+      "assumption": "Known paired-day SD and normal mean difference; optimistic planning approximation, not a verified sample size."
+    },
+    {
+      "standardized_paired_day_effect": 0.8,
+      "alpha_one_sided": 0.05,
+      "power": 0.8,
+      "normal_approximation_independent_days": 10,
+      "assumption": "Known paired-day SD and normal mean difference; optimistic planning approximation, not a verified sample size."
+    },
+    {
+      "standardized_paired_day_effect": 1.0,
+      "alpha_one_sided": 0.05,
+      "power": 0.8,
+      "normal_approximation_independent_days": 7,
+      "assumption": "Known paired-day SD and normal mean difference; optimistic planning approximation, not a verified sample size."
+    }
+  ]
+}

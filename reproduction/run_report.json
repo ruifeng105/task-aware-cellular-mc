@@ -1,7 +1,7 @@
 {
   "status": "passed",
   "mode": "full",
-  "started_utc": "2026-10-04T14:21:05.240227+00:00",
+  "started_utc": "2026-10-05T19:40:54.532041+00:00",
   "environment": {
     "python": "3.13.3",
     "numpy": "2.3.2",
@@ -13,49 +13,85 @@
     {
       "name": "fit_and_predict",
       "return_code": 0,
-      "elapsed_seconds": 6.085,
+      "elapsed_seconds": 6.06,
       "log": "reproduction\\logs\\fit_and_predict.log"
     },
     {
       "name": "expanded_fresh_test",
       "return_code": 0,
-      "elapsed_seconds": 14.331,
+      "elapsed_seconds": 14.521,
       "log": "reproduction\\logs\\expanded_fresh_test.log"
     },
     {
       "name": "verify_data_and_scores",
       "return_code": 0,
-      "elapsed_seconds": 0.896,
+      "elapsed_seconds": 0.9,
       "log": "reproduction\\logs\\verify_data_and_scores.log"
     },
     {
       "name": "verify_expanded",
       "return_code": 0,
-      "elapsed_seconds": 8.5,
+      "elapsed_seconds": 8.757,
       "log": "reproduction\\logs\\verify_expanded.log"
     },
     {
       "name": "synthetic_checks",
       "return_code": 0,
-      "elapsed_seconds": 0.448,
+      "elapsed_seconds": 0.442,
       "log": "reproduction\\logs\\synthetic_checks.log"
     },
     {
       "name": "build_paper_assets",
       "return_code": 0,
-      "elapsed_seconds": 1.217,
+      "elapsed_seconds": 1.225,
       "log": "reproduction\\logs\\build_paper_assets.log"
+    },
+    {
+      "name": "kit_pilot_design",
+      "return_code": 0,
+      "elapsed_seconds": 0.056,
+      "log": "reproduction\\logs\\kit_pilot_design.log"
+    },
+    {
+      "name": "kit_main_design",
+      "return_code": 0,
+      "elapsed_seconds": 0.055,
+      "log": "reproduction\\logs\\kit_main_design.log"
+    },
+    {
+      "name": "kit_sample_size",
+      "return_code": 0,
+      "elapsed_seconds": 0.814,
+      "log": "reproduction\\logs\\kit_sample_size.log"
+    },
+    {
+      "name": "kit_registration_audit",
+      "return_code": 0,
+      "elapsed_seconds": 0.059,
+      "log": "reproduction\\logs\\kit_registration_audit.log"
+    },
+    {
+      "name": "kit_data_contract_audit",
+      "return_code": 0,
+      "elapsed_seconds": 0.395,
+      "log": "reproduction\\logs\\kit_data_contract_audit.log"
+    },
+    {
+      "name": "kit_software_checks",
+      "return_code": 0,
+      "elapsed_seconds": 1.002,
+      "log": "reproduction\\logs\\kit_software_checks.log"
     },
     {
       "name": "pipeline_checks",
       "return_code": 0,
-      "elapsed_seconds": 0.621,
+      "elapsed_seconds": 0.636,
       "log": "reproduction\\logs\\pipeline_checks.log"
     },
     {
       "name": "compile_paper",
       "return_code": 0,
-      "elapsed_seconds": 2.045,
+      "elapsed_seconds": 2.044,
       "log": "reproduction\\logs\\compile_paper.log"
     }
   ],
@@ -71,5 +107,5 @@
   },
   "calibration_result_sha256": "780f2768582a19224350d3783d19ccd3da52b1fca5d98f6a0776270df87bc6cb",
   "expanded_result_sha256": "c538d3b4f7dc8d2033e251a098b316b106b6cf18c488734dbdbe4ed465521971",
-  "finished_utc": "2026-10-04T14:21:39.415500+00:00"
+  "finished_utc": "2026-10-05T19:41:31.526239+00:00"
 }

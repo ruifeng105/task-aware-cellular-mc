@@ -1,0 +1,9 @@
+{
+  "stage": "main",
+  "candidate_variants": 54,
+  "biological_sessions_collected": 0,
+  "planned_matrix_not_actual_randomization": true,
+  "hardware_commands_generated": false,
+  "config_sha256": "724a5d87900d15d986d72a927763e97ac43d1c2977fa5d28a1ee4a8b107f10bd",
+  "note": "Actual day/chamber/block assignment and calibrated concentrations must be recorded separately before use."
+}

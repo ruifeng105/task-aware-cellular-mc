@@ -1,0 +1,1 @@
+session_id,sequence_id,cell_id,time_min,arrival_time_min,normalized_fret,raw_fret_ratio,response_missing,missing_reason,eligible_at_sequence_start

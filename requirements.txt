@@ -3,3 +3,5 @@ numpy
 pandas>=1.5
 openpyxl
 matplotlib
+# validation_kit planning tools (full reproduction mode)
+scipy>=1.14

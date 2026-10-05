@@ -1,0 +1,1 @@
+session_id,sequence_id,event_id,event_type,time_min,arrival_time_min,planned_action_id,executed_action_id,assigned_policy,runtime_min,fallback_reason,data_available_until_min

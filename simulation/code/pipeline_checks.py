@@ -4,6 +4,7 @@ Usage: python simulation/code/pipeline_checks.py
 Exits nonzero with a list of failures.
 """
 from pathlib import Path
+import hashlib
 import json
 import re
 import sys
@@ -13,7 +14,12 @@ sys.path.insert(0, str(ROOT / 'simulation/code'))
 import calibrate_fgf2 as c
 
 TEXT_SUFFIXES = {'.json', '.csv', '.tex', '.log', '.txt'}
-GENERATED_DIRS = ('simulation/results', 'simulation/configs', 'paper/tables', 'reproduction')
+GENERATED_DIRS = ('simulation/results', 'simulation/configs', 'paper/tables', 'reproduction', 'validation_kit')
+KIT = ROOT / 'validation_kit'
+# Received validation-kit files changed during integration (LF-only writers on every OS).
+KIT_EDITED = {'validation_kit/scripts/design_candidates.py', 'validation_kit/scripts/sample_size.py',
+              'validation_kit/scripts/audit_registration.py', 'validation_kit/scripts/audit_data_contract.py',
+              'validation_kit/scripts/verify_planning_tools.py'}
 GENERATED_FILES = ('paper/assets_manifest.json',)
 
 
@@ -103,8 +109,51 @@ def check_manuscript_numbers_frozen():
     return failures
 
 
+def check_validation_kit():
+    """Planning outputs match the current draft registration and never report results."""
+    failures = []
+    config_raw = (KIT / 'configs/validation_registration_draft.json').read_bytes()
+    config, config_sha = json.loads(config_raw), hashlib.sha256(config_raw).hexdigest()
+    load = lambda name: json.loads((KIT / 'planning_outputs' / name).read_text(encoding='utf-8'))
+    audit = load('registration_audit.json')
+    if audit['config_sha256'] != config_sha:
+        failures.append('registration audit was produced from a different config')
+    if config['status'].startswith('draft') and audit['ready_assertions_complete']:
+        failures.append('draft registration reported as ready')
+    for stage in ('pilot', 'main'):
+        record = load(f'{stage}_candidate_design.json')
+        rows = (KIT / f'planning_outputs/{stage}_candidate_design.csv').read_text(encoding='utf-8').strip().split('\n')[1:]
+        if record['config_sha256'] != config_sha or record['candidate_variants'] != len(rows):
+            failures.append(f'{stage} candidate design is stale or inconsistent')
+        if record['biological_sessions_collected'] != 0 or record['hardware_commands_generated']:
+            failures.append(f'{stage} candidate design claims collected sessions or hardware commands')
+    templates = sorted((KIT / 'data_templates').glob('*.csv'))
+    filled = [t.name for t in templates if len(t.read_text(encoding='utf-8').strip().split('\n')) != 1]
+    if filled:
+        failures.append(f'data templates must stay header-only (put real records elsewhere): {filled}')
+    contract = load('data_contract_audit.json')
+    if not filled and (contract['status'] != 'awaiting_actual_records' or contract['empirical_task_reliability'] is not None):
+        failures.append('empty templates must give awaiting_actual_records and no reliability')
+    if load('software_verification.json')['status'] != 'passed':
+        failures.append('planning-tool software verification did not pass')
+    return failures
+
+
+def check_validation_kit_provenance():
+    """Received files are byte-identical, differ only in line endings, or are listed as edited."""
+    received = json.loads((KIT / 'source_package_manifest.json').read_text(encoding='utf-8'))['files']
+    failures = []
+    for item in received:
+        raw = (ROOT / item['path']).read_bytes()
+        same = hashlib.sha256(raw).hexdigest() == item['sha256']
+        line_endings_only = hashlib.sha256(raw.replace(b'\n', b'\r\n')).hexdigest() == item['sha256']
+        if not (same or line_endings_only or item['path'] in KIT_EDITED):
+            failures.append(f'received file changed without an integration record: {item["path"]}')
+    return failures
+
+
 CHECKS = (check_outputs_lf, check_schedules, check_pilot_result_fields, check_manuscript_assets,
-          check_manuscript_numbers_frozen)
+          check_manuscript_numbers_frozen, check_validation_kit, check_validation_kit_provenance)
 
 
 def main():

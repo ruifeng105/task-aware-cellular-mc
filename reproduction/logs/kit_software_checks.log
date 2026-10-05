@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "scope": "Planning software only; no biological or physical calibration evidence",
+  "pilot_conditions": 10,
+  "main_candidate_variants": 54,
+  "actual_experimental_records_created": 0,
+  "max_exact_bound_error_against_scipy": 2.4136248555350903e-13,
+  "planned_probe_clock_alignment_checked": true,
+  "matched_no_second_command_controls_checked": true,
+  "invalid_feedback_time_rejected": true,
+  "group_split_leakage_rejected": true,
+  "locked_test_cohort_overlap_rejected": true,
+  "empty_data_never_produces_reliability": true,
+  "draft_not_misrepresented_as_ready": true
+}

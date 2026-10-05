@@ -1,0 +1,143 @@
+{
+  "release_date": "2026-10-04",
+  "scope": "Prospective validation plan and planning software; no new experimental records or implemented control model",
+  "actual_new_biological_sessions": 0,
+  "sha256_excludes_manifest_itself": true,
+  "files": [
+    {
+      "path": "AI_MC_Complete_Validation_Plan_ZH.md",
+      "bytes": 38453,
+      "sha256": "b29fba472e2b2e88b95bb91213973de2f77c67bf4dd53a333826aa938a4d948a"
+    },
+    {
+      "path": "validation_kit/README.md",
+      "bytes": 9735,
+      "sha256": "2d8cb56eceee3d14adb5147f0cd4be29731664de8d55005330bab05e9c6d6309"
+    },
+    {
+      "path": "validation_kit/configs/validation_registration_draft.json",
+      "bytes": 4384,
+      "sha256": "724a5d87900d15d986d72a927763e97ac43d1c2977fa5d28a1ee4a8b107f10bd"
+    },
+    {
+      "path": "validation_kit/data_templates/control_event_log.csv",
+      "bytes": 176,
+      "sha256": "39b77bed63e4e39e65128a43d7bda8e37fe726e69b19308967472a578a093f16"
+    },
+    {
+      "path": "validation_kit/data_templates/delivery_commands.csv",
+      "bytes": 57,
+      "sha256": "8a1b48e1228b92dffb6d6d6e1136af31f8dce8bd0f8dc344e975dd1ebe5cadcc"
+    },
+    {
+      "path": "validation_kit/data_templates/delivery_samples.csv",
+      "bytes": 135,
+      "sha256": "2814db1b7f35f9a2f5739f658beae8123640537ab00754450c59c1deca429f7c"
+    },
+    {
+      "path": "validation_kit/data_templates/novelty_evidence.csv",
+      "bytes": 269,
+      "sha256": "5ddf99110f1e07e999858a8435a9a686a79877d972e0c6e529538e493b1b8564"
+    },
+    {
+      "path": "validation_kit/data_templates/observations.csv",
+      "bytes": 148,
+      "sha256": "9c5c0f9f849ba3e6ecd7a5a18c1fd0d10805b5db956b6391cd218a88c35ac0d8"
+    },
+    {
+      "path": "validation_kit/data_templates/sequence_outcomes.csv",
+      "bytes": 352,
+      "sha256": "9081b473635faec15123872e4a9fa4a723c17124647a03a6606cf0ecb6402a44"
+    },
+    {
+      "path": "validation_kit/data_templates/session_manifest.csv",
+      "bytes": 182,
+      "sha256": "253d524048ad0ba25413c4da3fe6623122364ab527475bd897a6ccbea3d55aee"
+    },
+    {
+      "path": "validation_kit/planning_outputs/data_contract_audit.json",
+      "bytes": 195,
+      "sha256": "6577cd69abe0ad0e54ac1f1fa633b6d7962ee32a7cfb91e759caa3a9acc7c5b1"
+    },
+    {
+      "path": "validation_kit/planning_outputs/main_candidate_design.csv",
+      "bytes": 6885,
+      "sha256": "c6345b7b80c4e3eb81104a1d4605b9ce1a95fe7a44d65baa945b5df3ad5355d8"
+    },
+    {
+      "path": "validation_kit/planning_outputs/main_candidate_design.json",
+      "bytes": 385,
+      "sha256": "0c5ed97a5d9599bc5db0231a70d09b72a0bc1f8f225d6ed08f4cbfc9e535a2de"
+    },
+    {
+      "path": "validation_kit/planning_outputs/paired_day_cost_planning.csv",
+      "bytes": 753,
+      "sha256": "a6e9e254065770e5cd76c8c65a30f778b70ca5ff562478acd49c9d9d7903b929"
+    },
+    {
+      "path": "validation_kit/planning_outputs/pilot_candidate_design.csv",
+      "bytes": 1524,
+      "sha256": "6f64b5ce3c10342541850789db076d3c85d48dff845a8c0225b86a5defecb555"
+    },
+    {
+      "path": "validation_kit/planning_outputs/pilot_candidate_design.json",
+      "bytes": 386,
+      "sha256": "1d1f74f35f873fec24899077f65bb2498e9ca3867c4cf5de3263af7bc559821b"
+    },
+    {
+      "path": "validation_kit/planning_outputs/registration_audit.json",
+      "bytes": 2297,
+      "sha256": "2b4fd8deb77a139c4bbd194884c8547b6cfc8beeb15c3e757fc7c96f79d1d45a"
+    },
+    {
+      "path": "validation_kit/planning_outputs/runtime_environment.json",
+      "bytes": 276,
+      "sha256": "d8ca56c3662fa6e8c465d8fd6b2e1aa60f6860301f64a7b107f4f74bd8277c34"
+    },
+    {
+      "path": "validation_kit/planning_outputs/sample_size_planning.json",
+      "bytes": 2481,
+      "sha256": "aaf0bb805c08a94e89a3096c53212e7aad72eee3c25cf0f035706f2dcf4dd3cd"
+    },
+    {
+      "path": "validation_kit/planning_outputs/software_verification.json",
+      "bytes": 604,
+      "sha256": "7a4bd99c573291e36016b9b15b80d642e52e660e0fc86476ff77cc2c749fc952"
+    },
+    {
+      "path": "validation_kit/planning_outputs/zero_failure_reliability_planning.csv",
+      "bytes": 424,
+      "sha256": "b2530d4dfcc836f3d47be30027c11d4a0f030b2ad4ac1372f300ae7513b3988a"
+    },
+    {
+      "path": "validation_kit/requirements.txt",
+      "bytes": 36,
+      "sha256": "da37652d22db673c7a577a8ed984af6268e4b4734927ffa86461a085ff36b699"
+    },
+    {
+      "path": "validation_kit/scripts/audit_data_contract.py",
+      "bytes": 5092,
+      "sha256": "b85d4959e493468969699cca8673abb04a6c1be78c30ed47ad0bad3bc4b43296"
+    },
+    {
+      "path": "validation_kit/scripts/audit_registration.py",
+      "bytes": 5985,
+      "sha256": "ac77bad64791a09b71130034248ba3512e3c4cb486f4a48a17fb9d5d525db44a"
+    },
+    {
+      "path": "validation_kit/scripts/design_candidates.py",
+      "bytes": 3969,
+      "sha256": "28c1f44f7d9e14bc2ad46e718ca837b247173cc3e1e5919eb56964921fd09b22"
+    },
+    {
+      "path": "validation_kit/scripts/sample_size.py",
+      "bytes": 2451,
+      "sha256": "4346ba83d5585d5455d01f481cded7b34575d370a026b6cbfa5e96d09d92794f"
+    },
+    {
+      "path": "validation_kit/scripts/verify_planning_tools.py",
+      "bytes": 4028,
+      "sha256": "fad5cb2165e18c3047f06556e87dcccd684424041faa09854598de1f8b346a7f"
+    }
+  ]
+}

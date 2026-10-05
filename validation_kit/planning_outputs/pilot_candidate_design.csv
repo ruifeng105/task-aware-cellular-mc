@@ -1,0 +1,11 @@
+condition_type,pre_duration_min,wait_min,pre_command_ng_per_ml,probe_command_ng_per_ml,planned_probe_clock_min,planned_condition_id,planned_pre_start_min,planned_pre_end_min,planned_probe_duration_min,planned_record_until_min,actual_day_id,actual_session_id,actual_chamber_id,actual_cell_batch_id,status,provisional_candidate_order
+history_then_probe,30.0,48.0,25.0,25.0,90.0,pilot_C007,12.0,42.0,5.0,135.0,,,,,candidate_only_not_calibrated_not_executed,1
+probe_only,0.0,,0.0,25.0,90.0,pilot_C009,,,5.0,135.0,,,,,candidate_only_not_calibrated_not_executed,2
+matched_pre_only,30.0,12.0,25.0,0.0,90.0,pilot_C006,48.0,78.0,0.0,135.0,,,,,candidate_only_not_calibrated_not_executed,3
+matched_pre_only,3.0,12.0,25.0,0.0,90.0,pilot_C002,75.0,78.0,0.0,135.0,,,,,candidate_only_not_calibrated_not_executed,4
+matched_pre_only,30.0,48.0,25.0,0.0,90.0,pilot_C008,12.0,42.0,0.0,135.0,,,,,candidate_only_not_calibrated_not_executed,5
+buffer_only,0.0,,0.0,0.0,90.0,pilot_C010,,,0.0,135.0,,,,,candidate_only_not_calibrated_not_executed,6
+matched_pre_only,3.0,48.0,25.0,0.0,90.0,pilot_C004,39.0,42.0,0.0,135.0,,,,,candidate_only_not_calibrated_not_executed,7
+history_then_probe,30.0,12.0,25.0,25.0,90.0,pilot_C005,48.0,78.0,5.0,135.0,,,,,candidate_only_not_calibrated_not_executed,8
+history_then_probe,3.0,12.0,25.0,25.0,90.0,pilot_C001,75.0,78.0,5.0,135.0,,,,,candidate_only_not_calibrated_not_executed,9
+history_then_probe,3.0,48.0,25.0,25.0,90.0,pilot_C003,39.0,42.0,5.0,135.0,,,,,candidate_only_not_calibrated_not_executed,10

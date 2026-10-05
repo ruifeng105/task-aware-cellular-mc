@@ -19,6 +19,7 @@ OUT = ROOT / "simulation/results/fgf2_pilot"
 EXPANDED = ROOT / "simulation/results/fgf2_expanded"
 REPRO = ROOT / "reproduction"
 CODE = ROOT / "simulation/code"
+KIT = ROOT / "validation_kit/scripts"
 
 
 def paper_metrics(result):
@@ -162,6 +163,14 @@ def main():
         print(f"Passed frozen manuscript comparison ({report['manuscript_reference']['entries_compared']} entries)", flush=True)
         if args.mode == "full":
             run_step("build_paper_assets", [sys.executable, str(ROOT / "scripts/build_paper_assets.py")])
+            # Prospective-validation planning kit (needs SciPy); it never creates biological records.
+            for name, script, options in (("kit_pilot_design", "design_candidates.py", ["--stage", "pilot"]),
+                                          ("kit_main_design", "design_candidates.py", ["--stage", "main"]),
+                                          ("kit_sample_size", "sample_size.py", []),
+                                          ("kit_registration_audit", "audit_registration.py", []),
+                                          ("kit_data_contract_audit", "audit_data_contract.py", []),
+                                          ("kit_software_checks", "verify_planning_tools.py", [])):
+                run_step(name, [sys.executable, str(KIT / script), *options], KIT)
         run_step("pipeline_checks", [sys.executable, str(CODE / "pipeline_checks.py")])
         if args.compile_paper:
             options = ["-interaction=nonstopmode", "-halt-on-error",

@@ -1,0 +1,109 @@
+{
+  "status": "draft_not_preregistered_not_ready_for_formal_model_or_control_validation",
+  "created_local_date": "2026-10-04",
+  "timezone": "Europe/Berlin",
+  "actual_new_biological_sessions": 0,
+  "scope": "Prospective FGF2 cellular-MC validation; current historical results are development diagnostics.",
+  "candidate_design": {
+    "status": "proposed_only_not_calibrated",
+    "pre_command_ng_per_ml": 25.0,
+    "history_durations_min": [
+      3.0,
+      30.0
+    ],
+    "waits_min": [
+      6.0,
+      12.0,
+      24.0,
+      48.0
+    ],
+    "probe_command_candidates_ng_per_ml": [
+      2.5,
+      25.0
+    ],
+    "probe_duration_min": 5.0,
+    "probe_clock_blocks_min": [
+      90.0,
+      120.0
+    ],
+    "pilot_waits_min": [
+      12.0,
+      48.0
+    ],
+    "pilot_probe_command_ng_per_ml": 25.0,
+    "post_probe_observation_window_min": 40.0,
+    "planning_permutation_seed": 20261004,
+    "counts": "Pilot: 10 conditions at one probe clock. Main: 16 history-probe + 8 matched pre-only + 2 probe-only + 1 buffer = 27 conditions; 2 clock blocks give 54 candidate variants, not independent experimental repeats.",
+    "rule": "Fix probe clock within each block; pre start = probe clock - wait - duration. Real delivery-based waiting and cell-age measurements must also be logged."
+  },
+  "group_split": {
+    "registered_largest_shared_unit": null,
+    "train": [],
+    "model_selection": [],
+    "probability_calibration": [],
+    "locked_test": [],
+    "locked_test_subcohorts": {
+      "prediction_validation": [],
+      "prospective_control": []
+    },
+    "historical_data_role": "development_only_no_recycled_blind_test"
+  },
+  "task": {
+    "response_unit": "normalized_FRET",
+    "measurement_grid_rule": "native acquired frames only; feedback availability uses arrival timestamps",
+    "task_definitions": null,
+    "joint_same_cell_fraction_threshold": null,
+    "eligible_cell_cohort_rule": null,
+    "missing_response_and_tracking_rule": null,
+    "sequence_reliability_target": null,
+    "false_activation_rule": null,
+    "deadline_and_completion_rule": null
+  },
+  "statistics": {
+    "primary_prediction_metric": "day/group-equal Brier score of prespecified next-task event",
+    "primary_cost_endpoint": "failure_penalized_sequence_completion_time_min",
+    "primary_comparison": "mechanistic_state_plus_history_residual versus matched mechanistic_state",
+    "prediction_practical_improvement_margin": null,
+    "cost_practical_improvement_margin_min": null,
+    "reliability_noninferiority_margin": null,
+    "family_error_budget": 0.05,
+    "confidence_and_multiplicity_procedure": null,
+    "fixed_test_sample_size": null,
+    "sample_size_unit": "prespecified independent day/group; never cell or overlapping window",
+    "pilot_variance_estimate_source": null,
+    "all_failure_cost_rule": "include every assigned sequence and resources actually consumed; success-only averages are secondary"
+  },
+  "models_and_control": {
+    "mechanistic_operator": "existing b3_operator.py named-parameter source operator; posterior mapping and nonlinear filtering still to implement",
+    "model_candidates_frozen_before_new_test": null,
+    "same_feedback_and_future_input_budget_verified": null,
+    "mechanistic_filter_validated": null,
+    "response_uncertainty_and_task_probability_calibrated": null,
+    "supported_action_set": null,
+    "first_closed_loop_scope": "adaptive waiting with fixed calibrated amplitude/duration",
+    "reference_and_fallback_protocol": null,
+    "maximum_compute_plus_actuation_latency_min": null,
+    "fallbacks_count_in_assigned_policy": true
+  },
+  "measurement": {
+    "readout_platform_confirmed": null,
+    "command_and_observation_clock_synchronised": null,
+    "feedback_arrival_logged": null,
+    "native_gap_and_initial_baseline_rules_confirmed": null,
+    "delivery_timing_evidence_and_scope": null,
+    "constant_flow_or_validated_flow_compensation": null,
+    "flow_measured": null,
+    "inlet_FGF2_assayed": null,
+    "receiver_FGF2_assayed": null,
+    "measured_mass_claim_allowed": false,
+    "measured_local_exposure_claim_allowed": false,
+    "tracer_is_absolute_FGF2": false
+  },
+  "evidence": {
+    "platform_and_calibration_record_paths": [],
+    "pilot_record_paths": [],
+    "raw_source_checksums_record": null,
+    "freeze_record": null,
+    "nearest_prior_fulltext_comparison_completed": false
+  }
+}

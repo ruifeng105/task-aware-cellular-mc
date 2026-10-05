@@ -1,0 +1,4 @@
+target,alpha_one_sided,n_independent_all_success_trials,lower_bound_if_all_success,assumption
+0.9,0.05,29,0.9018553723227043,Independent Bernoulli units and zero failures; not cells in shared chambers.
+0.95,0.05,59,0.950492390111773,Independent Bernoulli units and zero failures; not cells in shared chambers.
+0.99,0.05,299,0.9900308532071007,Independent Bernoulli units and zero failures; not cells in shared chambers.
