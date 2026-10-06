@@ -18,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "simulation/results/fgf2_pilot"
 EXPANDED = ROOT / "simulation/results/fgf2_expanded"
 B3 = ROOT / "simulation/results/b3"
+NESTED = ROOT / "simulation/results/nested"
 REPRO = ROOT / "reproduction"
 CODE = ROOT / "simulation/code"
 KIT = ROOT / "validation_kit/scripts"
@@ -132,11 +133,58 @@ def b3_metrics():
     return values
 
 
+def nested_metrics():
+    """Nested P/C/O/M/H comparison, forecast phases, example cell and corrected LOPO."""
+    data = json.loads((NESTED / "nested_results.json").read_text(encoding="utf-8"))
+    values = {}
+    for h, analysis in data["main"].items():
+        for role, comp in analysis["comparisons"].items():
+            for name, value in comp["rmse"].items():
+                values[f"nested/{h}min/{role}/{name}/rmse"] = value
+            for key, row in comp.items():
+                if key.endswith(tuple(f"_beats_{b}" for b in ("M", "O", "C", "P"))):
+                    values[f"nested/{h}min/{role}/{key}/conditions"] = row["conditions"]
+        for phase, row in data["phases"][h].items():
+            values[f"nested/{h}min/phase/{phase}/n_conditions"] = row["n_conditions"]
+            for name, value in row["rmse"].items():
+                values[f"nested/{h}min/phase/{phase}/{name}/rmse"] = value
+    for group, fold in data["lopo"].items():
+        for name, value in fold["rmse"].items():
+            values[f"nested/lopo/{group}/{name}/rmse"] = value
+    for key, value in data["decision"].items():
+        values[f"nested/decision/{key}"] = value
+    values["nested/example/cell"] = data["example"]["cell"]
+    values["nested/example/n_cells"] = data["example"]["n_cells"]
+    for name, value in data["example"]["cell_rmse"].items():
+        values[f"nested/example/cell_rmse/{name}"] = value
+    return values
+
+
+def waiting_metrics():
+    """Calibrated waiting study (readiness protocol v3) and its weight-degeneracy diagnostic."""
+    data = json.loads((B3 / "waiting_results.json").read_text(encoding="utf-8"))
+    values = {}
+    for noise, block in data["noise"].items():
+        for name, choice in block["choices"].items():
+            for key in ("threshold", "tau_min", "wait_min", "target_reached"):
+                if key in choice:
+                    values[f"b3/waiting/{noise}/choice/{name}/{key}"] = choice[key]
+        for policy, row in block["evaluation"].items():
+            for key in ("success_rate", "mean_completion_min", "mean_wait_min"):
+                values[f"b3/waiting/{noise}/{policy}/{key}"] = row[key]
+    diagnostic = json.loads((B3 / "waiting_verification_results.json").read_text(encoding="utf-8"))["weight_degeneracy"]
+    for noise, value in diagnostic["median_effective_sample_size"].items():
+        values[f"b3/waiting/diagnostic/{noise}/median_effective_sample_size"] = value
+    return values
+
+
 def compare_reference():
     expected = json.loads((REPRO / "reference_metrics.json").read_text(encoding="utf-8"))["metrics"]
     actual = paper_metrics(json.loads((OUT / "calibration_results.json").read_text(encoding="utf-8")))
     actual.update(expanded_metrics(json.loads((EXPANDED / "expanded_results.json").read_text(encoding="utf-8"))))
     actual.update(b3_metrics())
+    actual.update(nested_metrics())
+    actual.update(waiting_metrics())
     if actual.keys() != expected.keys():
         raise ValueError("Manuscript metric keys differ from the frozen reference.")
     max_error = 0.0
@@ -151,7 +199,8 @@ def compare_reference():
             raise ValueError(f"Reference mismatch: {name}: {value} versus {reference}")
     for path in (OUT / "verification_results.json", EXPANDED / "verification_results.json",
                  B3 / "verification_results.json", B3 / "forecast_verification_results.json",
-                 B3 / "readiness_verification_results.json"):
+                 B3 / "readiness_verification_results.json", B3 / "waiting_verification_results.json",
+                 NESTED / "nested_verification_results.json"):
         if json.loads(path.read_text(encoding="utf-8"))["status"] != "passed":
             raise ValueError(f"Verification {path.relative_to(ROOT)} did not pass.")
     return {"status": "passed", "entries_compared": len(actual),
@@ -204,8 +253,12 @@ def main():
             run_step("b3_forecast", [sys.executable, str(CODE / "b3_forecast.py")])
             run_step("b3_readiness", [sys.executable, str(CODE / "b3_readiness.py")])
             run_step("b3_readiness_example", [sys.executable, str(CODE / "b3_readiness_example.py")])
+            run_step("nested_forecast", [sys.executable, str(CODE / "nested_forecast.py")])
+            run_step("b3_waiting", [sys.executable, str(CODE / "b3_waiting.py")])
         run_step("verify_b3_forecast", [sys.executable, str(CODE / "verify_b3_forecast.py")])
         run_step("verify_b3_readiness", [sys.executable, str(CODE / "verify_b3_readiness.py")])
+        run_step("verify_nested_forecast", [sys.executable, str(CODE / "verify_nested_forecast.py")])
+        run_step("verify_b3_waiting", [sys.executable, str(CODE / "verify_b3_waiting.py")])
         run_step("synthetic_checks", [sys.executable, str(CODE / "smoke_check.py")])
         report["manuscript_reference"] = compare_reference()
         print(f"Passed frozen manuscript comparison ({report['manuscript_reference']['entries_compared']} entries)", flush=True)

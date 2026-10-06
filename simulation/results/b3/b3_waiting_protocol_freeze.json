@@ -1,0 +1,6 @@
+{
+  "protocol_path": "simulation/configs/b3_waiting_protocol.json",
+  "protocol_sha256": "6e610e9b3b8aa4d1178e945d7d16c35c42bb65ea1160818bdbc0783272e63f42",
+  "frozen_utc": "2026-10-05T22:11:58+00:00",
+  "statement": "Recorded before any version-3 outcome was computed."
+}

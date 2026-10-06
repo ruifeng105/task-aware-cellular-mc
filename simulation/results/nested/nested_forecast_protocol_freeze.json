@@ -1,0 +1,6 @@
+{
+  "protocol_path": "simulation/configs/nested_forecast_protocol.json",
+  "protocol_sha256": "af737c6c0d91a33b140096c115c94a2d944bae910c50b3ae3ed3365e836df008",
+  "frozen_utc": "2026-10-05T22:05:08+00:00",
+  "statement": "Recorded before any O, M or corrected-LOPO score was computed."
+}

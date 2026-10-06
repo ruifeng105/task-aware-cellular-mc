@@ -4,8 +4,8 @@
     "bytes": 30518
   },
   "README.md": {
-    "sha256": "589754862409acbd010138b2d051f90eafa603eb6cf358ac32fbc9b387748f71",
-    "bytes": 11632
+    "sha256": "a97af2f35221a8b6e0322803c1c1752265afe37880a7070740625ea7befbd14c",
+    "bytes": 14038
   },
   "code/b3_forecast.py": {
     "sha256": "b450291afdb8f2b2bd3af66cddf67779d7cf491f7593640f5afe6defa67c1a05",
@@ -22,6 +22,10 @@
   "code/b3_readiness_example.py": {
     "sha256": "c9954391fd7b03eaf0731e9dbf8524dfdee0866fd0e6a0cf9329f8ae34c9c5de",
     "bytes": 4668
+  },
+  "code/b3_waiting.py": {
+    "sha256": "251423e41017308e226fd20aaf09200f37f7c94bd69910d33b89475235029497",
+    "bytes": 10279
   },
   "code/calibrate_fgf2.py": {
     "sha256": "c8b4a3e63478802e33d6324f5f3978337aa9983e629f6f2e04e2c77c8c620c39",
@@ -47,9 +51,13 @@
     "sha256": "5a08c14a301c9132020443e98053318e613d6283fc169cf636aa3ed331505983",
     "bytes": 1404
   },
+  "code/nested_forecast.py": {
+    "sha256": "1bce7bafefb92cd653c47071d97350f6d43aac6f366d43ba1089724542c6d978",
+    "bytes": 12091
+  },
   "code/pipeline_checks.py": {
-    "sha256": "69657c4831401b9be72732c294811df577375af2af628a9434bc3b3be5e5e064",
-    "bytes": 8722
+    "sha256": "f69ad64ba470fe29c8d4302cefad18ab57ab3e4f4ad52f63a15071ec01517145",
+    "bytes": 9008
   },
   "code/smoke_check.py": {
     "sha256": "f313451d5f699222fe81a2042812bd86dafdd23b6d9591360c514dce5ad51127",
@@ -67,6 +75,10 @@
     "sha256": "10be3985780144e54891c499503e5e8a1dc1aacc53a92867eaf8de1072e77df7",
     "bytes": 5823
   },
+  "code/verify_b3_waiting.py": {
+    "sha256": "f26f26bfbfaa7ed76d66240452454947ded9a04af6adc39646928c86dd24f097",
+    "bytes": 5059
+  },
   "code/verify_expanded_fgf2.py": {
     "sha256": "7de5547b1c46682c41a02d239ec869d861341f0c664e083a16192d8e0577611f",
     "bytes": 5845
@@ -74,6 +86,10 @@
   "code/verify_fgf2_pipeline.py": {
     "sha256": "b38ae617e60288a0e3b87c74b1a19ac69e6ec5d3bf194e7031874c5b54b911dd",
     "bytes": 6908
+  },
+  "code/verify_nested_forecast.py": {
+    "sha256": "8db056c4bb620bd27e394186bf357de1e5dd2609aa9d0cf340996ab7cac2c714",
+    "bytes": 4032
   },
   "configs/b3_forecast_protocol.json": {
     "sha256": "54e810c770afc73c74eae3d2ae106099a5a2c46b10f8ecbee6b0cdcbe4d28acf",
@@ -87,6 +103,10 @@
     "sha256": "081edc8ca9e8d8b62668966191f54cef8ecb152940c0da5347cbbe917ed771cd",
     "bytes": 2668
   },
+  "configs/b3_waiting_protocol.json": {
+    "sha256": "6e610e9b3b8aa4d1178e945d7d16c35c42bb65ea1160818bdbc0783272e63f42",
+    "bytes": 3103
+  },
   "configs/biological_split_template.json": {
     "sha256": "ab503a978af3791f9ddfb69519e7e620ed2b2645b3365b921f2ffe0435bfb868",
     "bytes": 252
@@ -98,6 +118,10 @@
   "configs/fgf2_expanded_protocol.json": {
     "sha256": "fe919ef8ee766522d62d2fff4d5c412771c41a2cfd7fb818f4800a698a873331",
     "bytes": 5587
+  },
+  "configs/nested_forecast_protocol.json": {
+    "sha256": "af737c6c0d91a33b140096c115c94a2d944bae910c50b3ae3ed3365e836df008",
+    "bytes": 3941
   },
   "configs/plif_run_plan.json": {
     "sha256": "87c830f66f63693af8ad260199bf66cbc92ec2e0883d02376b365b61888be552",
@@ -567,6 +591,10 @@
     "sha256": "d23a3c7ef3a2890199ef5c62fe4c5c3bb74a22fee41144e5d5a9ee3813472b5c",
     "bytes": 324
   },
+  "results/b3/b3_waiting_protocol_freeze.json": {
+    "sha256": "2f065083f772989ae2c43443c80defb8695badbe21cb3d7a3205b8d56df8d8ab",
+    "bytes": 273
+  },
   "results/b3/forecast_results.json": {
     "sha256": "e639c47ed22703d1edfe483f64cf2a4a8bac4c28f56d0bcc822674496952013c",
     "bytes": 62093
@@ -606,6 +634,14 @@
   "results/b3/verification_results.json": {
     "sha256": "4c5de3bf96ac1e63976c1f28eefe5a25968565b8cbc7d21904253ed4141061da",
     "bytes": 980
+  },
+  "results/b3/waiting_results.json": {
+    "sha256": "da20ca38a861cc07d6e3b861656953a2ec2143e631585e63290450c2fa9808b6",
+    "bytes": 23124
+  },
+  "results/b3/waiting_verification_results.json": {
+    "sha256": "68b698f34d347818e00174fe6816bacc0c7e8fabf1f88d261336a66f9a9275f3",
+    "bytes": 686
   },
   "results/fgf2_expanded/expanded_results.json": {
     "sha256": "c538d3b4f7dc8d2033e251a098b316b106b6cf18c488734dbdbe4ed465521971",
@@ -650,6 +686,18 @@
   "results/fgf2_pilot/verification_results.json": {
     "sha256": "641b66d2fb1452923b2d371b54615eafd62d90d8d03071550082d9c85b8886a4",
     "bytes": 2756
+  },
+  "results/nested/nested_forecast_protocol_freeze.json": {
+    "sha256": "6db7c0379f79bda7a4b24a85c9c9d895ff518f7ee4065258c0f1adff73b23ee2",
+    "bytes": 289
+  },
+  "results/nested/nested_results.json": {
+    "sha256": "86ec1eac601859091fd5b47dd822b2c7a513a8284f6ca09c22d46438f6888e31",
+    "bytes": 128913
+  },
+  "results/nested/nested_verification_results.json": {
+    "sha256": "e8c88a058a5164ff2bbd6b463ac977a2397a450d47c526b2b82ca0ba8032cea6",
+    "bytes": 692
   },
   "results/software_verification.json": {
     "sha256": "c96eb90267ed1bea756cb09cd15c34e254eb814520c489404e5fece36d90e23e",

@@ -1,0 +1,26 @@
+{
+  "name": "Calibrated waiting rules on B3 (readiness protocol version 3)",
+  "version": 3,
+  "status": "frozen_before_running",
+  "date": "2026-10-06",
+  "supersedes_for_policy_evaluation": "configs/b3_readiness_protocol_v2.json (thresholds and the matching fixed wait were evaluated on the same samples that defined them)",
+  "unchanged": "Simulation tables (results/b3/readiness_tables.npz), dose 25 ng/ml, 3- and 30-min histories, 5-min probe, decision grid 0-120 min in 2-min steps, task: rise within 20 min of the probe >= 0.5 x the same sample's naive rise, completion = wait + 20 min on success, deadline D = 140 min on failure, observation seeds of version 2.",
+  "split": "Posterior samples split once with seed 20261006 into a calibration half and an evaluation half (500/500).",
+  "noise_levels": [0.0, 0.005],
+  "observations": "plant FRET + noise x the standard-normal draws of version 2 (noise 0.005 reproduces version 2; noise 0 gives the noise-free reporter)",
+  "likelihood_sd": "max(noise, 0.001); for the smoothed estimator max(noise x sqrt((1-a)/(1+a)), 0.001) with a = exp(-2/tau)",
+  "estimators": {
+    "current": "P(success | current observation): Gaussian kernel over the pooled (reporter, success) states of the reference samples, both histories, all decision times",
+    "smoothed": "P(success | causal exponential smoothing of the observations with scale tau): the same kernel over the reference samples' smoothed noise-free reporters; tau in {2, 4, 8, 16} min",
+    "history": "reference samples under the known command history weighted by all observations so far"
+  },
+  "rule": "probe at tau = the first decision time at which the estimate reaches the threshold c; if it never does, probe at 120 min",
+  "calibration": "On calibration plants with leave-one-out references: c is the smallest value in {0.5, 0.6, 0.7, 0.8, 0.85, 0.9, 0.95, 0.975, 0.99} whose success rate is >= 0.9; for the smoothed estimator the (tau, c) pair with the shortest calibration mean completion among those reaching 0.9 (ties: smaller tau). If no threshold reaches 0.9, c = 0.99 (smoothed: the tau with the highest success) and target_reached = false. The comparator fixed wait is the shortest grid wait with calibration success >= 0.9 (else 120 min).",
+  "evaluation": "Evaluation plants (both histories) with the calibration samples as references: success rate, mean failure-penalized completion time and mean wait for each calibrated rule, the calibrated fixed wait, the registered waits {6, 12, 24, 48} and the oracle.",
+  "statements": {
+    "W1": "At noise 0.005, the history estimator versus the calibrated fixed wait on evaluation plants: success rate and mean completion time.",
+    "W2": "At noise 0.005, history versus smoothed versus current on evaluation plants.",
+    "W3": "At noise 0, the completion-time difference between history and current (the denoising contribution vanishes if readiness is Markov in the reporter)."
+  },
+  "reporting": "All statements reported whatever their direction; simulation of one published model structure, not evidence about measured cells."
+}

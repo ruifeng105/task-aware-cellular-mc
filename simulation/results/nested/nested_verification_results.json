@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "protocol_sha256": "af737c6c0d91a33b140096c115c94a2d944bae910c50b3ae3ed3365e836df008",
+  "phases": {
+    "cases": 11
+  },
+  "nesting": {
+    "nested": true,
+    "H_equals_M3_features": true
+  },
+  "scores_recomputed": 90,
+  "max_abs_score_difference": 0.0,
+  "max_abs_H_minus_M3": 8.890457814381136e-18,
+  "lopo_leakage": {
+    "held_out": "fgf_sp_5",
+    "selection_unchanged": true,
+    "predictions_unchanged": true
+  },
+  "b3_roles": {
+    "fitted": [
+      "sus_2-5ng",
+      "sus_250ng",
+      "3_20_2-5ng",
+      "3_20_250ng"
+    ],
+    "architecture_likelihood": [
+      "sp_5_2-5ng",
+      "sp_5_250ng",
+      "mixed_2-5ng",
+      "mixed_250ng"
+    ]
+  }
+}

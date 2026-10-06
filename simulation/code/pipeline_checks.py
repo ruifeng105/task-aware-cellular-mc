@@ -80,13 +80,17 @@ def check_pilot_result_fields():
 
 
 def check_manuscript_assets():
-    """Every manuscript table exists, and the frozen reference covers the expanded analysis."""
+    """Every table and figure the manuscript includes exists, and the frozen reference covers the expanded analysis."""
     failures = []
-    tables = ROOT / 'paper/tables'
-    for name in ('inventory', 'forecast_rmse', 'expanded_rmse', 'lopo_rmse', 'open_loop_rmse'):
-        if not (tables / f'{name}.tex').is_file():
-            failures.append(f'missing paper/tables/{name}.tex')
-    open_loop = tables / 'open_loop_rmse.tex'
+    tex = (ROOT / 'paper/main.tex').read_text(encoding='utf-8')
+    for name in re.findall(r'\\input\{tables/([^}]+)\}', tex):
+        path = ROOT / 'paper/tables' / (name if name.endswith('.tex') else name + '.tex')
+        if not path.is_file():
+            failures.append(f'missing paper/tables/{path.name}')
+    for name in re.findall(r'\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}', tex):
+        if not (ROOT / 'paper' / name).is_file():
+            failures.append(f'missing paper/{name}')
+    open_loop = ROOT / 'paper/tables/open_loop_rmse.tex'
     if open_loop.is_file() and 'constant' not in open_loop.read_text(encoding='utf-8'):
         failures.append('open-loop table lacks the training-mean constant')
     reference = json.loads((ROOT / 'reproduction/reference_metrics.json').read_text(encoding='utf-8'))['metrics']

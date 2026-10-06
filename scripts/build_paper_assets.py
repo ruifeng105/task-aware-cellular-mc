@@ -45,6 +45,9 @@ B3_RESULTS = PILOT / "results/b3"
 b3_forecast = json.loads((B3_RESULTS / "forecast_results.json").read_text(encoding="utf-8"))
 readiness = json.loads((B3_RESULTS / "readiness_results.json").read_text(encoding="utf-8"))
 example = json.loads((B3_RESULTS / "readiness_example.json").read_text(encoding="utf-8"))
+NESTED = PILOT / "results/nested"
+nested = json.loads((NESTED / "nested_results.json").read_text(encoding="utf-8"))
+waiting = json.loads((B3_RESULTS / "waiting_results.json").read_text(encoding="utf-8"))
 
 
 def write_table(name, spec, header, body):
@@ -301,12 +304,134 @@ fig.savefig(FIG / "readiness_example.pdf", bbox_inches="tight", pad_inches=.02, 
 fig.savefig(FIG / "readiness_example.png", bbox_inches="tight", pad_inches=.02)
 plt.close(fig)
 
+# Six-page revision: Table I with B3 data use, Table II core models, Fig. 2 experimental prediction, Fig. 3 waiting.
+roles_b3 = nested["b3_roles"]
+role_label = {"train": "Train", "validation": "Val.", "test_new_protocol": "Test A",
+              "test_new_protocol_inferred_timing": "Test B", "test_new_concentration_same_session": "Test C",
+              "viewed_reference": "Viewed"}
+protocol_label = {"fgf_sus": "Sustained", "fgf_3_20": "3/20 pulses", "fgf_sp_5": "Single 5 min",
+                  "fgf_sp_10": "Single 10 min", "fgf_sp_60": "Single 60 min", "fgf_mixed": "Mixed"}
+body = []
+for role in role_label:
+    recs = [r for r in expanded["inventory"] if r["role"] == role and r["included"]]
+    for proto in dict.fromkeys(r["condition_id"].rsplit("_", 1)[0] for r in recs):
+        sub = [r for r in recs if r["condition_id"].rsplit("_", 1)[0] == proto]
+        conc = {r["condition_id"].replace("fgf_", "", 1): r["concentration_ng_ml"] for r in sub}
+        fit = [f"{v:g}" for k, v in conc.items() if k in roles_b3["fitted"]]
+        arch = [f"{v:g}" for k, v in conc.items() if k in roles_b3["architecture_likelihood"]]
+        use = f"fit {', '.join(fit)}" if fit else f"arch. {', '.join(arch)}" if arch else "--"
+        body.append(f"{protocol_label[proto]} & {role_label[role]} & {', '.join(f'{v:g}' for v in conc.values())} & "
+                    f"{sum(r['n_cells'] for r in sub)} & {use}")
+write_table("inventory_core", "lllrl", "Protocol & Role & ng/ml & Cells & B3 use", body)
+
+core_cols = ("validation", "test_new_protocol", "test_new_protocol_inferred_timing", "test_new_concentration_same_session")
+cmp10, cmp2 = nested["main"]["10"]["comparisons"], nested["main"]["2"]["comparisons"]
+core = (("P", "P: persistence"), ("C", "C: current + slope"), ("O", "O: + reporter filters"),
+        ("M", "M: + B3 increment"), ("H", "H: + input history"))
+getters = [lambda m, r=r: cmp10[r]["rmse"][m] for r in core_cols] + [lambda m: cmp2["test_new_protocol"]["rmse"][m]]
+cells = {m: [] for m, _ in core}
+for get in getters:
+    for (m, _), cell in zip(core, bold_min([get(m) for m, _ in core])):
+        cells[m].append(cell)
+body = [label + " & " + " & ".join(cells[m]) for m, label in core] + [r"\midrule"]
+for a, b in (("H", "M"), ("M", "O"), ("O", "C")):
+    counts = [f"{cmp10[r][f'{a}_beats_{b}']['conditions']}/{cmp10[r]['n_conditions']}" for r in core_cols]
+    counts.append(f"{cmp2['test_new_protocol'][f'{a}_beats_{b}']['conditions']}/{cmp2['test_new_protocol']['n_conditions']}")
+    body.append(f"{a} beats {b} & " + " & ".join(counts))
+write_table("core_rmse", "lccccc", r"Model & Val. & A & B & C & A, 2 min", body)
+
+MODEL_STYLE = {"P": ("#52514e", ":", "."), "C": ("#0b0b0b", "--", "x"), "O": ("#1baf7a", "-", "o"),
+               "M": ("#4a3aa7", "-", "s"), "H": ("#e34948", "-", "^")}
+ex = nested["example"]
+fig, (top, bottom) = plt.subplots(2, 1, figsize=(3.45, 2.75), gridspec_kw=dict(height_ratios=[1.3, 1]))
+t_obs, q = np.array(ex["time_min"]), np.array(ex["quartiles"])
+for a, b in ex["pulses"]:
+    top.axvspan(a, b, color=MUTED, alpha=.18, lw=0, zorder=0)
+top.fill_between(t_obs, q[0], q[2], color=BAND, lw=0, zorder=0, label="cells, middle 50%")
+top.plot(t_obs, ex["observed"], ls="none", marker="o", ms=2, color=INK, mew=0, label="example cell")
+for name in ("P", "M", "H"):
+    color, style, _ = MODEL_STYLE[name]
+    top.plot(ex["target_time_min"], ex["forecast"][name], color=color, ls=style, lw=1.0,
+             label=f"{name} (cell RMSE {ex['cell_rmse'][name]:.4f})")
+top.set(xlim=(0, t_obs.max()), ylim=(.98, 1.215), xlabel="Time (min)", ylabel="FRET ratio")
+top.set_title("(a) Test A, 25 ng/ml: 10-min forecasts", loc="left")
+top.legend(loc="upper right", ncol=2, frameon=False, fontsize=5.5, handlelength=1.5, borderaxespad=.1, columnspacing=.8)
+phases = nested["phases"]["10"]
+order = [p for p in ("stimulation", "next_command", "early_washout", "late") if p in phases]
+tick = {"stimulation": "stimulation", "next_command": "next command", "early_washout": "early washout", "late": "late"}
+for j, name in enumerate(("P", "C", "O", "M", "H")):
+    color, _, marker = MODEL_STYLE[name]
+    bottom.plot([i + (j - 2) * .11 for i in range(len(order))], [phases[p]["rmse"][name] for p in order],
+                ls="none", marker=marker, ms=4, color=color, mew=1, label=name)
+bottom.set_xticks(range(len(order)), [f"{tick[p]}\n({phases[p]['n_conditions']} cond.)" for p in order], fontsize=6)
+bottom.set(ylabel="10-min RMSE", xlim=(-.5, len(order) - .5))
+bottom.set_title("(b) Test A-C by forecast phase", loc="left")
+bottom.legend(loc="lower left", ncol=5, frameon=False, fontsize=6, handletextpad=.1, columnspacing=.6, borderaxespad=.1)
+for a in (top, bottom):
+    a.grid(axis="y", alpha=.15)
+fig.subplots_adjust(left=.15, right=.98, bottom=.13, top=.94, hspace=.8)
+fig.savefig(FIG / "prediction_phases.pdf", bbox_inches="tight", pad_inches=.02, metadata={"CreationDate": None})
+fig.savefig(FIG / "prediction_phases.png", bbox_inches="tight", pad_inches=.02)
+plt.close(fig)
+
+POLICY = {"current": ("^", "current"), "smoothed": ("D", "smoothed"), "history": ("o", "history-aware")}
+noise_main, noise_zero = waiting["noise"]["0.005"], waiting["noise"]["0"]
+fixed = noise_main["evaluation"]["fixed_calibrated"]
+fig, axes = plt.subplots(1, 3, figsize=(7.08, 2.1))
+ax = axes[0]
+for name, (color, style, marker, label) in SERIES.items():
+    ax.plot(centre, [b[name]["readiness"] for b in bins], color=color, ls=style, lw=1.3, marker=marker, ms=3.5, label=label)
+ax.set(ylim=(-.03, 1.03), xlabel="Current reporter rise (FRET $-$ 1)", ylabel="Readiness")
+ax.set_title("(a) Readiness vs current reporter", loc="left")
+ax.legend(loc="upper right", frameon=False, fontsize=6)
+ax = axes[1]
+ax.axhline(fixed["mean_completion_min"], color=MUTED, lw=.8, ls="--")
+ax.text(2.45, fixed["mean_completion_min"] - .4, f"fixed {noise_main['choices']['fixed']['wait_min']:g} min",
+        fontsize=6, color=MUTED, ha="right", va="top")
+for i, name in enumerate(POLICY):
+    marker = POLICY[name][0]
+    for noise, block, face, dx in (("0", noise_zero, "white", -.12), ("0.005", noise_main, INK, .12)):
+        row = block["evaluation"][name]
+        ax.plot(i + dx, row["mean_completion_min"], marker=marker, ms=5.5, mfc=face, mec=INK, ls="none")
+        ax.annotate(f"{100 * row['success_rate']:.0f}%", (i + dx, row["mean_completion_min"]), textcoords="offset points",
+                    xytext=(0, -9), ha="center", fontsize=5.5, color=INK)
+ax.plot([], [], marker="o", mfc="white", mec=INK, ls="none", label="noise 0")
+ax.plot([], [], marker="o", mfc=INK, mec=INK, ls="none", label="noise 0.005")
+ax.set_xticks(range(len(POLICY)), [POLICY[n][1] for n in POLICY], fontsize=6)
+ax.set(xlim=(-.5, 2.5), ylim=(110.3, 123), ylabel="Mean completion (min)")
+ax.set_title("(b) Noise ablation (evaluation)", loc="left")
+ax.legend(loc="upper center", bbox_to_anchor=(.5, .86), frameon=False, fontsize=6, handletextpad=.2)
+ax = axes[2]
+curve = waiting["fixed_wait_curve_eval"]
+ax.plot([p["mean_completion_min"] for p in curve], [p["success_rate"] for p in curve], color=MUTED, lw=1.0, zorder=1)
+ax.plot(fixed["mean_completion_min"], fixed["success_rate"], marker=".", color=MUTED, ms=7, ls="none")
+ax.annotate(f"fixed {noise_main['choices']['fixed']['wait_min']:g}", (fixed["mean_completion_min"], fixed["success_rate"]),
+            textcoords="offset points", xytext=(5, 4), fontsize=6, color=MUTED)
+ax.axhline(.9, color=MUTED, lw=.6, ls=":", zorder=0)
+marks = dict(POLICY, oracle=("*", "oracle"))
+offsets = {"current": (5, -11), "smoothed": (-6, -11), "history": (-2, 7), "oracle": (5, -3)}
+for name, (marker, label) in marks.items():
+    row = noise_main["evaluation"][name]
+    ax.plot(row["mean_completion_min"], row["success_rate"], marker=marker, color=INK, ms=5.5, ls="none", zorder=3)
+    ax.annotate(label, (row["mean_completion_min"], row["success_rate"]), textcoords="offset points",
+                xytext=offsets[name], fontsize=6, color=INK, ha="right" if offsets[name][0] < 0 else "left")
+ax.set(xlim=(100, 143), ylim=(.6, 1.02), xlabel="Mean completion time (min)", ylabel="Task success rate")
+ax.set_title("(c) Calibrated rules, noise 0.005", loc="left")
+for a in axes:
+    a.grid(axis="y", alpha=.15)
+fig.subplots_adjust(left=.07, right=.99, bottom=.22, top=.88, wspace=.36)
+fig.savefig(FIG / "readiness_waiting.pdf", bbox_inches="tight", pad_inches=.02, metadata={"CreationDate": None})
+fig.savefig(FIG / "readiness_waiting.png", bbox_inches="tight", pad_inches=.02)
+plt.close(fig)
+
 audit = {
     "source_result_sha256": hashlib.sha256((OUT / "calibration_results.json").read_bytes()).hexdigest(),
     "expanded_result_sha256": hashlib.sha256((EXPANDED / "expanded_results.json").read_bytes()).hexdigest(),
     "b3_forecast_result_sha256": hashlib.sha256((B3_RESULTS / "forecast_results.json").read_bytes()).hexdigest(),
     "b3_readiness_result_sha256": hashlib.sha256((B3_RESULTS / "readiness_results.json").read_bytes()).hexdigest(),
     "b3_readiness_example_sha256": hashlib.sha256((B3_RESULTS / "readiness_example.json").read_bytes()).hexdigest(),
+    "nested_result_sha256": hashlib.sha256((NESTED / "nested_results.json").read_bytes()).hexdigest(),
+    "b3_waiting_result_sha256": hashlib.sha256((B3_RESULTS / "waiting_results.json").read_bytes()).hexdigest(),
     "generated_tables": [p.name for p in sorted(TAB.glob("*.tex"))],
     "generated_figures": [p.name for p in sorted(FIG.glob("*.pdf"))],
     "fitted_models": False,

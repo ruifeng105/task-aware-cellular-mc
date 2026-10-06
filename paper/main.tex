@@ -3,18 +3,17 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amssymb,graphicx,booktabs,cite}
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta,positioning}
+\usetikzlibrary{arrows.meta,positioning,decorations.pathreplacing}
 \usepackage{balance}
 \usepackage[hidelinks,breaklinks]{hyperref}
 \usepackage{url}
 \hypersetup{pdftitle={Toward Task-Aware Reuse of Cellular Molecular Receivers: History-Aware Prediction on Experimental FGF2--ERK Data},
- pdfauthor={Ruifeng Zheng}, pdfsubject={Working draft: experimental-data prediction with a pre-registered fresh test and a proposed controller},
- pdfkeywords={molecular communication, cellular receivers, FGF2, ERK, history-aware prediction, pre-registration}}
+ pdfauthor={Ruifeng Zheng}, pdfsubject={Mechanism-informed prediction on experimental FGF2--ERK data and calibrated waiting rules simulated on B3},
+ pdfkeywords={molecular communication, cellular receivers, FGF2, ERK, mechanism-informed prediction, waiting rules}}
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\Prob}{\mathbb{P}}
 \newcommand{\Hist}{\mathcal{H}}
 \newcommand{\ind}{\mathbf{1}}
-\newcommand{\calA}{\mathcal{A}_{\mathrm{cal}}}
 \hyphenation{micro-fluidic micro-fluidics}
 \title{Toward Task-Aware Reuse of Cellular Molecular Receivers: History-Aware Prediction on Experimental FGF2--ERK Data}
 \author{\IEEEauthorblockN{Ruifeng Zheng}\IEEEauthorblockA{Deutsche Telekom Chair of Communication Networks\\TU Dresden, Germany}}
@@ -24,26 +23,21 @@
 \thispagestyle{plain}
 
 \begin{abstract}
-Chemical commands delivered to a living receiver can change how it responds to later commands. Using public experimental FGF2--ERK single-cell trajectories rather than artificial bit labels, we test whether measured stimulation history improves prediction of a cellular receiver's reporter and whether such information could shorten repeated use. A provenance-checked pilot reduced the 10-min-ahead root mean squared error (RMSE) by 8.25\% relative to a current-input/response/clock baseline on an already inspected test. A pre-registered expansion to 14 unused conditions (22 conditions, 1,565 cells) confirmed an 8.8\% gain over that baseline on an unseen 10-min-pulse protocol, but only 0.7\% over naive persistence. We then executed the original authors' B3 biochemical model from their files, reproducing their posterior predictions to within $10^{-5}$. In a post hoc reference comparison, a matched-feedback B3 forecaster alone only equalled persistence, whereas adding causal-history features to it reduced the 10-min RMSE on the unseen protocol by a further 8.2\%, at four of four concentrations. Finally, we define task-dependent receiver readiness and, in simulation on B3, find that after 25~ng/ml commands readiness is nearly a function of the current reporter, the candidate waits of 6--48~min never suffice, and a history-aware waiting policy reaches 90\% success about 8~min faster than the matching fixed wait, mainly by filtering noisy observations. The results support history- and mechanism-informed prediction, not a new biological mechanism or measured task reliability.
+Chemical commands delivered to a living receiver can change how it responds to later commands. Using public experimental FGF2--ERK single-cell trajectories, we ask which information predicts a cellular receiver's reporter and whether it can shorten repeated use. In nested post hoc comparisons on protocols not used for training, causal reporter filtering reduced the 10-min-ahead error of a current-state predictor by 9.1\%, a matched-feedback execution of the authors' B3 model by a further 4.5\%, and input history by a further 1.0\%, ending 8.2\% below persistence; with leakage-free leave-one-protocol-out selection, input history added 0.1--2.0\% in all six folds. For a fixed probe task we define receiver readiness and, in simulation on B3, calibrate waiting rules on half of the posterior samples and evaluate them on the other half. A history-aware rule reached 92.6\% success 7.4~min faster than the calibrated fixed wait, but a smoothed reporter did as well, and without observation noise the current reporter sufficed. The waiting gain is filtering, not hidden memory; no result concerns measured task reliability.
 \end{abstract}
 
 \begin{IEEEkeywords}
-Molecular communication, cellular receivers, chemical signaling, history-aware prediction, pre-registration, FGF2, ERK.
+Molecular communication, cellular receivers, mechanism-informed prediction, receiver reuse, waiting rules, FGF2, ERK.
 \end{IEEEkeywords}
 
 \section{Introduction}
-An application of molecular communication (MC) can require a chemical signal to produce a specified response in a living cell. Successful reception then means more than recovering a symbol: the receiver must execute the requested response at the right time. A previous exposure may influence the next response through transport persistence, receptor dynamics, intracellular feedback, or changes in cellular state. For a sequence of commands, an operational question is therefore when the receiver can be used again, and at what chemical and temporal cost.
+Molecular communication (MC) with living receivers asks a chemical command to produce a specified response in a cell. Reception then means executing the requested response on time, and a previous command can change the next response through delivery persistence, receptor dynamics, intracellular feedback, or cellular state. For repeated tasks the operational question is when the receiver can be used again at matched reliability. We ground this question in recorded biology: FGF2 stimulation of PC-12 cells with ERK activity read by a FRET reporter \cite{blum2019}, treated as a continuous receiver output without retroactive symbols or cell-fate labels.
 
-We ground this question in recorded biology rather than artificial labels: FGF2 stimulation of PC-12 cells, with ERK activity measured by a FRET reporter \cite{blum2019}; ERK stimulation patterns are known to shape cellular outcomes \cite{ryu2015}. The reporter is treated as a continuous receiver output, and no alphabet or cell-fate label is assigned retroactively.
+Two lines of work bound the claim. In cell dynamics, the FGF2 data were used to infer signaling architecture, including feedback and a nontrivial washout response \cite{blum2019}; stimulation frequency shapes ERK responses \cite{ryu2015}; automated chemical feedback has controlled mammalian signaling \cite{postiglione2018}; and a learned dynamical model enabled model predictive control of thousands of single cells \cite{lugagne2024}. In MC, semantic systems learn task-relevant representations \cite{cheng2024,cai2025}, interpretable reaction--diffusion learning has been proposed \cite{dong2026}, experimental yeast pheromone links characterize biological receiver noise \cite{ntetsikas2025}, genetic-circuit receivers are designed computationally \cite{durmaz2024}, calcium signaling with refractory behavior has been controlled \cite{barros2020}, error control has been adapted to cellular noise \cite{borges2024}, and long-term experimental MC exposes reuse tradeoffs \cite{scherer2025}. Prediction, feedback and predictive control are therefore not new; the open question is which information makes a \emph{next task} predictable and how much a waiting decision gains from it.
 
-Prior work bounds what a generic learning-based controller could claim. The FGF2 data were originally used to infer signaling architecture, including receptor interactions and feedback \cite{blum2019}; their nontrivial washout response is established biology, not a newly discovered memory mechanism, and frequency-dependent ERK responses are also known \cite{ryu2015}. Postiglione \emph{et al.} controlled mammalian gene expression and signaling with automated chemical delivery and feedback \cite{postiglione2018}, and Lugagne \emph{et al.} used a learned dynamical model for model predictive control (MPC) of thousands of single cells \cite{lugagne2024}. Nonlinear prediction, response feedback and MPC are therefore substantial precedents; the extension considered here is the feasibility and cost of a \emph{next task conditioned on previous tasks}, not chemical feedback control itself.
+This paper makes two bounded contributions. (i) On experimental FGF2--ERK trajectories, a fair nested ablation separates reporter filtering, a calibrated mechanistic increment from the authors' B3 model, and input history, with leakage-free leave-one-protocol-out (LOPO) validation and phase-wise errors. (ii) For a fixed probe task we define readiness and compare calibrated waiting rules in simulation on B3, with a smoothed-reporter baseline and a noise ablation. Prediction and waiting gains are evaluated separately, and no result concerns measured task reliability.
 
-Within MC, semantic systems already learn task-relevant representations \cite{cheng2024,cai2025}, interpretable reaction--diffusion learning has been proposed \cite{dong2026}, experimental yeast pheromone links characterize biological receiver noise and detection \cite{ntetsikas2025}, genetic-circuit receivers are designed computationally \cite{durmaz2024}, Barros and Dey control calcium signaling and its refractory behavior \cite{barros2020}, CELLEC adapts error control to modeled cellular noise \cite{borges2024}, and long-term experimental MC shows that reuse and resource tradeoffs require explicit engineering \cite{scherer2025}. The candidate distinction to test is a calibrated, sequence-level exposure/time--reliability tradeoff attributable to receiver history beyond a matched-information mechanistic estimator.
-
-The narrower question is therefore whether a measured chemical-response history improves prediction beyond accessible present-state information, and whether that information can eventually reduce exposure or completion time for \emph{repeated tasks at matched reliability}. This draft makes four bounded contributions: (i) an audited experimental input--response pilot with a pre-registered expansion that supplies unseen protocols; (ii) a quantification of causal-history features against current-state models and naive persistence; (iii) an execution of the original B3 model, accepted against the authors' exports, that provides a matched-feedback mechanistic reference and a nested history-residual comparison; and (iv) a task-dependent readiness criterion with a controller specification, examined in simulation on B3. No result concerns measured task reliability.
-
-\section{Cellular MC Model and Task Readiness}
-\subsection{Actuation, Delivery, and Observation}
+\section{System and Task Model}
 Let $u(t)\geq0$ denote the commanded FGF2 concentration in ng/ml. Delivery to a receiver is represented abstractly as
 \begin{equation}
  c_R(t)=\mathcal{T}_{\vartheta}[u](t),\quad
@@ -51,44 +45,51 @@ Let $u(t)\geq0$ denote the commanded FGF2 concentration in ng/ml. Delivery to a 
  y_j=g(x_j)+\nu_j,
  \label{eq:system}
 \end{equation}
-where $c_R$ is the local concentration, $x_j$ the unobserved state of cell $j$, and $y_j$ its normalized reporter. The operator $\mathcal{T}_{\vartheta}$ can include delivery lag and washout; neither it nor $c_R$ is calibrated here. The FRET ratio is not a molecular count, receptor occupancy, or cell-fate measurement. For deployment, $\Hist_t$ contains executed commands and observations whose feedback has \emph{arrived} by time $t$; the offline analysis assumes each processed observation is available at its recorded time, an assumption a live experiment must replace with logged latency.
+where $c_R$ is the local concentration, $x_j$ the unobserved state of cell $j$, and $y_j$ its normalized reporter. The operator $\mathcal{T}_{\vartheta}$ can include delivery lag and washout; neither it nor $c_R$ is calibrated here, and the FRET ratio is not a molecular count or a cell-fate measurement. The available information $\Hist_t$ contains the executed commands and the observations whose feedback has arrived by $t$; offline, each observation is assumed available at its recorded time.
 
 \begin{figure}[t]
 \centering
 \begin{tikzpicture}[font=\footnotesize, >=Latex,
- box/.style={draw,rounded corners=1.5pt,align=center,minimum height=7mm,text width=25mm},
+ box/.style={draw,rounded corners=1.5pt,align=center,minimum height=6.5mm,text width=24mm},
  arr/.style={->,line width=.55pt}]
-\node[box] (act) at (0,1.3) {Chemical actuator\\command $u$};
-\node[box] (del) at (4,1.3) {Delivery operator\\local $c_R$};
+\node[box] (act) at (0,1.35) {Chemical actuator\\fixed pulse};
+\node[box] (del) at (4,1.35) {Delivery\\(not calibrated)};
 \node[box] (cell) at (4,0) {Cellular receiver\\latent $x$, reporter $y$};
-\node[box] (hist) at (0,0) {Available history\\predictor $z_t$};
-\node[box,dashed,text width=53mm] (mpc) at (2,-1.3) {Proposed readiness-aware MPC\\amplitude, duration, waiting};
+\node[box] (est) at (0,0) {Predictor and\\readiness $\widehat R_t$};
 \draw[arr] (act) -- (del);
 \draw[arr] (del) -- (cell);
-\draw[arr] (cell) -- node[above,font=\scriptsize]{feedback} (hist);
-\draw[arr] (act) -- (hist);
-\draw[arr,dashed] (hist) -- (mpc);
-\draw[arr,dashed] (mpc.west) -- (-1.55,-1.3) -- (-1.55,1.3) -- (act.west);
+\draw[arr] (cell) -- node[above,font=\scriptsize]{$y_{\le t}$} (est);
+\draw[arr] (est) -- node[left,font=\scriptsize]{send at $\tau$} (act);
+\begin{scope}[yshift=-1.5cm]
+\draw[->] (-1.3,0) -- (5.5,0) node[right,font=\scriptsize]{$t$};
+\fill[gray!55] (-1.1,0) rectangle (-0.5,.22);
+\node[font=\scriptsize,below] at (-0.8,0) {cmd.};
+\draw[decorate,decoration={brace,amplitude=3pt}] (-0.45,.3) -- (2.55,.3)
+  node[midway,above=2pt,font=\scriptsize]{observe $y_t$ while $\widehat R_t<c$};
+\fill[black] (2.6,0) rectangle (2.82,.22);
+\node[font=\scriptsize,below] at (2.7,0) {$\tau$};
+\draw (2.82,0) rectangle (4.35,.22);
+\node[font=\scriptsize,below] at (3.8,0) {task window $W$};
+\draw[dashed] (5.05,-.1) -- (5.05,.42) node[above,font=\scriptsize]{$D$};
+\end{scope}
 \end{tikzpicture}
-\caption{MC interpretation. The completed analysis predicts the reporter from commands and available observations; local delivery and latent states are not calibrated, and the dashed controller is examined only in simulation (Sec.~\ref{sec:readiness}).}
+\caption{System and one reuse task. The completed analysis predicts the reporter from commands and observations; delivery and latent states are not calibrated. The waiting rule is evaluated only in simulation on B3 (Sec.~\ref{sec:waiting}).}
 \label{fig:system}
 \end{figure}
 
-\subsection{Task-Dependent Readiness: Proposed Definition}
-A prospective command $m$ specifies an output band $\mathcal{Y}_m(t)$, a hold interval with acquisition times $\mathcal{I}_m$, a deadline, and any exclusion interval for false activation, all fixed by a separately calibrated application. At the measurement resolution, task success is
+We fix the amplitude and duration of the next command and decide only when to send it (Fig.~\ref{fig:system}). After a previous command ending at time 0, a 5-min probe at the same amplitude is sent at $\tau\in\mathcal{T}=\{0,2,\ldots,120\}$~min. With $r_{\rm naive}$ the receiver's rise to the same probe without a previous command, the task outcome and readiness are
 \begin{equation}
- S_m=\ind\Big\{\textstyle\bigcap_{t_i\in\mathcal{I}_m}\{y_j(t_i)\in\mathcal{Y}_m(t_i)\}\cap\mathcal{C}_m\Big\},
+ \begin{aligned}
+ S&=\ind\Big\{\max_{t\in[\tau,\tau+W]}y(t)-y(\tau)\geq\kappa\,r_{\rm naive}\Big\},\\
+ R_t&=\Prob\big(S=1\mid\Hist_t,\tau=t\big),
+ \end{aligned}
  \label{eq:task}
 \end{equation}
-where $\mathcal{C}_m$ is the event that deadline and exclusion requirements hold. Individual-cell and population criteria differ and must be chosen before a policy is evaluated. For a candidate future command sequence $\mathbf a$, readiness is
-\begin{equation}
- R_t(m,\mathbf a)=\Prob(S_m=1\mid\Hist_t,\mathbf a).
- \label{eq:ready}
-\end{equation}
-Readiness is specific to a requested response and deadline: returning to a reporter baseline need not imply readiness for every next task, and successful delivery may not require complete biochemical reset. These are hypotheses to evaluate. The present data have no prespecified $\mathcal{Y}_m$ or task labels, so Eq.~\eqref{eq:task} is not applied retrospectively, and a point predictor's RMSE is not a calibrated estimate of Eq.~\eqref{eq:ready}.
+with task window $W=20$~min and $\kappa=0.5$. The completion time is $T=\tau+W$ on success and the deadline penalty $D=140$~min on failure, and a rule should minimize $\E[T]$ subject to $\Prob(S=1)\geq q=0.9$. Readiness is task-specific: a reporter need not return to baseline before the receiver is ready for this task. The experimental data have no task labels, so Eq.~\eqref{eq:task} is evaluated only in simulation.
 
-\section{History-Aware Prediction}
-We fit separate predictors for horizons $h=2$ and $10$ min. All learned predictors receive the same known future command: its exposure in successive 2-min bins, the concentration at $t+h$, and the horizon. Future reporter values are targets only, so this is conditional forecasting under recorded protocols, not evaluation of counterfactual commands. The input--response (IR) set contains $u_t$, $u_t^2$, $y_t$, $y_t^2$, $u_ty_t$ and the future-command features; comparators add the clock $t,t^2$ or the slope $(y_t-y_{t-2})/2$. The causal-history set adds this slope, the past exposure $\int_0^t u(s)\,ds$, and input and response filters with scales $\tau\in\{2,10,60\}$ min,
+\section{Mechanism-Informed Prediction and Waiting}
+\subsection{Nested Predictors}
+Separate predictors are fit for horizons $h=2$ and 10~min after a fixed 10-min observed warmup. Every learned predictor receives the same known future command (its exposure in 2-min bins, the concentration at $t+h$, and $h$); future reporters are targets only. The current-state set C contains $u_t$, $u_t^2$, $y_t$, $y_t^2$, $u_ty_t$, the slope $(y_t-y_{t-2})/2$ and the future-command features. Causal filters with scales $\tau\in\{2,10,60\}$~min summarize input and reporter history,
 \begin{equation}
  \begin{aligned}
  q_{\tau}(t)&=\frac{1}{\tau}\int_0^t e^{-(t-s)/\tau}u(s)\,ds,\\
@@ -96,139 +97,88 @@ We fit separate predictors for horizons $h=2$ and $10$ min. All learned predicto
  \end{aligned}
  \label{eq:filters}
 \end{equation}
-with $r_{\tau,0}=y_0$ and $\Delta_i=t_i-t_{i-1}$; $q_\tau$ is evaluated exactly for the piecewise-constant command. The scales are computational choices, not identified rate constants. A history-plus-clock set adds $t,t^2$ to the history features, giving a nested ablation of the IR-plus-clock comparator. Prediction starts after a fixed 10-min observed warmup; pre-export biological history is unknown.
-
-Let $d$ index training condition blocks with $N_d$ rows each. Row weights $w_i=1/(D_{\rm tr}N_{d(i)})$ give every block equal weight. With features standardized by weighted training statistics, standardized row $a_i$ and weighted target mean $\bar y$,
-\begin{equation}
- \hat\beta_{\lambda}=\arg\min_{\beta}\sum_{i\in\mathrm{train}}w_i(y_{i+h}-\bar y-a_i^\top\beta)^2+\lambda\|\beta\|_2^2,
- \label{eq:ridge}
-\end{equation}
-with the unpenalized intercept $\bar y$. The penalty is selected by condition-equal validation MSE, separately per predictor and horizon; validation blocks are never added to training. The small feature set tests whether history carries usable information before a more complex architecture is justified.
-
-As a mechanistic reference we execute the original authors' B3 model with their 1,000 posterior parameter samples (Sec.~\ref{sec:data}). With $f_s(t)$ the noise-free reporter of sample $s$ under the recorded command, the matched-feedback forecaster M2 weights the samples by each cell's past reporter,
+with $r_{\tau,0}=y_0$ and $\Delta_i=t_i-t_{i-1}$; the scales are computational choices, not identified rate constants. O adds the reporter filters $r_\tau$ to C. As a mechanism we execute the authors' B3 model with their 1,000 posterior parameter samples. With $f_s(t)$ the noise-free reporter of sample $s$ under the recorded command, the samples are weighted by each cell's past reporter,
 \begin{equation}
  \begin{aligned}
  w_s(t)&\propto\textstyle\exp\big[-\sum_{t_i\le t}(y_i-f_s(t_i))^2/(2\sigma^2)\big],\\
- \hat y_{t+h}&=y_t+\textstyle\sum_s w_s(t)\,[f_s(t+h)-f_s(t)],
+ \hat\delta_{t,h}&=\textstyle\sum_s w_s(t)\,[f_s(t+h)-f_s(t)],
  \end{aligned}
  \label{eq:b3}
 \end{equation}
-a fixed-parameter particle approximation of the B3 belief that uses the same information as the learned predictors. M3 adds the M2 increment as one feature to the causal-history ridge, so it nests both causal history (M1) and M2; IR plus clock is M0. The scale $\sigma$ is selected on validation from seven values. The samples express population-mean uncertainty, not cell heterogeneity.
+a fixed-parameter particle approximation of the B3 belief that uses the same information as the learned predictors. M adds $\hat\delta_{t,h}$ to O, and H adds the input filters $q_\tau$ and the cumulative exposure $\int_0^tu(s)\,ds$ to M. Persistence P ($\hat y_{t+h}=y_t$) needs no training. Each set is fit by ridge regression with equal weight per condition and standardization from training rows; the penalty (from $10^{-8}$ to $10^{4}$) and $\sigma$ (seven values) are selected on validation. Adding the clock $t,t^2$ to each set is a sensitivity analysis. The B3 samples express population-mean uncertainty, not cell heterogeneity.
 
-\section{Proposed Receiver-Reuse Controller}
-The proposed extension uses actions $a_k=(A_k,d_k,w_k)$: command amplitude, pulse duration, and waiting/washout time, within an experimentally calibrated set $\calA$ that also encodes actuator bounds, task order and deadlines. Chemical washout and cellular recovery can differ and should be measured separately. When cells share a chamber and one command, the policy must optimize a prespecified population criterion. For ordered tasks with $S_{\rm seq}=\prod_{k=1}^K S_{m_k}$, a candidate planning problem is
+\subsection{Calibrated Waiting Rules}
+A waiting rule probes at
 \begin{equation}
- \begin{aligned}
- \min_{\mathbf a\in\calA}\ &\eta_E\E[E(\mathbf a)\mid\Hist_t]+\eta_T\E[T(\mathbf a)\mid\Hist_t]\\
- \text{s.t.}\ &\Prob(S_{\rm seq}=1\mid\Hist_t,\mathbf a)\geq1-\epsilon .
- \end{aligned}
- \label{eq:mpc}
+ \tau=\begin{cases}\inf\{t\in\mathcal{T}:\widehat R_t\geq c\}, & \text{if such a } t \text{ exists},\\ \max\mathcal{T}, & \text{otherwise}.\end{cases}
+ \label{eq:wait}
 \end{equation}
-The constraint concerns the joint sequence event; multiplying marginal success probabilities would silently assume conditional independence across a reused receiver. The exposure $E=\int u(t)\,dt$ (ng$\cdot$min/ml) is only a proxy: delivered mass requires calibrated flow $Q(t)$ via $\int Q(t)c_{\rm delivered}(t)\,dt$, and molecule numbers further require a delivery model. A rollout model may be a mechanistic state estimator, a learned state model, or a learned residual; its distribution and task-event calibration must use separate data containing the relevant actions and outcomes.
+Three estimators of $R_t$ are compared. The current estimator uses only $y_t$, through a Gaussian kernel over the (reporter, success) states of reference receivers; the smoothed estimator applies the same kernel to a causal exponential smoothing of the observations (scale 2--16~min); the history-aware estimator weights reference receivers under the known command history by all observations so far, as in Eq.~\eqref{eq:b3}. Per-frame probability calibration does not guarantee the reliability of an adaptive stopping rule, so the whole rule is calibrated: $c$ (and the smoothing scale) is the smallest value whose success reaches $q$ on calibration receivers, the comparator fixed wait is the shortest wait that does, and success and completion are reported on separate evaluation receivers.
 
-The controller executes the first action of the solution, logs actuation and delivery, and replans after feedback; without a feasible sequence it keeps a reference wait rule. Its waiting-only special case probes once the estimated success probability reaches a level $q$ (Fig.~\ref{fig:example}, Sec.~\ref{sec:readiness}). On measured receivers it requires calibrated delivery, prespecified tasks, an action-supported rollout model and joint-event calibration.
+\section{Data and Evaluation Protocol}
+\label{sec:data}
+\subsection{Data and Roles}
+All numerical files come from the paper-linked \texttt{Mijan/LFNS\_MSB} repository at pinned commit \texttt{5c917ab} \cite{lfnsrepo}, with the associated data record \cite{mendeley2020}; every file matches its Git blob identifier. Commands follow the authors' model XML with half-open pulses; mixed pulses span $[1,4)$, $[24,54)$ and $[114,119)$~min, and for this protocol the 10--30~min per-cell normalization was reconstructed from unnormalized exports. Table~\ref{tab:inventory} lists the 22 conditions. An earlier pilot tested on the viewed mixed blocks, which now serve only as context. The roles were frozen, with a SHA-256 record, before any newly used response file was downloaded. Test A is a new protocol. Test B's $[0,60)$ timing was inferred from the authors' B3 simulations, with a $\pm1$~min sensitivity, and later confirmed by their simulation summary. Test C uses new concentrations recorded in the session of the viewed blocks. Under that frozen protocol causal history beat a current-state-plus-clock model on Test A by 8.8\% but improved on persistence by only 0.7\% (one of four concentrations). The nested comparison and the waiting study were each frozen in their own protocol before running, but both are post hoc with respect to inspected data.
+
+\begin{table}[t]
+\caption{Protocols, roles and single-cell trajectories (22 conditions, 1,565 cells, 2-min frames). B3 use: concentrations whose means the authors fitted (fit) or used in their architecture comparison (arch.).}
+\label{tab:inventory}
+\centering\footnotesize\setlength{\tabcolsep}{3pt}
+\input{tables/inventory_core.tex}
+\end{table}
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth]{figures/readiness_example.pdf}
-\caption{Readiness-aware waiting simulated on one B3 posterior sample after a 30-min, 25~ng/ml command. (a) Reporter, noisy observations, and 20-min responses to a 5-min probe at three waits; segments mark the required rise. (b) Success probability estimated from all or only the current observation; a policy probes when it reaches $q$. Gray: this receiver is ready. Chosen by a fixed rule from the 194 of 1,000 samples where the current-only policy probed early and failed and the history-aware one succeeded (321 others: current-only later).}
-\label{fig:example}
+\includegraphics[width=\columnwidth]{figures/prediction_phases.pdf}
+\caption{Experimental 10-min prediction. (a) Test A at 25~ng/ml: the cell with median H error (of 64), its observations, the middle 50\% of cells, and the forecasts of P, M and H at their target times; gray: command. (b) Condition-equal RMSE on Tests A--C by forecast phase (axis not starting at zero).}
+\label{fig:prediction}
 \end{figure}
 
-\section{Experimental Data and Evaluation Protocol}
-\label{sec:data}
-\subsection{Source, Audit, and Pilot Split}
-All numerical files come from the paper-linked \texttt{Mijan/LFNS\_MSB} repository at pinned commit \texttt{5c917ab} \cite{lfnsrepo}; the associated data record is cited for provenance \cite{mendeley2020}. Every file used here matches its Git blob identifier. Commands follow the authors' model XML and pulse annotations with half-open intervals: 3/20 pulses are 3~min on every 23~min, single pulses start at 0, and mixed pulses span $[1,4)$, $[24,54)$ and $[114,119)$~min. For the mixed protocol we reconstructed the 10--30~min per-cell median normalization from unnormalized exports (maximum discrepancy $1.4\times10^{-4}$, export rounding); other conditions retain author preprocessing. The pilot trained on the sustained and 3/20 blocks at 2.5 and 250~ng/ml, validated on single 5-min pulses, and tested on mixed pulses (606 cells, 53,998 observations). That test has since been inspected and serves only as context.
-
-\subsection{Pre-Registered Expansion}
-Before downloading any newly used response file, we froze an analysis protocol (roles, schedules, features, penalty grid $\{10^{-8},\ldots,10^{4}\}$, horizons, metrics, hypotheses and data rules) and recorded its SHA-256 hash; the analysis refuses to run if the protocol changes, and it was run once. The 56 additional files all matched their upstream blob identifiers. Table~\ref{tab:inventory} lists the 22 conditions. Training uses the sustained and 3/20 blocks at all concentrations, validation the single 5-min pulses. Test A is a new protocol (single 10-min pulse, timing from the XML). Test B is the single 60-min pulse; no XML input exists, so its $[0,60)$ timing was inferred from the authors' B3 simulations, which match their sustained simulations through 60~min and diverge by 64--78~min, with a pre-registered $\pm1$~min onset sensitivity; their simulation summary later confirmed this timing. Test C uses the mixed protocol at new concentrations; raw file names show it was recorded as further channels of the inspected experiment, so it shares that session. The primary hypotheses compare causal history (H1) and history plus clock (H2) with the IR-plus-clock comparator at 10~min on Test A. All cells passed the rules (uniform 2-min grids, finite values). For 0.25~ng/ml the exported ``unnormalized'' file is identical to the normalized one, so its normalization check is uninformative; at 25~ng/ml the discrepancy is $1.4\times10^{-4}$.
-
-\begin{table}[t]
-\caption{Single-cell trajectories per protocol and FGF2 command amplitude (ng/ml); frames per cell at 2-min spacing. Daggered mixed blocks are the inspected pilot test; the pilot used only the 2.5 and 250~ng/ml blocks.}
-\label{tab:inventory}
-\centering\footnotesize\setlength{\tabcolsep}{4pt}
-\input{tables/inventory.tex}
-\end{table}
-
-\subsection{B3 Execution and Reference Protocol}
-B3 is executed by parsing the authors' model, initial-value and measurement files, with the posterior order taken from their simulation summary; no equation is retyped and no parameter is refit. An acceptance gate fixed in advance required our posterior-predictive mean to match their exported mixed-protocol predictions within $10^{-3}$: the maximum differences were $7.9\times10^{-6}$ and $8.5\times10^{-6}$, sample-wise errors equal their added measurement noise ($10^{-4}$), and conservation laws hold to about $10^{-14}$. B3 was fitted to sustained and 3/20 means at 2.5 and 250~ng/ml, and mixed and single 5-min conditions at those doses entered its architecture selection. The M0--M3 comparison was frozen in its own protocol before any B3 forecast was scored; because all roles had been inspected for the learned models, it is a post hoc reference analysis.
-
-\subsection{Scores and Comparators}
-The score is the square root of the equally weighted condition MSE,
+\subsection{Mechanism, Validation and Scores}
+B3 is executed by parsing the authors' model files; no equation is retyped, no parameter is refit, and our posterior-predictive mean matches their exported predictions within $8.5\times10^{-6}$ (acceptance gate $10^{-3}$). Because the authors fitted B3 to the sustained and 3/20 means and compared architectures on the single 5-min and viewed mixed blocks at 2.5 and 250~ng/ml (Table~\ref{tab:inventory}), M and H use a calibrated reference, not a model blind to those protocols. In LOPO each of six protocol groups is held out in turn; $\sigma$ is selected on the training groups, the penalty by inner leave-one-group-out over the training groups, and the held-out group enters no standardization, selection or fit. Forecast rows are labeled by phase: stimulation (command on at $t$), next command (a pulse starts in $(t,t+h]$), early washout (last pulse ended at most 30~min before $t$), and late. After its warmup Test A contains only washout rows, so it mainly tests washout prediction. The score is the square root of the equally weighted condition MSE,
 \begin{equation}
  \mathrm{RMSE}_{\rm cond}(h)=\Big[\tfrac{1}{|D|}\textstyle\sum_{d\in D}\tfrac{1}{N_{d,h}}\sum_{i\in d}(\hat y_{i+h}-y_{i+h})^2\Big]^{1/2},
  \label{eq:score}
 \end{equation}
-reported with per-condition directions. Overlapping rows and cells are not independent interventions, and experimental-day identifiers are unavailable, so no significance test or confidence interval is reported. Persistence ($\hat y_{t+h}=y_t$) is included because it needs no training.
+reported with per-condition directions. Rows and cells are not independent interventions and experimental-day identifiers are unavailable, so no significance test is reported.
 
-\section{Results}
-\subsection{Pilot on the Inspected Test}
-Table~\ref{tab:forecast} reproduces the pilot. At 10~min, causal history (0.02682) improves on IR plus clock (0.02923) by 8.25\% and on IR by 9.39\%; at 2~min the gain over IR is 0.94\%. Three caveats qualify this. First, 42.5\% of the 10-min test forecasts start after the latest training origin (147~min). Within that range the history gain over IR plus clock is 8.8\%, but beyond it persistence (0.02047) is the best predictor, and the 2-min gain is $+2.0\%$ within and $-1.8\%$ beyond. Second, on the validation protocol history improves on persistence by only 1.6\%, and IR plus clock is worse than persistence. Third, all response models select the smallest penalty ($10^{-6}$), so they are effectively unregularized.
-
-\begin{table}[t]
-\caption{Pilot condition-equal RMSE (normalized reporter units). Test at 2 and 10~min, 10-min validation, and the 10-min test split by forecast origin at the latest training origin. Bold: smallest point estimate.}
-\label{tab:forecast}
-\centering\footnotesize\setlength{\tabcolsep}{3pt}
-\input{tables/forecast_rmse.tex}
-\end{table}
-
-\subsection{Pre-Registered Fresh Tests}
-Table~\ref{tab:expanded} reports the frozen analysis. Both primary hypotheses hold: on Test A, causal history reduces the 10-min RMSE from 0.02490 to 0.02270 (8.8\%) and history plus clock to 0.02286 (8.2\%), with history ahead of IR plus clock at three of four concentrations. The comparison with persistence is less favorable. The current-state models, trained on two protocols, are all worse than persistence on Tests A and B, and causal history improves on persistence by only 0.7\% on Test A (one of four concentrations) and 3.1\% on Test B (two of three). On Test B the ordering is unchanged under the $\pm1$~min onset shifts (history 0.02530 and 0.02614 against persistence 0.02651). On Test C, history and IR plus clock are nearly equal (0.02778 versus 0.02792), and history plus clock degrades to 0.03021: before the latest training origin the current-state models are slightly better (IR 0.03216 versus history 0.03284), whereas beyond it causal history is best and the extrapolated clock terms hurt. At 2~min on Test A, causal history improves on IR plus clock by 1.9\% (four of four concentrations). Penalty selection again reaches the grid edge ($10^{-8}$ for every 10-min response model).
-
-\begin{table}[t]
-\caption{10-min condition-equal RMSE. Val.: single 5-min pulse; A: single 10-min pulse (new protocol); B: single 60-min pulse (new protocol); C: mixed pulses at 0.25 and 25~ng/ml (new concentrations, inspected session). Rows above M2 are the pre-registered analysis; M2 and M3 are the post hoc B3 reference. Bottom rows count conditions with the lower MSE.}
-\label{tab:expanded}
-\centering\footnotesize\setlength{\tabcolsep}{3.5pt}
-\input{tables/expanded_rmse.tex}
-\end{table}
-
-\subsection{Leave-One-Protocol-Out Robustness}
-The pre-registered robustness analysis retrains on five protocol groups and tests on the sixth, with penalties fixed at the primary selection (Table~\ref{tab:lopo}). History features, with or without clock terms, give the lowest RMSE in all six folds, improving on persistence by 5.8--13.6\%. In particular, the 3/20 fold improves from 0.04076 (persistence) and 0.04306 (IR plus clock) to 0.03521. Compared with Table~\ref{tab:expanded}, this indicates that the history advantage over persistence depends on how diverse the training stimulation is; it remains a protocol-level, single-session-per-protocol result.
-
-\begin{table}[t]
-\caption{Leave-one-protocol-out 10-min RMSE; inspected mixed blocks excluded from training.}
-\label{tab:lopo}
-\centering\footnotesize\setlength{\tabcolsep}{3.5pt}
-\input{tables/lopo_rmse.tex}
-\end{table}
-
-\subsection{Mechanistic Reference and Nested History Residual}
-Table~\ref{tab:expanded} also lists the B3 forecasters ($\sigma=0.005$ at both horizons). Without feedback, the B3 posterior-mean forecast is far worse (0.03819 on Test A). With matched feedback, M2 beats IR plus clock (0.02286 versus 0.02490) but only equals persistence (0.02287) and is marginally behind causal history (0.02270). Adding the history features to the M2 increment (M3) gives the lowest RMSE in every role at both horizons: 0.02098 on Test A, 8.2\% below M2 and 8.3\% below persistence, ahead of M2 at four of four concentrations; on Tests B and C the reductions relative to M2 are 0.3\% and 4.9\%. Alone, neither the mechanistic estimator nor the history summary improves on persistence by more than 0.7\% on the unseen protocol; only their combination does. This is a reference comparison on inspected roles, not a fresh test.
-
-\subsection{In-Silico Readiness and Waiting on B3}
-\label{sec:readiness}
-Readiness and waiting policies were then simulated on B3 under a protocol frozen before running (Fig.~\ref{fig:readiness}). A 3- or 30-min command at 25~ng/ml ends at time 0 and a 5-min probe follows after a wait; the task is an incremental response of at least half the same sample's response on an unstimulated receiver within 20~min. Each posterior sample acts in turn as the plant, observed every 2~min with noise (s.d. 0.005), while controllers use the other 999 samples. A first version requiring 80\% of the naive response was infeasible for every sample within 120~min (largest recovered fraction 0.79) and is reported unchanged in the package; the version shown changes only that threshold and two rules based on baseline return, which never occurred (a reset policy and the history comparison). Readiness rose only after about 60~min and reached 0.5 at 78 and 88~min after short and long histories, so the candidate waits of 6--48~min never succeeded. Although the reporter never returned within 0.01 of baseline, readiness depended almost only on its current value: nearly all states below a rise of 0.045 were ready and almost none above 0.050, for both histories (mean difference 0.6 percentage points). Weighting the other samples by all observations and probing at $q=0.9$ (Fig.~\ref{fig:example}) achieved 90.0\% success with a mean failure-penalized completion time of 113.8~min, against 121.8~min for the shortest fixed wait with at least that success (100~min, 91.3\%). Using only the current observation gave 75.6\% at 119.7~min, a half-decay reset 2.2\%, and an oracle 99.3\% at 104.9~min. Because readiness is nearly Markov in the reporter, the history-aware advantage here comes from filtering noisy observations rather than hidden memory; the controllers share the plant's model structure, and none of this is evidence about measured cells.
-
+\section{Results and Discussion}
+\label{sec:results}
 \begin{figure*}[t]
 \centering
-\includegraphics[width=.92\textwidth]{figures/readiness_policies.pdf}
-\caption{In-silico readiness on the authors' B3 model (25~ng/ml commands; task: probe response $\geq$ 50\% of the naive response). (a) Fraction of posterior samples ready versus wait after a 3- or 30-min command. (b) Readiness versus the current noise-free reporter rise. (c) Success rate versus mean failure-penalized completion time for waiting policies; the gray curve traces fixed waits, the dotted line the 0.9 target. Simulation of one model structure, not measured cells.}
-\label{fig:readiness}
+\includegraphics[width=.92\textwidth]{figures/readiness_waiting.pdf}
+\caption{Calibrated waiting on the authors' B3 model (25~ng/ml; task: probe rise $\geq$ 50\% of the naive rise within 20~min). (a) Readiness versus the current noise-free reporter after 3- or 30-min commands. (b) Mean completion on evaluation samples at observation noise 0 (open) and 0.005 (filled), labeled with success; dashed: calibrated fixed wait. (c) Success versus mean completion at noise 0.005; gray: fixed waits; dotted: target 0.9. Thresholds and the fixed wait were chosen on calibration samples. Simulation of one model structure, not measured cells.}
+\label{fig:waiting}
 \end{figure*}
 
-\subsection{Command-Only Models and Mechanistic Reference}
-For population means without reporter feedback, a positive single-lag model (validation time constant 13.16~min) and a ridge filter bank with scales 1--128~min were fit on the pilot split. On 0--180~min (Table~\ref{tab:openloop}), the heavily regularized bank improves on a constant training mean by only 0.9\% and 2.7\%, and the single lag is worse than the constant; the mean of the original authors' 1,000 B3 predictive samples is much closer. B3 used mixed and single-pulse conditions in its architecture selection, so it is a selection-exposed reference, not a blind benchmark, and population-mean errors are not comparable with the individual forecasts above. After the long pulse the mean reporter still rises from 54 to 66~min with zero command, which a nonnegative single lag cannot reproduce; the source biology reports such washout behavior \cite{blum2019}.
+\subsection{Nested Prediction}
+Table~\ref{tab:core} reports the nested predictors. On Test A at 10~min, reporter filtering reduced the error of the current-state set by 9.1\% (O versus C), the B3 increment by a further 4.5\% (M versus O), and input history by a further 1.0\% (H versus M), giving 0.02098, 8.2\% below persistence. The mechanistic increment helped in every test role (M versus O: 9.8\% on B and 6.0\% on C), whereas the filtering gain vanished on B and C. The input-history gain is small and not consistent across conditions: H beat M at two of four concentrations on Test A, by 0.4\% and 0.1\% on B and C, and by 0.2\% at 2~min. Clock terms did not help (0.1--2.4\% worse on the tests), and C alone was worse than persistence on Tests A and B.
 
 \begin{table}[t]
-\caption{Population-mean open-loop RMSE on 0--180~min (pilot split).}
-\label{tab:openloop}
-\centering\footnotesize
-\input{tables/open_loop_rmse.tex}
+\caption{Condition-equal RMSE of nested predictors at 10~min unless noted. Val.: single 5-min pulse; A: single 10-min pulse; B: single 60-min pulse (inferred timing); C: mixed pulses at 0.25 and 25~ng/ml. P and C are pre-registered predictors; O, M and H are post hoc. Bold: smallest per column; bottom rows count conditions with lower MSE.}
+\label{tab:core}
+\centering\footnotesize\setlength{\tabcolsep}{3pt}
+\input{tables/core_rmse.tex}
 \end{table}
 
-\subsection{Exploratory Matched History}
-Pairing early washout after the short mixed pulse (6--12~min) with later washout after the long pulse (56--102~min) at similar reporter values (tolerance 0.005), the later-minus-earlier 10-min target is positive at 2.5~ng/ml (60/78 cells, $+0.0144$; slope-matched 14/78, $+0.0202$) but negative at 250~ng/ml, shrinking to $-0.0012$ when slope-matched (17/76). These post hoc, post-stimulation matches identify no causal history effect.
+\subsection{Forecast Phases}
+In Fig.~\ref{fig:prediction}(a) persistence lags the washout by the horizon, whereas M and H follow it (cell RMSE 0.0235, 0.0190 and 0.0189). By phase (Fig.~\ref{fig:prediction}(b)), the mechanistic increment reduced the error of O in every phase except the next-command window (by 8.9\% during stimulation, 4.6\% in early washout and 6.6\% late); in early washout O, M and H reached 0.02919, 0.02785 and 0.02757. During stimulation the reporter filters hurt (O 0.03522 versus C 0.03316), and in the late phase M was best with H slightly worse. In the next-command window, covered by two mixed conditions only, O was best and the B3 increment raised the error (0.03544 versus 0.03306), so the calibrated mechanism is least reliable when the next pulse is imminent.
 
-\section{Discussion and Required Validation}
-The question is molecular because the task involves nonnegative chemical actuation, delivery and washout dynamics, a nonlinear receiver, and history-dependent availability: waiting is a control action with a time cost, and exposure has its own cost. Fresh protocols confirm that history features beat a current-state-plus-clock model; against persistence they help mainly when combined with a mechanistic estimator or when training covers diverse stimulation, and the long mixed protocol exposes clock extrapolation. In B3, readiness after 25~ng/ml commands takes over an hour and is nearly determined by the current reporter, so the registered candidate waits should be extended and the expected value of history lies in state estimation under noise; whether measured cells carry history beyond the reporter remains open. None of this separates delivery memory from intracellular memory or establishes task reliability.
+\subsection{Corrected Leave-One-Protocol-Out}
+With leakage-free selection, H beat M in all six folds, by 0.1--2.0\%, and beat persistence by 8.0--30.6\%. The B3 increment contributed more than reporter filtering in five folds (up to 21.6\% on 3/20) and was 1.1\% worse than O when the 10-min pulse was held out. The earlier frozen LOPO, whose penalties had been selected with the held-out protocols in the training or validation data, put history ahead of persistence by 5.8--13.6\%; the corrected comparison keeps that direction. Only the 10- and 60-min folds are untouched by the B3 fit and architecture comparison, whereas the sustained and 3/20 folds contain fitted conditions.
 
-A draft validation registration accompanies the package: 3- versus 30-min preconditioning randomized per chamber/session, a common 5-min probe at a fixed protocol clock (90 or 120~min) after 6--48~min waits, and matched controls, with uncalibrated candidate doses and times. The primary comparison is a mechanistic state estimator plus a history residual against the same estimator with identical feedback (group-level Brier score of the next task event); the primary endpoint is the failure-penalized completion time $S\,T+(1-S)D$ of two ordered tasks completed by the same eligible cells, starting with adaptive waiting. Sample sizes count independent days or chambers, never cells: zero-failure support for 0.95 sequence reliability needs 59 independent sequences. A targeted audit of 18 neighboring works, with recorded full-text gaps, supports no priority claim. If history adds no independent-day benefit, or a mechanistic estimator reaches the same reliability and cost, the claim should be narrowed.
+\subsection{Calibrated Waiting on B3}
+\label{sec:waiting}
+Readiness and waiting were simulated on B3 with 25~ng/ml commands, a 3- or 30-min previous command, and each posterior sample in turn as the receiver, observed every 2~min with noise of s.d. 0.005. Readiness depended almost only on the current reporter for both histories (Fig.~\ref{fig:waiting}(a)). A first task version requiring 80\% of the naive response was infeasible for every sample within 120~min and is reported in the package, and the registered candidate waits of 6--48~min never succeeded. With rules calibrated on 500 samples and evaluated on the other 500 (Fig.~\ref{fig:waiting}(c)), the history-aware rule reached 92.6\% success with a mean completion of 114.3~min, 7.4~min faster than the calibrated fixed wait (100~min: 91.2\%, 121.8~min); the current-observation rule reached 90.0\% at 119.7~min. A smoothed reporter (16-min scale) did as well as history (92.3\%, 113.6~min). Without observation noise (Fig.~\ref{fig:waiting}(b)) the current rule reached 93.6\% at 113.8~min, whereas the history weights collapsed onto essentially one reference sample (median effective sample size 1.1 versus 28.9 with noise) and the rule missed the calibration target (70.1\% on evaluation). The waiting gain is therefore filtering of noisy observations rather than hidden memory; the oracle (99.2\%, 104.7~min) bounds what better state estimation could add.
+
+\subsection{Evidence Boundaries}
+Seven limits qualify these results. First, history features alone improved little on persistence on the main fresh test (0.7\%). Second, the nested and hybrid comparisons are post hoc on inspected roles, not independent confirmation. Third, Test C shares a session with inspected data and no experimental-day identifiers exist, so protocol generalization is not cross-day generalization. Fourth, the waiting results come from B3 simulation: success over posterior samples is not the reliability of a measured cell population, and calibration and evaluation samples share the model structure. Fifth, the waiting gain is attributable to filtering; whether measured cells carry history that matters for control beyond the reporter remains open. Sixth, the task threshold was lowered from 80\% to 50\% after the first version proved infeasible. Seventh, amplitude and duration were fixed, so nothing is claimed about joint exposure--time optimization. Measured benefits require calibrated delivery, prespecified tasks, and new independent-session experiments.
 
 \section{Conclusion}
-On experimental FGF2--ERK trajectories, causal-history features improved 10-min prediction over a current-state-plus-clock model in a pilot and in a pre-registered test on unseen protocols, and combined with a matched-feedback execution of the authors' B3 model they beat naive persistence by 8.3\% in a post hoc comparison. In simulation on B3, task readiness tracked the current reporter, and a history-aware waiting policy met a 90\% reliability target faster than fixed waiting by filtering noisy observations. Demonstrating such benefits for measured receivers requires calibrated delivery, prespecified tasks, supported interventions and new independent-session experiments.
+On experimental FGF2--ERK trajectories, reporter filtering and a calibrated mechanistic increment from the authors' B3 model account for most of the gain in 10-min prediction over current-state and persistence predictors; input history adds a small further gain that holds across protocol folds but not across conditions. In simulation on B3, a calibrated history-aware waiting rule met a 90\% target faster than fixed waiting, but no faster than a smoothed reporter.
 
 \section*{Data and Code Availability}
-The package contains frozen results, protocols with hash records, the B3 execution, source manifests and verification scripts; one command re-runs the analysis and checks the reported values against a frozen reference. Sources are credited in \cite{blum2019,lfnsrepo,mendeley2020}; author files keep their attribution and receive no new license.
+Code, frozen results, protocols with hash records, and verification scripts are available at \url{https://github.com/ruifeng105/task-aware-cellular-mc}; one command re-runs the analysis and checks the reported values against a frozen reference. Sources are credited in \cite{blum2019,lfnsrepo,mendeley2020}; author files keep their attribution and receive no new license.
 
 \balance
 \bibliographystyle{IEEEtran}

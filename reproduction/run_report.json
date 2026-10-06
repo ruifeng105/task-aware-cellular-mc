@@ -1,7 +1,7 @@
 {
   "status": "passed",
   "mode": "full",
-  "started_utc": "2026-10-05T21:01:05.876881+00:00",
+  "started_utc": "2026-10-06T06:03:40.510246+00:00",
   "environment": {
     "python": "3.13.3",
     "numpy": "2.3.2",
@@ -13,121 +13,145 @@
     {
       "name": "fit_and_predict",
       "return_code": 0,
-      "elapsed_seconds": 5.669,
+      "elapsed_seconds": 5.619,
       "log": "reproduction\\logs\\fit_and_predict.log"
     },
     {
       "name": "expanded_fresh_test",
       "return_code": 0,
-      "elapsed_seconds": 13.652,
+      "elapsed_seconds": 13.296,
       "log": "reproduction\\logs\\expanded_fresh_test.log"
     },
     {
       "name": "verify_data_and_scores",
       "return_code": 0,
-      "elapsed_seconds": 0.899,
+      "elapsed_seconds": 0.827,
       "log": "reproduction\\logs\\verify_data_and_scores.log"
     },
     {
       "name": "verify_expanded",
       "return_code": 0,
-      "elapsed_seconds": 8.16,
+      "elapsed_seconds": 8.101,
       "log": "reproduction\\logs\\verify_expanded.log"
     },
     {
       "name": "verify_b3_model",
       "return_code": 0,
-      "elapsed_seconds": 18.924,
+      "elapsed_seconds": 20.227,
       "log": "reproduction\\logs\\verify_b3_model.log"
     },
     {
       "name": "b3_forecast",
       "return_code": 0,
-      "elapsed_seconds": 87.274,
+      "elapsed_seconds": 81.508,
       "log": "reproduction\\logs\\b3_forecast.log"
     },
     {
       "name": "b3_readiness",
       "return_code": 0,
-      "elapsed_seconds": 317.424,
+      "elapsed_seconds": 309.311,
       "log": "reproduction\\logs\\b3_readiness.log"
     },
     {
       "name": "b3_readiness_example",
       "return_code": 0,
-      "elapsed_seconds": 5.894,
+      "elapsed_seconds": 8.608,
       "log": "reproduction\\logs\\b3_readiness_example.log"
+    },
+    {
+      "name": "nested_forecast",
+      "return_code": 0,
+      "elapsed_seconds": 109.691,
+      "log": "reproduction\\logs\\nested_forecast.log"
+    },
+    {
+      "name": "b3_waiting",
+      "return_code": 0,
+      "elapsed_seconds": 58.393,
+      "log": "reproduction\\logs\\b3_waiting.log"
     },
     {
       "name": "verify_b3_forecast",
       "return_code": 0,
-      "elapsed_seconds": 73.813,
+      "elapsed_seconds": 70.905,
       "log": "reproduction\\logs\\verify_b3_forecast.log"
     },
     {
       "name": "verify_b3_readiness",
       "return_code": 0,
-      "elapsed_seconds": 8.987,
+      "elapsed_seconds": 8.533,
       "log": "reproduction\\logs\\verify_b3_readiness.log"
+    },
+    {
+      "name": "verify_nested_forecast",
+      "return_code": 0,
+      "elapsed_seconds": 89.845,
+      "log": "reproduction\\logs\\verify_nested_forecast.log"
+    },
+    {
+      "name": "verify_b3_waiting",
+      "return_code": 0,
+      "elapsed_seconds": 52.053,
+      "log": "reproduction\\logs\\verify_b3_waiting.log"
     },
     {
       "name": "synthetic_checks",
       "return_code": 0,
-      "elapsed_seconds": 0.43,
+      "elapsed_seconds": 0.422,
       "log": "reproduction\\logs\\synthetic_checks.log"
     },
     {
       "name": "build_paper_assets",
       "return_code": 0,
-      "elapsed_seconds": 1.73,
+      "elapsed_seconds": 2.256,
       "log": "reproduction\\logs\\build_paper_assets.log"
     },
     {
       "name": "kit_pilot_design",
       "return_code": 0,
-      "elapsed_seconds": 0.057,
+      "elapsed_seconds": 0.063,
       "log": "reproduction\\logs\\kit_pilot_design.log"
     },
     {
       "name": "kit_main_design",
       "return_code": 0,
-      "elapsed_seconds": 0.055,
+      "elapsed_seconds": 0.051,
       "log": "reproduction\\logs\\kit_main_design.log"
     },
     {
       "name": "kit_sample_size",
       "return_code": 0,
-      "elapsed_seconds": 0.768,
+      "elapsed_seconds": 1.254,
       "log": "reproduction\\logs\\kit_sample_size.log"
     },
     {
       "name": "kit_registration_audit",
       "return_code": 0,
-      "elapsed_seconds": 0.052,
+      "elapsed_seconds": 0.057,
       "log": "reproduction\\logs\\kit_registration_audit.log"
     },
     {
       "name": "kit_data_contract_audit",
       "return_code": 0,
-      "elapsed_seconds": 0.376,
+      "elapsed_seconds": 0.358,
       "log": "reproduction\\logs\\kit_data_contract_audit.log"
     },
     {
       "name": "kit_software_checks",
       "return_code": 0,
-      "elapsed_seconds": 0.984,
+      "elapsed_seconds": 0.916,
       "log": "reproduction\\logs\\kit_software_checks.log"
     },
     {
       "name": "pipeline_checks",
       "return_code": 0,
-      "elapsed_seconds": 0.649,
+      "elapsed_seconds": 0.768,
       "log": "reproduction\\logs\\pipeline_checks.log"
     },
     {
       "name": "compile_paper",
       "return_code": 0,
-      "elapsed_seconds": 0.408,
+      "elapsed_seconds": 0.753,
       "log": "reproduction\\logs\\compile_paper.log"
     }
   ],
@@ -136,12 +160,12 @@
   "scope": "Fixed pilot reproduction; B3 original-author exports are reused.",
   "manuscript_reference": {
     "status": "passed",
-    "entries_compared": 561,
+    "entries_compared": 862,
     "max_absolute_error": 9.020562075079397e-17,
     "relative_tolerance": 1e-08,
     "absolute_tolerance": 1e-10
   },
   "calibration_result_sha256": "780f2768582a19224350d3783d19ccd3da52b1fca5d98f6a0776270df87bc6cb",
   "expanded_result_sha256": "c538d3b4f7dc8d2033e251a098b316b106b6cf18c488734dbdbe4ed465521971",
-  "finished_utc": "2026-10-05T21:10:12.113575+00:00"
+  "finished_utc": "2026-10-06T06:17:44.389270+00:00"
 }

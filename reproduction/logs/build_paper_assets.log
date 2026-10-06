@@ -4,10 +4,14 @@
   "b3_forecast_result_sha256": "e639c47ed22703d1edfe483f64cf2a4a8bac4c28f56d0bcc822674496952013c",
   "b3_readiness_result_sha256": "3e1bb9ef0e2f9900d003d56f7e62c12048a65c0341ba31313ec5d68f34e69684",
   "b3_readiness_example_sha256": "591616f4a1a74858484c0e4eaeebd1576a9d951579343a065e4e63bd2341b88e",
+  "nested_result_sha256": "86ec1eac601859091fd5b47dd822b2c7a513a8284f6ca09c22d46438f6888e31",
+  "b3_waiting_result_sha256": "da20ca38a861cc07d6e3b861656953a2ec2143e631585e63290450c2fa9808b6",
   "generated_tables": [
+    "core_rmse.tex",
     "expanded_rmse.tex",
     "forecast_rmse.tex",
     "inventory.tex",
+    "inventory_core.tex",
     "lopo_rmse.tex",
     "matched_history.tex",
     "open_loop_rmse.tex"
@@ -15,8 +19,10 @@
   "generated_figures": [
     "forecast_mean_10min.pdf",
     "mixed_response.pdf",
+    "prediction_phases.pdf",
     "readiness_example.pdf",
-    "readiness_policies.pdf"
+    "readiness_policies.pdf",
+    "readiness_waiting.pdf"
   ],
   "fitted_models": false,
   "note": "Plots summarize saved pilot outputs; B3 is an original-author selection-exposed reference."

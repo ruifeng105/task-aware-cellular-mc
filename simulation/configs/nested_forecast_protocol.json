@@ -1,0 +1,51 @@
+{
+  "name": "Nested P/C/O/M/H forecast comparison, phase-wise scores and corrected leave-one-protocol-out",
+  "version": 1,
+  "status": "frozen_before_running",
+  "date": "2026-10-06",
+  "context": [
+    "Post hoc robustness analysis on roles that have already been inspected (pilot, pre-registered expansion and the B3 reference comparison); it is not a new confirmation.",
+    "Data roles, forecast origins (fixed 10-min observed warmup), future-command information and scores are those of configs/fgf2_expanded_protocol.json.",
+    "B3 posterior: fitted to the means of sus and 3/20 at 2.5 and 250 ng/ml; sp_5 and mixed at 2.5 and 250 ng/ml entered the authors' likelihood-based architecture comparison (config_fgf_sus_3_20.xml). It is used as a calibrated reference and is not refit."
+  ],
+  "models": {
+    "P": "persistence: current reporter",
+    "C": "current input, input squared, current reporter, reporter squared, input x reporter, 2-min slope, known future commands (equals pre-registered local_slope)",
+    "O": "C + causal reporter filters with scales 2, 10, 60 min",
+    "M": "O + matched-feedback B3 increment (posterior samples weighted by the cell's past reporter, scale sigma)",
+    "H": "M + causal input filters with scales 2, 10, 60 min + cumulative exposure (feature set equals M3 of b3_forecast.py)",
+    "clock_sensitivity": "C, O, M and H each refit with time and time squared added; reported as a sensitivity analysis only"
+  },
+  "selection": {
+    "sigma_grid": [0.002, 0.005, 0.01, 0.02, 0.05, 0.1, "equal_weights"],
+    "sigma_rule": "minimize the condition-equal MSE of current reporter + B3 increment on the validation role",
+    "ridge_alphas": [1e-08, 1e-06, 0.0001, 0.01, 1, 100, 10000],
+    "alpha_rule": "fit on train, minimize the condition-equal validation MSE; standardization inside each fit from its training rows"
+  },
+  "horizons_min": [2, 10],
+  "phases": {
+    "definition": "per forecast row with origin t and horizon h under the recorded half-open pulse schedule",
+    "stimulation": "the command is on at t",
+    "next_command": "the command is off at t and a pulse starts in (t, t + h]",
+    "early_washout": "otherwise, when the last pulse ended at most 30 min before t",
+    "late": "otherwise",
+    "scope": "pooled over test roles A, B and C with condition-equal weighting inside each phase; per-role counts reported"
+  },
+  "example": {
+    "condition": "fgf_sp_10_25ng",
+    "rule": "25 ng/ml is the dose of the readiness study; the cell at position floor(n/2) of the cells sorted by their 10-min H MSE (ties by cell id)"
+  },
+  "lopo": {
+    "groups": "sus, 3/20, single 5 min, single 10 min, single 60 min, mixed at the new concentrations; the inspected mixed 2.5/250 blocks are excluded",
+    "horizon_min": 10,
+    "models": ["P", "C", "O", "M", "H"],
+    "rule": "for each outer held-out group: sigma minimizes the condition-equal MSE of the B3 feedback forecast over all training groups; alpha minimizes the mean condition-equal MSE over inner leave-one-group-out folds of the training groups; refit on all training groups; the held-out group enters no standardization, selection or fit",
+    "b3_disclosure": "each fold reports whether its conditions were used by the B3 fit or architecture comparison"
+  },
+  "comparisons": {
+    "primary": "H versus M, 10-min RMSE on test A (single 10-min pulse, new protocol)",
+    "secondary": ["M versus O", "O versus C", "C versus P", "H versus M per corrected LOPO fold"]
+  },
+  "decision_rule": "Input history is reported as an additional predictive contribution only if H has lower 10-min test-A RMSE than M and beats M in at least 4 of the 6 corrected LOPO folds; otherwise the prediction contribution is stated as reporter filtering plus mechanism, and input history as adding no consistent value.",
+  "reporting": "All comparisons are reported whatever their direction; no significance testing (no independent-day replicates)."
+}
