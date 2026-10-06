@@ -3036,7 +3036,11 @@
     "b3/ar1/splits/paired/ar1_history-frozen_history/completion/median": -1.184,
     "b3/ar1/splits/paired/ar1_history-frozen_history/completion/min": -2.598,
     "b3/ar1/splits/paired/ar1_history-frozen_history/completion/max": 0.22,
-    "b3/ar1/splits/ar1_more_reliable_than_independent": 20
+    "b3/ar1/splits/ar1_more_reliable_than_independent": 20,
+    "b3/ar1/splits/ar1_minus_conditioned/completion/median": -2.3560000000000088,
+    "b3/ar1/splits/ar1_minus_conditioned/completion/min": -4.001999999999995,
+    "b3/ar1/splits/ar1_minus_conditioned/completion/max": -1.3859999999999957,
+    "b3/ar1/splits/ar1_faster_than_conditioned": 20
   },
   "extensions": [
     {
@@ -6097,6 +6101,19 @@
         "b3/noprobe_kappa/0.6/without_probe/long",
         "b3/noprobe_kappa/0.6/without_probe/short",
         "b3/noprobe_kappa/max_rise_without_probe_over_naive"
+      ]
+    },
+    {
+      "date": "2026-10-06",
+      "sources_sha256": {
+        "ar1_likelihood_results.json": "bad287eba67ae6768bb54b8a966bba5e17d17a6cc16d945897351a6b93bb7aa5"
+      },
+      "reason": "Page-6 addition: per-split completion difference between the AR(1)-likelihood history rule and the history-conditioned fixed waits, derived from the frozen per-split results of protocol fd29bb56; no new run.",
+      "added_keys": [
+        "b3/ar1/splits/ar1_faster_than_conditioned",
+        "b3/ar1/splits/ar1_minus_conditioned/completion/max",
+        "b3/ar1/splits/ar1_minus_conditioned/completion/median",
+        "b3/ar1/splits/ar1_minus_conditioned/completion/min"
       ]
     }
   ]

@@ -10,6 +10,7 @@ import math
 from pathlib import Path
 import platform
 import shutil
+import statistics
 import subprocess
 import sys
 import time
@@ -404,6 +405,12 @@ def revision4_metrics():
             for stat, value in stats.items():
                 values[f"b3/ar1/splits/paired/{pair}/{metric}/{stat}"] = value
     values["b3/ar1/splits/ar1_more_reliable_than_independent"] = summary["ar1_more_reliable_than_independent"]
+    rows = [ar1["repeats"][r] for r in sorted(ar1["repeats"], key=int)]
+    gap = [row["rules"]["ar1_history"]["all"]["mean_completion_min"] - row["rules"]["conditioned"]["all"]["mean_completion_min"]
+           for row in rows]
+    for stat, value in (("median", statistics.median(gap)), ("min", min(gap)), ("max", max(gap))):
+        values[f"b3/ar1/splits/ar1_minus_conditioned/completion/{stat}"] = value
+    values["b3/ar1/splits/ar1_faster_than_conditioned"] = sum(g < 0 for g in gap)
     return values
 
 
