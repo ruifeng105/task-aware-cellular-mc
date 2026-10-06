@@ -49,6 +49,10 @@ NESTED = PILOT / "results/nested"
 nested = json.loads((NESTED / "nested_results.json").read_text(encoding="utf-8"))
 waiting = json.loads((B3_RESULTS / "waiting_results.json").read_text(encoding="utf-8"))
 robust = json.loads((B3_RESULTS / "waiting_robustness_results.json").read_text(encoding="utf-8"))
+baselines = json.loads((B3_RESULTS / "waiting_baselines_results.json").read_text(encoding="utf-8"))
+stress = json.loads((B3_RESULTS / "waiting_stress_results.json").read_text(encoding="utf-8"))
+noprobe = json.loads((B3_RESULTS / "noprobe_results.json").read_text(encoding="utf-8"))
+arx = json.loads((NESTED / "nested_arx_results.json").read_text(encoding="utf-8"))
 
 
 def write_table(name, spec, header, body):
@@ -327,17 +331,22 @@ write_table("inventory_core", "lllrl", "Protocol & Role & ng/ml & Cells & B3 use
 
 core_cols = ("validation", "test_new_protocol", "test_new_protocol_inferred_timing", "test_new_concentration_same_session")
 cmp10, cmp2 = nested["main"]["10"]["comparisons"], nested["main"]["2"]["comparisons"]
-core = (("P", "P: persistence"), ("C", "C: current + slope"), ("O", "O: + reporter filters"),
-        ("M", "M: + B3 increment"), ("H", "H: + input history"))
-getters = [lambda m, r=r: cmp10[r]["rmse"][m] for r in core_cols] + [lambda m: cmp2["test_new_protocol"]["rmse"][m]]
+acmp10, acmp2 = arx["main"]["10"]["comparisons"], arx["main"]["2"]["comparisons"]
+lagged = ("A", "A+M")
+rmse_of = lambda cmp, acmp, role, m: (acmp if m in lagged else cmp)[role]["rmse"][m]
+core = (("P", "P: persistence"), ("C", "C: current + slope"), ("O", "O: C + reporter filters"), ("A", "A: C + lags"),
+        ("M", "M: O + B3 increment"), ("A+M", "A+M: A + B3 increment"), ("H", "H: M + input history"))
+getters = ([lambda m, r=r: rmse_of(cmp10, acmp10, r, m) for r in core_cols]
+           + [lambda m: rmse_of(cmp2, acmp2, "test_new_protocol", m)])
 cells = {m: [] for m, _ in core}
 for get in getters:
     for (m, _), cell in zip(core, bold_min([get(m) for m, _ in core])):
         cells[m].append(cell)
 body = [label + " & " + " & ".join(cells[m]) for m, label in core] + [r"\midrule"]
-for a, b in (("H", "M"), ("M", "O"), ("O", "C")):
-    counts = [f"{cmp10[r][f'{a}_beats_{b}']['conditions']}/{cmp10[r]['n_conditions']}" for r in core_cols]
-    counts.append(f"{cmp2['test_new_protocol'][f'{a}_beats_{b}']['conditions']}/{cmp2['test_new_protocol']['n_conditions']}")
+for a, b in (("H", "M"), ("M", "O"), ("A+M", "A"), ("O", "C")):
+    pick = lambda cmp, acmp: acmp if (a, b) == ("A+M", "A") else cmp
+    counts = [f"{pick(cmp10, acmp10)[r][f'{a}_beats_{b}']['conditions']}/{cmp10[r]['n_conditions']}" for r in core_cols]
+    counts.append(f"{pick(cmp2, acmp2)['test_new_protocol'][f'{a}_beats_{b}']['conditions']}/{cmp2['test_new_protocol']['n_conditions']}")
     body.append(f"{a} beats {b} & " + " & ".join(counts))
 write_table("core_rmse", "lccccc", r"Model & Val. & A & B & C & A, 2 min", body)
 
@@ -354,61 +363,64 @@ for group, label in fold_label.items():
         prior = "arch. " + ", ".join(f"{conc_of[k]:g}" for k in use["architecture_likelihood"])
     else:
         prior = "other conc. arch." if group == "fgf_mixed_new" else "none"
-    body.append(f"{label} & " + " & ".join(bold_min([fold["rmse"][m] for m in ("O", "M", "H")])) + f" & {prior}")
-write_table("lopo_core", "lcccl", r"Held-out protocol & O & M & H & B3 prior use", body)
+    values = [fold["rmse"][m] for m in ("O", "M", "H")] + [arx["lopo"][group]["rmse"][m] for m in lagged]
+    best = min(values)
+    body.append(f"{label} & " + " & ".join((r"\textbf{%.4f}" if v == best else "%.4f") % v for v in values) + f" & {prior}")
+write_table("lopo_core", "lcccccl", r"Held-out & O & M & H & A & A+M & B3 prior use", body)
 
 r0 = robust["repeats"]["0"]["0.005"]["rules"]
 rule_label = (("current", "Current obs."), ("smoothed", "Smoothed (16 min)"), ("history", "History-aware"),
               ("fixed", f"Fixed {waiting['noise']['0.005']['choices']['fixed']['wait_min']:g} min"), ("oracle", "Oracle"))
-body = [label + " & " + " & ".join(f"{100 * r0[name][h]['success_rate']:.1f} & {r0[name][h]['mean_completion_min']:.1f}"
-                                   for h in ("short", "long")) for name, label in rule_label]
+row_of = lambda block, label: label + " & " + " & ".join(
+    f"{100 * block[h]['success_rate']:.1f} & {block[h]['mean_completion_min']:.1f}" for h in ("short", "long"))
+body = [row_of(r0[name], label) for name, label in rule_label[:4]]
+for rule, suffix in (("pooled", ""), ("per_history", r" (each $\geq$0.9)")):
+    choice = baselines["primary"]["conditioned"][rule]
+    body.append(row_of(choice["evaluation"], "Fixed {:g}/{:g} min".format(*choice["waits_min"]) + suffix))
+body.append(row_of(r0["oracle"], "Oracle"))
 write_table("waiting_history", "lcccc", r"Rule & $S_3$ (\%) & $T_3$ (min) & $S_{30}$ (\%) & $T_{30}$ (min)", body)
 
 sensitivity = json.loads((B3_RESULTS / "waiting_sensitivity_results.json").read_text(encoding="utf-8"))
 body = []
+st_ = lambda row, mark="": f"{100 * row['success_rate']:.1f} / {row['mean_completion_min']:.1f}" + mark
+signed = lambda x: f"{x:+.1f}".replace("-", "$-$")
 for kappa, block in sensitivity["cells"].items():
+    conditioned = baselines["kappa"][kappa]
+    by_history = st_(conditioned["evaluation"]["all"], "" if conditioned["target_reached"] else r"$^\ast$")
     for noise, cell in block.items():
-        cells_ = [f"{100 * cell['rules'][r]['all']['success_rate']:.1f} / {cell['rules'][r]['all']['mean_completion_min']:.1f}"
-                  + ("" if r == "oracle" or cell["reached"][r] else r"$^\ast$")
-                  for r in ("fixed", "history", "smoothed", "current", "oracle")]
+        rules = {r: st_(cell["rules"][r]["all"], "" if r == "oracle" or cell["reached"][r] else r"$^\ast$")
+                 for r in ("fixed", "history", "smoothed", "current", "oracle")}
         diff = cell["paired"]["history-smoothed"]["completion"]
         low, high = cell["bootstrap"]["history-smoothed"]["completion"]
-        signed = lambda x: f"{x:+.1f}".replace("-", "$-$")
-        body.append(f"{float(kappa):.1f} & {float(noise):.3f} & {cell['choices']['fixed']['wait_min']:g} & " + " & ".join(cells_)
-                    + f" & {signed(diff)} [{signed(low)}, {signed(high)}]")
-write_table("waiting_sensitivity", "ccccccccc",
-            r"$\kappa$ & Noise & Wait & Fixed & History & Smoothed & Current & Oracle & $\Delta T_{\rm H-S}$", body)
+        body.append(f"{float(kappa):.1f} & {float(noise):.3f} & {cell['choices']['fixed']['wait_min']:g} & {rules['fixed']} & "
+                    f"{by_history} & {rules['history']} & {rules['smoothed']} & {rules['current']} & {rules['oracle']}"
+                    f" & {signed(diff)} [{signed(low)}, {signed(high)}]")
+body.append(r"\midrule")
+primary_by_history = st_(baselines["primary"]["conditioned"]["pooled"]["evaluation"]["all"])
+for name, label in (("ar1", r"AR(1)$^\dagger$"), ("offset", r"offset$^\dagger$")):
+    e = stress["mismatch"][name]
+    body.append(f"0.5 & {label} & {waiting['noise']['0.005']['choices']['fixed']['wait_min']:g} & {st_(e['fixed_calibrated'])} & "
+                f"{primary_by_history} & {st_(e['history'])} & {st_(e['smoothed'])} & {st_(e['current'])} & {st_(e['oracle'])} & "
+                f"{signed(e['history']['mean_completion_min'] - e['smoothed']['mean_completion_min'])}")
+write_table("waiting_sensitivity", "cccccccccc",
+            r"$\kappa$ & Noise & Wait & Fixed & By history & History & Smoothed & Current & Oracle & $\Delta T_{\rm H-S}$", body)
 
 MODEL_STYLE = {"P": ("#52514e", ":", "."), "C": ("#0b0b0b", "--", "x"), "O": ("#1baf7a", "-", "o"),
-               "M": ("#4a3aa7", "-", "s"), "H": ("#e34948", "-", "^")}
-ex = nested["example"]
-fig, (top, bottom) = plt.subplots(2, 1, figsize=(3.45, 2.75), gridspec_kw=dict(height_ratios=[1.3, 1]))
-t_obs, q = np.array(ex["time_min"]), np.array(ex["quartiles"])
-for a, b in ex["pulses"]:
-    top.axvspan(a, b, color=MUTED, alpha=.18, lw=0, zorder=0)
-top.fill_between(t_obs, q[0], q[2], color=BAND, lw=0, zorder=0, label="cells, middle 50%")
-top.plot(t_obs, ex["observed"], ls="none", marker="o", ms=2, color=INK, mew=0, label="example cell")
-for name in ("P", "M", "H"):
-    color, style, _ = MODEL_STYLE[name]
-    top.plot(ex["target_time_min"], ex["forecast"][name], color=color, ls=style, lw=1.0,
-             label=f"{name} (cell RMSE {ex['cell_rmse'][name]:.4f})")
-top.set(xlim=(0, t_obs.max()), ylim=(.98, 1.215), xlabel="Time (min)", ylabel="FRET ratio")
-top.set_title("(a) Test A, 25 ng/ml: 10-min forecasts", loc="left")
-top.legend(loc="upper right", ncol=2, frameon=False, fontsize=5.5, handlelength=1.5, borderaxespad=.1, columnspacing=.8)
+               "A": ("#eda100", "-", "v"), "M": ("#4a3aa7", "-", "s"), "A+M": ("#e87ba4", "-", "P"), "H": ("#e34948", "-", "^")}
+fig, ax = plt.subplots(figsize=(3.45, 1.75))
 phases = nested["phases"]["10"]
 order = [p for p in ("stimulation", "next_command", "early_washout", "late") if p in phases]
 tick = {"stimulation": "stimulation", "next_command": "next command", "early_washout": "early washout", "late": "late"}
-for j, name in enumerate(("P", "C", "O", "M", "H")):
+phase_rmse = lambda p, name: arx["phases"]["10"]["pooled"][p][name] if name in lagged else phases[p]["rmse"][name]
+for j, name in enumerate(MODEL_STYLE):
     color, _, marker = MODEL_STYLE[name]
-    bottom.plot([i + (j - 2) * .11 for i in range(len(order))], [phases[p]["rmse"][name] for p in order],
-                ls="none", marker=marker, ms=4, color=color, mew=1, label=name)
-bottom.set_xticks(range(len(order)), [f"{tick[p]}\n({phases[p]['n_conditions']} cond.)" for p in order], fontsize=6)
-bottom.set(ylabel="10-min RMSE", xlim=(-.5, len(order) - .5))
-bottom.set_title("(b) Test A-C by forecast phase", loc="left")
-bottom.legend(loc="lower left", ncol=5, frameon=False, fontsize=6, handletextpad=.1, columnspacing=.6, borderaxespad=.1)
-for a in (top, bottom):
-    a.grid(axis="y", alpha=.15)
-fig.subplots_adjust(left=.15, right=.98, bottom=.13, top=.94, hspace=.8)
+    ax.plot([i + (j - 3) * .1 for i in range(len(order))], [phase_rmse(p, name) for p in order],
+            ls="none", marker=marker, ms=4, color=color, mew=1, label=name)
+ax.set_xticks(range(len(order)), [f"{tick[p]}\n({phases[p]['n_conditions']} cond.)" for p in order], fontsize=6)
+ax.set(ylabel="10-min RMSE", xlim=(-.5, len(order) - .5))
+ax.legend(loc="lower left", ncol=7, frameon=False, fontsize=6, handletextpad=.1, columnspacing=.5, borderaxespad=.1)
+ax.grid(axis="y", alpha=.15)
+fig.subplots_adjust(left=.15, right=.98, bottom=.2, top=.97)
 fig.savefig(FIG / "prediction_phases.pdf", bbox_inches="tight", pad_inches=.02, metadata={"CreationDate": None})
 fig.savefig(FIG / "prediction_phases.png", bbox_inches="tight", pad_inches=.02)
 plt.close(fig)
@@ -424,28 +436,31 @@ ax.set(ylim=(-.03, 1.03), xlabel="Reporter rise (FRET $-$ 1)", ylabel="Readiness
 ax.set_title("(a) Readiness vs reporter", loc="left")
 ax.legend(loc="upper right", frameon=False, fontsize=6)
 ax = axes[1]
-ax.axhline(fixed["mean_completion_min"], color=MUTED, lw=.8, ls="--")
-ax.text(-.45, fixed["mean_completion_min"] - .4, f"fixed {noise_main['choices']['fixed']['wait_min']:g} min",
-        fontsize=6, color=MUTED, ha="left", va="top")
-for i, name in enumerate(POLICY):
-    marker = POLICY[name][0]
-    for noise, block, face, dx in (("0", noise_zero, "white", -.12), ("0.005", noise_main, INK, .12)):
-        row = block["evaluation"][name]
-        ax.plot(i + dx, row["mean_completion_min"], marker=marker, ms=5.5, mfc=face, mec=INK, ls="none")
-        ax.annotate(f"{100 * row['success_rate']:.0f}%", (i + dx, row["mean_completion_min"]), textcoords="offset points",
-                    xytext=(0, -9), ha="center", fontsize=5.5, color=INK)
-ax.plot([], [], marker="o", mfc="white", mec=INK, ls="none", label="noise 0")
-ax.plot([], [], marker="o", mfc=INK, mec=INK, ls="none", label="noise 0.005")
-ax.set_xticks(range(len(POLICY)), [POLICY[n][1] for n in POLICY], fontsize=6)
-ax.set(xlim=(-.5, 2.5), ylim=(110.3, 123), ylabel="Mean completion (min)")
-ax.set_title("(b) Noise ablation", loc="left")
-ax.legend(loc="upper right", bbox_to_anchor=(1, .8), frameon=False, fontsize=6, handletextpad=.2)
+levels = list(stress["noise_grid"])
+xs = range(len(levels))
+ax.axhline(90, color=MUTED, lw=.6, ls=":", zorder=0)
+for name, style in (("current", "--"), ("smoothed", "-.")):
+    ax.plot(xs, [100 * stress["noise_grid"][n]["evaluation"][name]["success_rate"] for n in levels], color=INK, ls=style,
+            lw=.9, marker=POLICY[name][0], ms=3.5, mfc="white", label=POLICY[name][1])
+ax.plot(xs, [100 * stress["noise_grid"][n]["evaluation"]["history"]["success_rate"] for n in levels], color=INK, lw=1.1,
+        marker="o", ms=3.5, label="history")
+ax.plot(xs, [100 * stress["noise_grid"][n]["history_bandwidth_variant"]["evaluation"]["success_rate"] for n in levels],
+        color=MUTED, lw=1.1, marker="o", ms=3.5, mfc="white", label="history, bw 0.005")
+ax.set_xticks(list(xs), [f"{float(n):g}".replace("0.", ".") for n in levels], fontsize=6)
+ax.set(ylim=(60, 100), xlabel="Observation noise s.d.", ylabel="Evaluation success (%)")
+ax.set_title("(b) Success vs noise", loc="left")
+ax.legend(loc="lower right", frameon=False, fontsize=5.5, handletextpad=.3, borderaxespad=.1)
 ax = axes[2]
 curve = waiting["fixed_wait_curve_eval"]
 ax.plot([p["mean_completion_min"] for p in curve], [p["success_rate"] for p in curve], color=MUTED, lw=1.0, zorder=1)
 ax.plot(fixed["mean_completion_min"], fixed["success_rate"], marker=".", color=MUTED, ms=7, ls="none")
 ax.annotate(f"fixed {noise_main['choices']['fixed']['wait_min']:g}", (fixed["mean_completion_min"], fixed["success_rate"]),
             textcoords="offset points", xytext=(5, 4), fontsize=6, color=MUTED)
+conditioned = baselines["primary"]["conditioned"]["pooled"]
+ax.plot(conditioned["evaluation"]["all"]["mean_completion_min"], conditioned["evaluation"]["all"]["success_rate"], marker="s",
+        color=MUTED, ms=4.5, ls="none", zorder=3)
+ax.annotate("fixed by history", (conditioned["evaluation"]["all"]["mean_completion_min"], conditioned["evaluation"]["all"]["success_rate"]),
+            xytext=(124, .76), fontsize=6, color=MUTED, arrowprops=dict(arrowstyle="-", color=MUTED, lw=.6))
 ax.axhline(.9, color=MUTED, lw=.6, ls=":", zorder=0)
 marks = dict(POLICY, oracle=("*", "oracle"))
 offsets = {"current": (5, -11), "smoothed": (-6, -11), "history": (-2, 7), "oracle": (5, -3)}
@@ -460,15 +475,18 @@ ax = axes[3]
 reps = [robust["repeats"][str(r)]["0.005"]["rules"] for r in range(len(robust["repeats"]))]
 ax.axhline(0, color=MUTED, lw=.8, ls="--")
 offsets = np.linspace(-.18, .18, len(reps))
-for i, name in enumerate(POLICY):
-    delta = [rep[name]["all"]["mean_completion_min"] - rep["fixed"]["all"]["mean_completion_min"] for rep in reps]
-    reached = sum(rep[name]["all"]["success_rate"] >= .9 for rep in reps)
-    ax.plot(i + offsets, delta, marker=POLICY[name][0], ms=3, ls="none", mfc="white", mec=INK, mew=.7)
+by_history = baselines["repeats"]["rows"]
+columns = [("by hist.", "s", [row["evaluation"]["all"] for row in by_history])]
+columns += [(POLICY[n][1], POLICY[n][0], [rep[n]["all"] for rep in reps]) for n in POLICY]
+for i, (label, marker, rows_) in enumerate(columns):
+    delta = [row["mean_completion_min"] - rep["fixed"]["all"]["mean_completion_min"] for row, rep in zip(rows_, reps)]
+    reached = sum(row["success_rate"] >= .9 for row in rows_)
+    ax.plot(i + offsets, delta, marker=marker, ms=3, ls="none", mfc="white", mec=MUTED if i == 0 else INK, mew=.7)
     ax.plot([i - .25, i + .25], [np.median(delta)] * 2, color=INK, lw=1.4)
     ax.annotate(f"{reached}/{len(reps)}", (i, max(delta)), textcoords="offset points", xytext=(0, 4), ha="center",
                 fontsize=5.5, color=INK)
-ax.set_xticks(range(len(POLICY)), [POLICY[n][1] for n in POLICY], fontsize=6)
-ax.set(xlim=(-.5, 2.5), ylabel="Completion $-$ fixed wait (min)")
+ax.set_xticks(range(len(columns)), [c_[0] for c_ in columns], fontsize=5.5, rotation=25, ha="right")
+ax.set(xlim=(-.5, len(columns) - .5), ylabel="Completion $-$ fixed wait (min)")
 ax.set_title("(d) 20 splits, noise 0.005", loc="left")
 for a in axes:
     a.grid(axis="y", alpha=.15)

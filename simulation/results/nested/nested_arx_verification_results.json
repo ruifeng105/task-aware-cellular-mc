@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "protocol_sha256": "0f06908a9ea60e89592478bb315f7c1c029c5f5db0b46f822451baee0ffd98df",
+  "lags": {
+    "rows_checked": 25,
+    "past_only": true
+  },
+  "nesting": {
+    "nested": true
+  },
+  "scores_recomputed": 20,
+  "max_abs_score_difference": 0.0,
+  "lopo_leakage": {
+    "held_out": "fgf_sp_10",
+    "selection_unchanged": true,
+    "predictions_unchanged": true
+  }
+}

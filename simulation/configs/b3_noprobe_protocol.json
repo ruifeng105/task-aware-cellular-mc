@@ -1,0 +1,22 @@
+{
+  "name": "No-probe control for the B3 readiness task",
+  "version": 1,
+  "status": "frozen_before_running",
+  "date": "2026-10-06",
+  "reason": "Reviewer item R4: the task success of Eq. (2) measures the reporter rise within 20 min after the probe relative to the sending time; a rebound after the previous command could produce part of that rise without any probe.",
+  "simulation": "For every posterior sample and both previous commands (3 and 30 min at 25 ng/ml), the noise-free reporter without a probe on a 1-min grid from 0 to 140 min, and for every wait in {0, 2, ..., 120} min the reporter with the 5-min probe on a 1-min grid over [wait, wait + 20]. Same model, tolerances and parameter samples as version 2.",
+  "quantities": {
+    "rise_without_probe": "max over [wait, wait + 20] of the no-probe reporter minus its value at the wait",
+    "probe_increment": "max over [wait, wait + 20] of (probe reporter - no-probe reporter)",
+    "success_without_probe": "rise_without_probe >= 0.5 x the same sample's naive rise",
+    "causal_success": "probe_increment >= 0.5 x the same sample's naive rise"
+  },
+  "reports": [
+    "fraction of (sample, history, wait) states meeting the original criterion without any probe, overall, per history and per wait",
+    "agreement between the original success and the causal success",
+    "readiness curves under both definitions",
+    "version-3 decisions on the primary split at noise 0.005 (unchanged rules, calibrated with the original labels) rescored with the causal labels"
+  ],
+  "unchanged": "The original task definition remains the primary analysis; this is a diagnostic.",
+  "reporting": "All quantities reported whatever their direction; simulation of one published model structure."
+}

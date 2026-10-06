@@ -1,0 +1,21 @@
+{
+  "name": "History-conditioned fixed waits and a fine threshold grid for the calibrated waiting rules on B3",
+  "version": 1,
+  "status": "frozen_before_running",
+  "date": "2026-10-06",
+  "reason": "Reviewer items R1 and R8: the adaptive rules know the previous command (3 or 30 min) whereas the main fixed comparator uses one wait for both; and the coarse threshold grid may place rules at different success levels.",
+  "conditioned_fixed_wait": {
+    "definition": "two waits tau_3 and tau_30 on the decision grid {0, 2, ..., 120} min, applied according to the known previous command",
+    "pooled_rule": "minimize the equal-weight calibration mean of failure-penalized completion over both histories subject to the equal-weight calibration success >= 0.9; ties: smaller tau_3 + tau_30, then smaller tau_3",
+    "per_history_rule": "the same objective subject to calibration success >= 0.9 for each history separately",
+    "fallback": "if no pair is feasible: (120, 120) and target_reached = false",
+    "evaluation": "evaluation samples of the primary split (identical to version 3), the 20 splits of the robustness study and kappa 0.4 and 0.6 on the primary split; comparison with the version-3, robustness and sensitivity results of the history and smoothed rules; paired per-sample differences with 95% bootstrap intervals (2000 resamples, seed 20261008) on the primary split"
+  },
+  "fine_threshold_grid": {
+    "thresholds": "0.50 to 0.99 in steps of 0.01",
+    "calibrated_rule": "the version-3 rules with the fine grid: first threshold whose calibration success reaches 0.9; smoothed scale chosen by the smallest calibration mean completion among feasible scales",
+    "frontier": "evaluation success and completion of the history and 16-min smoothed estimators at every fine threshold (descriptive; never used to choose a rule), and, for evaluation success levels 0.90, 0.92 and 0.94, the smallest completion attaining each level",
+    "settings": "primary split, kappa 0.5, observation noise 0.005 and 0.01"
+  },
+  "reporting": "All results reported whatever their direction; simulation of one published model structure; the 0.9 target is an empirical calibration target."
+}

@@ -1,0 +1,6 @@
+{
+  "protocol_path": "simulation/configs/nested_arx_protocol.json",
+  "protocol_sha256": "0f06908a9ea60e89592478bb315f7c1c029c5f5db0b46f822451baee0ffd98df",
+  "frozen_utc": "2026-10-06T10:52:51+00:00",
+  "statement": "Recorded before any lagged-baseline score was computed."
+}

@@ -1,0 +1,56 @@
+{
+  "success_without_probe": {
+    "fraction": 0.0,
+    "per_history": {
+      "short": 0.0,
+      "long": 0.0
+    },
+    "fraction_of_original_successes": 0.0,
+    "max_rise_without_probe_over_naive": 0.474612021917112
+  },
+  "agreement": {
+    "both": 37125,
+    "original_only": 0,
+    "causal_only": 3681,
+    "neither": 81194,
+    "fraction_agree": 0.969827868852459
+  },
+  "rescored": {
+    "original": {
+      "current": {
+        "success_rate": 0.9,
+        "mean_completion_min": 119.662
+      },
+      "smoothed": {
+        "success_rate": 0.923,
+        "mean_completion_min": 113.62
+      },
+      "history": {
+        "success_rate": 0.926,
+        "mean_completion_min": 114.338
+      },
+      "fixed": {
+        "success_rate": 0.912,
+        "mean_completion_min": 121.76
+      }
+    },
+    "causal": {
+      "current": {
+        "success_rate": 0.945,
+        "mean_completion_min": 118.106
+      },
+      "smoothed": {
+        "success_rate": 0.972,
+        "mean_completion_min": 112.19
+      },
+      "history": {
+        "success_rate": 0.972,
+        "mean_completion_min": 112.922
+      },
+      "fixed": {
+        "success_rate": 0.939,
+        "mean_completion_min": 121.22
+      }
+    }
+  }
+}

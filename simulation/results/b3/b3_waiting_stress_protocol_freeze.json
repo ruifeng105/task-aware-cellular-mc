@@ -1,0 +1,6 @@
+{
+  "protocol_path": "simulation/configs/b3_waiting_stress_protocol.json",
+  "protocol_sha256": "b90b68a7515ca08499041548d8db77a2eb3aa9a0602543ff0832bbc3760a1280",
+  "frozen_utc": "2026-10-06T10:49:50+00:00",
+  "statement": "Recorded before any noise level 0.001/0.0025, bandwidth variant or mismatch outcome was computed."
+}

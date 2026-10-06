@@ -1,0 +1,622 @@
+{
+  "status": "complete",
+  "protocol_sha256": "b90b68a7515ca08499041548d8db77a2eb3aa9a0602543ff0832bbc3760a1280",
+  "frozen_utc": "2026-10-06T10:49:50+00:00",
+  "noise_grid": {
+    "0": {
+      "noise": 0.0,
+      "choices": {
+        "current": {
+          "threshold": 0.9,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.93,
+            "mean_completion_min": 114.578,
+            "mean_wait_min": 92.34
+          }
+        },
+        "history": {
+          "threshold": 0.99,
+          "target_reached": false,
+          "calibration": {
+            "success_rate": 0.672,
+            "mean_completion_min": 118.386,
+            "mean_wait_min": 86.418
+          }
+        },
+        "smoothed": {
+          "tau_min": 16.0,
+          "threshold": 0.85,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.907,
+            "mean_completion_min": 112.956,
+            "mean_wait_min": 90.638
+          }
+        },
+        "fixed": {
+          "wait_min": 100.0,
+          "target_reached": true
+        }
+      },
+      "evaluation": {
+        "current": {
+          "success_rate": 0.936,
+          "mean_completion_min": 113.842,
+          "mean_wait_min": 91.698
+        },
+        "history": {
+          "success_rate": 0.701,
+          "mean_completion_min": 117.228,
+          "mean_wait_min": 86.202
+        },
+        "smoothed": {
+          "success_rate": 0.917,
+          "mean_completion_min": 111.884,
+          "mean_wait_min": 90.036
+        },
+        "fixed_calibrated": {
+          "success_rate": 0.912,
+          "mean_completion_min": 121.76,
+          "mean_wait_min": 100.0
+        },
+        "fixed_6": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 6.0
+        },
+        "fixed_12": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 12.0
+        },
+        "fixed_24": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 24.0
+        },
+        "fixed_48": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 48.0
+        },
+        "oracle": {
+          "success_rate": 0.992,
+          "mean_completion_min": 104.694,
+          "mean_wait_min": 84.694
+        }
+      },
+      "history_bandwidth_variant": {
+        "likelihood_sd": 0.005,
+        "threshold": 0.9,
+        "target_reached": true,
+        "calibration": {
+          "success_rate": 0.917,
+          "mean_completion_min": 113.302,
+          "mean_wait_min": 91.254
+        },
+        "evaluation": {
+          "success_rate": 0.929,
+          "mean_completion_min": 112.762,
+          "mean_wait_min": 90.904
+        }
+      },
+      "median_ess_90min": {
+        "default": 1.1342638484323846,
+        "variant": 43.96136265658365
+      }
+    },
+    "0.001": {
+      "noise": 0.001,
+      "choices": {
+        "current": {
+          "threshold": 0.95,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.952,
+            "mean_completion_min": 115.12,
+            "mean_wait_min": 93.658
+          }
+        },
+        "history": {
+          "threshold": 0.99,
+          "target_reached": false,
+          "calibration": {
+            "success_rate": 0.663,
+            "mean_completion_min": 118.664,
+            "mean_wait_min": 86.354
+          }
+        },
+        "smoothed": {
+          "tau_min": 16.0,
+          "threshold": 0.85,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.903,
+            "mean_completion_min": 113.068,
+            "mean_wait_min": 90.618
+          }
+        },
+        "fixed": {
+          "wait_min": 100.0,
+          "target_reached": true
+        }
+      },
+      "evaluation": {
+        "current": {
+          "success_rate": 0.946,
+          "mean_completion_min": 114.786,
+          "mean_wait_min": 93.086
+        },
+        "history": {
+          "success_rate": 0.691,
+          "mean_completion_min": 117.302,
+          "mean_wait_min": 86.192
+        },
+        "smoothed": {
+          "success_rate": 0.913,
+          "mean_completion_min": 112.118,
+          "mean_wait_min": 90.044
+        },
+        "fixed_calibrated": {
+          "success_rate": 0.912,
+          "mean_completion_min": 121.76,
+          "mean_wait_min": 100.0
+        },
+        "fixed_6": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 6.0
+        },
+        "fixed_12": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 12.0
+        },
+        "fixed_24": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 24.0
+        },
+        "fixed_48": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 48.0
+        },
+        "oracle": {
+          "success_rate": 0.992,
+          "mean_completion_min": 104.694,
+          "mean_wait_min": 84.694
+        }
+      },
+      "history_bandwidth_variant": {
+        "likelihood_sd": 0.005,
+        "threshold": 0.9,
+        "target_reached": true,
+        "calibration": {
+          "success_rate": 0.911,
+          "mean_completion_min": 113.526,
+          "mean_wait_min": 91.222
+        },
+        "evaluation": {
+          "success_rate": 0.925,
+          "mean_completion_min": 112.93,
+          "mean_wait_min": 90.866
+        }
+      },
+      "median_ess_90min": {
+        "default": 1.1952245317329588,
+        "variant": 43.877094372876456
+      }
+    },
+    "0.0025": {
+      "noise": 0.0025,
+      "choices": {
+        "current": {
+          "threshold": 0.95,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.917,
+            "mean_completion_min": 116.35,
+            "mean_wait_min": 93.616
+          }
+        },
+        "history": {
+          "threshold": 0.99,
+          "target_reached": false,
+          "calibration": {
+            "success_rate": 0.863,
+            "mean_completion_min": 115.326,
+            "mean_wait_min": 90.878
+          }
+        },
+        "smoothed": {
+          "tau_min": 16.0,
+          "threshold": 0.9,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.936,
+            "mean_completion_min": 113.446,
+            "mean_wait_min": 91.992
+          }
+        },
+        "fixed": {
+          "wait_min": 100.0,
+          "target_reached": true
+        }
+      },
+      "evaluation": {
+        "current": {
+          "success_rate": 0.91,
+          "mean_completion_min": 116.43,
+          "mean_wait_min": 93.384
+        },
+        "history": {
+          "success_rate": 0.886,
+          "mean_completion_min": 114.354,
+          "mean_wait_min": 90.538
+        },
+        "smoothed": {
+          "success_rate": 0.939,
+          "mean_completion_min": 112.806,
+          "mean_wait_min": 91.404
+        },
+        "fixed_calibrated": {
+          "success_rate": 0.912,
+          "mean_completion_min": 121.76,
+          "mean_wait_min": 100.0
+        },
+        "fixed_6": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 6.0
+        },
+        "fixed_12": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 12.0
+        },
+        "fixed_24": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 24.0
+        },
+        "fixed_48": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 48.0
+        },
+        "oracle": {
+          "success_rate": 0.992,
+          "mean_completion_min": 104.694,
+          "mean_wait_min": 84.694
+        }
+      },
+      "history_bandwidth_variant": {
+        "likelihood_sd": 0.005,
+        "threshold": 0.9,
+        "target_reached": true,
+        "calibration": {
+          "success_rate": 0.9,
+          "mean_completion_min": 113.928,
+          "mean_wait_min": 91.222
+        },
+        "evaluation": {
+          "success_rate": 0.923,
+          "mean_completion_min": 112.95,
+          "mean_wait_min": 90.856
+        }
+      },
+      "median_ess_90min": {
+        "default": 5.095826548891545,
+        "variant": 39.165083963772794
+      }
+    },
+    "0.005": {
+      "noise": 0.005,
+      "choices": {
+        "current": {
+          "threshold": 0.95,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.906,
+            "mean_completion_min": 119.83,
+            "mean_wait_min": 96.49
+          }
+        },
+        "history": {
+          "threshold": 0.95,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.92,
+            "mean_completion_min": 114.954,
+            "mean_wait_min": 92.756
+          }
+        },
+        "smoothed": {
+          "tau_min": 16.0,
+          "threshold": 0.9,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.922,
+            "mean_completion_min": 114.09,
+            "mean_wait_min": 92.22
+          }
+        },
+        "fixed": {
+          "wait_min": 100.0,
+          "target_reached": true
+        }
+      },
+      "evaluation": {
+        "current": {
+          "success_rate": 0.9,
+          "mean_completion_min": 119.662,
+          "mean_wait_min": 96.024
+        },
+        "history": {
+          "success_rate": 0.926,
+          "mean_completion_min": 114.338,
+          "mean_wait_min": 92.254
+        },
+        "smoothed": {
+          "success_rate": 0.923,
+          "mean_completion_min": 113.62,
+          "mean_wait_min": 91.658
+        },
+        "fixed_calibrated": {
+          "success_rate": 0.912,
+          "mean_completion_min": 121.76,
+          "mean_wait_min": 100.0
+        },
+        "fixed_6": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 6.0
+        },
+        "fixed_12": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 12.0
+        },
+        "fixed_24": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 24.0
+        },
+        "fixed_48": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 48.0
+        },
+        "oracle": {
+          "success_rate": 0.992,
+          "mean_completion_min": 104.694,
+          "mean_wait_min": 84.694
+        }
+      },
+      "history_bandwidth_variant": {
+        "likelihood_sd": 0.005,
+        "threshold": 0.95,
+        "target_reached": true,
+        "calibration": {
+          "success_rate": 0.92,
+          "mean_completion_min": 114.954,
+          "mean_wait_min": 92.756
+        },
+        "evaluation": {
+          "success_rate": 0.926,
+          "mean_completion_min": 114.338,
+          "mean_wait_min": 92.254
+        }
+      },
+      "median_ess_90min": {
+        "default": 28.913213152624632,
+        "variant": 28.913213152624632
+      }
+    },
+    "0.01": {
+      "noise": 0.01,
+      "choices": {
+        "current": {
+          "threshold": 0.95,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.967,
+            "mean_completion_min": 130.98,
+            "mean_wait_min": 109.962
+          }
+        },
+        "history": {
+          "threshold": 0.9,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.905,
+            "mean_completion_min": 115.592,
+            "mean_wait_min": 93.246
+          }
+        },
+        "smoothed": {
+          "tau_min": 16.0,
+          "threshold": 0.95,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.953,
+            "mean_completion_min": 117.858,
+            "mean_wait_min": 96.21
+          }
+        },
+        "fixed": {
+          "wait_min": 100.0,
+          "target_reached": true
+        }
+      },
+      "evaluation": {
+        "current": {
+          "success_rate": 0.954,
+          "mean_completion_min": 130.972,
+          "mean_wait_min": 109.446
+        },
+        "history": {
+          "success_rate": 0.922,
+          "mean_completion_min": 114.89,
+          "mean_wait_min": 92.978
+        },
+        "smoothed": {
+          "success_rate": 0.948,
+          "mean_completion_min": 117.46,
+          "mean_wait_min": 96.162
+        },
+        "fixed_calibrated": {
+          "success_rate": 0.912,
+          "mean_completion_min": 121.76,
+          "mean_wait_min": 100.0
+        },
+        "fixed_6": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 6.0
+        },
+        "fixed_12": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 12.0
+        },
+        "fixed_24": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 24.0
+        },
+        "fixed_48": {
+          "success_rate": 0.0,
+          "mean_completion_min": 140.0,
+          "mean_wait_min": 48.0
+        },
+        "oracle": {
+          "success_rate": 0.992,
+          "mean_completion_min": 104.694,
+          "mean_wait_min": 84.694
+        }
+      },
+      "history_bandwidth_variant": {
+        "likelihood_sd": 0.01,
+        "threshold": 0.9,
+        "target_reached": true,
+        "calibration": {
+          "success_rate": 0.905,
+          "mean_completion_min": 115.592,
+          "mean_wait_min": 93.246
+        },
+        "evaluation": {
+          "success_rate": 0.922,
+          "mean_completion_min": 114.89,
+          "mean_wait_min": 92.978
+        }
+      },
+      "median_ess_90min": {
+        "default": 125.16109323333035,
+        "variant": 125.16109323333035
+      }
+    }
+  },
+  "mismatch": {
+    "ar1": {
+      "current": {
+        "success_rate": 0.937,
+        "mean_completion_min": 123.512,
+        "mean_wait_min": 101.322
+      },
+      "history": {
+        "success_rate": 0.82,
+        "mean_completion_min": 117.316,
+        "mean_wait_min": 90.974
+      },
+      "smoothed": {
+        "success_rate": 0.843,
+        "mean_completion_min": 116.872,
+        "mean_wait_min": 91.51
+      },
+      "fixed_calibrated": {
+        "success_rate": 0.912,
+        "mean_completion_min": 121.76,
+        "mean_wait_min": 100.0
+      },
+      "fixed_6": {
+        "success_rate": 0.0,
+        "mean_completion_min": 140.0,
+        "mean_wait_min": 6.0
+      },
+      "fixed_12": {
+        "success_rate": 0.0,
+        "mean_completion_min": 140.0,
+        "mean_wait_min": 12.0
+      },
+      "fixed_24": {
+        "success_rate": 0.0,
+        "mean_completion_min": 140.0,
+        "mean_wait_min": 24.0
+      },
+      "fixed_48": {
+        "success_rate": 0.0,
+        "mean_completion_min": 140.0,
+        "mean_wait_min": 48.0
+      },
+      "oracle": {
+        "success_rate": 0.992,
+        "mean_completion_min": 104.694,
+        "mean_wait_min": 84.694
+      }
+    },
+    "offset": {
+      "current": {
+        "success_rate": 0.96,
+        "mean_completion_min": 123.178,
+        "mean_wait_min": 102.022
+      },
+      "history": {
+        "success_rate": 0.975,
+        "mean_completion_min": 117.604,
+        "mean_wait_min": 97.182
+      },
+      "smoothed": {
+        "success_rate": 0.988,
+        "mean_completion_min": 117.914,
+        "mean_wait_min": 97.816
+      },
+      "fixed_calibrated": {
+        "success_rate": 0.912,
+        "mean_completion_min": 121.76,
+        "mean_wait_min": 100.0
+      },
+      "fixed_6": {
+        "success_rate": 0.0,
+        "mean_completion_min": 140.0,
+        "mean_wait_min": 6.0
+      },
+      "fixed_12": {
+        "success_rate": 0.0,
+        "mean_completion_min": 140.0,
+        "mean_wait_min": 12.0
+      },
+      "fixed_24": {
+        "success_rate": 0.0,
+        "mean_completion_min": 140.0,
+        "mean_wait_min": 24.0
+      },
+      "fixed_48": {
+        "success_rate": 0.0,
+        "mean_completion_min": 140.0,
+        "mean_wait_min": 48.0
+      },
+      "oracle": {
+        "success_rate": 0.992,
+        "mean_completion_min": 104.694,
+        "mean_wait_min": 84.694
+      }
+    }
+  },
+  "limitations": [
+    "Simulation of one published model structure; not evidence about measured cells.",
+    "Mismatch changes only the observation model; dynamics and task are unchanged."
+  ]
+}

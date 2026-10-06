@@ -1,0 +1,27 @@
+{
+  "name": "Lagged non-mechanistic history baseline (ARX) for the nested FGF2-ERK forecast comparison",
+  "version": 1,
+  "status": "frozen_before_running",
+  "date": "2026-10-06",
+  "reason": "Reviewer item R2: M reweights B3 samples by all past observations while O uses three exponential summaries, so M versus O changes both mechanism and history representation. A lagged baseline with a training-selected window tests whether the B3 increment still adds once input and reporter histories are represented directly.",
+  "context": "Post hoc robustness analysis on inspected roles, using the data roles, forecast origins, future-command features, scores and B3 increments of configs/nested_forecast_protocol.json.",
+  "models": {
+    "A": "current-state set C + reporter lags y(t - 2k) and command lags u(t - 2k), k = 1..L frames; reporter lags before the first frame repeat the first observation, command lags before the origin are zero (pre-stimulation)",
+    "A+M": "A + the matched-feedback B3 increment"
+  },
+  "selection": {
+    "window_frames": [5, 15, 30],
+    "ridge_alphas": [1e-08, 1e-06, 0.0001, 0.01, 1, 100, 10000],
+    "fixed_roles": "window and penalty jointly minimize the condition-equal validation MSE after fitting on train; sigma of the B3 increment as selected for M on validation",
+    "lopo": "for each held-out protocol group: sigma on the training groups; window and penalty by inner leave-one-group-out over the training groups; the held-out group enters no standardization, selection or fit"
+  },
+  "horizons_min": [2, 10],
+  "reports": [
+    "condition-equal RMSE of A and A+M for every role and horizon beside P, C, O, M and H",
+    "per-condition counts for A versus O, A+M versus A and A+M versus H",
+    "phase-wise RMSE on tests A-C and the next-command window per condition with rows, cells and origins",
+    "corrected LOPO RMSE of A and A+M per fold with the B3 prior use"
+  ],
+  "primary_question": "A+M versus A at 10 min on test A and across the corrected LOPO folds: does the B3 increment add predictive value once input and reporter histories are represented directly?",
+  "reporting": "All comparisons reported whatever their direction; no significance testing (no independent-day replicates)."
+}

@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "protocol_sha256": "eeed32a5c4dc51fd179edd11c954e8ba064a04fd10715f03a2f6783737eb3025",
+  "consistency": {
+    "max_abs_noprobe_vs_history": 6.217531178798197e-08,
+    "max_abs_probe_rise_vs_tables": 3.7252496642992128e-09
+  },
+  "resimulation": {
+    "entries": 24,
+    "max_abs_difference": 7.546179237039041e-10
+  },
+  "rescoring": {
+    "max_abs_difference": 0.0
+  },
+  "scope": "Simulation of the published B3 model; not evidence about measured cells."
+}

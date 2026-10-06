@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "protocol_sha256": "f6837a36a6f069438621592bd341f18368bc801dc74dcb6673f6a8394becd096",
+  "synthetic": {
+    "pooled": [
+      0.0,
+      10.0
+    ],
+    "per_history": [
+      0.0,
+      100.0
+    ],
+    "fallback": true
+  },
+  "leakage": {
+    "evaluation_labels_flipped": true,
+    "choices_unchanged": true
+  },
+  "recomputation": {
+    "max_abs_difference": 0.0
+  },
+  "frontier": {
+    "noise": 0.01,
+    "threshold": 0.93,
+    "max_abs_difference": 0.0
+  },
+  "scope": "Simulation of the published B3 model; not evidence about measured cells."
+}

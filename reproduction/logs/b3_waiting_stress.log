@@ -1,0 +1,7 @@
+0 {'current': (93.6, 113.8), 'smoothed': (91.7, 111.9), 'history': (70.1, 117.2), 'fixed_calibrated': (91.2, 121.8)} reached {'current': True, 'smoothed': True, 'history': False} variant (0.9, True, 92.9, 112.8) ess {'default': 1.1, 'variant': 44.0}
+0.001 {'current': (94.6, 114.8), 'smoothed': (91.3, 112.1), 'history': (69.1, 117.3), 'fixed_calibrated': (91.2, 121.8)} reached {'current': True, 'smoothed': True, 'history': False} variant (0.9, True, 92.5, 112.9) ess {'default': 1.2, 'variant': 43.9}
+0.0025 {'current': (91.0, 116.4), 'smoothed': (93.9, 112.8), 'history': (88.6, 114.4), 'fixed_calibrated': (91.2, 121.8)} reached {'current': True, 'smoothed': True, 'history': False} variant (0.9, True, 92.3, 113.0) ess {'default': 5.1, 'variant': 39.2}
+0.005 {'current': (90.0, 119.7), 'smoothed': (92.3, 113.6), 'history': (92.6, 114.3), 'fixed_calibrated': (91.2, 121.8)} reached {'current': True, 'smoothed': True, 'history': True} variant (0.95, True, 92.6, 114.3) ess {'default': 28.9, 'variant': 28.9}
+0.01 {'current': (95.4, 131.0), 'smoothed': (94.8, 117.5), 'history': (92.2, 114.9), 'fixed_calibrated': (91.2, 121.8)} reached {'current': True, 'smoothed': True, 'history': True} variant (0.9, True, 92.2, 114.9) ess {'default': 125.2, 'variant': 125.2}
+ar1 {'current': (93.7, 123.5), 'smoothed': (84.3, 116.9), 'history': (82.0, 117.3), 'fixed_calibrated': (91.2, 121.8), 'oracle': (99.2, 104.7)}
+offset {'current': (96.0, 123.2), 'smoothed': (98.8, 117.9), 'history': (97.5, 117.6), 'fixed_calibrated': (91.2, 121.8), 'oracle': (99.2, 104.7)}

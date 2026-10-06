@@ -1,0 +1,6 @@
+{
+  "protocol_path": "simulation/configs/b3_noprobe_protocol.json",
+  "protocol_sha256": "eeed32a5c4dc51fd179edd11c954e8ba064a04fd10715f03a2f6783737eb3025",
+  "frozen_utc": "2026-10-06T10:42:09+00:00",
+  "statement": "Recorded before any no-probe trajectory was simulated."
+}

@@ -9,6 +9,8 @@ import json
 import re
 import sys
 
+import numpy as np
+
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'simulation/code'))
 import calibrate_fgf2 as c
@@ -156,8 +158,31 @@ def check_validation_kit_provenance():
     return failures
 
 
+def check_normalization_causal():
+    """Per-cell normalization uses only frames before the model origin: raw 10-30 min for the mixed
+    protocol (origin at raw 42 min) and a per-cell mean over raw 2-38 min for the other exports
+    (truncated files start 22 frames later, at raw 44 min)."""
+    failures = []
+    mixed = c.load_matrix(c.DATA / 'fgf_mixed/time.txt').ravel()
+    if not (mixed[21] == 42. and mixed[(mixed >= 10) & (mixed <= 30)].max() < mixed[21]):
+        failures.append('mixed normalization window does not precede the model origin')
+    for name in ('fgf_sus', 'fgf_3_20', 'fgf_sp_5', 'fgf_sp_10', 'fgf_sp_60'):
+        folder = c.DATA / name
+        t = c.load_matrix(folder / 'time.txt').ravel()
+        window = (t >= 2) & (t <= 38)
+        for path in sorted(folder.glob('*ng.txt')):
+            full, trunc = c.load_matrix(path), c.load_matrix(folder / path.name.replace('.txt', '_trunc.txt'))
+            offset = full.shape[1] - trunc.shape[1]
+            if offset != 22 or t[offset] <= t[window].max():
+                failures.append(f'{name}/{path.name}: truncation does not start after the normalization window')
+            if np.nanmax(np.abs(np.nanmean(full[:, window], axis=1) - 1.)) > 1e-3:
+                failures.append(f'{name}/{path.name}: per-cell raw 2-38 min mean differs from 1')
+    return failures
+
+
 CHECKS = (check_outputs_lf, check_schedules, check_pilot_result_fields, check_manuscript_assets,
-          check_manuscript_numbers_frozen, check_validation_kit, check_validation_kit_provenance)
+          check_manuscript_numbers_frozen, check_validation_kit, check_validation_kit_provenance,
+          check_normalization_causal)
 
 
 def main():

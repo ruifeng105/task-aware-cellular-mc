@@ -1,0 +1,2069 @@
+{
+  "status": "complete",
+  "protocol_sha256": "f6837a36a6f069438621592bd341f18368bc801dc74dcb6673f6a8394becd096",
+  "frozen_utc": "2026-10-06T10:43:45+00:00",
+  "primary": {
+    "conditioned": {
+      "pooled": {
+        "waits_min": [
+          92.0,
+          102.0
+        ],
+        "target_reached": true,
+        "calibration": {
+          "success_rate": 0.9039999999999999,
+          "mean_completion_min": 119.03800000000001,
+          "per_history": {
+            "short": {
+              "success_rate": 0.938,
+              "mean_completion_min": 113.736
+            },
+            "long": {
+              "success_rate": 0.87,
+              "mean_completion_min": 124.34
+            }
+          }
+        },
+        "evaluation": {
+          "all": {
+            "success_rate": 0.903,
+            "mean_completion_min": 119.126
+          },
+          "short": {
+            "success_rate": 0.924,
+            "mean_completion_min": 114.128
+          },
+          "long": {
+            "success_rate": 0.882,
+            "mean_completion_min": 124.124
+          }
+        },
+        "paired": {
+          "history-conditioned": {
+            "success": 0.023,
+            "completion": -4.788
+          },
+          "smoothed-conditioned": {
+            "success": 0.02,
+            "completion": -5.506
+          }
+        },
+        "bootstrap": {
+          "history-conditioned": {
+            "success": [
+              -0.001,
+              0.049
+            ],
+            "completion": [
+              -5.56,
+              -3.96795
+            ]
+          },
+          "smoothed-conditioned": {
+            "success": [
+              -0.004,
+              0.045
+            ],
+            "completion": [
+              -6.20805,
+              -4.727850000000001
+            ]
+          }
+        }
+      },
+      "per_history": {
+        "waits_min": [
+          90.0,
+          106.0
+        ],
+        "target_reached": true,
+        "calibration": {
+          "success_rate": 0.916,
+          "mean_completion_min": 119.896,
+          "per_history": {
+            "short": {
+              "success_rate": 0.91,
+              "mean_completion_min": 112.7
+            },
+            "long": {
+              "success_rate": 0.922,
+              "mean_completion_min": 127.092
+            }
+          }
+        },
+        "evaluation": {
+          "all": {
+            "success_rate": 0.909,
+            "mean_completion_min": 120.058
+          },
+          "short": {
+            "success_rate": 0.902,
+            "mean_completion_min": 112.94
+          },
+          "long": {
+            "success_rate": 0.916,
+            "mean_completion_min": 127.176
+          }
+        },
+        "paired": {
+          "history-conditioned": {
+            "success": 0.017,
+            "completion": -5.72
+          },
+          "smoothed-conditioned": {
+            "success": 0.014,
+            "completion": -6.438
+          }
+        },
+        "bootstrap": {
+          "history-conditioned": {
+            "success": [
+              -0.007,
+              0.04202499999999987
+            ],
+            "completion": [
+              -6.528,
+              -4.872
+            ]
+          },
+          "smoothed-conditioned": {
+            "success": [
+              -0.01,
+              0.038
+            ],
+            "completion": [
+              -7.1821,
+              -5.6419500000000005
+            ]
+          }
+        }
+      }
+    }
+  },
+  "repeats": {
+    "rows": [
+      {
+        "r": 0,
+        "waits_min": [
+          92.0,
+          102.0
+        ],
+        "target_reached": true,
+        "evaluation": {
+          "all": {
+            "success_rate": 0.903,
+            "mean_completion_min": 119.126
+          },
+          "short": {
+            "success_rate": 0.924,
+            "mean_completion_min": 114.128
+          },
+          "long": {
+            "success_rate": 0.882,
+            "mean_completion_min": 124.124
+          }
+        },
+        "history_minus_conditioned": -4.788000000000011,
+        "smoothed_minus_conditioned": -5.506
+      },
+      {
+        "r": 1,
+        "waits_min": [
+          92.0,
+          100.0
+        ],
+        "target_reached": true,
+        "evaluation": {
+          "all": {
+            "success_rate": 0.877,
+            "mean_completion_min": 118.764
+          },
+          "short": {
+            "success_rate": 0.924,
+            "mean_completion_min": 114.128
+          },
+          "long": {
+            "success_rate": 0.83,
+            "mean_completion_min": 123.4
+          }
+        },
+        "history_minus_conditioned": -4.10799999999999,
+        "smoothed_minus_conditioned": -4.5859999999999985
+      },
+      {
+        "r": 2,
+        "waits_min": [
+          94.0,
+          100.0
+        ],
+        "target_reached": true,
+        "evaluation": {
+          "all": {
+            "success_rate": 0.896,
+            "mean_completion_min": 119.218
+          },
+          "short": {
+            "success_rate": 0.954,
+            "mean_completion_min": 115.196
+          },
+          "long": {
+            "success_rate": 0.838,
+            "mean_completion_min": 123.24
+          }
+        },
+        "history_minus_conditioned": -5.0120000000000005,
+        "smoothed_minus_conditioned": -5.469999999999999
+      },
+      {
+        "r": 3,
+        "waits_min": [
+          92.0,
+          102.0
+        ],
+        "target_reached": true,
+        "evaluation": {
+          "all": {
+            "success_rate": 0.898,
+            "mean_completion_min": 119.216
+          },
+          "short": {
+            "success_rate": 0.924,
+            "mean_completion_min": 114.128
+          },
+          "long": {
+            "success_rate": 0.872,
+            "mean_completion_min": 124.304
+          }
+        },
+        "history_minus_conditioned": -4.589999999999989,
+        "smoothed_minus_conditioned": -5.103999999999999
+      },
+      {
+        "r": 4,
+        "waits_min": [
+          94.0,
+          100.0
+        ],
+        "target_reached": true,
+        "evaluation": {
+          "all": {
+            "success_rate": 0.896,
+            "mean_completion_min": 119.23
+          },
+          "short": {
+            "success_rate": 0.95,
+            "mean_completion_min": 115.3
+          },
+          "long": {
+            "success_rate": 0.842,
+            "mean_completion_min": 123.16
+          }
+        },
+        "history_minus_conditioned": -4.3359999999999985,
+        "smoothed_minus_conditioned": -5.128
+      },
+      {
+        "r": 5,
+        "waits_min": [
+          94.0,
+          102.0
+        ],
+        "target_reached": true,
+        "evaluation": {
+          "all": {
+            "success_rate": 0.925,
+            "mean_completion_min": 119.502
+          },
+          "short": {
+            "success_rate": 0.962,
+            "mean_completion_min": 114.988
+          },
+          "long": {
+            "success_rate": 0.888,
+            "mean_completion_min": 124.016
+          }
+        },
+        "history_minus_conditioned": -4.8019999999999925,
+        "smoothed_minus_conditioned": -5.827999999999989
+      },
+      {
+        "r": 6,
+        "waits_min": [
+          94.0,
+          100.0
+        ],
+        "target_reached": true,
+        "evaluation": {
+          "all": {
+            "success_rate": 0.895,
+            "mean_completion_min": 119.262
+          },
+          "short": {
+            "success_rate": 0.946,
+            "mean_completion_min": 115.404
+          },
+          "long": {
+            "success_rate": 0.844,
+            "mean_completion_min": 123.12
+          }
+        },
+        "history_minus_conditioned": -5.099999999999994,
+        "smoothed_minus_conditioned": -5.372
+      },
+      {
+        "r": 7,
+        "waits_min": [
+          90.0,
+          102.0
+        ],
+        "target_reached": true,
+        "evaluation": {
+          "all": {
+            "success_rate": 0.882,
+            "mean_completion_min": 118.736
+          },
+          "short": {
+            "success_rate": 0.898,
+            "mean_completion_min": 113.06
+          },
+          "long": {
+            "success_rate": 0.866,
+            "mean_completion_min": 124.412
+          }
+        },
+        "history_minus_conditioned": -4.038000000000011,
+        "smoothed_minus_conditioned": -4.224000000000004
+      },
+      {
+        "r": 8,
+        "waits_min": [
+          94.0,
+          100.0
+        ],
+        "target_reached": true,
+        "evaluation": {
+          "all": {
+            "success_rate": 0.894,
+            "mean_completion_min": 119.282
+          },
+          "short": {
+            "success_rate": 0.946,
+            "mean_completion_min": 115.404
+          },
+          "long": {
+            "success_rate": 0.842,
+            "mean_completion_min": 123.16
+          }
+        },
+        "history_minus_conditioned": -5.055999999999997,
+        "smoothed_minus_conditioned": -5.456000000000003
+      },
+      {
+        "r": 9,
+        "waits_min": [
+          92.0,
+          100.0
+        ],
+        "target_reached": true,
+        "evaluation": {
+          "all": {
+            "success_rate": 0.872,
+            "mean_completion_min": 118.912
+          },
+          "short": {
+            "success_rate": 0.912,
+            "mean_completion_min": 114.464
+          },
+          "long": {
+            "success_rate": 0.832,
+            "mean_completion_min": 123.36
+          }
+        },
+        "history_minus_conditioned": -4.646000000000001,
+        "smoothed_minus_conditioned": -5.072000000000003
+      },
+      {
+        "r": 10,
+        "waits_min": [
+          92.0,
+          102.0
+        ],
+        "target_reached": true,
+        "evaluation": {
+          "all": {
+            "success_rate": 0.9,
+            "mean_completion_min": 119.13
+          },
+          "short": {
+            "success_rate": 0.934,
+            "mean_completion_min": 113.848
+          },
+          "long": {
+            "success_rate": 0.866,
+            "mean_completion_min": 124.412
+          }
+        },
+        "history_minus_conditioned": -4.417999999999992,
+        "smoothed_minus_conditioned": -4.744
+      },
+      {
+        "r": 11,
+        "waits_min": [
+          94.0,
+          102.0
+        ],
+        "target_reached": true,
+        "evaluation": {
+          "all": {
+            "success_rate": 0.92,
+            "mean_completion_min": 119.616
+          },
+          "short": {
+            "success_rate": 0.956,
+            "mean_completion_min": 115.144
+          },
+          "long": {
+            "success_rate": 0.884,
+            "mean_completion_min": 124.088
+          }
+        },
+        "history_minus_conditioned": -5.239999999999995,
+        "smoothed_minus_conditioned": -5.805999999999997
+      },
+      {
+        "r": 12,
+        "waits_min": [
+          94.0,
+          100.0
+        ],
+        "target_reached": true,
+        "evaluation": {
+          "all": {
+            "success_rate": 0.903,
+            "mean_completion_min": 119.06
+          },
+          "short": {
+            "success_rate": 0.96,
+            "mean_completion_min": 115.04
+          },
+          "long": {
+            "success_rate": 0.846,
+            "mean_completion_min": 123.08
+          }
+        },
+        "history_minus_conditioned": -4.670000000000002,
+        "smoothed_minus_conditioned": -5.480000000000004
+      },
+      {
+        "r": 13,
+        "waits_min": [
+          94.0,
+          102.0
+        ],
+        "target_reached": true,
+        "evaluation": {
+          "all": {
+            "success_rate": 0.921,
+            "mean_completion_min": 119.582
+          },
+          "short": {
+            "success_rate": 0.96,
+            "mean_completion_min": 115.04
+          },
+          "long": {
+            "success_rate": 0.882,
+            "mean_completion_min": 124.124
+          }
+        },
+        "history_minus_conditioned": -5.628,
+        "smoothed_minus_conditioned": -5.903999999999996
+      },
+      {
+        "r": 14,
+        "waits_min": [
+          92.0,
+          100.0
+        ],
+        "target_reached": true,
+        "evaluation": {
+          "all": {
+            "success_rate": 0.877,
+            "mean_completion_min": 118.756
+          },
+          "short": {
+            "success_rate": 0.926,
+            "mean_completion_min": 114.072
+          },
+          "long": {
+            "success_rate": 0.828,
+            "mean_completion_min": 123.44
+          }
+        },
+        "history_minus_conditioned": -4.647999999999996,
+        "smoothed_minus_conditioned": -4.841999999999999
+      },
+      {
+        "r": 15,
+        "waits_min": [
+          90.0,
+          102.0
+        ],
+        "target_reached": true,
+        "evaluation": {
+          "all": {
+            "success_rate": 0.881,
+            "mean_completion_min": 118.766
+          },
+          "short": {
+            "success_rate": 0.896,
+            "mean_completion_min": 113.12
+          },
+          "long": {
+            "success_rate": 0.866,
+            "mean_completion_min": 124.412
+          }
+        },
+        "history_minus_conditioned": -4.134,
+        "smoothed_minus_conditioned": -4.498000000000005
+      },
+      {
+        "r": 16,
+        "waits_min": [
+          92.0,
+          100.0
+        ],
+        "target_reached": true,
+        "evaluation": {
+          "all": {
+            "success_rate": 0.876,
+            "mean_completion_min": 118.8
+          },
+          "short": {
+            "success_rate": 0.92,
+            "mean_completion_min": 114.24
+          },
+          "long": {
+            "success_rate": 0.832,
+            "mean_completion_min": 123.36
+          }
+        },
+        "history_minus_conditioned": -4.167999999999992,
+        "smoothed_minus_conditioned": -4.7479999999999905
+      },
+      {
+        "r": 17,
+        "waits_min": [
+          92.0,
+          100.0
+        ],
+        "target_reached": true,
+        "evaluation": {
+          "all": {
+            "success_rate": 0.88,
+            "mean_completion_min": 118.696
+          },
+          "short": {
+            "success_rate": 0.926,
+            "mean_completion_min": 114.072
+          },
+          "long": {
+            "success_rate": 0.834,
+            "mean_completion_min": 123.32
+          }
+        },
+        "history_minus_conditioned": -4.299999999999997,
+        "smoothed_minus_conditioned": -4.795999999999992
+      },
+      {
+        "r": 18,
+        "waits_min": [
+          92.0,
+          100.0
+        ],
+        "target_reached": true,
+        "evaluation": {
+          "all": {
+            "success_rate": 0.876,
+            "mean_completion_min": 118.824
+          },
+          "short": {
+            "success_rate": 0.914,
+            "mean_completion_min": 114.408
+          },
+          "long": {
+            "success_rate": 0.838,
+            "mean_completion_min": 123.24
+          }
+        },
+        "history_minus_conditioned": -4.673999999999992,
+        "smoothed_minus_conditioned": -5.274000000000001
+      },
+      {
+        "r": 19,
+        "waits_min": [
+          90.0,
+          102.0
+        ],
+        "target_reached": true,
+        "evaluation": {
+          "all": {
+            "success_rate": 0.871,
+            "mean_completion_min": 119.018
+          },
+          "short": {
+            "success_rate": 0.884,
+            "mean_completion_min": 113.48
+          },
+          "long": {
+            "success_rate": 0.858,
+            "mean_completion_min": 124.556
+          }
+        },
+        "history_minus_conditioned": -4.494,
+        "smoothed_minus_conditioned": -5.060000000000002
+      }
+    ],
+    "summary": {
+      "history_minus_conditioned": {
+        "median": -4.6469999999999985,
+        "min": -5.628,
+        "max": -4.038000000000011
+      },
+      "smoothed_minus_conditioned": {
+        "median": -5.116,
+        "min": -5.903999999999996,
+        "max": -4.224000000000004
+      },
+      "success": {
+        "median": 0.8945000000000001,
+        "min": 0.871,
+        "max": 0.925
+      },
+      "completion": {
+        "median": 119.093,
+        "min": 118.696,
+        "max": 119.616
+      },
+      "reached_on_evaluation": 6,
+      "history_faster": 20,
+      "smoothed_faster": 20
+    }
+  },
+  "kappa": {
+    "0.4": {
+      "waits_min": [
+        72.0,
+        80.0
+      ],
+      "target_reached": true,
+      "calibration": {
+        "success_rate": 0.9079999999999999,
+        "mean_completion_min": 99.864,
+        "per_history": {
+          "short": {
+            "success_rate": 0.954,
+            "mean_completion_min": 94.208
+          },
+          "long": {
+            "success_rate": 0.862,
+            "mean_completion_min": 105.52
+          }
+        }
+      },
+      "evaluation": {
+        "all": {
+          "success_rate": 0.9,
+          "mean_completion_min": 100.224
+        },
+        "short": {
+          "success_rate": 0.944,
+          "mean_completion_min": 94.688
+        },
+        "long": {
+          "success_rate": 0.856,
+          "mean_completion_min": 105.76
+        }
+      },
+      "history_minus_conditioned": {
+        "0.005": -4.0120000000000005,
+        "0.01": -3.4279999999999973
+      }
+    },
+    "0.5": {
+      "waits_min": [
+        92.0,
+        102.0
+      ],
+      "target_reached": true,
+      "calibration": {
+        "success_rate": 0.9039999999999999,
+        "mean_completion_min": 119.03800000000001,
+        "per_history": {
+          "short": {
+            "success_rate": 0.938,
+            "mean_completion_min": 113.736
+          },
+          "long": {
+            "success_rate": 0.87,
+            "mean_completion_min": 124.34
+          }
+        }
+      },
+      "evaluation": {
+        "all": {
+          "success_rate": 0.903,
+          "mean_completion_min": 119.126
+        },
+        "short": {
+          "success_rate": 0.924,
+          "mean_completion_min": 114.128
+        },
+        "long": {
+          "success_rate": 0.882,
+          "mean_completion_min": 124.124
+        }
+      },
+      "history_minus_conditioned": {
+        "0.005": -4.788000000000011,
+        "0.01": -4.236000000000004
+      }
+    },
+    "0.6": {
+      "waits_min": [
+        120.0,
+        120.0
+      ],
+      "target_reached": false,
+      "calibration": {
+        "success_rate": 0.825,
+        "mean_completion_min": 140.0,
+        "per_history": {
+          "short": {
+            "success_rate": 0.926,
+            "mean_completion_min": 140.0
+          },
+          "long": {
+            "success_rate": 0.724,
+            "mean_completion_min": 140.0
+          }
+        }
+      },
+      "evaluation": {
+        "all": {
+          "success_rate": 0.815,
+          "mean_completion_min": 140.0
+        },
+        "short": {
+          "success_rate": 0.91,
+          "mean_completion_min": 140.0
+        },
+        "long": {
+          "success_rate": 0.72,
+          "mean_completion_min": 140.0
+        }
+      },
+      "history_minus_conditioned": {
+        "0.005": -5.795999999999992,
+        "0.01": -2.969999999999999
+      }
+    }
+  },
+  "fine_grid": {
+    "0.005": {
+      "calibrated": {
+        "history": {
+          "threshold": 0.94,
+          "target_reached": true,
+          "evaluation": {
+            "success_rate": 0.921,
+            "mean_completion_min": 114.112,
+            "mean_wait_min": 91.868
+          }
+        },
+        "smoothed": {
+          "tau_min": 16.0,
+          "threshold": 0.87,
+          "target_reached": true,
+          "evaluation": {
+            "success_rate": 0.896,
+            "mean_completion_min": 113.468,
+            "mean_wait_min": 90.69
+          }
+        }
+      },
+      "frontier": {
+        "history": [
+          {
+            "threshold": 0.5,
+            "success_rate": 0.572,
+            "mean_completion_min": 119.528,
+            "mean_wait_min": 84.266
+          },
+          {
+            "threshold": 0.51,
+            "success_rate": 0.576,
+            "mean_completion_min": 119.46,
+            "mean_wait_min": 84.394
+          },
+          {
+            "threshold": 0.52,
+            "success_rate": 0.585,
+            "mean_completion_min": 119.208,
+            "mean_wait_min": 84.496
+          },
+          {
+            "threshold": 0.53,
+            "success_rate": 0.591,
+            "mean_completion_min": 119.054,
+            "mean_wait_min": 84.598
+          },
+          {
+            "threshold": 0.54,
+            "success_rate": 0.597,
+            "mean_completion_min": 118.936,
+            "mean_wait_min": 84.706
+          },
+          {
+            "threshold": 0.55,
+            "success_rate": 0.604,
+            "mean_completion_min": 118.736,
+            "mean_wait_min": 84.794
+          },
+          {
+            "threshold": 0.56,
+            "success_rate": 0.611,
+            "mean_completion_min": 118.604,
+            "mean_wait_min": 84.912
+          },
+          {
+            "threshold": 0.57,
+            "success_rate": 0.627,
+            "mean_completion_min": 118.174,
+            "mean_wait_min": 85.044
+          },
+          {
+            "threshold": 0.58,
+            "success_rate": 0.631,
+            "mean_completion_min": 118.08,
+            "mean_wait_min": 85.174
+          },
+          {
+            "threshold": 0.59,
+            "success_rate": 0.639,
+            "mean_completion_min": 117.87,
+            "mean_wait_min": 85.312
+          },
+          {
+            "threshold": 0.6,
+            "success_rate": 0.653,
+            "mean_completion_min": 117.512,
+            "mean_wait_min": 85.456
+          },
+          {
+            "threshold": 0.61,
+            "success_rate": 0.663,
+            "mean_completion_min": 117.276,
+            "mean_wait_min": 85.642
+          },
+          {
+            "threshold": 0.62,
+            "success_rate": 0.672,
+            "mean_completion_min": 117.096,
+            "mean_wait_min": 85.75
+          },
+          {
+            "threshold": 0.63,
+            "success_rate": 0.683,
+            "mean_completion_min": 116.778,
+            "mean_wait_min": 85.868
+          },
+          {
+            "threshold": 0.64,
+            "success_rate": 0.687,
+            "mean_completion_min": 116.706,
+            "mean_wait_min": 85.956
+          },
+          {
+            "threshold": 0.65,
+            "success_rate": 0.694,
+            "mean_completion_min": 116.576,
+            "mean_wait_min": 86.11
+          },
+          {
+            "threshold": 0.66,
+            "success_rate": 0.698,
+            "mean_completion_min": 116.494,
+            "mean_wait_min": 86.232
+          },
+          {
+            "threshold": 0.67,
+            "success_rate": 0.704,
+            "mean_completion_min": 116.374,
+            "mean_wait_min": 86.364
+          },
+          {
+            "threshold": 0.68,
+            "success_rate": 0.713,
+            "mean_completion_min": 116.17,
+            "mean_wait_min": 86.506
+          },
+          {
+            "threshold": 0.69,
+            "success_rate": 0.725,
+            "mean_completion_min": 115.87,
+            "mean_wait_min": 86.686
+          },
+          {
+            "threshold": 0.7,
+            "success_rate": 0.734,
+            "mean_completion_min": 115.698,
+            "mean_wait_min": 86.838
+          },
+          {
+            "threshold": 0.71,
+            "success_rate": 0.739,
+            "mean_completion_min": 115.616,
+            "mean_wait_min": 86.93
+          },
+          {
+            "threshold": 0.72,
+            "success_rate": 0.747,
+            "mean_completion_min": 115.47,
+            "mean_wait_min": 87.11
+          },
+          {
+            "threshold": 0.73,
+            "success_rate": 0.757,
+            "mean_completion_min": 115.328,
+            "mean_wait_min": 87.288
+          },
+          {
+            "threshold": 0.74,
+            "success_rate": 0.764,
+            "mean_completion_min": 115.25,
+            "mean_wait_min": 87.45
+          },
+          {
+            "threshold": 0.75,
+            "success_rate": 0.771,
+            "mean_completion_min": 115.112,
+            "mean_wait_min": 87.58
+          },
+          {
+            "threshold": 0.76,
+            "success_rate": 0.777,
+            "mean_completion_min": 115.046,
+            "mean_wait_min": 87.72
+          },
+          {
+            "threshold": 0.77,
+            "success_rate": 0.786,
+            "mean_completion_min": 114.868,
+            "mean_wait_min": 87.886
+          },
+          {
+            "threshold": 0.78,
+            "success_rate": 0.791,
+            "mean_completion_min": 114.782,
+            "mean_wait_min": 88.016
+          },
+          {
+            "threshold": 0.79,
+            "success_rate": 0.795,
+            "mean_completion_min": 114.794,
+            "mean_wait_min": 88.15
+          },
+          {
+            "threshold": 0.8,
+            "success_rate": 0.801,
+            "mean_completion_min": 114.76,
+            "mean_wait_min": 88.302
+          },
+          {
+            "threshold": 0.81,
+            "success_rate": 0.813,
+            "mean_completion_min": 114.55,
+            "mean_wait_min": 88.502
+          },
+          {
+            "threshold": 0.82,
+            "success_rate": 0.82,
+            "mean_completion_min": 114.514,
+            "mean_wait_min": 88.688
+          },
+          {
+            "threshold": 0.83,
+            "success_rate": 0.827,
+            "mean_completion_min": 114.406,
+            "mean_wait_min": 88.884
+          },
+          {
+            "threshold": 0.84,
+            "success_rate": 0.835,
+            "mean_completion_min": 114.318,
+            "mean_wait_min": 89.07
+          },
+          {
+            "threshold": 0.85,
+            "success_rate": 0.845,
+            "mean_completion_min": 114.144,
+            "mean_wait_min": 89.272
+          },
+          {
+            "threshold": 0.86,
+            "success_rate": 0.856,
+            "mean_completion_min": 113.986,
+            "mean_wait_min": 89.46
+          },
+          {
+            "threshold": 0.87,
+            "success_rate": 0.866,
+            "mean_completion_min": 113.876,
+            "mean_wait_min": 89.718
+          },
+          {
+            "threshold": 0.88,
+            "success_rate": 0.875,
+            "mean_completion_min": 113.8,
+            "mean_wait_min": 89.928
+          },
+          {
+            "threshold": 0.89,
+            "success_rate": 0.883,
+            "mean_completion_min": 113.772,
+            "mean_wait_min": 90.196
+          },
+          {
+            "threshold": 0.9,
+            "success_rate": 0.892,
+            "mean_completion_min": 113.736,
+            "mean_wait_min": 90.508
+          },
+          {
+            "threshold": 0.91,
+            "success_rate": 0.901,
+            "mean_completion_min": 113.68,
+            "mean_wait_min": 90.814
+          },
+          {
+            "threshold": 0.92,
+            "success_rate": 0.908,
+            "mean_completion_min": 113.828,
+            "mean_wait_min": 91.128
+          },
+          {
+            "threshold": 0.93,
+            "success_rate": 0.917,
+            "mean_completion_min": 113.922,
+            "mean_wait_min": 91.504
+          },
+          {
+            "threshold": 0.94,
+            "success_rate": 0.921,
+            "mean_completion_min": 114.112,
+            "mean_wait_min": 91.868
+          },
+          {
+            "threshold": 0.95,
+            "success_rate": 0.926,
+            "mean_completion_min": 114.338,
+            "mean_wait_min": 92.254
+          },
+          {
+            "threshold": 0.96,
+            "success_rate": 0.936,
+            "mean_completion_min": 114.436,
+            "mean_wait_min": 92.678
+          },
+          {
+            "threshold": 0.97,
+            "success_rate": 0.948,
+            "mean_completion_min": 114.674,
+            "mean_wait_min": 93.322
+          },
+          {
+            "threshold": 0.98,
+            "success_rate": 0.961,
+            "mean_completion_min": 114.988,
+            "mean_wait_min": 94.078
+          },
+          {
+            "threshold": 0.99,
+            "success_rate": 0.971,
+            "mean_completion_min": 115.846,
+            "mean_wait_min": 95.222
+          }
+        ],
+        "smoothed": [
+          {
+            "threshold": 0.5,
+            "success_rate": 0.572,
+            "mean_completion_min": 119.068,
+            "mean_wait_min": 84.0
+          },
+          {
+            "threshold": 0.51,
+            "success_rate": 0.583,
+            "mean_completion_min": 118.844,
+            "mean_wait_min": 84.168
+          },
+          {
+            "threshold": 0.52,
+            "success_rate": 0.595,
+            "mean_completion_min": 118.532,
+            "mean_wait_min": 84.298
+          },
+          {
+            "threshold": 0.53,
+            "success_rate": 0.608,
+            "mean_completion_min": 118.176,
+            "mean_wait_min": 84.464
+          },
+          {
+            "threshold": 0.54,
+            "success_rate": 0.621,
+            "mean_completion_min": 117.778,
+            "mean_wait_min": 84.602
+          },
+          {
+            "threshold": 0.55,
+            "success_rate": 0.632,
+            "mean_completion_min": 117.588,
+            "mean_wait_min": 84.746
+          },
+          {
+            "threshold": 0.56,
+            "success_rate": 0.636,
+            "mean_completion_min": 117.496,
+            "mean_wait_min": 84.85
+          },
+          {
+            "threshold": 0.57,
+            "success_rate": 0.647,
+            "mean_completion_min": 117.184,
+            "mean_wait_min": 85.012
+          },
+          {
+            "threshold": 0.58,
+            "success_rate": 0.655,
+            "mean_completion_min": 116.956,
+            "mean_wait_min": 85.146
+          },
+          {
+            "threshold": 0.59,
+            "success_rate": 0.662,
+            "mean_completion_min": 116.806,
+            "mean_wait_min": 85.298
+          },
+          {
+            "threshold": 0.6,
+            "success_rate": 0.665,
+            "mean_completion_min": 116.81,
+            "mean_wait_min": 85.416
+          },
+          {
+            "threshold": 0.61,
+            "success_rate": 0.674,
+            "mean_completion_min": 116.59,
+            "mean_wait_min": 85.56
+          },
+          {
+            "threshold": 0.62,
+            "success_rate": 0.68,
+            "mean_completion_min": 116.496,
+            "mean_wait_min": 85.718
+          },
+          {
+            "threshold": 0.63,
+            "success_rate": 0.684,
+            "mean_completion_min": 116.454,
+            "mean_wait_min": 85.864
+          },
+          {
+            "threshold": 0.64,
+            "success_rate": 0.7,
+            "mean_completion_min": 116.074,
+            "mean_wait_min": 86.048
+          },
+          {
+            "threshold": 0.65,
+            "success_rate": 0.708,
+            "mean_completion_min": 115.91,
+            "mean_wait_min": 86.21
+          },
+          {
+            "threshold": 0.66,
+            "success_rate": 0.717,
+            "mean_completion_min": 115.672,
+            "mean_wait_min": 86.358
+          },
+          {
+            "threshold": 0.67,
+            "success_rate": 0.735,
+            "mean_completion_min": 115.15,
+            "mean_wait_min": 86.568
+          },
+          {
+            "threshold": 0.68,
+            "success_rate": 0.744,
+            "mean_completion_min": 114.968,
+            "mean_wait_min": 86.75
+          },
+          {
+            "threshold": 0.69,
+            "success_rate": 0.756,
+            "mean_completion_min": 114.76,
+            "mean_wait_min": 86.918
+          },
+          {
+            "threshold": 0.7,
+            "success_rate": 0.767,
+            "mean_completion_min": 114.452,
+            "mean_wait_min": 87.084
+          },
+          {
+            "threshold": 0.71,
+            "success_rate": 0.777,
+            "mean_completion_min": 114.22,
+            "mean_wait_min": 87.292
+          },
+          {
+            "threshold": 0.72,
+            "success_rate": 0.788,
+            "mean_completion_min": 114.03,
+            "mean_wait_min": 87.496
+          },
+          {
+            "threshold": 0.73,
+            "success_rate": 0.793,
+            "mean_completion_min": 114.056,
+            "mean_wait_min": 87.67
+          },
+          {
+            "threshold": 0.74,
+            "success_rate": 0.799,
+            "mean_completion_min": 114.002,
+            "mean_wait_min": 87.832
+          },
+          {
+            "threshold": 0.75,
+            "success_rate": 0.81,
+            "mean_completion_min": 113.75,
+            "mean_wait_min": 88.0
+          },
+          {
+            "threshold": 0.76,
+            "success_rate": 0.815,
+            "mean_completion_min": 113.756,
+            "mean_wait_min": 88.2
+          },
+          {
+            "threshold": 0.77,
+            "success_rate": 0.822,
+            "mean_completion_min": 113.724,
+            "mean_wait_min": 88.404
+          },
+          {
+            "threshold": 0.78,
+            "success_rate": 0.826,
+            "mean_completion_min": 113.754,
+            "mean_wait_min": 88.59
+          },
+          {
+            "threshold": 0.79,
+            "success_rate": 0.838,
+            "mean_completion_min": 113.524,
+            "mean_wait_min": 88.748
+          },
+          {
+            "threshold": 0.8,
+            "success_rate": 0.847,
+            "mean_completion_min": 113.376,
+            "mean_wait_min": 88.952
+          },
+          {
+            "threshold": 0.81,
+            "success_rate": 0.856,
+            "mean_completion_min": 113.28,
+            "mean_wait_min": 89.172
+          },
+          {
+            "threshold": 0.82,
+            "success_rate": 0.864,
+            "mean_completion_min": 113.282,
+            "mean_wait_min": 89.412
+          },
+          {
+            "threshold": 0.83,
+            "success_rate": 0.865,
+            "mean_completion_min": 113.438,
+            "mean_wait_min": 89.638
+          },
+          {
+            "threshold": 0.84,
+            "success_rate": 0.876,
+            "mean_completion_min": 113.39,
+            "mean_wait_min": 89.902
+          },
+          {
+            "threshold": 0.85,
+            "success_rate": 0.885,
+            "mean_completion_min": 113.358,
+            "mean_wait_min": 90.176
+          },
+          {
+            "threshold": 0.86,
+            "success_rate": 0.888,
+            "mean_completion_min": 113.464,
+            "mean_wait_min": 90.388
+          },
+          {
+            "threshold": 0.87,
+            "success_rate": 0.896,
+            "mean_completion_min": 113.468,
+            "mean_wait_min": 90.69
+          },
+          {
+            "threshold": 0.88,
+            "success_rate": 0.898,
+            "mean_completion_min": 113.68,
+            "mean_wait_min": 90.98
+          },
+          {
+            "threshold": 0.89,
+            "success_rate": 0.912,
+            "mean_completion_min": 113.568,
+            "mean_wait_min": 91.318
+          },
+          {
+            "threshold": 0.9,
+            "success_rate": 0.923,
+            "mean_completion_min": 113.62,
+            "mean_wait_min": 91.658
+          },
+          {
+            "threshold": 0.91,
+            "success_rate": 0.936,
+            "mean_completion_min": 113.502,
+            "mean_wait_min": 92.0
+          },
+          {
+            "threshold": 0.92,
+            "success_rate": 0.941,
+            "mean_completion_min": 113.734,
+            "mean_wait_min": 92.412
+          },
+          {
+            "threshold": 0.93,
+            "success_rate": 0.946,
+            "mean_completion_min": 114.034,
+            "mean_wait_min": 92.858
+          },
+          {
+            "threshold": 0.94,
+            "success_rate": 0.951,
+            "mean_completion_min": 114.336,
+            "mean_wait_min": 93.334
+          },
+          {
+            "threshold": 0.95,
+            "success_rate": 0.959,
+            "mean_completion_min": 114.706,
+            "mean_wait_min": 93.88
+          },
+          {
+            "threshold": 0.96,
+            "success_rate": 0.962,
+            "mean_completion_min": 115.198,
+            "mean_wait_min": 94.492
+          },
+          {
+            "threshold": 0.97,
+            "success_rate": 0.969,
+            "mean_completion_min": 115.85,
+            "mean_wait_min": 95.29
+          },
+          {
+            "threshold": 0.98,
+            "success_rate": 0.978,
+            "mean_completion_min": 116.604,
+            "mean_wait_min": 96.244
+          },
+          {
+            "threshold": 0.99,
+            "success_rate": 0.988,
+            "mean_completion_min": 117.962,
+            "mean_wait_min": 97.864
+          }
+        ]
+      },
+      "matched_success": {
+        "0.9": {
+          "history": 113.68,
+          "smoothed": 113.502,
+          "history_minus_smoothed": 0.17800000000001148
+        },
+        "0.92": {
+          "history": 114.112,
+          "smoothed": 113.502,
+          "history_minus_smoothed": 0.6099999999999994
+        },
+        "0.94": {
+          "history": 114.674,
+          "smoothed": 113.734,
+          "history_minus_smoothed": 0.9400000000000119
+        }
+      }
+    },
+    "0.01": {
+      "calibrated": {
+        "history": {
+          "threshold": 0.9,
+          "target_reached": true,
+          "evaluation": {
+            "success_rate": 0.922,
+            "mean_completion_min": 114.89,
+            "mean_wait_min": 92.978
+          }
+        },
+        "smoothed": {
+          "tau_min": 16.0,
+          "threshold": 0.91,
+          "target_reached": true,
+          "evaluation": {
+            "success_rate": 0.908,
+            "mean_completion_min": 116.302,
+            "mean_wait_min": 93.53
+          }
+        }
+      },
+      "frontier": {
+        "history": [
+          {
+            "threshold": 0.5,
+            "success_rate": 0.57,
+            "mean_completion_min": 119.296,
+            "mean_wait_min": 84.144
+          },
+          {
+            "threshold": 0.51,
+            "success_rate": 0.58,
+            "mean_completion_min": 119.096,
+            "mean_wait_min": 84.314
+          },
+          {
+            "threshold": 0.52,
+            "success_rate": 0.585,
+            "mean_completion_min": 119.016,
+            "mean_wait_min": 84.486
+          },
+          {
+            "threshold": 0.53,
+            "success_rate": 0.596,
+            "mean_completion_min": 118.744,
+            "mean_wait_min": 84.648
+          },
+          {
+            "threshold": 0.54,
+            "success_rate": 0.604,
+            "mean_completion_min": 118.608,
+            "mean_wait_min": 84.82
+          },
+          {
+            "threshold": 0.55,
+            "success_rate": 0.615,
+            "mean_completion_min": 118.276,
+            "mean_wait_min": 84.962
+          },
+          {
+            "threshold": 0.56,
+            "success_rate": 0.622,
+            "mean_completion_min": 118.132,
+            "mean_wait_min": 85.116
+          },
+          {
+            "threshold": 0.57,
+            "success_rate": 0.634,
+            "mean_completion_min": 117.828,
+            "mean_wait_min": 85.278
+          },
+          {
+            "threshold": 0.58,
+            "success_rate": 0.645,
+            "mean_completion_min": 117.512,
+            "mean_wait_min": 85.46
+          },
+          {
+            "threshold": 0.59,
+            "success_rate": 0.653,
+            "mean_completion_min": 117.36,
+            "mean_wait_min": 85.594
+          },
+          {
+            "threshold": 0.6,
+            "success_rate": 0.66,
+            "mean_completion_min": 117.244,
+            "mean_wait_min": 85.764
+          },
+          {
+            "threshold": 0.61,
+            "success_rate": 0.67,
+            "mean_completion_min": 117.044,
+            "mean_wait_min": 85.968
+          },
+          {
+            "threshold": 0.62,
+            "success_rate": 0.678,
+            "mean_completion_min": 116.886,
+            "mean_wait_min": 86.116
+          },
+          {
+            "threshold": 0.63,
+            "success_rate": 0.695,
+            "mean_completion_min": 116.474,
+            "mean_wait_min": 86.302
+          },
+          {
+            "threshold": 0.64,
+            "success_rate": 0.705,
+            "mean_completion_min": 116.286,
+            "mean_wait_min": 86.502
+          },
+          {
+            "threshold": 0.65,
+            "success_rate": 0.71,
+            "mean_completion_min": 116.208,
+            "mean_wait_min": 86.654
+          },
+          {
+            "threshold": 0.66,
+            "success_rate": 0.719,
+            "mean_completion_min": 116.048,
+            "mean_wait_min": 86.826
+          },
+          {
+            "threshold": 0.67,
+            "success_rate": 0.727,
+            "mean_completion_min": 115.884,
+            "mean_wait_min": 87.008
+          },
+          {
+            "threshold": 0.68,
+            "success_rate": 0.731,
+            "mean_completion_min": 115.906,
+            "mean_wait_min": 87.186
+          },
+          {
+            "threshold": 0.69,
+            "success_rate": 0.738,
+            "mean_completion_min": 115.788,
+            "mean_wait_min": 87.336
+          },
+          {
+            "threshold": 0.7,
+            "success_rate": 0.753,
+            "mean_completion_min": 115.464,
+            "mean_wait_min": 87.526
+          },
+          {
+            "threshold": 0.71,
+            "success_rate": 0.762,
+            "mean_completion_min": 115.316,
+            "mean_wait_min": 87.75
+          },
+          {
+            "threshold": 0.72,
+            "success_rate": 0.77,
+            "mean_completion_min": 115.252,
+            "mean_wait_min": 87.982
+          },
+          {
+            "threshold": 0.73,
+            "success_rate": 0.776,
+            "mean_completion_min": 115.268,
+            "mean_wait_min": 88.214
+          },
+          {
+            "threshold": 0.74,
+            "success_rate": 0.78,
+            "mean_completion_min": 115.3,
+            "mean_wait_min": 88.444
+          },
+          {
+            "threshold": 0.75,
+            "success_rate": 0.787,
+            "mean_completion_min": 115.224,
+            "mean_wait_min": 88.644
+          },
+          {
+            "threshold": 0.76,
+            "success_rate": 0.8,
+            "mean_completion_min": 114.978,
+            "mean_wait_min": 88.89
+          },
+          {
+            "threshold": 0.77,
+            "success_rate": 0.815,
+            "mean_completion_min": 114.702,
+            "mean_wait_min": 89.148
+          },
+          {
+            "threshold": 0.78,
+            "success_rate": 0.824,
+            "mean_completion_min": 114.496,
+            "mean_wait_min": 89.332
+          },
+          {
+            "threshold": 0.79,
+            "success_rate": 0.84,
+            "mean_completion_min": 114.276,
+            "mean_wait_min": 89.574
+          },
+          {
+            "threshold": 0.8,
+            "success_rate": 0.847,
+            "mean_completion_min": 114.346,
+            "mean_wait_min": 89.852
+          },
+          {
+            "threshold": 0.81,
+            "success_rate": 0.857,
+            "mean_completion_min": 114.32,
+            "mean_wait_min": 90.156
+          },
+          {
+            "threshold": 0.82,
+            "success_rate": 0.87,
+            "mean_completion_min": 114.148,
+            "mean_wait_min": 90.45
+          },
+          {
+            "threshold": 0.83,
+            "success_rate": 0.878,
+            "mean_completion_min": 114.096,
+            "mean_wait_min": 90.658
+          },
+          {
+            "threshold": 0.84,
+            "success_rate": 0.886,
+            "mean_completion_min": 114.108,
+            "mean_wait_min": 90.972
+          },
+          {
+            "threshold": 0.85,
+            "success_rate": 0.895,
+            "mean_completion_min": 114.124,
+            "mean_wait_min": 91.294
+          },
+          {
+            "threshold": 0.86,
+            "success_rate": 0.902,
+            "mean_completion_min": 114.2,
+            "mean_wait_min": 91.642
+          },
+          {
+            "threshold": 0.87,
+            "success_rate": 0.909,
+            "mean_completion_min": 114.33,
+            "mean_wait_min": 91.988
+          },
+          {
+            "threshold": 0.88,
+            "success_rate": 0.913,
+            "mean_completion_min": 114.506,
+            "mean_wait_min": 92.28
+          },
+          {
+            "threshold": 0.89,
+            "success_rate": 0.917,
+            "mean_completion_min": 114.738,
+            "mean_wait_min": 92.63
+          },
+          {
+            "threshold": 0.9,
+            "success_rate": 0.922,
+            "mean_completion_min": 114.89,
+            "mean_wait_min": 92.978
+          },
+          {
+            "threshold": 0.91,
+            "success_rate": 0.926,
+            "mean_completion_min": 115.144,
+            "mean_wait_min": 93.372
+          },
+          {
+            "threshold": 0.92,
+            "success_rate": 0.932,
+            "mean_completion_min": 115.408,
+            "mean_wait_min": 93.824
+          },
+          {
+            "threshold": 0.93,
+            "success_rate": 0.94,
+            "mean_completion_min": 115.756,
+            "mean_wait_min": 94.384
+          },
+          {
+            "threshold": 0.94,
+            "success_rate": 0.952,
+            "mean_completion_min": 115.982,
+            "mean_wait_min": 94.938
+          },
+          {
+            "threshold": 0.95,
+            "success_rate": 0.957,
+            "mean_completion_min": 116.428,
+            "mean_wait_min": 95.528
+          },
+          {
+            "threshold": 0.96,
+            "success_rate": 0.961,
+            "mean_completion_min": 117.134,
+            "mean_wait_min": 96.324
+          },
+          {
+            "threshold": 0.97,
+            "success_rate": 0.967,
+            "mean_completion_min": 117.792,
+            "mean_wait_min": 97.164
+          },
+          {
+            "threshold": 0.98,
+            "success_rate": 0.975,
+            "mean_completion_min": 118.762,
+            "mean_wait_min": 98.382
+          },
+          {
+            "threshold": 0.99,
+            "success_rate": 0.986,
+            "mean_completion_min": 120.248,
+            "mean_wait_min": 100.156
+          }
+        ],
+        "smoothed": [
+          {
+            "threshold": 0.5,
+            "success_rate": 0.499,
+            "mean_completion_min": 122.544,
+            "mean_wait_min": 82.658
+          },
+          {
+            "threshold": 0.51,
+            "success_rate": 0.51,
+            "mean_completion_min": 122.204,
+            "mean_wait_min": 82.82
+          },
+          {
+            "threshold": 0.52,
+            "success_rate": 0.516,
+            "mean_completion_min": 122.058,
+            "mean_wait_min": 83.084
+          },
+          {
+            "threshold": 0.53,
+            "success_rate": 0.529,
+            "mean_completion_min": 121.684,
+            "mean_wait_min": 83.304
+          },
+          {
+            "threshold": 0.54,
+            "success_rate": 0.538,
+            "mean_completion_min": 121.432,
+            "mean_wait_min": 83.5
+          },
+          {
+            "threshold": 0.55,
+            "success_rate": 0.549,
+            "mean_completion_min": 121.164,
+            "mean_wait_min": 83.71
+          },
+          {
+            "threshold": 0.56,
+            "success_rate": 0.558,
+            "mean_completion_min": 120.9,
+            "mean_wait_min": 83.836
+          },
+          {
+            "threshold": 0.57,
+            "success_rate": 0.567,
+            "mean_completion_min": 120.672,
+            "mean_wait_min": 84.018
+          },
+          {
+            "threshold": 0.58,
+            "success_rate": 0.575,
+            "mean_completion_min": 120.546,
+            "mean_wait_min": 84.234
+          },
+          {
+            "threshold": 0.59,
+            "success_rate": 0.589,
+            "mean_completion_min": 120.154,
+            "mean_wait_min": 84.444
+          },
+          {
+            "threshold": 0.6,
+            "success_rate": 0.603,
+            "mean_completion_min": 119.716,
+            "mean_wait_min": 84.622
+          },
+          {
+            "threshold": 0.61,
+            "success_rate": 0.614,
+            "mean_completion_min": 119.446,
+            "mean_wait_min": 84.776
+          },
+          {
+            "threshold": 0.62,
+            "success_rate": 0.629,
+            "mean_completion_min": 119.006,
+            "mean_wait_min": 84.976
+          },
+          {
+            "threshold": 0.63,
+            "success_rate": 0.634,
+            "mean_completion_min": 118.95,
+            "mean_wait_min": 85.142
+          },
+          {
+            "threshold": 0.64,
+            "success_rate": 0.648,
+            "mean_completion_min": 118.61,
+            "mean_wait_min": 85.472
+          },
+          {
+            "threshold": 0.65,
+            "success_rate": 0.66,
+            "mean_completion_min": 118.414,
+            "mean_wait_min": 85.74
+          },
+          {
+            "threshold": 0.66,
+            "success_rate": 0.671,
+            "mean_completion_min": 118.154,
+            "mean_wait_min": 86.058
+          },
+          {
+            "threshold": 0.67,
+            "success_rate": 0.681,
+            "mean_completion_min": 117.92,
+            "mean_wait_min": 86.264
+          },
+          {
+            "threshold": 0.68,
+            "success_rate": 0.689,
+            "mean_completion_min": 117.834,
+            "mean_wait_min": 86.524
+          },
+          {
+            "threshold": 0.69,
+            "success_rate": 0.697,
+            "mean_completion_min": 117.666,
+            "mean_wait_min": 86.728
+          },
+          {
+            "threshold": 0.7,
+            "success_rate": 0.71,
+            "mean_completion_min": 117.396,
+            "mean_wait_min": 86.996
+          },
+          {
+            "threshold": 0.71,
+            "success_rate": 0.723,
+            "mean_completion_min": 117.166,
+            "mean_wait_min": 87.196
+          },
+          {
+            "threshold": 0.72,
+            "success_rate": 0.73,
+            "mean_completion_min": 117.106,
+            "mean_wait_min": 87.398
+          },
+          {
+            "threshold": 0.73,
+            "success_rate": 0.743,
+            "mean_completion_min": 116.84,
+            "mean_wait_min": 87.596
+          },
+          {
+            "threshold": 0.74,
+            "success_rate": 0.753,
+            "mean_completion_min": 116.68,
+            "mean_wait_min": 87.858
+          },
+          {
+            "threshold": 0.75,
+            "success_rate": 0.762,
+            "mean_completion_min": 116.532,
+            "mean_wait_min": 88.09
+          },
+          {
+            "threshold": 0.76,
+            "success_rate": 0.772,
+            "mean_completion_min": 116.442,
+            "mean_wait_min": 88.35
+          },
+          {
+            "threshold": 0.77,
+            "success_rate": 0.786,
+            "mean_completion_min": 116.228,
+            "mean_wait_min": 88.632
+          },
+          {
+            "threshold": 0.78,
+            "success_rate": 0.798,
+            "mean_completion_min": 116.008,
+            "mean_wait_min": 88.904
+          },
+          {
+            "threshold": 0.79,
+            "success_rate": 0.81,
+            "mean_completion_min": 115.952,
+            "mean_wait_min": 89.298
+          },
+          {
+            "threshold": 0.8,
+            "success_rate": 0.818,
+            "mean_completion_min": 115.866,
+            "mean_wait_min": 89.52
+          },
+          {
+            "threshold": 0.81,
+            "success_rate": 0.829,
+            "mean_completion_min": 115.754,
+            "mean_wait_min": 89.798
+          },
+          {
+            "threshold": 0.82,
+            "success_rate": 0.834,
+            "mean_completion_min": 115.754,
+            "mean_wait_min": 90.046
+          },
+          {
+            "threshold": 0.83,
+            "success_rate": 0.844,
+            "mean_completion_min": 115.648,
+            "mean_wait_min": 90.408
+          },
+          {
+            "threshold": 0.84,
+            "success_rate": 0.855,
+            "mean_completion_min": 115.572,
+            "mean_wait_min": 90.768
+          },
+          {
+            "threshold": 0.85,
+            "success_rate": 0.868,
+            "mean_completion_min": 115.446,
+            "mean_wait_min": 91.096
+          },
+          {
+            "threshold": 0.86,
+            "success_rate": 0.871,
+            "mean_completion_min": 115.614,
+            "mean_wait_min": 91.42
+          },
+          {
+            "threshold": 0.87,
+            "success_rate": 0.877,
+            "mean_completion_min": 115.708,
+            "mean_wait_min": 91.74
+          },
+          {
+            "threshold": 0.88,
+            "success_rate": 0.888,
+            "mean_completion_min": 115.774,
+            "mean_wait_min": 92.26
+          },
+          {
+            "threshold": 0.89,
+            "success_rate": 0.896,
+            "mean_completion_min": 115.936,
+            "mean_wait_min": 92.742
+          },
+          {
+            "threshold": 0.9,
+            "success_rate": 0.901,
+            "mean_completion_min": 116.168,
+            "mean_wait_min": 93.144
+          },
+          {
+            "threshold": 0.91,
+            "success_rate": 0.908,
+            "mean_completion_min": 116.302,
+            "mean_wait_min": 93.53
+          },
+          {
+            "threshold": 0.92,
+            "success_rate": 0.923,
+            "mean_completion_min": 116.44,
+            "mean_wait_min": 94.148
+          },
+          {
+            "threshold": 0.93,
+            "success_rate": 0.933,
+            "mean_completion_min": 116.75,
+            "mean_wait_min": 94.77
+          },
+          {
+            "threshold": 0.94,
+            "success_rate": 0.942,
+            "mean_completion_min": 117.088,
+            "mean_wait_min": 95.516
+          },
+          {
+            "threshold": 0.95,
+            "success_rate": 0.948,
+            "mean_completion_min": 117.46,
+            "mean_wait_min": 96.162
+          },
+          {
+            "threshold": 0.96,
+            "success_rate": 0.959,
+            "mean_completion_min": 118.068,
+            "mean_wait_min": 97.17
+          },
+          {
+            "threshold": 0.97,
+            "success_rate": 0.969,
+            "mean_completion_min": 118.9,
+            "mean_wait_min": 98.318
+          },
+          {
+            "threshold": 0.98,
+            "success_rate": 0.974,
+            "mean_completion_min": 120.094,
+            "mean_wait_min": 99.606
+          },
+          {
+            "threshold": 0.99,
+            "success_rate": 0.987,
+            "mean_completion_min": 122.112,
+            "mean_wait_min": 101.932
+          }
+        ]
+      },
+      "matched_success": {
+        "0.9": {
+          "history": 114.2,
+          "smoothed": 116.168,
+          "history_minus_smoothed": -1.9680000000000035
+        },
+        "0.92": {
+          "history": 114.89,
+          "smoothed": 116.44,
+          "history_minus_smoothed": -1.5499999999999972
+        },
+        "0.94": {
+          "history": 115.756,
+          "smoothed": 117.088,
+          "history_minus_smoothed": -1.3319999999999936
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Simulation of one published model structure; not evidence about measured cells.",
+    "The frontier uses evaluation samples descriptively; it never selects a rule."
+  ]
+}

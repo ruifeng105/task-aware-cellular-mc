@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "protocol_sha256": "b90b68a7515ca08499041548d8db77a2eb3aa9a0602543ff0832bbc3760a1280",
+  "version3": {
+    "max_abs_difference": 0.0
+  },
+  "generators": {
+    "ar1_sd": 0.004976449570282594,
+    "ar1_lag1": 0.7990923266586631,
+    "offset": 0.0025
+  },
+  "recomputation": {
+    "mismatch": "ar1",
+    "max_abs_difference": 0.0
+  },
+  "scope": "Simulation of the published B3 model; not evidence about measured cells."
+}

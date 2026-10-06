@@ -1,0 +1,21 @@
+{
+  "name": "Low-noise degeneracy and model mismatch for the calibrated waiting rules on B3",
+  "version": 1,
+  "status": "frozen_before_running",
+  "date": "2026-10-06",
+  "reason": "Reviewer items R6 and R7: the history estimator degenerates without observation noise, and the rules have only been evaluated with the observation model they assume.",
+  "noise_grid": {
+    "levels": [0.0, 0.001, 0.0025, 0.005, 0.01],
+    "rules": "all version-3 rules recalibrated at each level on the calibration samples of the primary split and evaluated on its evaluation samples (likelihood s.d. max(noise, 0.001) as in version 3)",
+    "bandwidth_variant": "history estimator with likelihood s.d. max(noise, 0.005), calibrated and evaluated the same way",
+    "diagnostic": "median effective sample size of the history weights at 90 min (evaluation samples, 30-min history) for both bandwidths",
+    "sets": "reference samples = calibration samples (leave-one-out for calibration plants); evaluation samples never enter references, thresholds or waits"
+  },
+  "mismatch": {
+    "rules": "frozen version-3 choices (calibrated at white noise 0.005); no re-selection",
+    "ar1": "observation noise e_t = 0.8 e_(t-1) + sqrt(1 - 0.8^2) x 0.005 x eps_t with e_0 = 0.005 x eps_0 (same marginal s.d.); eps from seed 20261009 + 2 x plant + history",
+    "offset": "version-2 observations (white noise 0.005) plus a constant reporter offset of +0.0025",
+    "evaluation": "evaluation samples of the primary split; success and mean failure-penalized completion of the current, smoothed and history rules, the fixed wait and the oracle"
+  },
+  "reporting": "All results reported whatever their direction; simulation of one published model structure."
+}
