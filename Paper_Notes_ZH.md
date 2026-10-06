@@ -1,8 +1,8 @@
 # 论文初稿说明与补充路线
 
-日期：2026-10-06（按《AI_MC_6Page_Revision_Plan_ZH》完成的六页修订版）。英文题目：**Toward Task-Aware Reuse of Cellular Molecular Receivers: History-Aware Prediction on Experimental FGF2–ERK Data**。
+日期：2026-10-06（按《AI_MC_6Page_Revision_Plan_ZH》完成的六页修订版）。英文题目：**Task-Aware Reuse of Cellular Molecular Receivers: Response Prediction and Feedback-Driven Waiting**。
 
-中文可译为：**面向细胞分子接收器任务感知复用：基于 FGF2–ERK 实验数据的历史感知预测**。题目中的"Toward"表示控制部分尚未实现；只有在实测收益成立后，才考虑把学习或 AI 放进题目核心。
+中文可译为：**细胞分子接收器的任务感知复用：响应预测与反馈驱动的等待**。题目面向通信读者，不写具体通路（FGF2–ERK 见摘要和关键词）；预测部分基于公开实验数据，等待部分是在作者 B3 模型上的仿真，两者是独立的证据，正文与摘要已写明。
 
 统一入口为 `python scripts/reproduce.py --mode verify`，完整重跑为 `--mode full`。论文与代码、数据、结果的逐项对应见 `Paper_Simulation_Map_ZH.md`，运行方法见根目录 `README.md`。
 

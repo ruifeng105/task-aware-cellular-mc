@@ -1,7 +1,7 @@
 {
   "date": "2026-10-04",
   "project_root": "task-aware-cellular-mc",
-  "description": "Six-page ICC revision: nested P/C/O/M/H prediction on experimental FGF2/ERK data with corrected leave-one-protocol-out and phase scores, accepted execution of the authors' B3 model, and calibrated waiting rules simulated on B3 (smoothed baseline, noise ablation, 20-split robustness, threshold and noise sensitivity, history-conditioned fixed waits, no-probe control, bandwidth and mismatch checks, lagged ARX baseline, shared calibration margin, kappa-dependent no-probe control, AR(1) covariance-aware likelihood), with the earlier pilot, pre-registered expansion and readiness versions kept for reproduction. No controller is evaluated on measured receivers.",
+  "description": "ICC revision (six-page target, fitting deferred): nested P/C/O/M/H prediction on experimental FGF2/ERK data with corrected leave-one-protocol-out and phase scores, accepted execution of the authors' B3 model, and calibrated waiting rules simulated on B3 (smoothed baseline, noise ablation, 20-split robustness, threshold and noise sensitivity, history-conditioned fixed waits, no-probe control, bandwidth and mismatch checks, lagged ARX baseline, shared calibration margin, kappa-dependent no-probe control, AR(1) covariance-aware likelihood), with the earlier pilot, pre-registered expansion and readiness versions kept for reproduction. No controller is evaluated on measured receivers.",
   "verification": {
     "full_pipeline": "passed",
     "steps": [
@@ -54,7 +54,7 @@
     "original_source_files_verified": 47,
     "expanded_source_files_verified": 56,
     "b3_source_files_verified": 3,
-    "pdf_pages": 6
+    "pdf_pages": 7
   },
   "files": {
     ".gitattributes": {
@@ -70,20 +70,20 @@
       "bytes": 38453
     },
     "Paper_Notes_ZH.md": {
-      "sha256": "ec4c2d766474e1ddcb320bf389e49081fce1ef53bc013d0bf9b4ba0144f740ec",
-      "bytes": 15094
+      "sha256": "d4db1413516d8975a4b3bbc71b6f0dacb70b59dba8315757a23e27444a79a885",
+      "bytes": 15156
     },
     "Paper_Simulation_Map_ZH.md": {
       "sha256": "b527f3484553dc5b1f421c14562c175a65e8dbcbfd276745394d6c8ae888a9c0",
       "bytes": 10072
     },
     "README.md": {
-      "sha256": "1aab129fc606088ba82ef969ce4b7590db006246c351b9fda9f238486b5d9537",
-      "bytes": 20628
+      "sha256": "9661e765f84b923b3ab867b45a94d6829d1f20902d517a9f6140b210ee7a2ccc",
+      "bytes": 20612
     },
     "paper/AI_MC_Cellular_Receivers_Draft.pdf": {
-      "sha256": "a40f17e94cec17dd7ed78abff920d8275374a5d07bdfb7ad9ce7d2e3cfa219ed",
-      "bytes": 311686
+      "sha256": "5e6db23c89f0ad45fb569ef0db0941eb5e846e511f3070f011a932ad5f57537d",
+      "bytes": 374181
     },
     "paper/IEEEtran.cls": {
       "sha256": "da751920a317ed318b7b5cd7fa585a6cc7d28502d457856382e9be24b10a3bd7",
@@ -92,6 +92,10 @@
     "paper/assets_manifest.json": {
       "sha256": "6d6dbd8d13a4c044e2e2eb0599adb63250e995d6e5a4aa51ed15acc42f1b20ae",
       "bytes": 1317
+    },
+    "paper/figures/fig1_system_concept.pdf": {
+      "sha256": "cbce45ad5d92985c8cbf2034c3a482e35b26c8c1dbafc88b21689d69d9a42a07",
+      "bytes": 64504
     },
     "paper/figures/forecast_mean_10min.pdf": {
       "sha256": "1134559be03d14fe7e30443e08baf501bf5b626f52d9248cf7bb0b3ff3d8e2b3",
@@ -142,12 +146,12 @@
       "bytes": 99426
     },
     "paper/main.tex": {
-      "sha256": "3d5b9cc6ed8899c51aed9e399788b3963c6f930b0ce21e3c2265eb865c1f2da0",
-      "bytes": 31872
+      "sha256": "713ea64cdf5a0a99b3e2eab95a501887f3d61939647ba76cdf1dd45f9259c9a9",
+      "bytes": 33024
     },
     "paper/qa_report.json": {
-      "sha256": "9661f83e2c546638e649201b422e85ca5ce17deec808e87f8767b8ed25d1fcb8",
-      "bytes": 1856
+      "sha256": "78c93621198c01eaaa432ac0b7c6fcc2d475ac01850db6935fe9a06db8512f04",
+      "bytes": 1953
     },
     "paper/references.bib": {
       "sha256": "4698919b289a839cb34d24f8609b674315b9ccde8a7185e2290e6d285955fbd0",
@@ -250,8 +254,8 @@
       "bytes": 1317
     },
     "reproduction/logs/compile_paper.log": {
-      "sha256": "062ac033ae1923b5f0f3e2d56cde871757ededee459a3e8004e50d3c4b920749",
-      "bytes": 13634
+      "sha256": "7ec026b587378d15f4932bb56d1bd5cc3c5993bab352b72f2decb80f03d5bf82",
+      "bytes": 43619
     },
     "reproduction/logs/expanded_fresh_test.log": {
       "sha256": "318da1f7cc12d7f19e32db4e12c79865b9fcd805bffff745e912baba529cc694",

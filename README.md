@@ -1,6 +1,6 @@
 # 论文初稿与仿真合并包
 
-**Toward Task-Aware Reuse of Cellular Molecular Receivers: History-Aware Prediction on Experimental FGF2–ERK Data**
+**Task-Aware Reuse of Cellular Molecular Receivers: Response Prediction and Feedback-Driven Waiting**
 整理日期：2026-10-06（ICC 投稿六页修订版）。
 
 本包把英文论文初稿（六页，含参考文献）、LaTeX 源码、真实数据学习试验、预先登记的扩展检验、作者仿真参照和结果核查，以及前瞻验证方案与规划工具包（2026-10-05 整合）放在同一项目中。可先打开 `paper/AI_MC_Cellular_Receivers_Draft.pdf` 阅读论文，再按下方入口复现。中文研究说明见 `Paper_Notes_ZH.md`，论文与程序的逐项对应见 `Paper_Simulation_Map_ZH.md`。
