@@ -1,0 +1,6 @@
+{
+  "protocol_path": "simulation/configs/b3_waiting_sensitivity_protocol.json",
+  "protocol_sha256": "e4da2f9f5e704add69a116c6a6153d013e204450f374cbb91e690a2fa96e3043",
+  "frozen_utc": "2026-10-06T07:53:05+00:00",
+  "statement": "Recorded before any outcome at kappa 0.4 or 0.6 or at noise 0.01 was computed."
+}

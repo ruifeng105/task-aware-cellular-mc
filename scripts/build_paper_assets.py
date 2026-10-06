@@ -364,6 +364,21 @@ body = [label + " & " + " & ".join(f"{100 * r0[name][h]['success_rate']:.1f} & {
                                    for h in ("short", "long")) for name, label in rule_label]
 write_table("waiting_history", "lcccc", r"Rule & $S_3$ (\%) & $T_3$ (min) & $S_{30}$ (\%) & $T_{30}$ (min)", body)
 
+sensitivity = json.loads((B3_RESULTS / "waiting_sensitivity_results.json").read_text(encoding="utf-8"))
+body = []
+for kappa, block in sensitivity["cells"].items():
+    for noise, cell in block.items():
+        cells_ = [f"{100 * cell['rules'][r]['all']['success_rate']:.1f} / {cell['rules'][r]['all']['mean_completion_min']:.1f}"
+                  + ("" if r == "oracle" or cell["reached"][r] else r"$^\ast$")
+                  for r in ("fixed", "history", "smoothed", "current", "oracle")]
+        diff = cell["paired"]["history-smoothed"]["completion"]
+        low, high = cell["bootstrap"]["history-smoothed"]["completion"]
+        signed = lambda x: f"{x:+.1f}".replace("-", "$-$")
+        body.append(f"{float(kappa):.1f} & {float(noise):.3f} & {cell['choices']['fixed']['wait_min']:g} & " + " & ".join(cells_)
+                    + f" & {signed(diff)} [{signed(low)}, {signed(high)}]")
+write_table("waiting_sensitivity", "ccccccccc",
+            r"$\kappa$ & Noise & Wait & Fixed & History & Smoothed & Current & Oracle & $\Delta T_{\rm H-S}$", body)
+
 MODEL_STYLE = {"P": ("#52514e", ":", "."), "C": ("#0b0b0b", "--", "x"), "O": ("#1baf7a", "-", "o"),
                "M": ("#4a3aa7", "-", "s"), "H": ("#e34948", "-", "^")}
 ex = nested["example"]

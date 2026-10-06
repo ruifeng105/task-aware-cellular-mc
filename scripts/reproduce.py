@@ -208,6 +208,29 @@ def robustness_metrics():
     return values
 
 
+def sensitivity_metrics():
+    """Waiting sensitivity to the task threshold and observation noise (primary split)."""
+    data = json.loads((B3 / "waiting_sensitivity_results.json").read_text(encoding="utf-8"))
+    values = {}
+    for kappa, block in data["cells"].items():
+        for noise, cell in block.items():
+            prefix = f"b3/sensitivity/{kappa}/{noise}"
+            values[f"{prefix}/fixed_wait_min"] = cell["choices"]["fixed"]["wait_min"]
+            for rule, reached in cell["reached"].items():
+                values[f"{prefix}/{rule}/target_reached"] = reached
+            for rule, parts in cell["rules"].items():
+                for key, value in parts["all"].items():
+                    values[f"{prefix}/{rule}/{key}"] = value
+            for pair, row in cell["paired"].items():
+                for key, value in row.items():
+                    values[f"{prefix}/paired/{pair}/{key}"] = value
+            for pair, row in cell["bootstrap"].items():
+                for key, (low, high) in row.items():
+                    values[f"{prefix}/bootstrap/{pair}/{key}/low"] = low
+                    values[f"{prefix}/bootstrap/{pair}/{key}/high"] = high
+    return values
+
+
 def phase_detail_metrics():
     """Per-condition forecast errors by phase from the frozen nested models."""
     data = json.loads((NESTED / "phase_detail.json").read_text(encoding="utf-8"))
@@ -230,6 +253,7 @@ def compare_reference():
     actual.update(waiting_metrics())
     actual.update(robustness_metrics())
     actual.update(phase_detail_metrics())
+    actual.update(sensitivity_metrics())
     if actual.keys() != expected.keys():
         raise ValueError("Manuscript metric keys differ from the frozen reference.")
     max_error = 0.0
@@ -245,7 +269,7 @@ def compare_reference():
     for path in (OUT / "verification_results.json", EXPANDED / "verification_results.json",
                  B3 / "verification_results.json", B3 / "forecast_verification_results.json",
                  B3 / "readiness_verification_results.json", B3 / "waiting_verification_results.json",
-                 B3 / "waiting_robustness_verification_results.json",
+                 B3 / "waiting_robustness_verification_results.json", B3 / "waiting_sensitivity_verification_results.json",
                  NESTED / "nested_verification_results.json"):
         if json.loads(path.read_text(encoding="utf-8"))["status"] != "passed":
             raise ValueError(f"Verification {path.relative_to(ROOT)} did not pass.")
@@ -303,11 +327,13 @@ def main():
             run_step("nested_phase_detail", [sys.executable, str(CODE / "nested_phase_detail.py")])
             run_step("b3_waiting", [sys.executable, str(CODE / "b3_waiting.py")])
             run_step("b3_waiting_robustness", [sys.executable, str(CODE / "b3_waiting_robustness.py")])
+            run_step("b3_waiting_sensitivity", [sys.executable, str(CODE / "b3_waiting_sensitivity.py")])
         run_step("verify_b3_forecast", [sys.executable, str(CODE / "verify_b3_forecast.py")])
         run_step("verify_b3_readiness", [sys.executable, str(CODE / "verify_b3_readiness.py")])
         run_step("verify_nested_forecast", [sys.executable, str(CODE / "verify_nested_forecast.py")])
         run_step("verify_b3_waiting", [sys.executable, str(CODE / "verify_b3_waiting.py")])
         run_step("verify_b3_waiting_robustness", [sys.executable, str(CODE / "verify_b3_waiting_robustness.py")])
+        run_step("verify_b3_waiting_sensitivity", [sys.executable, str(CODE / "verify_b3_waiting_sensitivity.py")])
         run_step("synthetic_checks", [sys.executable, str(CODE / "smoke_check.py")])
         report["manuscript_reference"] = compare_reference()
         print(f"Passed frozen manuscript comparison ({report['manuscript_reference']['entries_compared']} entries)", flush=True)

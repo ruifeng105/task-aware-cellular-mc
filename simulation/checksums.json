@@ -4,8 +4,8 @@
     "bytes": 30518
   },
   "README.md": {
-    "sha256": "9973fb80313d97df98177df872cd0b07d6150c4e5952d1b84de7d0e52b37c1a0",
-    "bytes": 15201
+    "sha256": "590b4b96ca8e705b0dbdcc4af720ea97b534d4352dd5d8e415f9b708c87bb046",
+    "bytes": 15948
   },
   "code/b3_forecast.py": {
     "sha256": "b450291afdb8f2b2bd3af66cddf67779d7cf491f7593640f5afe6defa67c1a05",
@@ -30,6 +30,10 @@
   "code/b3_waiting_robustness.py": {
     "sha256": "367564654be20e8b32a3e5238cd8d98501ed0be0070b5b59f9e1a42bf3c5013d",
     "bytes": 9568
+  },
+  "code/b3_waiting_sensitivity.py": {
+    "sha256": "ffc771e99116d3a49ab61e2284a0012ee34bae41df3352f589af45ed690cfd53",
+    "bytes": 4697
   },
   "code/calibrate_fgf2.py": {
     "sha256": "c8b4a3e63478802e33d6324f5f3978337aa9983e629f6f2e04e2c77c8c620c39",
@@ -91,6 +95,10 @@
     "sha256": "ef17e86c06a7d31f326b182c3bc05161527b1d39808806ecb0434c89d354c0c4",
     "bytes": 4092
   },
+  "code/verify_b3_waiting_sensitivity.py": {
+    "sha256": "5003cdcfabc0c2a899765dab43762d387362c0239139f99ad3ffde7aa342f51b",
+    "bytes": 3217
+  },
   "code/verify_expanded_fgf2.py": {
     "sha256": "7de5547b1c46682c41a02d239ec869d861341f0c664e083a16192d8e0577611f",
     "bytes": 5845
@@ -122,6 +130,10 @@
   "configs/b3_waiting_robustness_protocol.json": {
     "sha256": "820274b76262b913585a9a6b9f916d68112039f18f8a416d1aec40ed27343641",
     "bytes": 2400
+  },
+  "configs/b3_waiting_sensitivity_protocol.json": {
+    "sha256": "e4da2f9f5e704add69a116c6a6153d013e204450f374cbb91e690a2fa96e3043",
+    "bytes": 1768
   },
   "configs/biological_split_template.json": {
     "sha256": "ab503a978af3791f9ddfb69519e7e620ed2b2645b3365b921f2ffe0435bfb868",
@@ -615,6 +627,10 @@
     "sha256": "332236a280e812851d494eac125eae432922c7a46a6fee8ce3f405e87a450fbd",
     "bytes": 349
   },
+  "results/b3/b3_waiting_sensitivity_protocol_freeze.json": {
+    "sha256": "0f299ed41878fbad1d10af52e649750c1fd1340db7f04d4e0589f07f674f24f1",
+    "bytes": 312
+  },
   "results/b3/forecast_results.json": {
     "sha256": "e639c47ed22703d1edfe483f64cf2a4a8bac4c28f56d0bcc822674496952013c",
     "bytes": 62093
@@ -666,6 +682,14 @@
   "results/b3/waiting_robustness_verification_results.json": {
     "sha256": "43b33b59d55c84d52dce6fa228f1387e89db2b82076a455b1a11138c4aef17c5",
     "bytes": 565
+  },
+  "results/b3/waiting_sensitivity_results.json": {
+    "sha256": "1bb01125da1568df10b75e1dc423fdbf404596ccd980979da65742d4a1918cd1",
+    "bytes": 23573
+  },
+  "results/b3/waiting_sensitivity_verification_results.json": {
+    "sha256": "50444da236f37526a67e9823ef5cb9411faa0a74c356e5731e5fbac936bf416a",
+    "bytes": 519
   },
   "results/b3/waiting_verification_results.json": {
     "sha256": "68b698f34d347818e00174fe6816bacc0c7e8fabf1f88d261336a66f9a9275f3",

@@ -1,10 +1,10 @@
 {
   "date": "2026-10-06",
   "status": "passed",
-  "pdf_pages": 5,
-  "visual_review": "All five pages rendered with pdftoppm and inspected: title block, equations, Tables I-III (Table II with LOPO panel), Figs. 1-3 (Fig. 3 with four panels) and the reference list fit without overflow or label collisions.",
+  "pdf_pages": 6,
+  "visual_review": "All six pages rendered with pdftoppm and inspected: title block, equations, Tables I-IV (Table II with LOPO panel, Table IV full width), Figs. 1-3 (Fig. 3 with four panels) and the 19-entry reference list fit without overflow or label collisions.",
   "latex_overfull_boxes": 0,
-  "latex_underfull_boxes": 1,
+  "latex_underfull_boxes": 3,
   "undefined_references": 0,
   "bibtex_warnings": 0,
   "bibliography_style": "IEEEtran",
@@ -12,10 +12,10 @@
   "expanded_source_git_blobs_verified": 56,
   "b3_source_git_blobs_verified": 3,
   "numerical_scores_recomputed": true,
-  "manuscript_numbers_checked": "All 17 numbers with at least four decimals match frozen values; every percentage, minute, interval and count in the text recomputed from nested_results.json, phase_detail.json, waiting_results.json, waiting_robustness_results.json and the verification reports.",
+  "manuscript_numbers_checked": "All 17 numbers with at least four decimals match frozen values; every percentage, minute, interval and count in the text recomputed from nested_results.json, phase_detail.json, waiting_results.json, waiting_robustness_results.json, waiting_sensitivity_results.json and the verification reports.",
   "controller_evaluated": "calibrated waiting rules in simulation on B3 only (fixed amplitude and duration); not on measured receivers",
   "IEEEtran_class_git_blob_sha": "8d2b1c6478f81e0e2f65cb62debabbf236fb0304",
   "bibliography_notes": "Scherer et al. updated to TMBMC vol. 12, pp. 22-41, 2026 (Crossref); Mendeley v2 creator is M. Dobrzynski (DataCite) with Y. Blum as contributor; Postiglione et al. pages added; Barros final issue year 2020.",
-  "page_limit_note": "Six-page limit (including references) assumed from past IEEE ICC practice; the draft uses five. Confirm against the ICC 2027 call before submission.",
+  "page_limit_note": "Six-page limit (including references) assumed from past IEEE ICC practice; the draft uses all six. Confirm against the ICC 2027 call before submission.",
   "scope": "Document quality and frozen-result consistency; no independent-day validation and no policy validation on measured cells."
 }

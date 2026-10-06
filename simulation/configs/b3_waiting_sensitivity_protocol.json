@@ -1,0 +1,12 @@
+{
+  "name": "Sensitivity of the calibrated waiting rules on B3 to the task threshold and observation noise",
+  "version": 1,
+  "status": "frozen_before_running",
+  "date": "2026-10-06",
+  "reason": "The version-3 and robustness results use one task threshold (kappa = 0.5) and one observation noise level with feedback (0.005). This study checks whether the comparisons between waiting rules depend on these two choices.",
+  "grid": {"kappa": [0.4, 0.5, 0.6], "noise": [0.005, 0.01]},
+  "unchanged": "Everything else in configs/b3_waiting_protocol.json: simulation tables, histories, probe, decision grid, 20-min task window, deadline 140 min, estimators, threshold grid, smoothing scales, first-feasible threshold rule, smoothed scale rule, fallback, fixed-wait rule, the primary calibration/evaluation split (seed 20261006) and the version-2 observation draws (scaled to the noise level).",
+  "kappa_implementation": "Task success is rise >= kappa x the same sample's naive rise; implemented by rescaling the naive rise by kappa / 0.5 in a copy of the version-2 tables, so kappa = 0.5 reproduces version 3.",
+  "outputs": "Per (kappa, noise): choices, evaluation success and mean failure-penalized completion for the current, smoothed and history rules, the calibrated fixed wait and the oracle, overall and per history; paired per-sample differences history - smoothed and history - fixed with 95% bootstrap intervals (2000 resamples of evaluation samples, seed 20261008); whether each rule reached the calibration target.",
+  "reporting": "All cells reported whatever their direction, including settings in which a rule misses the target. Simulation of one published model structure; the 0.9 target is an empirical calibration target, not a coverage guarantee."
+}

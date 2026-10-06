@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "protocol_sha256": "e4da2f9f5e704add69a116c6a6153d013e204450f374cbb91e690a2fa96e3043",
+  "kappa_helper": {
+    "kappas_checked": [
+      0.4,
+      0.5,
+      0.6
+    ]
+  },
+  "version3": {
+    "max_abs_difference": 0.0
+  },
+  "leakage": {
+    "kappa": 0.4,
+    "noise": 0.01,
+    "choices_unchanged": true
+  },
+  "recomputation": {
+    "kappa": 0.6,
+    "noise": 0.01,
+    "max_abs_difference": 0.0
+  },
+  "scope": "Simulation of the published B3 model; not evidence about measured cells."
+}

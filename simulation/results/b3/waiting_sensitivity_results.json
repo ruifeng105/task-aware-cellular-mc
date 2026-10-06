@@ -1,0 +1,905 @@
+{
+  "status": "complete",
+  "protocol_sha256": "e4da2f9f5e704add69a116c6a6153d013e204450f374cbb91e690a2fa96e3043",
+  "frozen_utc": "2026-10-06T07:53:05+00:00",
+  "cells": {
+    "0.4": {
+      "0.005": {
+        "kappa": 0.4,
+        "noise": 0.005,
+        "choices": {
+          "current": {
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.944,
+              "mean_completion_min": 103.38,
+              "mean_wait_min": 80.216
+            }
+          },
+          "history": {
+            "threshold": 0.9,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.911,
+              "mean_completion_min": 96.706,
+              "mean_wait_min": 72.346
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.9,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.934,
+              "mean_completion_min": 96.156,
+              "mean_wait_min": 73.1
+            }
+          },
+          "fixed": {
+            "wait_min": 80.0,
+            "target_reached": true
+          }
+        },
+        "reached": {
+          "current": true,
+          "history": true,
+          "smoothed": true,
+          "fixed": true
+        },
+        "rules": {
+          "current": {
+            "all": {
+              "success_rate": 0.939,
+              "mean_completion_min": 103.096
+            },
+            "short": {
+              "success_rate": 0.936,
+              "mean_completion_min": 97.88
+            },
+            "long": {
+              "success_rate": 0.942,
+              "mean_completion_min": 108.312
+            }
+          },
+          "history": {
+            "all": {
+              "success_rate": 0.916,
+              "mean_completion_min": 96.212
+            },
+            "short": {
+              "success_rate": 0.888,
+              "mean_completion_min": 92.032
+            },
+            "long": {
+              "success_rate": 0.944,
+              "mean_completion_min": 100.392
+            }
+          },
+          "smoothed": {
+            "all": {
+              "success_rate": 0.937,
+              "mean_completion_min": 95.548
+            },
+            "short": {
+              "success_rate": 0.944,
+              "mean_completion_min": 90.588
+            },
+            "long": {
+              "success_rate": 0.93,
+              "mean_completion_min": 100.508
+            }
+          },
+          "fixed": {
+            "all": {
+              "success_rate": 0.922,
+              "mean_completion_min": 103.12
+            },
+            "short": {
+              "success_rate": 0.988,
+              "mean_completion_min": 100.48
+            },
+            "long": {
+              "success_rate": 0.856,
+              "mean_completion_min": 105.76
+            }
+          },
+          "oracle": {
+            "all": {
+              "success_rate": 1.0,
+              "mean_completion_min": 85.082
+            },
+            "short": {
+              "success_rate": 1.0,
+              "mean_completion_min": 77.692
+            },
+            "long": {
+              "success_rate": 1.0,
+              "mean_completion_min": 92.472
+            }
+          }
+        },
+        "paired": {
+          "history-smoothed": {
+            "success": -0.021,
+            "completion": 0.664
+          },
+          "history-fixed": {
+            "success": -0.006,
+            "completion": -6.908
+          }
+        },
+        "bootstrap": {
+          "history-smoothed": {
+            "success": [
+              -0.037,
+              -0.006
+            ],
+            "completion": [
+              -0.08809999999999998,
+              1.4440999999999995
+            ]
+          },
+          "history-fixed": {
+            "success": [
+              -0.025,
+              0.013
+            ],
+            "completion": [
+              -7.8003,
+              -5.96995
+            ]
+          }
+        }
+      },
+      "0.01": {
+        "kappa": 0.4,
+        "noise": 0.01,
+        "choices": {
+          "current": {
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.953,
+              "mean_completion_min": 114.33,
+              "mean_wait_min": 91.49
+            }
+          },
+          "history": {
+            "threshold": 0.9,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.918,
+              "mean_completion_min": 97.73,
+              "mean_wait_min": 73.93
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.943,
+              "mean_completion_min": 99.744,
+              "mean_wait_min": 75.744
+            }
+          },
+          "fixed": {
+            "wait_min": 80.0,
+            "target_reached": true
+          }
+        },
+        "reached": {
+          "current": true,
+          "history": true,
+          "smoothed": true,
+          "fixed": true
+        },
+        "rules": {
+          "current": {
+            "all": {
+              "success_rate": 0.952,
+              "mean_completion_min": 113.882
+            },
+            "short": {
+              "success_rate": 0.95,
+              "mean_completion_min": 109.396
+            },
+            "long": {
+              "success_rate": 0.954,
+              "mean_completion_min": 118.368
+            }
+          },
+          "history": {
+            "all": {
+              "success_rate": 0.932,
+              "mean_completion_min": 96.796
+            },
+            "short": {
+              "success_rate": 0.926,
+              "mean_completion_min": 91.58
+            },
+            "long": {
+              "success_rate": 0.938,
+              "mean_completion_min": 102.012
+            }
+          },
+          "smoothed": {
+            "all": {
+              "success_rate": 0.958,
+              "mean_completion_min": 98.358
+            },
+            "short": {
+              "success_rate": 0.97,
+              "mean_completion_min": 93.124
+            },
+            "long": {
+              "success_rate": 0.946,
+              "mean_completion_min": 103.592
+            }
+          },
+          "fixed": {
+            "all": {
+              "success_rate": 0.922,
+              "mean_completion_min": 103.12
+            },
+            "short": {
+              "success_rate": 0.988,
+              "mean_completion_min": 100.48
+            },
+            "long": {
+              "success_rate": 0.856,
+              "mean_completion_min": 105.76
+            }
+          },
+          "oracle": {
+            "all": {
+              "success_rate": 1.0,
+              "mean_completion_min": 85.082
+            },
+            "short": {
+              "success_rate": 1.0,
+              "mean_completion_min": 77.692
+            },
+            "long": {
+              "success_rate": 1.0,
+              "mean_completion_min": 92.472
+            }
+          }
+        },
+        "paired": {
+          "history-smoothed": {
+            "success": -0.026,
+            "completion": -1.562
+          },
+          "history-fixed": {
+            "success": 0.01,
+            "completion": -6.324
+          }
+        },
+        "bootstrap": {
+          "history-smoothed": {
+            "success": [
+              -0.043,
+              -0.01
+            ],
+            "completion": [
+              -2.25005,
+              -0.8098500000000008
+            ]
+          },
+          "history-fixed": {
+            "success": [
+              -0.005,
+              0.025
+            ],
+            "completion": [
+              -6.99215,
+              -5.606
+            ]
+          }
+        }
+      }
+    },
+    "0.5": {
+      "0.005": {
+        "kappa": 0.5,
+        "noise": 0.005,
+        "choices": {
+          "current": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.906,
+              "mean_completion_min": 119.83,
+              "mean_wait_min": 96.49
+            }
+          },
+          "history": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.92,
+              "mean_completion_min": 114.954,
+              "mean_wait_min": 92.756
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.9,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.922,
+              "mean_completion_min": 114.09,
+              "mean_wait_min": 92.22
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "reached": {
+          "current": true,
+          "history": true,
+          "smoothed": true,
+          "fixed": true
+        },
+        "rules": {
+          "current": {
+            "all": {
+              "success_rate": 0.9,
+              "mean_completion_min": 119.662
+            },
+            "short": {
+              "success_rate": 0.888,
+              "mean_completion_min": 115.328
+            },
+            "long": {
+              "success_rate": 0.912,
+              "mean_completion_min": 123.996
+            }
+          },
+          "history": {
+            "all": {
+              "success_rate": 0.926,
+              "mean_completion_min": 114.338
+            },
+            "short": {
+              "success_rate": 0.91,
+              "mean_completion_min": 109.072
+            },
+            "long": {
+              "success_rate": 0.942,
+              "mean_completion_min": 119.604
+            }
+          },
+          "smoothed": {
+            "all": {
+              "success_rate": 0.923,
+              "mean_completion_min": 113.62
+            },
+            "short": {
+              "success_rate": 0.926,
+              "mean_completion_min": 108.636
+            },
+            "long": {
+              "success_rate": 0.92,
+              "mean_completion_min": 118.604
+            }
+          },
+          "fixed": {
+            "all": {
+              "success_rate": 0.912,
+              "mean_completion_min": 121.76
+            },
+            "short": {
+              "success_rate": 0.974,
+              "mean_completion_min": 120.52
+            },
+            "long": {
+              "success_rate": 0.85,
+              "mean_completion_min": 123.0
+            }
+          },
+          "oracle": {
+            "all": {
+              "success_rate": 0.992,
+              "mean_completion_min": 104.694
+            },
+            "short": {
+              "success_rate": 1.0,
+              "mean_completion_min": 98.992
+            },
+            "long": {
+              "success_rate": 0.984,
+              "mean_completion_min": 110.396
+            }
+          }
+        },
+        "paired": {
+          "history-smoothed": {
+            "success": 0.003,
+            "completion": 0.718
+          },
+          "history-fixed": {
+            "success": 0.014,
+            "completion": -7.422
+          }
+        },
+        "bootstrap": {
+          "history-smoothed": {
+            "success": [
+              -0.012,
+              0.018
+            ],
+            "completion": [
+              0.258,
+              1.1420499999999996
+            ]
+          },
+          "history-fixed": {
+            "success": [
+              -0.006,
+              0.035
+            ],
+            "completion": [
+              -8.21225,
+              -6.616
+            ]
+          }
+        }
+      },
+      "0.01": {
+        "kappa": 0.5,
+        "noise": 0.01,
+        "choices": {
+          "current": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.967,
+              "mean_completion_min": 130.98,
+              "mean_wait_min": 109.962
+            }
+          },
+          "history": {
+            "threshold": 0.9,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.905,
+              "mean_completion_min": 115.592,
+              "mean_wait_min": 93.246
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.953,
+              "mean_completion_min": 117.858,
+              "mean_wait_min": 96.21
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "reached": {
+          "current": true,
+          "history": true,
+          "smoothed": true,
+          "fixed": true
+        },
+        "rules": {
+          "current": {
+            "all": {
+              "success_rate": 0.954,
+              "mean_completion_min": 130.972
+            },
+            "short": {
+              "success_rate": 0.958,
+              "mean_completion_min": 127.92
+            },
+            "long": {
+              "success_rate": 0.95,
+              "mean_completion_min": 134.024
+            }
+          },
+          "history": {
+            "all": {
+              "success_rate": 0.922,
+              "mean_completion_min": 114.89
+            },
+            "short": {
+              "success_rate": 0.922,
+              "mean_completion_min": 109.568
+            },
+            "long": {
+              "success_rate": 0.922,
+              "mean_completion_min": 120.212
+            }
+          },
+          "smoothed": {
+            "all": {
+              "success_rate": 0.948,
+              "mean_completion_min": 117.46
+            },
+            "short": {
+              "success_rate": 0.96,
+              "mean_completion_min": 112.448
+            },
+            "long": {
+              "success_rate": 0.936,
+              "mean_completion_min": 122.472
+            }
+          },
+          "fixed": {
+            "all": {
+              "success_rate": 0.912,
+              "mean_completion_min": 121.76
+            },
+            "short": {
+              "success_rate": 0.974,
+              "mean_completion_min": 120.52
+            },
+            "long": {
+              "success_rate": 0.85,
+              "mean_completion_min": 123.0
+            }
+          },
+          "oracle": {
+            "all": {
+              "success_rate": 0.992,
+              "mean_completion_min": 104.694
+            },
+            "short": {
+              "success_rate": 1.0,
+              "mean_completion_min": 98.992
+            },
+            "long": {
+              "success_rate": 0.984,
+              "mean_completion_min": 110.396
+            }
+          }
+        },
+        "paired": {
+          "history-smoothed": {
+            "success": -0.026,
+            "completion": -2.57
+          },
+          "history-fixed": {
+            "success": 0.01,
+            "completion": -6.87
+          }
+        },
+        "bootstrap": {
+          "history-smoothed": {
+            "success": [
+              -0.04,
+              -0.012
+            ],
+            "completion": [
+              -3.034,
+              -2.14195
+            ]
+          },
+          "history-fixed": {
+            "success": [
+              -0.008,
+              0.028024999999999863
+            ],
+            "completion": [
+              -7.54205,
+              -6.152
+            ]
+          }
+        }
+      }
+    },
+    "0.6": {
+      "0.005": {
+        "kappa": 0.6,
+        "noise": 0.005,
+        "choices": {
+          "current": {
+            "threshold": 0.99,
+            "target_reached": false,
+            "calibration": {
+              "success_rate": 0.825,
+              "mean_completion_min": 139.714,
+              "mean_wait_min": 119.714
+            }
+          },
+          "history": {
+            "threshold": 0.99,
+            "target_reached": false,
+            "calibration": {
+              "success_rate": 0.816,
+              "mean_completion_min": 134.758,
+              "mean_wait_min": 114.592
+            }
+          },
+          "smoothed": {
+            "tau_min": 8.0,
+            "threshold": 0.99,
+            "target_reached": false,
+            "calibration": {
+              "success_rate": 0.824,
+              "mean_completion_min": 136.912,
+              "mean_wait_min": 116.91
+            }
+          },
+          "fixed": {
+            "wait_min": 120.0,
+            "target_reached": false
+          }
+        },
+        "reached": {
+          "current": false,
+          "history": false,
+          "smoothed": false,
+          "fixed": false
+        },
+        "rules": {
+          "current": {
+            "all": {
+              "success_rate": 0.815,
+              "mean_completion_min": 139.59
+            },
+            "short": {
+              "success_rate": 0.91,
+              "mean_completion_min": 139.384
+            },
+            "long": {
+              "success_rate": 0.72,
+              "mean_completion_min": 139.796
+            }
+          },
+          "history": {
+            "all": {
+              "success_rate": 0.807,
+              "mean_completion_min": 134.204
+            },
+            "short": {
+              "success_rate": 0.896,
+              "mean_completion_min": 131.064
+            },
+            "long": {
+              "success_rate": 0.718,
+              "mean_completion_min": 137.344
+            }
+          },
+          "smoothed": {
+            "all": {
+              "success_rate": 0.815,
+              "mean_completion_min": 136.414
+            },
+            "short": {
+              "success_rate": 0.91,
+              "mean_completion_min": 134.668
+            },
+            "long": {
+              "success_rate": 0.72,
+              "mean_completion_min": 138.16
+            }
+          },
+          "fixed": {
+            "all": {
+              "success_rate": 0.815,
+              "mean_completion_min": 140.0
+            },
+            "short": {
+              "success_rate": 0.91,
+              "mean_completion_min": 140.0
+            },
+            "long": {
+              "success_rate": 0.72,
+              "mean_completion_min": 140.0
+            }
+          },
+          "oracle": {
+            "all": {
+              "success_rate": 0.815,
+              "mean_completion_min": 125.678
+            },
+            "short": {
+              "success_rate": 0.91,
+              "mean_completion_min": 121.08
+            },
+            "long": {
+              "success_rate": 0.72,
+              "mean_completion_min": 130.276
+            }
+          }
+        },
+        "paired": {
+          "history-smoothed": {
+            "success": -0.008,
+            "completion": -2.21
+          },
+          "history-fixed": {
+            "success": -0.008,
+            "completion": -5.796
+          }
+        },
+        "bootstrap": {
+          "history-smoothed": {
+            "success": [
+              -0.014,
+              -0.003
+            ],
+            "completion": [
+              -2.454,
+              -1.974
+            ]
+          },
+          "history-fixed": {
+            "success": [
+              -0.014,
+              -0.003
+            ],
+            "completion": [
+              -6.344,
+              -5.25195
+            ]
+          }
+        }
+      },
+      "0.01": {
+        "kappa": 0.6,
+        "noise": 0.01,
+        "choices": {
+          "current": {
+            "threshold": 0.99,
+            "target_reached": false,
+            "calibration": {
+              "success_rate": 0.825,
+              "mean_completion_min": 140.0,
+              "mean_wait_min": 120.0
+            }
+          },
+          "history": {
+            "threshold": 0.99,
+            "target_reached": false,
+            "calibration": {
+              "success_rate": 0.824,
+              "mean_completion_min": 137.342,
+              "mean_wait_min": 117.336
+            }
+          },
+          "smoothed": {
+            "tau_min": 2.0,
+            "threshold": 0.99,
+            "target_reached": false,
+            "calibration": {
+              "success_rate": 0.825,
+              "mean_completion_min": 139.984,
+              "mean_wait_min": 119.984
+            }
+          },
+          "fixed": {
+            "wait_min": 120.0,
+            "target_reached": false
+          }
+        },
+        "reached": {
+          "current": false,
+          "history": false,
+          "smoothed": false,
+          "fixed": false
+        },
+        "rules": {
+          "current": {
+            "all": {
+              "success_rate": 0.815,
+              "mean_completion_min": 140.0
+            },
+            "short": {
+              "success_rate": 0.91,
+              "mean_completion_min": 140.0
+            },
+            "long": {
+              "success_rate": 0.72,
+              "mean_completion_min": 140.0
+            }
+          },
+          "history": {
+            "all": {
+              "success_rate": 0.814,
+              "mean_completion_min": 137.03
+            },
+            "short": {
+              "success_rate": 0.908,
+              "mean_completion_min": 135.244
+            },
+            "long": {
+              "success_rate": 0.72,
+              "mean_completion_min": 138.816
+            }
+          },
+          "smoothed": {
+            "all": {
+              "success_rate": 0.815,
+              "mean_completion_min": 139.964
+            },
+            "short": {
+              "success_rate": 0.91,
+              "mean_completion_min": 139.928
+            },
+            "long": {
+              "success_rate": 0.72,
+              "mean_completion_min": 140.0
+            }
+          },
+          "fixed": {
+            "all": {
+              "success_rate": 0.815,
+              "mean_completion_min": 140.0
+            },
+            "short": {
+              "success_rate": 0.91,
+              "mean_completion_min": 140.0
+            },
+            "long": {
+              "success_rate": 0.72,
+              "mean_completion_min": 140.0
+            }
+          },
+          "oracle": {
+            "all": {
+              "success_rate": 0.815,
+              "mean_completion_min": 125.678
+            },
+            "short": {
+              "success_rate": 0.91,
+              "mean_completion_min": 121.08
+            },
+            "long": {
+              "success_rate": 0.72,
+              "mean_completion_min": 130.276
+            }
+          }
+        },
+        "paired": {
+          "history-smoothed": {
+            "success": -0.001,
+            "completion": -2.934
+          },
+          "history-fixed": {
+            "success": -0.001,
+            "completion": -2.97
+          }
+        },
+        "bootstrap": {
+          "history-smoothed": {
+            "success": [
+              -0.003,
+              0.0
+            ],
+            "completion": [
+              -3.2901000000000002,
+              -2.594
+            ]
+          },
+          "history-fixed": {
+            "success": [
+              -0.003,
+              0.0
+            ],
+            "completion": [
+              -3.34205,
+              -2.6199500000000002
+            ]
+          }
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Simulation of one published model structure; not evidence about measured cells.",
+    "Primary split only; split variability at kappa 0.5, noise 0.005 is in waiting_robustness_results.json."
+  ]
+}

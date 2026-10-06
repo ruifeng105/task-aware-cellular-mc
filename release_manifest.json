@@ -1,7 +1,7 @@
 {
   "date": "2026-10-04",
   "project_root": "task-aware-cellular-mc",
-  "description": "Six-page ICC revision: nested P/C/O/M/H prediction on experimental FGF2/ERK data with corrected leave-one-protocol-out and phase scores, accepted execution of the authors' B3 model, and calibrated waiting rules simulated on B3 (smoothed baseline, noise ablation, 20-split robustness), with the earlier pilot, pre-registered expansion and readiness versions kept for reproduction. No controller is evaluated on measured receivers.",
+  "description": "Six-page ICC revision: nested P/C/O/M/H prediction on experimental FGF2/ERK data with corrected leave-one-protocol-out and phase scores, accepted execution of the authors' B3 model, and calibrated waiting rules simulated on B3 (smoothed baseline, noise ablation, 20-split robustness, threshold and noise sensitivity), with the earlier pilot, pre-registered expansion and readiness versions kept for reproduction. No controller is evaluated on measured receivers.",
   "verification": {
     "full_pipeline": "passed",
     "steps": [
@@ -17,11 +17,13 @@
       "nested_phase_detail",
       "b3_waiting",
       "b3_waiting_robustness",
+      "b3_waiting_sensitivity",
       "verify_b3_forecast",
       "verify_b3_readiness",
       "verify_nested_forecast",
       "verify_b3_waiting",
       "verify_b3_waiting_robustness",
+      "verify_b3_waiting_sensitivity",
       "synthetic_checks",
       "build_paper_assets",
       "kit_pilot_design",
@@ -33,12 +35,12 @@
       "pipeline_checks",
       "compile_paper"
     ],
-    "frozen_manuscript_entries_compared": 1329,
+    "frozen_manuscript_entries_compared": 1491,
     "max_absolute_error": 9.020562075079397e-17,
     "original_source_files_verified": 47,
     "expanded_source_files_verified": 56,
     "b3_source_files_verified": 3,
-    "pdf_pages": 5
+    "pdf_pages": 6
   },
   "files": {
     ".gitattributes": {
@@ -54,28 +56,28 @@
       "bytes": 38453
     },
     "Paper_Notes_ZH.md": {
-      "sha256": "cd64a43cdd903035b9d999d3fcab03f02c19fa1a12483a9cbae63a719c2bfe0e",
-      "bytes": 13322
+      "sha256": "b88c312904e3249894de2ddfa337217812cbff192132d5c58da6ffe4dea55afb",
+      "bytes": 13998
     },
     "Paper_Simulation_Map_ZH.md": {
-      "sha256": "f0ee4731fecf4fd00027d4434288ee2fcb3fe1b63b8b03f7ba7e629676293e7d",
-      "bytes": 7020
+      "sha256": "e290ac6acbce8c10cb48271e3b6364ac686566e4e38b957ece595227b9bb34f5",
+      "bytes": 7827
     },
     "README.md": {
-      "sha256": "8ee15a8f2cac380938b0ebb9c588a62829e14aa4b6c55ebf7843584fe837026d",
-      "bytes": 16746
+      "sha256": "6623d84a87175554528c724b14093d665385287cb907c3bbe45e95e70d201e4e",
+      "bytes": 17528
     },
     "paper/AI_MC_Cellular_Receivers_Draft.pdf": {
-      "sha256": "536cbcf91808f8d6b210ad936925a6c249e600fb619a475ea47dc59ec90c6a1b",
-      "bytes": 307752
+      "sha256": "2c91aaec5cf67807b3d3da614a7eb511365934e7b1dd100ee281d0156635caeb",
+      "bytes": 331498
     },
     "paper/IEEEtran.cls": {
       "sha256": "da751920a317ed318b7b5cd7fa585a6cc7d28502d457856382e9be24b10a3bd7",
       "bytes": 281957
     },
     "paper/assets_manifest.json": {
-      "sha256": "79fe6abfe4c52358333198b1623ae0fca7062cf884ebce35015dc40f1ef9a2fc",
-      "bytes": 1286
+      "sha256": "6d6dbd8d13a4c044e2e2eb0599adb63250e995d6e5a4aa51ed15acc42f1b20ae",
+      "bytes": 1317
     },
     "paper/figures/forecast_mean_10min.pdf": {
       "sha256": "1134559be03d14fe7e30443e08baf501bf5b626f52d9248cf7bb0b3ff3d8e2b3",
@@ -126,16 +128,16 @@
       "bytes": 86208
     },
     "paper/main.tex": {
-      "sha256": "0470f5ee213a27497f271078ba06a2ecd13e853a9c4b47f8d7c719ce28175641",
-      "bytes": 26602
+      "sha256": "975c5f596b9df7df2a0b7d29a852ce6f7fb4e984f4e8f397b3e8477d8890a538",
+      "bytes": 29674
     },
     "paper/qa_report.json": {
-      "sha256": "0004bac3aac6dfae65a1ebc41d93c4161be02b9731b9eab5d2ca96dcc8c69d9e",
-      "bytes": 1665
+      "sha256": "4c8cd764b2aa34294d74637cc41481f01b0335e890b3073156a6193d7063ad58",
+      "bytes": 1730
     },
     "paper/references.bib": {
-      "sha256": "647349c29636896d03fde654fbb0aca6b83d1163bb08397205b874a5dcb0b062",
-      "bytes": 5983
+      "sha256": "4698919b289a839cb34d24f8609b674315b9ccde8a7185e2290e6d285955fbd0",
+      "bytes": 8048
     },
     "paper/tables/core_rmse.tex": {
       "sha256": "93e0eedd96e585776d452e5d3116a9037864132cd98e8680d331dfe4d81f163a",
@@ -177,6 +179,10 @@
       "sha256": "0cef5a7dfa6217c1597460891859d9108002d6f5b4ab56628d16dd355510c474",
       "bytes": 366
     },
+    "paper/tables/waiting_sensitivity.tex": {
+      "sha256": "f686f6a021cfc97232bec85f29a85bd3677eb68da55eeefef2fe67961d045622",
+      "bytes": 941
+    },
     "reproduction/logs/b3_forecast.log": {
       "sha256": "05d627bc857b2ebb0c0ff979654d93a4ac275279b38342d5efbb046c16813cee",
       "bytes": 2578
@@ -197,9 +203,13 @@
       "sha256": "25df1d7f4c472c641996a11bad1b2764423467bb4a1239cf43de0936ebdf8a3f",
       "bytes": 364
     },
+    "reproduction/logs/b3_waiting_sensitivity.log": {
+      "sha256": "847cffa56c2109da2c0274791ec3b875848d277851b6998eeb1dbea2a3cc7e28",
+      "bytes": 1413
+    },
     "reproduction/logs/build_paper_assets.log": {
-      "sha256": "79fe6abfe4c52358333198b1623ae0fca7062cf884ebce35015dc40f1ef9a2fc",
-      "bytes": 1286
+      "sha256": "6d6dbd8d13a4c044e2e2eb0599adb63250e995d6e5a4aa51ed15acc42f1b20ae",
+      "bytes": 1317
     },
     "reproduction/logs/compile_paper.log": {
       "sha256": "b6a01e926e207ed45181326092a1dab0acd0b5e2b1e24916f8fb6f09afe6adef",
@@ -273,6 +283,10 @@
       "sha256": "43b33b59d55c84d52dce6fa228f1387e89db2b82076a455b1a11138c4aef17c5",
       "bytes": 565
     },
+    "reproduction/logs/verify_b3_waiting_sensitivity.log": {
+      "sha256": "50444da236f37526a67e9823ef5cb9411faa0a74c356e5731e5fbac936bf416a",
+      "bytes": 519
+    },
     "reproduction/logs/verify_data_and_scores.log": {
       "sha256": "641b66d2fb1452923b2d371b54615eafd62d90d8d03071550082d9c85b8886a4",
       "bytes": 2756
@@ -286,12 +300,12 @@
       "bytes": 773
     },
     "reproduction/reference_metrics.json": {
-      "sha256": "0a6834f332042099a0de9879040b6cac5a3b3c28d38526a46949b65977a34399",
-      "bytes": 181590
+      "sha256": "61db12714400909ecf1cd9534fe83d8a8758dbce25d3e65cbdf6542066d2e23a",
+      "bytes": 203666
     },
     "reproduction/run_report.json": {
-      "sha256": "d68905183e16599276d981ce74a496b31a5e32281a3463a563a78e5776e22678",
-      "bytes": 5240
+      "sha256": "c4d752aad1d878a5990b5ed01528edbcbf7d51529f2a2363a2786c6092478348",
+      "bytes": 5598
     },
     "requirements-reproduced.txt": {
       "sha256": "d74b9fb1c9d1ec341e9fdf25375f64ee886227c49c8076e01d6b45f78624f1fa",
@@ -302,24 +316,24 @@
       "bytes": 124
     },
     "scripts/build_paper_assets.py": {
-      "sha256": "de150a9d846217a45606f3f3584feb48df046602f8fb62b32bd5eb00282d8c5f",
-      "bytes": 30367
+      "sha256": "9dc56b00caf5dd6b0f686b45ebe6ae89dabf404fef3f90fc8dc6bed2362ffd5d",
+      "bytes": 31426
     },
     "scripts/reproduce.py": {
-      "sha256": "160b250d3cd3595b0c5d972e93a4021e06f4f7c81d2b3826931376ed93af9739",
-      "bytes": 20524
+      "sha256": "ddb8fb534216077e36bec1db8b96d2a59d01787b6a66535c0b735fc1b9043659",
+      "bytes": 22040
     },
     "simulation/AI_MC_Application_First_Review_ZH.md": {
       "sha256": "b82778d48db9c03113f5f04a9337db590a7c0cda13e75c1582ed27b27830acee",
       "bytes": 30518
     },
     "simulation/README.md": {
-      "sha256": "9973fb80313d97df98177df872cd0b07d6150c4e5952d1b84de7d0e52b37c1a0",
-      "bytes": 15201
+      "sha256": "590b4b96ca8e705b0dbdcc4af720ea97b534d4352dd5d8e415f9b708c87bb046",
+      "bytes": 15948
     },
     "simulation/checksums.json": {
-      "sha256": "dbcdb55e610239a39ca100b51bb59b87e9fd2bb6c7fe37c2956d5640cdffad63",
-      "bytes": 32027
+      "sha256": "ceb5c31f0850796463ee7f3824c01c027784547fe166f0e646a98c51622889be",
+      "bytes": 32968
     },
     "simulation/code/b3_forecast.py": {
       "sha256": "b450291afdb8f2b2bd3af66cddf67779d7cf491f7593640f5afe6defa67c1a05",
@@ -344,6 +358,10 @@
     "simulation/code/b3_waiting_robustness.py": {
       "sha256": "367564654be20e8b32a3e5238cd8d98501ed0be0070b5b59f9e1a42bf3c5013d",
       "bytes": 9568
+    },
+    "simulation/code/b3_waiting_sensitivity.py": {
+      "sha256": "ffc771e99116d3a49ab61e2284a0012ee34bae41df3352f589af45ed690cfd53",
+      "bytes": 4697
     },
     "simulation/code/calibrate_fgf2.py": {
       "sha256": "c8b4a3e63478802e33d6324f5f3978337aa9983e629f6f2e04e2c77c8c620c39",
@@ -405,6 +423,10 @@
       "sha256": "ef17e86c06a7d31f326b182c3bc05161527b1d39808806ecb0434c89d354c0c4",
       "bytes": 4092
     },
+    "simulation/code/verify_b3_waiting_sensitivity.py": {
+      "sha256": "5003cdcfabc0c2a899765dab43762d387362c0239139f99ad3ffde7aa342f51b",
+      "bytes": 3217
+    },
     "simulation/code/verify_expanded_fgf2.py": {
       "sha256": "7de5547b1c46682c41a02d239ec869d861341f0c664e083a16192d8e0577611f",
       "bytes": 5845
@@ -436,6 +458,10 @@
     "simulation/configs/b3_waiting_robustness_protocol.json": {
       "sha256": "820274b76262b913585a9a6b9f916d68112039f18f8a416d1aec40ed27343641",
       "bytes": 2400
+    },
+    "simulation/configs/b3_waiting_sensitivity_protocol.json": {
+      "sha256": "e4da2f9f5e704add69a116c6a6153d013e204450f374cbb91e690a2fa96e3043",
+      "bytes": 1768
     },
     "simulation/configs/biological_split_template.json": {
       "sha256": "ab503a978af3791f9ddfb69519e7e620ed2b2645b3365b921f2ffe0435bfb868",
@@ -929,6 +955,10 @@
       "sha256": "332236a280e812851d494eac125eae432922c7a46a6fee8ce3f405e87a450fbd",
       "bytes": 349
     },
+    "simulation/results/b3/b3_waiting_sensitivity_protocol_freeze.json": {
+      "sha256": "0f299ed41878fbad1d10af52e649750c1fd1340db7f04d4e0589f07f674f24f1",
+      "bytes": 312
+    },
     "simulation/results/b3/forecast_results.json": {
       "sha256": "e639c47ed22703d1edfe483f64cf2a4a8bac4c28f56d0bcc822674496952013c",
       "bytes": 62093
@@ -980,6 +1010,14 @@
     "simulation/results/b3/waiting_robustness_verification_results.json": {
       "sha256": "43b33b59d55c84d52dce6fa228f1387e89db2b82076a455b1a11138c4aef17c5",
       "bytes": 565
+    },
+    "simulation/results/b3/waiting_sensitivity_results.json": {
+      "sha256": "1bb01125da1568df10b75e1dc423fdbf404596ccd980979da65742d4a1918cd1",
+      "bytes": 23573
+    },
+    "simulation/results/b3/waiting_sensitivity_verification_results.json": {
+      "sha256": "50444da236f37526a67e9823ef5cb9411faa0a74c356e5731e5fbac936bf416a",
+      "bytes": 519
     },
     "simulation/results/b3/waiting_verification_results.json": {
       "sha256": "68b698f34d347818e00174fe6816bacc0c7e8fabf1f88d261336a66f9a9275f3",
