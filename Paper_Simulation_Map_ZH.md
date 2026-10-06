@@ -12,6 +12,9 @@
 | Table II 中的 A、A+M 行和 LOPO 列：ARX 基线 | `simulation/results/nested/nested_arx_results.json` | `nested_arx.py`（方案 `nested_arx_protocol.json`）：C 加上前 5/15/30 帧的报告量和命令滞后，窗口与惩罚系数在验证集上选（LOPO 中用内层留一组）；`verify_nested_arx.py` 核对滞后只用过去值、嵌套关系、重算分数与 LOPO 扰动测试 |
 | Table III、IV 中按历史确定的固定等待；细阈值网格 | `simulation/results/b3/waiting_baselines_results.json` | `b3_waiting_baselines.py`（方案 `b3_waiting_baselines_protocol.json`）：在校准组上对 61² 个等待组合联合选择；主划分、20 次重复、κ 敏感性；`verify_b3_waiting_baselines.py` |
 | Fig. 3(b)、Table IV 失配行：噪声与带宽、观测模型失配 | `simulation/results/b3/waiting_stress_results.json` | `b3_waiting_stress.py`（方案 `b3_waiting_stress_protocol.json`）；`verify_b3_waiting_stress.py` |
+| Table III「cal. 0.92」行、Sec. V-C：共享校准目标与匹配成功率 | `simulation/results/b3/waiting_margin_results.json` | `b3_waiting_margin.py`（方案 `b3_waiting_margin_protocol.json`）：所有规则统一校准到 0.90/0.92/0.94，粗/细阈值网格，噪声 0.005/0.01，20 次划分；`verify_b3_waiting_margin.py` |
+| Sec. II 因果判据、Sec. V-C：不同 κ 的 no-probe 对照 | `simulation/results/b3/noprobe_kappa_results.json` | `b3_noprobe_kappa.py`（方案 `b3_noprobe_kappa_protocol.json`，复用 `noprobe_tables.npz`，不重新仿真）；`verify_b3_noprobe_kappa.py` |
+| Table IV「AR(1), recal.」「AR(1) lik.」行、Sec. V-C：协方差似然 | `simulation/results/b3/ar1_likelihood_results.json` | `b3_ar1_likelihood.py`（方案 `b3_ar1_likelihood_protocol.json`）；`verify_b3_ar1_likelihood.py`（对照显式协方差高斯似然） |
 | Sec. V-C：no-probe 对照 | `simulation/results/b3/noprobe_results.json`、`noprobe_tables.npz` | `b3_noprobe.py`（方案 `b3_noprobe_protocol.json`，重新仿真有/无探测的轨迹）；`verify_b3_noprobe.py` |
 | Sec. IV-A：归一化只用刺激前数据 | 原始导出文件 | `pipeline_checks.check_normalization_causal`：混合协议原始 10–30 分钟（原点为原始 42 分钟），其他协议逐细胞原始 2–38 分钟均值（截断从原始 44 分钟开始） |
 | Fig. 2、Sec. V-B：分阶段误差（含 A、A+M） | `nested_results.json` 的 `phases`；按条件拆分见 `results/nested/phase_detail.json` | `nested_forecast.phase`：刺激期、下一命令窗口、早期洗脱（停药后 ≤30 min）、后期；核查脚本在切换时刻做 11 个边界测试。`nested_phase_detail.py` 用冻结模型给出每个测试条件在各阶段的误差，核查脚本确认等权汇总后与冻结的分阶段结果一致 |
@@ -40,6 +43,6 @@
 
 `python scripts/reproduce.py --mode verify` 核查保存的预测、扩展检验、B3 执行、B3 预测与准备度（v2 和单样本示例）、嵌套对照与修正 LOPO、校准等待研究，以及固定论文数值（需要 SciPy，约 6 分钟）。`--mode full` 从随包数据重跑全部分析（B3 准备度仿真约 5 分钟，嵌套对照约 2 分钟），再核查并重建图表与规划工具输出。两种模式都不增加训练数据、不重新推断 B3 参数，也不在真实接收器上执行任务控制。
 
-固定参照在 `reproduction/reference_metrics.json`：原 69 项冻结值保持不变，新增条目及原因写在 `extensions` 字段中，共 1847 项。`pipeline_checks.py` 检查正文中所有四位以上小数都在固定参照中，并检查正文引用的每个表、图都存在。`reproduction/run_report.json` 记录本次执行状态和环境，日志位于同目录的 `logs/`。
+固定参照在 `reproduction/reference_metrics.json`：原 69 项冻结值保持不变，新增条目及原因写在 `extensions` 字段中，共 3034 项。`pipeline_checks.py` 检查正文中所有四位以上小数都在固定参照中，并检查正文引用的每个表、图都存在。`reproduction/run_report.json` 记录本次执行状态和环境，日志位于同目录的 `logs/`。
 
 `release_manifest.json` 和 `simulation/checksums.json` 描述打包时的文件。所有生成文件都写成 LF，`.gitattributes` 保证在任何平台上检出的文本文件与清单逐字节一致。在不同库版本下重跑，结果的最后几位浮点数可能变化，论文数值以固定参照比较为准。

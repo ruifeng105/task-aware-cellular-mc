@@ -1,0 +1,561 @@
+{
+  "status": "complete",
+  "protocol_sha256": "3a17da7196f14a3e376b9f908847f0e6d2ddf92c24d3f53fe3b0e744a6f4b923",
+  "frozen_utc": "2026-10-06T12:13:20+00:00",
+  "max_rise_without_probe_over_naive": 0.474612021917112,
+  "kappa": {
+    "0.4": {
+      "states": {
+        "states": 122000,
+        "success_without_probe": {
+          "fraction": 0.0006475409836065574,
+          "count": 79,
+          "per_history": {
+            "short": 0.0012950819672131147,
+            "long": 0.0
+          },
+          "fraction_of_original_successes": 0.0013342593946483404
+        },
+        "original_success_fraction": 0.4484590163934426,
+        "causal_success_fraction": 0.4769590163934426,
+        "agreement": {
+          "both": 54639,
+          "original_only": 73,
+          "causal_only": 3550,
+          "neither": 63738,
+          "fraction_agree": 0.9703032786885246
+        }
+      },
+      "rescored": {
+        "0.005": {
+          "original": {
+            "current": {
+              "success_rate": 0.939,
+              "mean_completion_min": 103.096
+            },
+            "smoothed": {
+              "success_rate": 0.937,
+              "mean_completion_min": 95.548
+            },
+            "history": {
+              "success_rate": 0.916,
+              "mean_completion_min": 96.212
+            },
+            "fixed": {
+              "success_rate": 0.922,
+              "mean_completion_min": 103.12
+            },
+            "conditioned": {
+              "success_rate": 0.9,
+              "mean_completion_min": 100.224
+            },
+            "oracle": {
+              "success_rate": 1.0,
+              "mean_completion_min": 85.082
+            }
+          },
+          "causal": {
+            "current": {
+              "success_rate": 0.969,
+              "mean_completion_min": 101.502
+            },
+            "smoothed": {
+              "success_rate": 0.98,
+              "mean_completion_min": 93.51
+            },
+            "history": {
+              "success_rate": 0.973,
+              "mean_completion_min": 93.28
+            },
+            "fixed": {
+              "success_rate": 0.959,
+              "mean_completion_min": 101.64
+            },
+            "conditioned": {
+              "success_rate": 0.948,
+              "mean_completion_min": 98.2
+            },
+            "oracle": {
+              "success_rate": 0.967,
+              "mean_completion_min": 89.042
+            }
+          },
+          "disagreement_at_stop": {
+            "current": 0.03,
+            "smoothed": 0.043,
+            "history": 0.057,
+            "fixed": 0.037,
+            "conditioned": 0.048,
+            "oracle": 0.033
+          },
+          "order_by_completion": {
+            "original": [
+              "smoothed",
+              "history",
+              "conditioned",
+              "current",
+              "fixed"
+            ],
+            "causal": [
+              "history",
+              "smoothed",
+              "conditioned",
+              "current",
+              "fixed"
+            ]
+          },
+          "order_unchanged": false
+        },
+        "0.01": {
+          "original": {
+            "current": {
+              "success_rate": 0.952,
+              "mean_completion_min": 113.882
+            },
+            "smoothed": {
+              "success_rate": 0.958,
+              "mean_completion_min": 98.358
+            },
+            "history": {
+              "success_rate": 0.932,
+              "mean_completion_min": 96.796
+            },
+            "fixed": {
+              "success_rate": 0.922,
+              "mean_completion_min": 103.12
+            },
+            "conditioned": {
+              "success_rate": 0.9,
+              "mean_completion_min": 100.224
+            },
+            "oracle": {
+              "success_rate": 1.0,
+              "mean_completion_min": 85.082
+            }
+          },
+          "causal": {
+            "current": {
+              "success_rate": 0.969,
+              "mean_completion_min": 112.96
+            },
+            "smoothed": {
+              "success_rate": 0.973,
+              "mean_completion_min": 97.618
+            },
+            "history": {
+              "success_rate": 0.975,
+              "mean_completion_min": 94.772
+            },
+            "fixed": {
+              "success_rate": 0.959,
+              "mean_completion_min": 101.64
+            },
+            "conditioned": {
+              "success_rate": 0.948,
+              "mean_completion_min": 98.2
+            },
+            "oracle": {
+              "success_rate": 0.967,
+              "mean_completion_min": 89.042
+            }
+          },
+          "disagreement_at_stop": {
+            "current": 0.017,
+            "smoothed": 0.015,
+            "history": 0.043,
+            "fixed": 0.037,
+            "conditioned": 0.048,
+            "oracle": 0.033
+          },
+          "order_by_completion": {
+            "original": [
+              "history",
+              "smoothed",
+              "conditioned",
+              "fixed",
+              "current"
+            ],
+            "causal": [
+              "history",
+              "smoothed",
+              "conditioned",
+              "fixed",
+              "current"
+            ]
+          },
+          "order_unchanged": true
+        }
+      }
+    },
+    "0.5": {
+      "states": {
+        "states": 122000,
+        "success_without_probe": {
+          "fraction": 0.0,
+          "count": 0,
+          "per_history": {
+            "short": 0.0,
+            "long": 0.0
+          },
+          "fraction_of_original_successes": 0.0
+        },
+        "original_success_fraction": 0.3043032786885246,
+        "causal_success_fraction": 0.33447540983606555,
+        "agreement": {
+          "both": 37125,
+          "original_only": 0,
+          "causal_only": 3681,
+          "neither": 81194,
+          "fraction_agree": 0.969827868852459
+        }
+      },
+      "rescored": {
+        "0.005": {
+          "original": {
+            "current": {
+              "success_rate": 0.9,
+              "mean_completion_min": 119.662
+            },
+            "smoothed": {
+              "success_rate": 0.923,
+              "mean_completion_min": 113.62
+            },
+            "history": {
+              "success_rate": 0.926,
+              "mean_completion_min": 114.338
+            },
+            "fixed": {
+              "success_rate": 0.912,
+              "mean_completion_min": 121.76
+            },
+            "conditioned": {
+              "success_rate": 0.903,
+              "mean_completion_min": 119.126
+            },
+            "oracle": {
+              "success_rate": 0.992,
+              "mean_completion_min": 104.694
+            }
+          },
+          "causal": {
+            "current": {
+              "success_rate": 0.945,
+              "mean_completion_min": 118.106
+            },
+            "smoothed": {
+              "success_rate": 0.972,
+              "mean_completion_min": 112.19
+            },
+            "history": {
+              "success_rate": 0.972,
+              "mean_completion_min": 112.922
+            },
+            "fixed": {
+              "success_rate": 0.939,
+              "mean_completion_min": 121.22
+            },
+            "conditioned": {
+              "success_rate": 0.939,
+              "mean_completion_min": 118.288
+            },
+            "oracle": {
+              "success_rate": 0.994,
+              "mean_completion_min": 104.694
+            }
+          },
+          "disagreement_at_stop": {
+            "current": 0.045,
+            "smoothed": 0.049,
+            "history": 0.046,
+            "fixed": 0.027,
+            "conditioned": 0.036,
+            "oracle": 0.002
+          },
+          "order_by_completion": {
+            "original": [
+              "smoothed",
+              "history",
+              "conditioned",
+              "current",
+              "fixed"
+            ],
+            "causal": [
+              "smoothed",
+              "history",
+              "current",
+              "conditioned",
+              "fixed"
+            ]
+          },
+          "order_unchanged": false
+        },
+        "0.01": {
+          "original": {
+            "current": {
+              "success_rate": 0.954,
+              "mean_completion_min": 130.972
+            },
+            "smoothed": {
+              "success_rate": 0.948,
+              "mean_completion_min": 117.46
+            },
+            "history": {
+              "success_rate": 0.922,
+              "mean_completion_min": 114.89
+            },
+            "fixed": {
+              "success_rate": 0.912,
+              "mean_completion_min": 121.76
+            },
+            "conditioned": {
+              "success_rate": 0.903,
+              "mean_completion_min": 119.126
+            },
+            "oracle": {
+              "success_rate": 0.992,
+              "mean_completion_min": 104.694
+            }
+          },
+          "causal": {
+            "current": {
+              "success_rate": 0.975,
+              "mean_completion_min": 130.346
+            },
+            "smoothed": {
+              "success_rate": 0.98,
+              "mean_completion_min": 116.61
+            },
+            "history": {
+              "success_rate": 0.962,
+              "mean_completion_min": 113.812
+            },
+            "fixed": {
+              "success_rate": 0.939,
+              "mean_completion_min": 121.22
+            },
+            "conditioned": {
+              "success_rate": 0.939,
+              "mean_completion_min": 118.288
+            },
+            "oracle": {
+              "success_rate": 0.994,
+              "mean_completion_min": 104.694
+            }
+          },
+          "disagreement_at_stop": {
+            "current": 0.021,
+            "smoothed": 0.032,
+            "history": 0.04,
+            "fixed": 0.027,
+            "conditioned": 0.036,
+            "oracle": 0.002
+          },
+          "order_by_completion": {
+            "original": [
+              "history",
+              "smoothed",
+              "conditioned",
+              "fixed",
+              "current"
+            ],
+            "causal": [
+              "history",
+              "smoothed",
+              "conditioned",
+              "fixed",
+              "current"
+            ]
+          },
+          "order_unchanged": true
+        }
+      }
+    },
+    "0.6": {
+      "states": {
+        "states": 122000,
+        "success_without_probe": {
+          "fraction": 0.0,
+          "count": 0,
+          "per_history": {
+            "short": 0.0,
+            "long": 0.0
+          },
+          "fraction_of_original_successes": 0.0
+        },
+        "original_success_fraction": 0.12917213114754098,
+        "causal_success_fraction": 0.1573606557377049,
+        "agreement": {
+          "both": 15759,
+          "original_only": 0,
+          "causal_only": 3439,
+          "neither": 102802,
+          "fraction_agree": 0.971811475409836
+        }
+      },
+      "rescored": {
+        "0.005": {
+          "original": {
+            "current": {
+              "success_rate": 0.815,
+              "mean_completion_min": 139.59
+            },
+            "smoothed": {
+              "success_rate": 0.815,
+              "mean_completion_min": 136.414
+            },
+            "history": {
+              "success_rate": 0.807,
+              "mean_completion_min": 134.204
+            },
+            "fixed": {
+              "success_rate": 0.815,
+              "mean_completion_min": 140.0
+            },
+            "conditioned": {
+              "success_rate": 0.815,
+              "mean_completion_min": 140.0
+            },
+            "oracle": {
+              "success_rate": 0.815,
+              "mean_completion_min": 125.678
+            }
+          },
+          "causal": {
+            "current": {
+              "success_rate": 0.871,
+              "mean_completion_min": 139.59
+            },
+            "smoothed": {
+              "success_rate": 0.871,
+              "mean_completion_min": 136.414
+            },
+            "history": {
+              "success_rate": 0.869,
+              "mean_completion_min": 134.144
+            },
+            "fixed": {
+              "success_rate": 0.871,
+              "mean_completion_min": 140.0
+            },
+            "conditioned": {
+              "success_rate": 0.871,
+              "mean_completion_min": 140.0
+            },
+            "oracle": {
+              "success_rate": 0.871,
+              "mean_completion_min": 125.678
+            }
+          },
+          "disagreement_at_stop": {
+            "current": 0.056,
+            "smoothed": 0.056,
+            "history": 0.062,
+            "fixed": 0.056,
+            "conditioned": 0.056,
+            "oracle": 0.056
+          },
+          "order_by_completion": {
+            "original": [
+              "history",
+              "smoothed",
+              "current",
+              "fixed",
+              "conditioned"
+            ],
+            "causal": [
+              "history",
+              "smoothed",
+              "current",
+              "fixed",
+              "conditioned"
+            ]
+          },
+          "order_unchanged": true
+        },
+        "0.01": {
+          "original": {
+            "current": {
+              "success_rate": 0.815,
+              "mean_completion_min": 140.0
+            },
+            "smoothed": {
+              "success_rate": 0.815,
+              "mean_completion_min": 139.964
+            },
+            "history": {
+              "success_rate": 0.814,
+              "mean_completion_min": 137.03
+            },
+            "fixed": {
+              "success_rate": 0.815,
+              "mean_completion_min": 140.0
+            },
+            "conditioned": {
+              "success_rate": 0.815,
+              "mean_completion_min": 140.0
+            },
+            "oracle": {
+              "success_rate": 0.815,
+              "mean_completion_min": 125.678
+            }
+          },
+          "causal": {
+            "current": {
+              "success_rate": 0.871,
+              "mean_completion_min": 140.0
+            },
+            "smoothed": {
+              "success_rate": 0.871,
+              "mean_completion_min": 139.964
+            },
+            "history": {
+              "success_rate": 0.871,
+              "mean_completion_min": 137.026
+            },
+            "fixed": {
+              "success_rate": 0.871,
+              "mean_completion_min": 140.0
+            },
+            "conditioned": {
+              "success_rate": 0.871,
+              "mean_completion_min": 140.0
+            },
+            "oracle": {
+              "success_rate": 0.871,
+              "mean_completion_min": 125.678
+            }
+          },
+          "disagreement_at_stop": {
+            "current": 0.056,
+            "smoothed": 0.056,
+            "history": 0.057,
+            "fixed": 0.056,
+            "conditioned": 0.056,
+            "oracle": 0.056
+          },
+          "order_by_completion": {
+            "original": [
+              "history",
+              "smoothed",
+              "current",
+              "fixed",
+              "conditioned"
+            ],
+            "causal": [
+              "history",
+              "smoothed",
+              "current",
+              "fixed",
+              "conditioned"
+            ]
+          },
+          "order_unchanged": true
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Simulation of one published model structure; not evidence about measured cells.",
+    "The original task definition remains the primary analysis."
+  ]
+}

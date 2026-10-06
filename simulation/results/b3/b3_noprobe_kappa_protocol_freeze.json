@@ -1,0 +1,6 @@
+{
+  "protocol_path": "simulation/configs/b3_noprobe_kappa_protocol.json",
+  "protocol_sha256": "3a17da7196f14a3e376b9f908847f0e6d2ddf92c24d3f53fe3b0e744a6f4b923",
+  "frozen_utc": "2026-10-06T12:13:20+00:00",
+  "statement": "Recorded before any kappa-dependent no-probe or causal rescoring result was computed."
+}

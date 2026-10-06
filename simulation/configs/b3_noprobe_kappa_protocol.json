@@ -1,0 +1,20 @@
+{
+  "name": "No-probe control and causal rescoring of the B3 waiting rules at kappa 0.4, 0.5 and 0.6",
+  "version": 1,
+  "status": "frozen_before_running",
+  "date": "2026-10-06",
+  "reason": "Review of main(1) item P0-3: the largest no-probe rise was 47% of the naive rise, so at kappa 0.4 some states may meet the criterion without any probe; the overall agreement (97.0% of states) must state its denominator and cannot replace a check at low kappa and at the rules' stopping times.",
+  "data": "the frozen no-probe arrays of b3_noprobe (simulation/results/b3/noprobe_tables.npz) and the version-2 simulation tables; no new model simulation",
+  "definitions": {
+    "states": "all (history, posterior sample, wait) triples: 2 x 1000 x 61 = 122,000",
+    "original": "S = 1 if max over s in [tau, tau + 20] of z_probe(s) - z_probe(tau) >= kappa x naive rise (Eq. 2)",
+    "without_probe": "the same criterion applied to the response without the probe",
+    "causal": "Delta z(s; tau) = z_probe(s; tau) - z_noprobe(s; tau) on [tau, tau + 20] (1-min resolution); S_causal = 1 if max_s Delta z(s; tau) >= kappa x naive rise"
+  },
+  "outputs": {
+    "per_kappa": "for kappa 0.4, 0.5, 0.6: fraction of states meeting the original criterion without a probe (overall and per history), its fraction among original successes, the largest no-probe rise over the naive rise, and the 2 x 2 agreement counts between original and causal labels with their fraction",
+    "rescoring": "for kappa 0.4 and 0.6 at noise 0.005 and 0.01 on the primary split: the frozen sensitivity-study rules (current, smoothed, history, single fixed), the history-conditioned fixed waits of the baselines study and the oracle that stops at the first original success; stop times recomputed exactly as in the sensitivity study; evaluation success and mean completion under the original and the causal labels; the fraction of the rules' stop states whose two labels disagree; the order of rules by completion under both labels",
+    "check": "kappa 0.5 at noise 0.005 must reproduce the frozen rescoring of b3_noprobe"
+  },
+  "reporting": "All results reported whatever their direction; the original task definition remains the primary analysis; simulation of one published model structure."
+}

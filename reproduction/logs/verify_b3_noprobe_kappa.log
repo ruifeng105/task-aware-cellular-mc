@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "protocol_sha256": "3a17da7196f14a3e376b9f908847f0e6d2ddf92c24d3f53fe3b0e744a6f4b923",
+  "frozen": {
+    "agreement_equal": true,
+    "rescoring_max_abs_difference": 0.0
+  },
+  "stop_times": {
+    "max_abs_difference": 0.0
+  },
+  "nesting": {
+    "labels_nested_in_kappa": true
+  },
+  "raw": {
+    "kappa": 0.4,
+    "states_without_probe": 79
+  },
+  "scope": "Simulation of the published B3 model; not evidence about measured cells."
+}

@@ -1,0 +1,5483 @@
+{
+  "status": "complete",
+  "protocol_sha256": "fd29bb5653d82d0951fe86de25e733f3b833890ce81a1b85f77d71fdf552ee83",
+  "frozen_utc": "2026-10-06T12:13:20+00:00",
+  "repeats": {
+    "0": {
+      "r": 0,
+      "split_seed": 20261006,
+      "ar_seed": 20261009,
+      "estimated": {
+        "sigma": 0.004999841536770069,
+        "rho": 0.7997877383976493
+      },
+      "choices": {
+        "frozen": {
+          "current": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.906,
+              "mean_completion_min": 119.83,
+              "mean_wait_min": 96.49
+            }
+          },
+          "history": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.92,
+              "mean_completion_min": 114.954,
+              "mean_wait_min": 92.756
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.9,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.922,
+              "mean_completion_min": 114.09,
+              "mean_wait_min": 92.22
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "independent": {
+          "current": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.936,
+              "mean_completion_min": 124.786,
+              "mean_wait_min": 102.634
+            }
+          },
+          "history": {
+            "threshold": 0.99,
+            "target_reached": false,
+            "calibration": {
+              "success_rate": 0.884,
+              "mean_completion_min": 118.214,
+              "mean_wait_min": 94.654
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.923,
+              "mean_completion_min": 118.76,
+              "mean_wait_min": 96.566
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "ar1": {
+          "sigma": 0.004999841536770069,
+          "rho": 0.7997877383976493,
+          "threshold": 0.95,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.939,
+            "mean_completion_min": 117.856,
+            "mean_wait_min": 96.412
+          }
+        },
+        "ar1_true": {
+          "sigma": 0.005,
+          "rho": 0.8,
+          "threshold": 0.95,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.939,
+            "mean_completion_min": 117.856,
+            "mean_wait_min": 96.412
+          }
+        },
+        "conditioned": {
+          "waits_min": [
+            92.0,
+            102.0
+          ],
+          "target_reached": true
+        }
+      },
+      "rules": {
+        "frozen_current": {
+          "all": {
+            "success_rate": 0.937,
+            "mean_completion_min": 123.512
+          },
+          "short": {
+            "success_rate": 0.938,
+            "mean_completion_min": 119.268
+          },
+          "long": {
+            "success_rate": 0.936,
+            "mean_completion_min": 127.756
+          }
+        },
+        "frozen_history": {
+          "all": {
+            "success_rate": 0.82,
+            "mean_completion_min": 117.316
+          },
+          "short": {
+            "success_rate": 0.792,
+            "mean_completion_min": 112.948
+          },
+          "long": {
+            "success_rate": 0.848,
+            "mean_completion_min": 121.684
+          }
+        },
+        "frozen_smoothed": {
+          "all": {
+            "success_rate": 0.843,
+            "mean_completion_min": 116.872
+          },
+          "short": {
+            "success_rate": 0.842,
+            "mean_completion_min": 112.652
+          },
+          "long": {
+            "success_rate": 0.844,
+            "mean_completion_min": 121.092
+          }
+        },
+        "independent_current": {
+          "all": {
+            "success_rate": 0.937,
+            "mean_completion_min": 123.512
+          },
+          "short": {
+            "success_rate": 0.938,
+            "mean_completion_min": 119.268
+          },
+          "long": {
+            "success_rate": 0.936,
+            "mean_completion_min": 127.756
+          }
+        },
+        "independent_history": {
+          "all": {
+            "success_rate": 0.889,
+            "mean_completion_min": 117.512
+          },
+          "short": {
+            "success_rate": 0.876,
+            "mean_completion_min": 112.04
+          },
+          "long": {
+            "success_rate": 0.902,
+            "mean_completion_min": 122.984
+          }
+        },
+        "independent_smoothed": {
+          "all": {
+            "success_rate": 0.919,
+            "mean_completion_min": 117.85
+          },
+          "short": {
+            "success_rate": 0.922,
+            "mean_completion_min": 113.096
+          },
+          "long": {
+            "success_rate": 0.916,
+            "mean_completion_min": 122.604
+          }
+        },
+        "ar1_history": {
+          "all": {
+            "success_rate": 0.945,
+            "mean_completion_min": 117.092
+          },
+          "short": {
+            "success_rate": 0.932,
+            "mean_completion_min": 110.92
+          },
+          "long": {
+            "success_rate": 0.958,
+            "mean_completion_min": 123.264
+          }
+        },
+        "ar1_true_history": {
+          "all": {
+            "success_rate": 0.945,
+            "mean_completion_min": 117.098
+          },
+          "short": {
+            "success_rate": 0.932,
+            "mean_completion_min": 110.924
+          },
+          "long": {
+            "success_rate": 0.958,
+            "mean_completion_min": 123.272
+          }
+        },
+        "fixed": {
+          "all": {
+            "success_rate": 0.912,
+            "mean_completion_min": 121.76
+          },
+          "short": {
+            "success_rate": 0.974,
+            "mean_completion_min": 120.52
+          },
+          "long": {
+            "success_rate": 0.85,
+            "mean_completion_min": 123.0
+          }
+        },
+        "conditioned": {
+          "all": {
+            "success_rate": 0.903,
+            "mean_completion_min": 119.126
+          },
+          "short": {
+            "success_rate": 0.924,
+            "mean_completion_min": 114.128
+          },
+          "long": {
+            "success_rate": 0.882,
+            "mean_completion_min": 124.124
+          }
+        }
+      },
+      "paired": {
+        "ar1_history-independent_history": {
+          "success": 0.056,
+          "completion": -0.42
+        },
+        "ar1_history-frozen_history": {
+          "success": 0.125,
+          "completion": -0.224
+        }
+      },
+      "median_ess_90min": {
+        "independent": 8.381538995232564,
+        "ar1": 162.57073747127583
+      },
+      "bootstrap": {
+        "ar1_history-independent_history": {
+          "success": [
+            0.038,
+            0.07302499999999985
+          ],
+          "completion": [
+            -1.0440500000000001,
+            0.13804999999999973
+          ]
+        },
+        "ar1_history-frozen_history": {
+          "success": [
+            0.103,
+            0.148
+          ],
+          "completion": [
+            -0.9681,
+            0.526
+          ]
+        }
+      }
+    },
+    "1": {
+      "r": 1,
+      "split_seed": 20261007,
+      "ar_seed": 20271009,
+      "estimated": {
+        "sigma": 0.004973517325584895,
+        "rho": 0.7970301569467618
+      },
+      "choices": {
+        "frozen": {
+          "current": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.908,
+              "mean_completion_min": 119.188,
+              "mean_wait_min": 95.884
+            }
+          },
+          "history": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.912,
+              "mean_completion_min": 114.168,
+              "mean_wait_min": 91.672
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.9,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.916,
+              "mean_completion_min": 113.746,
+              "mean_wait_min": 91.494
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "independent": {
+          "current": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.938,
+              "mean_completion_min": 123.04,
+              "mean_wait_min": 100.868
+            }
+          },
+          "history": {
+            "threshold": 0.99,
+            "target_reached": false,
+            "calibration": {
+              "success_rate": 0.874,
+              "mean_completion_min": 117.46,
+              "mean_wait_min": 93.422
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.92,
+              "mean_completion_min": 117.586,
+              "mean_wait_min": 95.24
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "ar1": {
+          "sigma": 0.004973517325584895,
+          "rho": 0.7970301569467618,
+          "threshold": 0.9,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.903,
+            "mean_completion_min": 115.292,
+            "mean_wait_min": 92.606
+          }
+        },
+        "ar1_true": {
+          "sigma": 0.005,
+          "rho": 0.8,
+          "threshold": 0.9,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.904,
+            "mean_completion_min": 115.32,
+            "mean_wait_min": 92.664
+          }
+        },
+        "conditioned": {
+          "waits_min": [
+            92.0,
+            100.0
+          ],
+          "target_reached": true
+        }
+      },
+      "rules": {
+        "frozen_current": {
+          "all": {
+            "success_rate": 0.929,
+            "mean_completion_min": 124.474
+          },
+          "short": {
+            "success_rate": 0.936,
+            "mean_completion_min": 119.732
+          },
+          "long": {
+            "success_rate": 0.922,
+            "mean_completion_min": 129.216
+          }
+        },
+        "frozen_history": {
+          "all": {
+            "success_rate": 0.813,
+            "mean_completion_min": 118.124
+          },
+          "short": {
+            "success_rate": 0.818,
+            "mean_completion_min": 112.496
+          },
+          "long": {
+            "success_rate": 0.808,
+            "mean_completion_min": 123.752
+          }
+        },
+        "frozen_smoothed": {
+          "all": {
+            "success_rate": 0.833,
+            "mean_completion_min": 117.978
+          },
+          "short": {
+            "success_rate": 0.846,
+            "mean_completion_min": 113.008
+          },
+          "long": {
+            "success_rate": 0.82,
+            "mean_completion_min": 122.948
+          }
+        },
+        "independent_current": {
+          "all": {
+            "success_rate": 0.929,
+            "mean_completion_min": 124.366
+          },
+          "short": {
+            "success_rate": 0.936,
+            "mean_completion_min": 119.58
+          },
+          "long": {
+            "success_rate": 0.922,
+            "mean_completion_min": 129.152
+          }
+        },
+        "independent_history": {
+          "all": {
+            "success_rate": 0.878,
+            "mean_completion_min": 118.33
+          },
+          "short": {
+            "success_rate": 0.888,
+            "mean_completion_min": 112.096
+          },
+          "long": {
+            "success_rate": 0.868,
+            "mean_completion_min": 124.564
+          }
+        },
+        "independent_smoothed": {
+          "all": {
+            "success_rate": 0.913,
+            "mean_completion_min": 118.71
+          },
+          "short": {
+            "success_rate": 0.93,
+            "mean_completion_min": 113.208
+          },
+          "long": {
+            "success_rate": 0.896,
+            "mean_completion_min": 124.212
+          }
+        },
+        "ar1_history": {
+          "all": {
+            "success_rate": 0.883,
+            "mean_completion_min": 116.562
+          },
+          "short": {
+            "success_rate": 0.868,
+            "mean_completion_min": 110.832
+          },
+          "long": {
+            "success_rate": 0.898,
+            "mean_completion_min": 122.292
+          }
+        },
+        "ar1_true_history": {
+          "all": {
+            "success_rate": 0.883,
+            "mean_completion_min": 116.582
+          },
+          "short": {
+            "success_rate": 0.868,
+            "mean_completion_min": 110.852
+          },
+          "long": {
+            "success_rate": 0.898,
+            "mean_completion_min": 122.312
+          }
+        },
+        "fixed": {
+          "all": {
+            "success_rate": 0.902,
+            "mean_completion_min": 121.96
+          },
+          "short": {
+            "success_rate": 0.974,
+            "mean_completion_min": 120.52
+          },
+          "long": {
+            "success_rate": 0.83,
+            "mean_completion_min": 123.4
+          }
+        },
+        "conditioned": {
+          "all": {
+            "success_rate": 0.877,
+            "mean_completion_min": 118.764
+          },
+          "short": {
+            "success_rate": 0.924,
+            "mean_completion_min": 114.128
+          },
+          "long": {
+            "success_rate": 0.83,
+            "mean_completion_min": 123.4
+          }
+        }
+      },
+      "paired": {
+        "ar1_history-independent_history": {
+          "success": 0.005,
+          "completion": -1.768
+        },
+        "ar1_history-frozen_history": {
+          "success": 0.07,
+          "completion": -1.562
+        }
+      },
+      "median_ess_90min": {
+        "independent": 8.90250197638143,
+        "ar1": 158.57458765868535
+      }
+    },
+    "2": {
+      "r": 2,
+      "split_seed": 20261008,
+      "ar_seed": 20281009,
+      "estimated": {
+        "sigma": 0.00497582867958275,
+        "rho": 0.7989625779923177
+      },
+      "choices": {
+        "frozen": {
+          "current": {
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.951,
+              "mean_completion_min": 123.294,
+              "mean_wait_min": 101.678
+            }
+          },
+          "history": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.928,
+              "mean_completion_min": 114.342,
+              "mean_wait_min": 92.448
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.9,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.925,
+              "mean_completion_min": 114.092,
+              "mean_wait_min": 92.168
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "independent": {
+          "current": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.925,
+              "mean_completion_min": 124.644,
+              "mean_wait_min": 101.79
+            }
+          },
+          "history": {
+            "threshold": 0.99,
+            "target_reached": false,
+            "calibration": {
+              "success_rate": 0.873,
+              "mean_completion_min": 118.46,
+              "mean_wait_min": 94.152
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.912,
+              "mean_completion_min": 118.856,
+              "mean_wait_min": 96.098
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "ar1": {
+          "sigma": 0.00497582867958275,
+          "rho": 0.7989625779923177,
+          "threshold": 0.95,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.936,
+            "mean_completion_min": 117.874,
+            "mean_wait_min": 96.156
+          }
+        },
+        "ar1_true": {
+          "sigma": 0.005,
+          "rho": 0.8,
+          "threshold": 0.95,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.936,
+            "mean_completion_min": 117.908,
+            "mean_wait_min": 96.196
+          }
+        },
+        "conditioned": {
+          "waits_min": [
+            94.0,
+            100.0
+          ],
+          "target_reached": true
+        }
+      },
+      "rules": {
+        "frozen_current": {
+          "all": {
+            "success_rate": 0.966,
+            "mean_completion_min": 127.544
+          },
+          "short": {
+            "success_rate": 0.974,
+            "mean_completion_min": 123.796
+          },
+          "long": {
+            "success_rate": 0.958,
+            "mean_completion_min": 131.292
+          }
+        },
+        "frozen_history": {
+          "all": {
+            "success_rate": 0.834,
+            "mean_completion_min": 117.072
+          },
+          "short": {
+            "success_rate": 0.832,
+            "mean_completion_min": 112.004
+          },
+          "long": {
+            "success_rate": 0.836,
+            "mean_completion_min": 122.14
+          }
+        },
+        "frozen_smoothed": {
+          "all": {
+            "success_rate": 0.833,
+            "mean_completion_min": 117.454
+          },
+          "short": {
+            "success_rate": 0.854,
+            "mean_completion_min": 112.692
+          },
+          "long": {
+            "success_rate": 0.812,
+            "mean_completion_min": 122.216
+          }
+        },
+        "independent_current": {
+          "all": {
+            "success_rate": 0.931,
+            "mean_completion_min": 124.19
+          },
+          "short": {
+            "success_rate": 0.94,
+            "mean_completion_min": 119.82
+          },
+          "long": {
+            "success_rate": 0.922,
+            "mean_completion_min": 128.56
+          }
+        },
+        "independent_history": {
+          "all": {
+            "success_rate": 0.883,
+            "mean_completion_min": 117.594
+          },
+          "short": {
+            "success_rate": 0.884,
+            "mean_completion_min": 112.132
+          },
+          "long": {
+            "success_rate": 0.882,
+            "mean_completion_min": 123.056
+          }
+        },
+        "independent_smoothed": {
+          "all": {
+            "success_rate": 0.915,
+            "mean_completion_min": 118.384
+          },
+          "short": {
+            "success_rate": 0.924,
+            "mean_completion_min": 113.64
+          },
+          "long": {
+            "success_rate": 0.906,
+            "mean_completion_min": 123.128
+          }
+        },
+        "ar1_history": {
+          "all": {
+            "success_rate": 0.937,
+            "mean_completion_min": 117.292
+          },
+          "short": {
+            "success_rate": 0.926,
+            "mean_completion_min": 111.156
+          },
+          "long": {
+            "success_rate": 0.948,
+            "mean_completion_min": 123.428
+          }
+        },
+        "ar1_true_history": {
+          "all": {
+            "success_rate": 0.937,
+            "mean_completion_min": 117.36
+          },
+          "short": {
+            "success_rate": 0.926,
+            "mean_completion_min": 111.24
+          },
+          "long": {
+            "success_rate": 0.948,
+            "mean_completion_min": 123.48
+          }
+        },
+        "fixed": {
+          "all": {
+            "success_rate": 0.907,
+            "mean_completion_min": 121.86
+          },
+          "short": {
+            "success_rate": 0.976,
+            "mean_completion_min": 120.48
+          },
+          "long": {
+            "success_rate": 0.838,
+            "mean_completion_min": 123.24
+          }
+        },
+        "conditioned": {
+          "all": {
+            "success_rate": 0.896,
+            "mean_completion_min": 119.218
+          },
+          "short": {
+            "success_rate": 0.954,
+            "mean_completion_min": 115.196
+          },
+          "long": {
+            "success_rate": 0.838,
+            "mean_completion_min": 123.24
+          }
+        }
+      },
+      "paired": {
+        "ar1_history-independent_history": {
+          "success": 0.054,
+          "completion": -0.302
+        },
+        "ar1_history-frozen_history": {
+          "success": 0.103,
+          "completion": 0.22
+        }
+      },
+      "median_ess_90min": {
+        "independent": 9.343351031101571,
+        "ar1": 161.0283121642859
+      }
+    },
+    "3": {
+      "r": 3,
+      "split_seed": 20261009,
+      "ar_seed": 20291009,
+      "estimated": {
+        "sigma": 0.004994542838409994,
+        "rho": 0.800287988706095
+      },
+      "choices": {
+        "frozen": {
+          "current": {
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.944,
+              "mean_completion_min": 122.606,
+              "mean_wait_min": 100.596
+            }
+          },
+          "history": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.918,
+              "mean_completion_min": 114.184,
+              "mean_wait_min": 91.936
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.9,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.918,
+              "mean_completion_min": 113.964,
+              "mean_wait_min": 91.804
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "independent": {
+          "current": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.929,
+              "mean_completion_min": 123.908,
+              "mean_wait_min": 101.314
+            }
+          },
+          "history": {
+            "threshold": 0.99,
+            "target_reached": false,
+            "calibration": {
+              "success_rate": 0.892,
+              "mean_completion_min": 117.352,
+              "mean_wait_min": 93.828
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.917,
+              "mean_completion_min": 118.114,
+              "mean_wait_min": 95.604
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "ar1": {
+          "sigma": 0.004994542838409994,
+          "rho": 0.800287988706095,
+          "threshold": 0.95,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.94,
+            "mean_completion_min": 117.43,
+            "mean_wait_min": 95.802
+          }
+        },
+        "ar1_true": {
+          "sigma": 0.005,
+          "rho": 0.8,
+          "threshold": 0.95,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.94,
+            "mean_completion_min": 117.434,
+            "mean_wait_min": 95.804
+          }
+        },
+        "conditioned": {
+          "waits_min": [
+            92.0,
+            102.0
+          ],
+          "target_reached": true
+        }
+      },
+      "rules": {
+        "frozen_current": {
+          "all": {
+            "success_rate": 0.967,
+            "mean_completion_min": 127.384
+          },
+          "short": {
+            "success_rate": 0.972,
+            "mean_completion_min": 123.6
+          },
+          "long": {
+            "success_rate": 0.962,
+            "mean_completion_min": 131.168
+          }
+        },
+        "frozen_history": {
+          "all": {
+            "success_rate": 0.795,
+            "mean_completion_min": 118.146
+          },
+          "short": {
+            "success_rate": 0.798,
+            "mean_completion_min": 113.012
+          },
+          "long": {
+            "success_rate": 0.792,
+            "mean_completion_min": 123.28
+          }
+        },
+        "frozen_smoothed": {
+          "all": {
+            "success_rate": 0.809,
+            "mean_completion_min": 118.154
+          },
+          "short": {
+            "success_rate": 0.828,
+            "mean_completion_min": 113.564
+          },
+          "long": {
+            "success_rate": 0.79,
+            "mean_completion_min": 122.744
+          }
+        },
+        "independent_current": {
+          "all": {
+            "success_rate": 0.935,
+            "mean_completion_min": 124.206
+          },
+          "short": {
+            "success_rate": 0.936,
+            "mean_completion_min": 119.784
+          },
+          "long": {
+            "success_rate": 0.934,
+            "mean_completion_min": 128.628
+          }
+        },
+        "independent_history": {
+          "all": {
+            "success_rate": 0.861,
+            "mean_completion_min": 118.206
+          },
+          "short": {
+            "success_rate": 0.858,
+            "mean_completion_min": 112.952
+          },
+          "long": {
+            "success_rate": 0.864,
+            "mean_completion_min": 123.46
+          }
+        },
+        "independent_smoothed": {
+          "all": {
+            "success_rate": 0.899,
+            "mean_completion_min": 118.512
+          },
+          "short": {
+            "success_rate": 0.906,
+            "mean_completion_min": 113.816
+          },
+          "long": {
+            "success_rate": 0.892,
+            "mean_completion_min": 123.208
+          }
+        },
+        "ar1_history": {
+          "all": {
+            "success_rate": 0.935,
+            "mean_completion_min": 117.492
+          },
+          "short": {
+            "success_rate": 0.932,
+            "mean_completion_min": 111.232
+          },
+          "long": {
+            "success_rate": 0.938,
+            "mean_completion_min": 123.752
+          }
+        },
+        "ar1_true_history": {
+          "all": {
+            "success_rate": 0.935,
+            "mean_completion_min": 117.496
+          },
+          "short": {
+            "success_rate": 0.932,
+            "mean_completion_min": 111.24
+          },
+          "long": {
+            "success_rate": 0.938,
+            "mean_completion_min": 123.752
+          }
+        },
+        "fixed": {
+          "all": {
+            "success_rate": 0.912,
+            "mean_completion_min": 121.76
+          },
+          "short": {
+            "success_rate": 0.976,
+            "mean_completion_min": 120.48
+          },
+          "long": {
+            "success_rate": 0.848,
+            "mean_completion_min": 123.04
+          }
+        },
+        "conditioned": {
+          "all": {
+            "success_rate": 0.898,
+            "mean_completion_min": 119.216
+          },
+          "short": {
+            "success_rate": 0.924,
+            "mean_completion_min": 114.128
+          },
+          "long": {
+            "success_rate": 0.872,
+            "mean_completion_min": 124.304
+          }
+        }
+      },
+      "paired": {
+        "ar1_history-independent_history": {
+          "success": 0.074,
+          "completion": -0.714
+        },
+        "ar1_history-frozen_history": {
+          "success": 0.14,
+          "completion": -0.654
+        }
+      },
+      "median_ess_90min": {
+        "independent": 8.138740684736783,
+        "ar1": 159.4780504217473
+      }
+    },
+    "4": {
+      "r": 4,
+      "split_seed": 20261010,
+      "ar_seed": 20301009,
+      "estimated": {
+        "sigma": 0.005003366801483287,
+        "rho": 0.7992088721015633
+      },
+      "choices": {
+        "frozen": {
+          "current": {
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.949,
+              "mean_completion_min": 121.97,
+              "mean_wait_min": 100.31
+            }
+          },
+          "history": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.928,
+              "mean_completion_min": 113.758,
+              "mean_wait_min": 91.866
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.9,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.924,
+              "mean_completion_min": 113.576,
+              "mean_wait_min": 91.762
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "independent": {
+          "current": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.931,
+              "mean_completion_min": 123.71,
+              "mean_wait_min": 101.218
+            }
+          },
+          "history": {
+            "threshold": 0.99,
+            "target_reached": false,
+            "calibration": {
+              "success_rate": 0.877,
+              "mean_completion_min": 117.886,
+              "mean_wait_min": 93.834
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.921,
+              "mean_completion_min": 118.044,
+              "mean_wait_min": 95.716
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "ar1": {
+          "sigma": 0.005003366801483287,
+          "rho": 0.7992088721015633,
+          "threshold": 0.9,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.903,
+            "mean_completion_min": 115.85,
+            "mean_wait_min": 93.248
+          }
+        },
+        "ar1_true": {
+          "sigma": 0.005,
+          "rho": 0.8,
+          "threshold": 0.9,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.902,
+            "mean_completion_min": 115.882,
+            "mean_wait_min": 93.238
+          }
+        },
+        "conditioned": {
+          "waits_min": [
+            94.0,
+            100.0
+          ],
+          "target_reached": true
+        }
+      },
+      "rules": {
+        "frozen_current": {
+          "all": {
+            "success_rate": 0.962,
+            "mean_completion_min": 127.244
+          },
+          "short": {
+            "success_rate": 0.966,
+            "mean_completion_min": 123.452
+          },
+          "long": {
+            "success_rate": 0.958,
+            "mean_completion_min": 131.036
+          }
+        },
+        "frozen_history": {
+          "all": {
+            "success_rate": 0.826,
+            "mean_completion_min": 117.778
+          },
+          "short": {
+            "success_rate": 0.834,
+            "mean_completion_min": 112.464
+          },
+          "long": {
+            "success_rate": 0.818,
+            "mean_completion_min": 123.092
+          }
+        },
+        "frozen_smoothed": {
+          "all": {
+            "success_rate": 0.834,
+            "mean_completion_min": 118.006
+          },
+          "short": {
+            "success_rate": 0.858,
+            "mean_completion_min": 112.912
+          },
+          "long": {
+            "success_rate": 0.81,
+            "mean_completion_min": 123.1
+          }
+        },
+        "independent_current": {
+          "all": {
+            "success_rate": 0.927,
+            "mean_completion_min": 124.644
+          },
+          "short": {
+            "success_rate": 0.932,
+            "mean_completion_min": 120.684
+          },
+          "long": {
+            "success_rate": 0.922,
+            "mean_completion_min": 128.604
+          }
+        },
+        "independent_history": {
+          "all": {
+            "success_rate": 0.889,
+            "mean_completion_min": 117.952
+          },
+          "short": {
+            "success_rate": 0.892,
+            "mean_completion_min": 112.344
+          },
+          "long": {
+            "success_rate": 0.886,
+            "mean_completion_min": 123.56
+          }
+        },
+        "independent_smoothed": {
+          "all": {
+            "success_rate": 0.923,
+            "mean_completion_min": 118.618
+          },
+          "short": {
+            "success_rate": 0.952,
+            "mean_completion_min": 113.068
+          },
+          "long": {
+            "success_rate": 0.894,
+            "mean_completion_min": 124.168
+          }
+        },
+        "ar1_history": {
+          "all": {
+            "success_rate": 0.901,
+            "mean_completion_min": 116.62
+          },
+          "short": {
+            "success_rate": 0.888,
+            "mean_completion_min": 111.156
+          },
+          "long": {
+            "success_rate": 0.914,
+            "mean_completion_min": 122.084
+          }
+        },
+        "ar1_true_history": {
+          "all": {
+            "success_rate": 0.901,
+            "mean_completion_min": 116.624
+          },
+          "short": {
+            "success_rate": 0.888,
+            "mean_completion_min": 111.16
+          },
+          "long": {
+            "success_rate": 0.914,
+            "mean_completion_min": 122.088
+          }
+        },
+        "fixed": {
+          "all": {
+            "success_rate": 0.91,
+            "mean_completion_min": 121.8
+          },
+          "short": {
+            "success_rate": 0.978,
+            "mean_completion_min": 120.44
+          },
+          "long": {
+            "success_rate": 0.842,
+            "mean_completion_min": 123.16
+          }
+        },
+        "conditioned": {
+          "all": {
+            "success_rate": 0.896,
+            "mean_completion_min": 119.23
+          },
+          "short": {
+            "success_rate": 0.95,
+            "mean_completion_min": 115.3
+          },
+          "long": {
+            "success_rate": 0.842,
+            "mean_completion_min": 123.16
+          }
+        }
+      },
+      "paired": {
+        "ar1_history-independent_history": {
+          "success": 0.012,
+          "completion": -1.332
+        },
+        "ar1_history-frozen_history": {
+          "success": 0.075,
+          "completion": -1.158
+        }
+      },
+      "median_ess_90min": {
+        "independent": 8.337048607700261,
+        "ar1": 166.08445324652763
+      }
+    },
+    "5": {
+      "r": 5,
+      "split_seed": 20261011,
+      "ar_seed": 20311009,
+      "estimated": {
+        "sigma": 0.00506151193787637,
+        "rho": 0.8038427138234568
+      },
+      "choices": {
+        "frozen": {
+          "current": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.903,
+              "mean_completion_min": 120.432,
+              "mean_wait_min": 97.084
+            }
+          },
+          "history": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.918,
+              "mean_completion_min": 114.94,
+              "mean_wait_min": 92.826
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.9,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.917,
+              "mean_completion_min": 114.486,
+              "mean_wait_min": 92.506
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "independent": {
+          "current": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.926,
+              "mean_completion_min": 125.256,
+              "mean_wait_min": 102.812
+            }
+          },
+          "history": {
+            "threshold": 0.99,
+            "target_reached": false,
+            "calibration": {
+              "success_rate": 0.893,
+              "mean_completion_min": 118.482,
+              "mean_wait_min": 95.204
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.928,
+              "mean_completion_min": 119.108,
+              "mean_wait_min": 97.182
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "ar1": {
+          "sigma": 0.00506151193787637,
+          "rho": 0.8038427138234568,
+          "threshold": 0.9,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.904,
+            "mean_completion_min": 116.922,
+            "mean_wait_min": 94.428
+          }
+        },
+        "ar1_true": {
+          "sigma": 0.005,
+          "rho": 0.8,
+          "threshold": 0.9,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.902,
+            "mean_completion_min": 116.928,
+            "mean_wait_min": 94.364
+          }
+        },
+        "conditioned": {
+          "waits_min": [
+            94.0,
+            102.0
+          ],
+          "target_reached": true
+        }
+      },
+      "rules": {
+        "frozen_current": {
+          "all": {
+            "success_rate": 0.94,
+            "mean_completion_min": 124.274
+          },
+          "short": {
+            "success_rate": 0.942,
+            "mean_completion_min": 119.696
+          },
+          "long": {
+            "success_rate": 0.938,
+            "mean_completion_min": 128.852
+          }
+        },
+        "frozen_history": {
+          "all": {
+            "success_rate": 0.838,
+            "mean_completion_min": 117.624
+          },
+          "short": {
+            "success_rate": 0.836,
+            "mean_completion_min": 112.276
+          },
+          "long": {
+            "success_rate": 0.84,
+            "mean_completion_min": 122.972
+          }
+        },
+        "frozen_smoothed": {
+          "all": {
+            "success_rate": 0.85,
+            "mean_completion_min": 117.416
+          },
+          "short": {
+            "success_rate": 0.862,
+            "mean_completion_min": 112.256
+          },
+          "long": {
+            "success_rate": 0.838,
+            "mean_completion_min": 122.576
+          }
+        },
+        "independent_current": {
+          "all": {
+            "success_rate": 0.945,
+            "mean_completion_min": 124.358
+          },
+          "short": {
+            "success_rate": 0.946,
+            "mean_completion_min": 119.816
+          },
+          "long": {
+            "success_rate": 0.944,
+            "mean_completion_min": 128.9
+          }
+        },
+        "independent_history": {
+          "all": {
+            "success_rate": 0.903,
+            "mean_completion_min": 117.844
+          },
+          "short": {
+            "success_rate": 0.904,
+            "mean_completion_min": 111.792
+          },
+          "long": {
+            "success_rate": 0.902,
+            "mean_completion_min": 123.896
+          }
+        },
+        "independent_smoothed": {
+          "all": {
+            "success_rate": 0.945,
+            "mean_completion_min": 118.26
+          },
+          "short": {
+            "success_rate": 0.952,
+            "mean_completion_min": 113.084
+          },
+          "long": {
+            "success_rate": 0.938,
+            "mean_completion_min": 123.436
+          }
+        },
+        "ar1_history": {
+          "all": {
+            "success_rate": 0.924,
+            "mean_completion_min": 116.188
+          },
+          "short": {
+            "success_rate": 0.904,
+            "mean_completion_min": 110.572
+          },
+          "long": {
+            "success_rate": 0.944,
+            "mean_completion_min": 121.804
+          }
+        },
+        "ar1_true_history": {
+          "all": {
+            "success_rate": 0.922,
+            "mean_completion_min": 116.2
+          },
+          "short": {
+            "success_rate": 0.902,
+            "mean_completion_min": 110.6
+          },
+          "long": {
+            "success_rate": 0.942,
+            "mean_completion_min": 121.8
+          }
+        },
+        "fixed": {
+          "all": {
+            "success_rate": 0.924,
+            "mean_completion_min": 121.52
+          },
+          "short": {
+            "success_rate": 0.99,
+            "mean_completion_min": 120.2
+          },
+          "long": {
+            "success_rate": 0.858,
+            "mean_completion_min": 122.84
+          }
+        },
+        "conditioned": {
+          "all": {
+            "success_rate": 0.925,
+            "mean_completion_min": 119.502
+          },
+          "short": {
+            "success_rate": 0.962,
+            "mean_completion_min": 114.988
+          },
+          "long": {
+            "success_rate": 0.888,
+            "mean_completion_min": 124.016
+          }
+        }
+      },
+      "paired": {
+        "ar1_history-independent_history": {
+          "success": 0.021,
+          "completion": -1.656
+        },
+        "ar1_history-frozen_history": {
+          "success": 0.086,
+          "completion": -1.436
+        }
+      },
+      "median_ess_90min": {
+        "independent": 10.787314528365654,
+        "ar1": 174.26928143532592
+      }
+    },
+    "6": {
+      "r": 6,
+      "split_seed": 20261012,
+      "ar_seed": 20321009,
+      "estimated": {
+        "sigma": 0.005009135842598141,
+        "rho": 0.8004944799961407
+      },
+      "choices": {
+        "frozen": {
+          "current": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.907,
+              "mean_completion_min": 119.808,
+              "mean_wait_min": 96.304
+            }
+          },
+          "history": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.92,
+              "mean_completion_min": 114.984,
+              "mean_wait_min": 92.684
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.9,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.911,
+              "mean_completion_min": 114.478,
+              "mean_wait_min": 92.102
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "independent": {
+          "current": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.926,
+              "mean_completion_min": 124.812,
+              "mean_wait_min": 102.112
+            }
+          },
+          "history": {
+            "threshold": 0.99,
+            "target_reached": false,
+            "calibration": {
+              "success_rate": 0.893,
+              "mean_completion_min": 118.072,
+              "mean_wait_min": 94.662
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.92,
+              "mean_completion_min": 118.582,
+              "mean_wait_min": 96.03
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "ar1": {
+          "sigma": 0.005009135842598141,
+          "rho": 0.8004944799961407,
+          "threshold": 0.9,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.903,
+            "mean_completion_min": 116.418,
+            "mean_wait_min": 93.662
+          }
+        },
+        "ar1_true": {
+          "sigma": 0.005,
+          "rho": 0.8,
+          "threshold": 0.9,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.903,
+            "mean_completion_min": 116.408,
+            "mean_wait_min": 93.652
+          }
+        },
+        "conditioned": {
+          "waits_min": [
+            94.0,
+            100.0
+          ],
+          "target_reached": true
+        }
+      },
+      "rules": {
+        "frozen_current": {
+          "all": {
+            "success_rate": 0.933,
+            "mean_completion_min": 123.838
+          },
+          "short": {
+            "success_rate": 0.95,
+            "mean_completion_min": 118.812
+          },
+          "long": {
+            "success_rate": 0.916,
+            "mean_completion_min": 128.864
+          }
+        },
+        "frozen_history": {
+          "all": {
+            "success_rate": 0.838,
+            "mean_completion_min": 116.98
+          },
+          "short": {
+            "success_rate": 0.824,
+            "mean_completion_min": 111.708
+          },
+          "long": {
+            "success_rate": 0.852,
+            "mean_completion_min": 122.252
+          }
+        },
+        "frozen_smoothed": {
+          "all": {
+            "success_rate": 0.837,
+            "mean_completion_min": 117.578
+          },
+          "short": {
+            "success_rate": 0.856,
+            "mean_completion_min": 112.288
+          },
+          "long": {
+            "success_rate": 0.818,
+            "mean_completion_min": 122.868
+          }
+        },
+        "independent_current": {
+          "all": {
+            "success_rate": 0.933,
+            "mean_completion_min": 123.86
+          },
+          "short": {
+            "success_rate": 0.95,
+            "mean_completion_min": 118.82
+          },
+          "long": {
+            "success_rate": 0.916,
+            "mean_completion_min": 128.9
+          }
+        },
+        "independent_history": {
+          "all": {
+            "success_rate": 0.89,
+            "mean_completion_min": 117.55
+          },
+          "short": {
+            "success_rate": 0.878,
+            "mean_completion_min": 111.908
+          },
+          "long": {
+            "success_rate": 0.902,
+            "mean_completion_min": 123.192
+          }
+        },
+        "independent_smoothed": {
+          "all": {
+            "success_rate": 0.928,
+            "mean_completion_min": 118.01
+          },
+          "short": {
+            "success_rate": 0.94,
+            "mean_completion_min": 112.596
+          },
+          "long": {
+            "success_rate": 0.916,
+            "mean_completion_min": 123.424
+          }
+        },
+        "ar1_history": {
+          "all": {
+            "success_rate": 0.913,
+            "mean_completion_min": 115.988
+          },
+          "short": {
+            "success_rate": 0.89,
+            "mean_completion_min": 110.42
+          },
+          "long": {
+            "success_rate": 0.936,
+            "mean_completion_min": 121.556
+          }
+        },
+        "ar1_true_history": {
+          "all": {
+            "success_rate": 0.913,
+            "mean_completion_min": 115.982
+          },
+          "short": {
+            "success_rate": 0.89,
+            "mean_completion_min": 110.416
+          },
+          "long": {
+            "success_rate": 0.936,
+            "mean_completion_min": 121.548
+          }
+        },
+        "fixed": {
+          "all": {
+            "success_rate": 0.908,
+            "mean_completion_min": 121.84
+          },
+          "short": {
+            "success_rate": 0.972,
+            "mean_completion_min": 120.56
+          },
+          "long": {
+            "success_rate": 0.844,
+            "mean_completion_min": 123.12
+          }
+        },
+        "conditioned": {
+          "all": {
+            "success_rate": 0.895,
+            "mean_completion_min": 119.262
+          },
+          "short": {
+            "success_rate": 0.946,
+            "mean_completion_min": 115.404
+          },
+          "long": {
+            "success_rate": 0.844,
+            "mean_completion_min": 123.12
+          }
+        }
+      },
+      "paired": {
+        "ar1_history-independent_history": {
+          "success": 0.023,
+          "completion": -1.562
+        },
+        "ar1_history-frozen_history": {
+          "success": 0.075,
+          "completion": -0.992
+        }
+      },
+      "median_ess_90min": {
+        "independent": 8.804157053030295,
+        "ar1": 158.6945167498581
+      }
+    },
+    "7": {
+      "r": 7,
+      "split_seed": 20261013,
+      "ar_seed": 20331009,
+      "estimated": {
+        "sigma": 0.004952112166385042,
+        "rho": 0.7954830121940414
+      },
+      "choices": {
+        "frozen": {
+          "current": {
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.951,
+              "mean_completion_min": 121.574,
+              "mean_wait_min": 99.832
+            }
+          },
+          "history": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.926,
+              "mean_completion_min": 113.552,
+              "mean_wait_min": 91.57
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.9,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.926,
+              "mean_completion_min": 113.224,
+              "mean_wait_min": 91.346
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "independent": {
+          "current": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.937,
+              "mean_completion_min": 123.286,
+              "mean_wait_min": 100.978
+            }
+          },
+          "history": {
+            "threshold": 0.99,
+            "target_reached": false,
+            "calibration": {
+              "success_rate": 0.893,
+              "mean_completion_min": 116.64,
+              "mean_wait_min": 93.126
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.925,
+              "mean_completion_min": 117.84,
+              "mean_wait_min": 95.518
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "ar1": {
+          "sigma": 0.004952112166385042,
+          "rho": 0.7954830121940414,
+          "threshold": 0.9,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.913,
+            "mean_completion_min": 115.076,
+            "mean_wait_min": 92.684
+          }
+        },
+        "ar1_true": {
+          "sigma": 0.005,
+          "rho": 0.8,
+          "threshold": 0.9,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.915,
+            "mean_completion_min": 115.074,
+            "mean_wait_min": 92.758
+          }
+        },
+        "conditioned": {
+          "waits_min": [
+            90.0,
+            102.0
+          ],
+          "target_reached": true
+        }
+      },
+      "rules": {
+        "frozen_current": {
+          "all": {
+            "success_rate": 0.967,
+            "mean_completion_min": 127.324
+          },
+          "short": {
+            "success_rate": 0.968,
+            "mean_completion_min": 122.884
+          },
+          "long": {
+            "success_rate": 0.966,
+            "mean_completion_min": 131.764
+          }
+        },
+        "frozen_history": {
+          "all": {
+            "success_rate": 0.799,
+            "mean_completion_min": 118.6
+          },
+          "short": {
+            "success_rate": 0.788,
+            "mean_completion_min": 113.568
+          },
+          "long": {
+            "success_rate": 0.81,
+            "mean_completion_min": 123.632
+          }
+        },
+        "frozen_smoothed": {
+          "all": {
+            "success_rate": 0.817,
+            "mean_completion_min": 118.316
+          },
+          "short": {
+            "success_rate": 0.83,
+            "mean_completion_min": 113.416
+          },
+          "long": {
+            "success_rate": 0.804,
+            "mean_completion_min": 123.216
+          }
+        },
+        "independent_current": {
+          "all": {
+            "success_rate": 0.922,
+            "mean_completion_min": 124.562
+          },
+          "short": {
+            "success_rate": 0.928,
+            "mean_completion_min": 119.956
+          },
+          "long": {
+            "success_rate": 0.916,
+            "mean_completion_min": 129.168
+          }
+        },
+        "independent_history": {
+          "all": {
+            "success_rate": 0.873,
+            "mean_completion_min": 118.026
+          },
+          "short": {
+            "success_rate": 0.868,
+            "mean_completion_min": 112.236
+          },
+          "long": {
+            "success_rate": 0.878,
+            "mean_completion_min": 123.816
+          }
+        },
+        "independent_smoothed": {
+          "all": {
+            "success_rate": 0.924,
+            "mean_completion_min": 118.422
+          },
+          "short": {
+            "success_rate": 0.934,
+            "mean_completion_min": 113.088
+          },
+          "long": {
+            "success_rate": 0.914,
+            "mean_completion_min": 123.756
+          }
+        },
+        "ar1_history": {
+          "all": {
+            "success_rate": 0.905,
+            "mean_completion_min": 116.002
+          },
+          "short": {
+            "success_rate": 0.894,
+            "mean_completion_min": 110.372
+          },
+          "long": {
+            "success_rate": 0.916,
+            "mean_completion_min": 121.632
+          }
+        },
+        "ar1_true_history": {
+          "all": {
+            "success_rate": 0.906,
+            "mean_completion_min": 115.974
+          },
+          "short": {
+            "success_rate": 0.896,
+            "mean_completion_min": 110.296
+          },
+          "long": {
+            "success_rate": 0.916,
+            "mean_completion_min": 121.652
+          }
+        },
+        "fixed": {
+          "all": {
+            "success_rate": 0.904,
+            "mean_completion_min": 121.92
+          },
+          "short": {
+            "success_rate": 0.968,
+            "mean_completion_min": 120.64
+          },
+          "long": {
+            "success_rate": 0.84,
+            "mean_completion_min": 123.2
+          }
+        },
+        "conditioned": {
+          "all": {
+            "success_rate": 0.882,
+            "mean_completion_min": 118.736
+          },
+          "short": {
+            "success_rate": 0.898,
+            "mean_completion_min": 113.06
+          },
+          "long": {
+            "success_rate": 0.866,
+            "mean_completion_min": 124.412
+          }
+        }
+      },
+      "paired": {
+        "ar1_history-independent_history": {
+          "success": 0.032,
+          "completion": -2.024
+        },
+        "ar1_history-frozen_history": {
+          "success": 0.106,
+          "completion": -2.598
+        }
+      },
+      "median_ess_90min": {
+        "independent": 8.549949152864947,
+        "ar1": 159.75962786848652
+      }
+    },
+    "8": {
+      "r": 8,
+      "split_seed": 20261014,
+      "ar_seed": 20341009,
+      "estimated": {
+        "sigma": 0.004933683706664324,
+        "rho": 0.7944189866573337
+      },
+      "choices": {
+        "frozen": {
+          "current": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.906,
+              "mean_completion_min": 119.878,
+              "mean_wait_min": 96.352
+            }
+          },
+          "history": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.921,
+              "mean_completion_min": 114.2,
+              "mean_wait_min": 92.122
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.9,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.933,
+              "mean_completion_min": 113.626,
+              "mean_wait_min": 91.756
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "independent": {
+          "current": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.941,
+              "mean_completion_min": 123.604,
+              "mean_wait_min": 101.574
+            }
+          },
+          "history": {
+            "threshold": 0.99,
+            "target_reached": false,
+            "calibration": {
+              "success_rate": 0.881,
+              "mean_completion_min": 117.484,
+              "mean_wait_min": 93.578
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.923,
+              "mean_completion_min": 117.71,
+              "mean_wait_min": 95.288
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "ar1": {
+          "sigma": 0.004933683706664324,
+          "rho": 0.7944189866573337,
+          "threshold": 0.95,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.936,
+            "mean_completion_min": 117.204,
+            "mean_wait_min": 95.5
+          }
+        },
+        "ar1_true": {
+          "sigma": 0.005,
+          "rho": 0.8,
+          "threshold": 0.95,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.936,
+            "mean_completion_min": 117.294,
+            "mean_wait_min": 95.594
+          }
+        },
+        "conditioned": {
+          "waits_min": [
+            94.0,
+            100.0
+          ],
+          "target_reached": true
+        }
+      },
+      "rules": {
+        "frozen_current": {
+          "all": {
+            "success_rate": 0.927,
+            "mean_completion_min": 124.256
+          },
+          "short": {
+            "success_rate": 0.93,
+            "mean_completion_min": 120.424
+          },
+          "long": {
+            "success_rate": 0.924,
+            "mean_completion_min": 128.088
+          }
+        },
+        "frozen_history": {
+          "all": {
+            "success_rate": 0.833,
+            "mean_completion_min": 117.96
+          },
+          "short": {
+            "success_rate": 0.818,
+            "mean_completion_min": 113.12
+          },
+          "long": {
+            "success_rate": 0.848,
+            "mean_completion_min": 122.8
+          }
+        },
+        "frozen_smoothed": {
+          "all": {
+            "success_rate": 0.842,
+            "mean_completion_min": 117.53
+          },
+          "short": {
+            "success_rate": 0.864,
+            "mean_completion_min": 112.596
+          },
+          "long": {
+            "success_rate": 0.82,
+            "mean_completion_min": 122.464
+          }
+        },
+        "independent_current": {
+          "all": {
+            "success_rate": 0.925,
+            "mean_completion_min": 124.034
+          },
+          "short": {
+            "success_rate": 0.93,
+            "mean_completion_min": 120.064
+          },
+          "long": {
+            "success_rate": 0.92,
+            "mean_completion_min": 128.004
+          }
+        },
+        "independent_history": {
+          "all": {
+            "success_rate": 0.893,
+            "mean_completion_min": 117.814
+          },
+          "short": {
+            "success_rate": 0.89,
+            "mean_completion_min": 112.216
+          },
+          "long": {
+            "success_rate": 0.896,
+            "mean_completion_min": 123.412
+          }
+        },
+        "independent_smoothed": {
+          "all": {
+            "success_rate": 0.911,
+            "mean_completion_min": 118.142
+          },
+          "short": {
+            "success_rate": 0.924,
+            "mean_completion_min": 113.312
+          },
+          "long": {
+            "success_rate": 0.898,
+            "mean_completion_min": 122.972
+          }
+        },
+        "ar1_history": {
+          "all": {
+            "success_rate": 0.946,
+            "mean_completion_min": 117.26
+          },
+          "short": {
+            "success_rate": 0.946,
+            "mean_completion_min": 110.848
+          },
+          "long": {
+            "success_rate": 0.946,
+            "mean_completion_min": 123.672
+          }
+        },
+        "ar1_true_history": {
+          "all": {
+            "success_rate": 0.948,
+            "mean_completion_min": 117.294
+          },
+          "short": {
+            "success_rate": 0.948,
+            "mean_completion_min": 110.884
+          },
+          "long": {
+            "success_rate": 0.948,
+            "mean_completion_min": 123.704
+          }
+        },
+        "fixed": {
+          "all": {
+            "success_rate": 0.906,
+            "mean_completion_min": 121.88
+          },
+          "short": {
+            "success_rate": 0.97,
+            "mean_completion_min": 120.6
+          },
+          "long": {
+            "success_rate": 0.842,
+            "mean_completion_min": 123.16
+          }
+        },
+        "conditioned": {
+          "all": {
+            "success_rate": 0.894,
+            "mean_completion_min": 119.282
+          },
+          "short": {
+            "success_rate": 0.946,
+            "mean_completion_min": 115.404
+          },
+          "long": {
+            "success_rate": 0.842,
+            "mean_completion_min": 123.16
+          }
+        }
+      },
+      "paired": {
+        "ar1_history-independent_history": {
+          "success": 0.053,
+          "completion": -0.554
+        },
+        "ar1_history-frozen_history": {
+          "success": 0.113,
+          "completion": -0.7
+        }
+      },
+      "median_ess_90min": {
+        "independent": 9.326118380550689,
+        "ar1": 159.5614310833907
+      }
+    },
+    "9": {
+      "r": 9,
+      "split_seed": 20261015,
+      "ar_seed": 20351009,
+      "estimated": {
+        "sigma": 0.004975481234340169,
+        "rho": 0.7993032907066747
+      },
+      "choices": {
+        "frozen": {
+          "current": {
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.945,
+              "mean_completion_min": 121.822,
+              "mean_wait_min": 100.112
+            }
+          },
+          "history": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.925,
+              "mean_completion_min": 113.812,
+              "mean_wait_min": 91.806
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.9,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.92,
+              "mean_completion_min": 113.394,
+              "mean_wait_min": 91.396
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "independent": {
+          "current": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.929,
+              "mean_completion_min": 123.798,
+              "mean_wait_min": 101.334
+            }
+          },
+          "history": {
+            "threshold": 0.99,
+            "target_reached": false,
+            "calibration": {
+              "success_rate": 0.873,
+              "mean_completion_min": 117.776,
+              "mean_wait_min": 93.6
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.903,
+              "mean_completion_min": 118.18,
+              "mean_wait_min": 95.014
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "ar1": {
+          "sigma": 0.004975481234340169,
+          "rho": 0.7993032907066747,
+          "threshold": 0.95,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.93,
+            "mean_completion_min": 117.088,
+            "mean_wait_min": 95.218
+          }
+        },
+        "ar1_true": {
+          "sigma": 0.005,
+          "rho": 0.8,
+          "threshold": 0.95,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.93,
+            "mean_completion_min": 117.112,
+            "mean_wait_min": 95.248
+          }
+        },
+        "conditioned": {
+          "waits_min": [
+            92.0,
+            100.0
+          ],
+          "target_reached": true
+        }
+      },
+      "rules": {
+        "frozen_current": {
+          "all": {
+            "success_rate": 0.966,
+            "mean_completion_min": 127.118
+          },
+          "short": {
+            "success_rate": 0.98,
+            "mean_completion_min": 122.728
+          },
+          "long": {
+            "success_rate": 0.952,
+            "mean_completion_min": 131.508
+          }
+        },
+        "frozen_history": {
+          "all": {
+            "success_rate": 0.803,
+            "mean_completion_min": 118.62
+          },
+          "short": {
+            "success_rate": 0.79,
+            "mean_completion_min": 114.016
+          },
+          "long": {
+            "success_rate": 0.816,
+            "mean_completion_min": 123.224
+          }
+        },
+        "frozen_smoothed": {
+          "all": {
+            "success_rate": 0.816,
+            "mean_completion_min": 118.356
+          },
+          "short": {
+            "success_rate": 0.826,
+            "mean_completion_min": 113.776
+          },
+          "long": {
+            "success_rate": 0.806,
+            "mean_completion_min": 122.936
+          }
+        },
+        "independent_current": {
+          "all": {
+            "success_rate": 0.926,
+            "mean_completion_min": 124.362
+          },
+          "short": {
+            "success_rate": 0.932,
+            "mean_completion_min": 119.724
+          },
+          "long": {
+            "success_rate": 0.92,
+            "mean_completion_min": 129.0
+          }
+        },
+        "independent_history": {
+          "all": {
+            "success_rate": 0.876,
+            "mean_completion_min": 118.228
+          },
+          "short": {
+            "success_rate": 0.864,
+            "mean_completion_min": 113.04
+          },
+          "long": {
+            "success_rate": 0.888,
+            "mean_completion_min": 123.416
+          }
+        },
+        "independent_smoothed": {
+          "all": {
+            "success_rate": 0.918,
+            "mean_completion_min": 118.274
+          },
+          "short": {
+            "success_rate": 0.926,
+            "mean_completion_min": 113.36
+          },
+          "long": {
+            "success_rate": 0.91,
+            "mean_completion_min": 123.188
+          }
+        },
+        "ar1_history": {
+          "all": {
+            "success_rate": 0.938,
+            "mean_completion_min": 117.12
+          },
+          "short": {
+            "success_rate": 0.922,
+            "mean_completion_min": 110.904
+          },
+          "long": {
+            "success_rate": 0.954,
+            "mean_completion_min": 123.336
+          }
+        },
+        "ar1_true_history": {
+          "all": {
+            "success_rate": 0.938,
+            "mean_completion_min": 117.174
+          },
+          "short": {
+            "success_rate": 0.922,
+            "mean_completion_min": 110.952
+          },
+          "long": {
+            "success_rate": 0.954,
+            "mean_completion_min": 123.396
+          }
+        },
+        "fixed": {
+          "all": {
+            "success_rate": 0.903,
+            "mean_completion_min": 121.94
+          },
+          "short": {
+            "success_rate": 0.974,
+            "mean_completion_min": 120.52
+          },
+          "long": {
+            "success_rate": 0.832,
+            "mean_completion_min": 123.36
+          }
+        },
+        "conditioned": {
+          "all": {
+            "success_rate": 0.872,
+            "mean_completion_min": 118.912
+          },
+          "short": {
+            "success_rate": 0.912,
+            "mean_completion_min": 114.464
+          },
+          "long": {
+            "success_rate": 0.832,
+            "mean_completion_min": 123.36
+          }
+        }
+      },
+      "paired": {
+        "ar1_history-independent_history": {
+          "success": 0.062,
+          "completion": -1.108
+        },
+        "ar1_history-frozen_history": {
+          "success": 0.135,
+          "completion": -1.5
+        }
+      },
+      "median_ess_90min": {
+        "independent": 10.770013478750133,
+        "ar1": 165.12967962567984
+      }
+    },
+    "10": {
+      "r": 10,
+      "split_seed": 20261016,
+      "ar_seed": 20361009,
+      "estimated": {
+        "sigma": 0.005007443132941666,
+        "rho": 0.8023785891096521
+      },
+      "choices": {
+        "frozen": {
+          "current": {
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.955,
+              "mean_completion_min": 122.146,
+              "mean_wait_min": 100.858
+            }
+          },
+          "history": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.932,
+              "mean_completion_min": 113.776,
+              "mean_wait_min": 91.95
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.9,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.926,
+              "mean_completion_min": 113.358,
+              "mean_wait_min": 91.508
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "independent": {
+          "current": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.929,
+              "mean_completion_min": 124.118,
+              "mean_wait_min": 101.574
+            }
+          },
+          "history": {
+            "threshold": 0.99,
+            "target_reached": false,
+            "calibration": {
+              "success_rate": 0.869,
+              "mean_completion_min": 118.206,
+              "mean_wait_min": 93.974
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.91,
+              "mean_completion_min": 118.506,
+              "mean_wait_min": 95.752
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "ar1": {
+          "sigma": 0.005007443132941666,
+          "rho": 0.8023785891096521,
+          "threshold": 0.95,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.932,
+            "mean_completion_min": 117.688,
+            "mean_wait_min": 96.008
+          }
+        },
+        "ar1_true": {
+          "sigma": 0.005,
+          "rho": 0.8,
+          "threshold": 0.95,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.932,
+            "mean_completion_min": 117.674,
+            "mean_wait_min": 95.99
+          }
+        },
+        "conditioned": {
+          "waits_min": [
+            92.0,
+            102.0
+          ],
+          "target_reached": true
+        }
+      },
+      "rules": {
+        "frozen_current": {
+          "all": {
+            "success_rate": 0.96,
+            "mean_completion_min": 126.964
+          },
+          "short": {
+            "success_rate": 0.962,
+            "mean_completion_min": 122.84
+          },
+          "long": {
+            "success_rate": 0.958,
+            "mean_completion_min": 131.088
+          }
+        },
+        "frozen_history": {
+          "all": {
+            "success_rate": 0.792,
+            "mean_completion_min": 118.698
+          },
+          "short": {
+            "success_rate": 0.768,
+            "mean_completion_min": 114.116
+          },
+          "long": {
+            "success_rate": 0.816,
+            "mean_completion_min": 123.28
+          }
+        },
+        "frozen_smoothed": {
+          "all": {
+            "success_rate": 0.824,
+            "mean_completion_min": 118.114
+          },
+          "short": {
+            "success_rate": 0.818,
+            "mean_completion_min": 113.624
+          },
+          "long": {
+            "success_rate": 0.83,
+            "mean_completion_min": 122.604
+          }
+        },
+        "independent_current": {
+          "all": {
+            "success_rate": 0.925,
+            "mean_completion_min": 124.77
+          },
+          "short": {
+            "success_rate": 0.926,
+            "mean_completion_min": 120.348
+          },
+          "long": {
+            "success_rate": 0.924,
+            "mean_completion_min": 129.192
+          }
+        },
+        "independent_history": {
+          "all": {
+            "success_rate": 0.859,
+            "mean_completion_min": 118.792
+          },
+          "short": {
+            "success_rate": 0.848,
+            "mean_completion_min": 113.272
+          },
+          "long": {
+            "success_rate": 0.87,
+            "mean_completion_min": 124.312
+          }
+        },
+        "independent_smoothed": {
+          "all": {
+            "success_rate": 0.909,
+            "mean_completion_min": 118.856
+          },
+          "short": {
+            "success_rate": 0.904,
+            "mean_completion_min": 113.944
+          },
+          "long": {
+            "success_rate": 0.914,
+            "mean_completion_min": 123.768
+          }
+        },
+        "ar1_history": {
+          "all": {
+            "success_rate": 0.937,
+            "mean_completion_min": 117.744
+          },
+          "short": {
+            "success_rate": 0.932,
+            "mean_completion_min": 111.344
+          },
+          "long": {
+            "success_rate": 0.942,
+            "mean_completion_min": 124.144
+          }
+        },
+        "ar1_true_history": {
+          "all": {
+            "success_rate": 0.937,
+            "mean_completion_min": 117.734
+          },
+          "short": {
+            "success_rate": 0.932,
+            "mean_completion_min": 111.348
+          },
+          "long": {
+            "success_rate": 0.942,
+            "mean_completion_min": 124.12
+          }
+        },
+        "fixed": {
+          "all": {
+            "success_rate": 0.909,
+            "mean_completion_min": 121.82
+          },
+          "short": {
+            "success_rate": 0.978,
+            "mean_completion_min": 120.44
+          },
+          "long": {
+            "success_rate": 0.84,
+            "mean_completion_min": 123.2
+          }
+        },
+        "conditioned": {
+          "all": {
+            "success_rate": 0.9,
+            "mean_completion_min": 119.13
+          },
+          "short": {
+            "success_rate": 0.934,
+            "mean_completion_min": 113.848
+          },
+          "long": {
+            "success_rate": 0.866,
+            "mean_completion_min": 124.412
+          }
+        }
+      },
+      "paired": {
+        "ar1_history-independent_history": {
+          "success": 0.078,
+          "completion": -1.048
+        },
+        "ar1_history-frozen_history": {
+          "success": 0.145,
+          "completion": -0.954
+        }
+      },
+      "median_ess_90min": {
+        "independent": 9.194882232917628,
+        "ar1": 167.2332715349197
+      }
+    },
+    "11": {
+      "r": 11,
+      "split_seed": 20261017,
+      "ar_seed": 20371009,
+      "estimated": {
+        "sigma": 0.004952605507802058,
+        "rho": 0.7946555471381822
+      },
+      "choices": {
+        "frozen": {
+          "current": {
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.957,
+              "mean_completion_min": 122.198,
+              "mean_wait_min": 100.95
+            }
+          },
+          "history": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.919,
+              "mean_completion_min": 114.59,
+              "mean_wait_min": 92.386
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.9,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.913,
+              "mean_completion_min": 114.228,
+              "mean_wait_min": 91.94
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "independent": {
+          "current": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.934,
+              "mean_completion_min": 123.882,
+              "mean_wait_min": 101.518
+            }
+          },
+          "history": {
+            "threshold": 0.99,
+            "target_reached": false,
+            "calibration": {
+              "success_rate": 0.889,
+              "mean_completion_min": 117.674,
+              "mean_wait_min": 93.964
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.915,
+              "mean_completion_min": 118.168,
+              "mean_wait_min": 95.598
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "ar1": {
+          "sigma": 0.004952605507802058,
+          "rho": 0.7946555471381822,
+          "threshold": 0.9,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.9,
+            "mean_completion_min": 116.224,
+            "mean_wait_min": 93.386
+          }
+        },
+        "ar1_true": {
+          "sigma": 0.005,
+          "rho": 0.8,
+          "threshold": 0.9,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.902,
+            "mean_completion_min": 116.242,
+            "mean_wait_min": 93.472
+          }
+        },
+        "conditioned": {
+          "waits_min": [
+            94.0,
+            102.0
+          ],
+          "target_reached": true
+        }
+      },
+      "rules": {
+        "frozen_current": {
+          "all": {
+            "success_rate": 0.972,
+            "mean_completion_min": 127.32
+          },
+          "short": {
+            "success_rate": 0.986,
+            "mean_completion_min": 122.628
+          },
+          "long": {
+            "success_rate": 0.958,
+            "mean_completion_min": 132.012
+          }
+        },
+        "frozen_history": {
+          "all": {
+            "success_rate": 0.853,
+            "mean_completion_min": 116.796
+          },
+          "short": {
+            "success_rate": 0.85,
+            "mean_completion_min": 111.3
+          },
+          "long": {
+            "success_rate": 0.856,
+            "mean_completion_min": 122.292
+          }
+        },
+        "frozen_smoothed": {
+          "all": {
+            "success_rate": 0.852,
+            "mean_completion_min": 117.086
+          },
+          "short": {
+            "success_rate": 0.876,
+            "mean_completion_min": 111.688
+          },
+          "long": {
+            "success_rate": 0.828,
+            "mean_completion_min": 122.484
+          }
+        },
+        "independent_current": {
+          "all": {
+            "success_rate": 0.941,
+            "mean_completion_min": 124.024
+          },
+          "short": {
+            "success_rate": 0.958,
+            "mean_completion_min": 119.184
+          },
+          "long": {
+            "success_rate": 0.924,
+            "mean_completion_min": 128.864
+          }
+        },
+        "independent_history": {
+          "all": {
+            "success_rate": 0.905,
+            "mean_completion_min": 117.074
+          },
+          "short": {
+            "success_rate": 0.904,
+            "mean_completion_min": 111.088
+          },
+          "long": {
+            "success_rate": 0.906,
+            "mean_completion_min": 123.06
+          }
+        },
+        "independent_smoothed": {
+          "all": {
+            "success_rate": 0.935,
+            "mean_completion_min": 117.794
+          },
+          "short": {
+            "success_rate": 0.944,
+            "mean_completion_min": 112.624
+          },
+          "long": {
+            "success_rate": 0.926,
+            "mean_completion_min": 122.964
+          }
+        },
+        "ar1_history": {
+          "all": {
+            "success_rate": 0.918,
+            "mean_completion_min": 115.614
+          },
+          "short": {
+            "success_rate": 0.91,
+            "mean_completion_min": 109.512
+          },
+          "long": {
+            "success_rate": 0.926,
+            "mean_completion_min": 121.716
+          }
+        },
+        "ar1_true_history": {
+          "all": {
+            "success_rate": 0.917,
+            "mean_completion_min": 115.696
+          },
+          "short": {
+            "success_rate": 0.908,
+            "mean_completion_min": 109.624
+          },
+          "long": {
+            "success_rate": 0.926,
+            "mean_completion_min": 121.768
+          }
+        },
+        "fixed": {
+          "all": {
+            "success_rate": 0.914,
+            "mean_completion_min": 121.72
+          },
+          "short": {
+            "success_rate": 0.972,
+            "mean_completion_min": 120.56
+          },
+          "long": {
+            "success_rate": 0.856,
+            "mean_completion_min": 122.88
+          }
+        },
+        "conditioned": {
+          "all": {
+            "success_rate": 0.92,
+            "mean_completion_min": 119.616
+          },
+          "short": {
+            "success_rate": 0.956,
+            "mean_completion_min": 115.144
+          },
+          "long": {
+            "success_rate": 0.884,
+            "mean_completion_min": 124.088
+          }
+        }
+      },
+      "paired": {
+        "ar1_history-independent_history": {
+          "success": 0.013,
+          "completion": -1.46
+        },
+        "ar1_history-frozen_history": {
+          "success": 0.065,
+          "completion": -1.182
+        }
+      },
+      "median_ess_90min": {
+        "independent": 10.826279810631197,
+        "ar1": 165.54563593121156
+      }
+    },
+    "12": {
+      "r": 12,
+      "split_seed": 20261018,
+      "ar_seed": 20381009,
+      "estimated": {
+        "sigma": 0.004959136399722734,
+        "rho": 0.7955267834159185
+      },
+      "choices": {
+        "frozen": {
+          "current": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.903,
+              "mean_completion_min": 120.42,
+              "mean_wait_min": 96.948
+            }
+          },
+          "history": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.921,
+              "mean_completion_min": 114.598,
+              "mean_wait_min": 92.508
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.9,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.924,
+              "mean_completion_min": 114.178,
+              "mean_wait_min": 92.306
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "independent": {
+          "current": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.923,
+              "mean_completion_min": 124.114,
+              "mean_wait_min": 101.386
+            }
+          },
+          "history": {
+            "threshold": 0.99,
+            "target_reached": false,
+            "calibration": {
+              "success_rate": 0.886,
+              "mean_completion_min": 117.366,
+              "mean_wait_min": 93.95
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.922,
+              "mean_completion_min": 118.27,
+              "mean_wait_min": 96.064
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "ar1": {
+          "sigma": 0.004959136399722734,
+          "rho": 0.7955267834159185,
+          "threshold": 0.95,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.933,
+            "mean_completion_min": 117.124,
+            "mean_wait_min": 95.576
+          }
+        },
+        "ar1_true": {
+          "sigma": 0.005,
+          "rho": 0.8,
+          "threshold": 0.95,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.934,
+            "mean_completion_min": 117.218,
+            "mean_wait_min": 95.696
+          }
+        },
+        "conditioned": {
+          "waits_min": [
+            94.0,
+            100.0
+          ],
+          "target_reached": true
+        }
+      },
+      "rules": {
+        "frozen_current": {
+          "all": {
+            "success_rate": 0.944,
+            "mean_completion_min": 124.308
+          },
+          "short": {
+            "success_rate": 0.95,
+            "mean_completion_min": 120.0
+          },
+          "long": {
+            "success_rate": 0.938,
+            "mean_completion_min": 128.616
+          }
+        },
+        "frozen_history": {
+          "all": {
+            "success_rate": 0.84,
+            "mean_completion_min": 117.236
+          },
+          "short": {
+            "success_rate": 0.806,
+            "mean_completion_min": 112.676
+          },
+          "long": {
+            "success_rate": 0.874,
+            "mean_completion_min": 121.796
+          }
+        },
+        "frozen_smoothed": {
+          "all": {
+            "success_rate": 0.86,
+            "mean_completion_min": 116.922
+          },
+          "short": {
+            "success_rate": 0.862,
+            "mean_completion_min": 112.424
+          },
+          "long": {
+            "success_rate": 0.858,
+            "mean_completion_min": 121.42
+          }
+        },
+        "independent_current": {
+          "all": {
+            "success_rate": 0.939,
+            "mean_completion_min": 124.214
+          },
+          "short": {
+            "success_rate": 0.94,
+            "mean_completion_min": 120.072
+          },
+          "long": {
+            "success_rate": 0.938,
+            "mean_completion_min": 128.356
+          }
+        },
+        "independent_history": {
+          "all": {
+            "success_rate": 0.898,
+            "mean_completion_min": 117.602
+          },
+          "short": {
+            "success_rate": 0.872,
+            "mean_completion_min": 112.28
+          },
+          "long": {
+            "success_rate": 0.924,
+            "mean_completion_min": 122.924
+          }
+        },
+        "independent_smoothed": {
+          "all": {
+            "success_rate": 0.938,
+            "mean_completion_min": 118.01
+          },
+          "short": {
+            "success_rate": 0.938,
+            "mean_completion_min": 113.188
+          },
+          "long": {
+            "success_rate": 0.938,
+            "mean_completion_min": 122.832
+          }
+        },
+        "ar1_history": {
+          "all": {
+            "success_rate": 0.941,
+            "mean_completion_min": 117.374
+          },
+          "short": {
+            "success_rate": 0.936,
+            "mean_completion_min": 111.08
+          },
+          "long": {
+            "success_rate": 0.946,
+            "mean_completion_min": 123.668
+          }
+        },
+        "ar1_true_history": {
+          "all": {
+            "success_rate": 0.944,
+            "mean_completion_min": 117.336
+          },
+          "short": {
+            "success_rate": 0.938,
+            "mean_completion_min": 111.012
+          },
+          "long": {
+            "success_rate": 0.95,
+            "mean_completion_min": 123.66
+          }
+        },
+        "fixed": {
+          "all": {
+            "success_rate": 0.913,
+            "mean_completion_min": 121.74
+          },
+          "short": {
+            "success_rate": 0.98,
+            "mean_completion_min": 120.4
+          },
+          "long": {
+            "success_rate": 0.846,
+            "mean_completion_min": 123.08
+          }
+        },
+        "conditioned": {
+          "all": {
+            "success_rate": 0.903,
+            "mean_completion_min": 119.06
+          },
+          "short": {
+            "success_rate": 0.96,
+            "mean_completion_min": 115.04
+          },
+          "long": {
+            "success_rate": 0.846,
+            "mean_completion_min": 123.08
+          }
+        }
+      },
+      "paired": {
+        "ar1_history-independent_history": {
+          "success": 0.043,
+          "completion": -0.228
+        },
+        "ar1_history-frozen_history": {
+          "success": 0.101,
+          "completion": 0.138
+        }
+      },
+      "median_ess_90min": {
+        "independent": 9.491693328477847,
+        "ar1": 162.47436130597004
+      }
+    },
+    "13": {
+      "r": 13,
+      "split_seed": 20261019,
+      "ar_seed": 20391009,
+      "estimated": {
+        "sigma": 0.005028046534772331,
+        "rho": 0.8009570599044745
+      },
+      "choices": {
+        "frozen": {
+          "current": {
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.956,
+              "mean_completion_min": 122.606,
+              "mean_wait_min": 101.114
+            }
+          },
+          "history": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.926,
+              "mean_completion_min": 114.428,
+              "mean_wait_min": 92.428
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.9,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.932,
+              "mean_completion_min": 113.654,
+              "mean_wait_min": 91.928
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "independent": {
+          "current": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.935,
+              "mean_completion_min": 124.548,
+              "mean_wait_min": 101.954
+            }
+          },
+          "history": {
+            "threshold": 0.99,
+            "target_reached": false,
+            "calibration": {
+              "success_rate": 0.888,
+              "mean_completion_min": 117.922,
+              "mean_wait_min": 94.066
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.918,
+              "mean_completion_min": 118.718,
+              "mean_wait_min": 96.004
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "ar1": {
+          "sigma": 0.005028046534772331,
+          "rho": 0.8009570599044745,
+          "threshold": 0.9,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.914,
+            "mean_completion_min": 115.854,
+            "mean_wait_min": 93.292
+          }
+        },
+        "ar1_true": {
+          "sigma": 0.005,
+          "rho": 0.8,
+          "threshold": 0.9,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.914,
+            "mean_completion_min": 115.796,
+            "mean_wait_min": 93.234
+          }
+        },
+        "conditioned": {
+          "waits_min": [
+            94.0,
+            102.0
+          ],
+          "target_reached": true
+        }
+      },
+      "rules": {
+        "frozen_current": {
+          "all": {
+            "success_rate": 0.959,
+            "mean_completion_min": 127.678
+          },
+          "short": {
+            "success_rate": 0.962,
+            "mean_completion_min": 123.956
+          },
+          "long": {
+            "success_rate": 0.956,
+            "mean_completion_min": 131.4
+          }
+        },
+        "frozen_history": {
+          "all": {
+            "success_rate": 0.777,
+            "mean_completion_min": 118.592
+          },
+          "short": {
+            "success_rate": 0.768,
+            "mean_completion_min": 113.692
+          },
+          "long": {
+            "success_rate": 0.786,
+            "mean_completion_min": 123.492
+          }
+        },
+        "frozen_smoothed": {
+          "all": {
+            "success_rate": 0.8,
+            "mean_completion_min": 118.492
+          },
+          "short": {
+            "success_rate": 0.814,
+            "mean_completion_min": 113.688
+          },
+          "long": {
+            "success_rate": 0.786,
+            "mean_completion_min": 123.296
+          }
+        },
+        "independent_current": {
+          "all": {
+            "success_rate": 0.922,
+            "mean_completion_min": 124.87
+          },
+          "short": {
+            "success_rate": 0.912,
+            "mean_completion_min": 120.852
+          },
+          "long": {
+            "success_rate": 0.932,
+            "mean_completion_min": 128.888
+          }
+        },
+        "independent_history": {
+          "all": {
+            "success_rate": 0.866,
+            "mean_completion_min": 118.112
+          },
+          "short": {
+            "success_rate": 0.85,
+            "mean_completion_min": 112.96
+          },
+          "long": {
+            "success_rate": 0.882,
+            "mean_completion_min": 123.264
+          }
+        },
+        "independent_smoothed": {
+          "all": {
+            "success_rate": 0.913,
+            "mean_completion_min": 118.492
+          },
+          "short": {
+            "success_rate": 0.918,
+            "mean_completion_min": 113.608
+          },
+          "long": {
+            "success_rate": 0.908,
+            "mean_completion_min": 123.376
+          }
+        },
+        "ar1_history": {
+          "all": {
+            "success_rate": 0.887,
+            "mean_completion_min": 116.428
+          },
+          "short": {
+            "success_rate": 0.87,
+            "mean_completion_min": 111.128
+          },
+          "long": {
+            "success_rate": 0.904,
+            "mean_completion_min": 121.728
+          }
+        },
+        "ar1_true_history": {
+          "all": {
+            "success_rate": 0.886,
+            "mean_completion_min": 116.436
+          },
+          "short": {
+            "success_rate": 0.87,
+            "mean_completion_min": 111.104
+          },
+          "long": {
+            "success_rate": 0.902,
+            "mean_completion_min": 121.768
+          }
+        },
+        "fixed": {
+          "all": {
+            "success_rate": 0.914,
+            "mean_completion_min": 121.72
+          },
+          "short": {
+            "success_rate": 0.976,
+            "mean_completion_min": 120.48
+          },
+          "long": {
+            "success_rate": 0.852,
+            "mean_completion_min": 122.96
+          }
+        },
+        "conditioned": {
+          "all": {
+            "success_rate": 0.921,
+            "mean_completion_min": 119.582
+          },
+          "short": {
+            "success_rate": 0.96,
+            "mean_completion_min": 115.04
+          },
+          "long": {
+            "success_rate": 0.882,
+            "mean_completion_min": 124.124
+          }
+        }
+      },
+      "paired": {
+        "ar1_history-independent_history": {
+          "success": 0.021,
+          "completion": -1.684
+        },
+        "ar1_history-frozen_history": {
+          "success": 0.11,
+          "completion": -2.164
+        }
+      },
+      "median_ess_90min": {
+        "independent": 9.359501547699423,
+        "ar1": 166.95388546832203
+      }
+    },
+    "14": {
+      "r": 14,
+      "split_seed": 20261020,
+      "ar_seed": 20401009,
+      "estimated": {
+        "sigma": 0.004967246394870685,
+        "rho": 0.7983193225290273
+      },
+      "choices": {
+        "frozen": {
+          "current": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.904,
+              "mean_completion_min": 119.844,
+              "mean_wait_min": 96.384
+            }
+          },
+          "history": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.925,
+              "mean_completion_min": 114.188,
+              "mean_wait_min": 92.118
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.9,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.913,
+              "mean_completion_min": 114.226,
+              "mean_wait_min": 91.886
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "independent": {
+          "current": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.923,
+              "mean_completion_min": 123.93,
+              "mean_wait_min": 101.24
+            }
+          },
+          "history": {
+            "threshold": 0.99,
+            "target_reached": false,
+            "calibration": {
+              "success_rate": 0.89,
+              "mean_completion_min": 117.532,
+              "mean_wait_min": 93.938
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.92,
+              "mean_completion_min": 118.168,
+              "mean_wait_min": 95.796
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "ar1": {
+          "sigma": 0.004967246394870685,
+          "rho": 0.7983193225290273,
+          "threshold": 0.9,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.905,
+            "mean_completion_min": 115.71,
+            "mean_wait_min": 93.148
+          }
+        },
+        "ar1_true": {
+          "sigma": 0.005,
+          "rho": 0.8,
+          "threshold": 0.9,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.907,
+            "mean_completion_min": 115.712,
+            "mean_wait_min": 93.202
+          }
+        },
+        "conditioned": {
+          "waits_min": [
+            92.0,
+            100.0
+          ],
+          "target_reached": true
+        }
+      },
+      "rules": {
+        "frozen_current": {
+          "all": {
+            "success_rate": 0.931,
+            "mean_completion_min": 124.022
+          },
+          "short": {
+            "success_rate": 0.932,
+            "mean_completion_min": 119.444
+          },
+          "long": {
+            "success_rate": 0.93,
+            "mean_completion_min": 128.6
+          }
+        },
+        "frozen_history": {
+          "all": {
+            "success_rate": 0.82,
+            "mean_completion_min": 117.834
+          },
+          "short": {
+            "success_rate": 0.808,
+            "mean_completion_min": 113.316
+          },
+          "long": {
+            "success_rate": 0.832,
+            "mean_completion_min": 122.352
+          }
+        },
+        "frozen_smoothed": {
+          "all": {
+            "success_rate": 0.838,
+            "mean_completion_min": 117.994
+          },
+          "short": {
+            "success_rate": 0.836,
+            "mean_completion_min": 113.572
+          },
+          "long": {
+            "success_rate": 0.84,
+            "mean_completion_min": 122.416
+          }
+        },
+        "independent_current": {
+          "all": {
+            "success_rate": 0.928,
+            "mean_completion_min": 123.898
+          },
+          "short": {
+            "success_rate": 0.928,
+            "mean_completion_min": 119.296
+          },
+          "long": {
+            "success_rate": 0.928,
+            "mean_completion_min": 128.5
+          }
+        },
+        "independent_history": {
+          "all": {
+            "success_rate": 0.881,
+            "mean_completion_min": 118.028
+          },
+          "short": {
+            "success_rate": 0.866,
+            "mean_completion_min": 112.984
+          },
+          "long": {
+            "success_rate": 0.896,
+            "mean_completion_min": 123.072
+          }
+        },
+        "independent_smoothed": {
+          "all": {
+            "success_rate": 0.913,
+            "mean_completion_min": 118.602
+          },
+          "short": {
+            "success_rate": 0.912,
+            "mean_completion_min": 113.94
+          },
+          "long": {
+            "success_rate": 0.914,
+            "mean_completion_min": 123.264
+          }
+        },
+        "ar1_history": {
+          "all": {
+            "success_rate": 0.894,
+            "mean_completion_min": 116.356
+          },
+          "short": {
+            "success_rate": 0.872,
+            "mean_completion_min": 110.908
+          },
+          "long": {
+            "success_rate": 0.916,
+            "mean_completion_min": 121.804
+          }
+        },
+        "ar1_true_history": {
+          "all": {
+            "success_rate": 0.895,
+            "mean_completion_min": 116.35
+          },
+          "short": {
+            "success_rate": 0.874,
+            "mean_completion_min": 110.848
+          },
+          "long": {
+            "success_rate": 0.916,
+            "mean_completion_min": 121.852
+          }
+        },
+        "fixed": {
+          "all": {
+            "success_rate": 0.903,
+            "mean_completion_min": 121.94
+          },
+          "short": {
+            "success_rate": 0.978,
+            "mean_completion_min": 120.44
+          },
+          "long": {
+            "success_rate": 0.828,
+            "mean_completion_min": 123.44
+          }
+        },
+        "conditioned": {
+          "all": {
+            "success_rate": 0.877,
+            "mean_completion_min": 118.756
+          },
+          "short": {
+            "success_rate": 0.926,
+            "mean_completion_min": 114.072
+          },
+          "long": {
+            "success_rate": 0.828,
+            "mean_completion_min": 123.44
+          }
+        }
+      },
+      "paired": {
+        "ar1_history-independent_history": {
+          "success": 0.013,
+          "completion": -1.672
+        },
+        "ar1_history-frozen_history": {
+          "success": 0.074,
+          "completion": -1.478
+        }
+      },
+      "median_ess_90min": {
+        "independent": 8.636040681689451,
+        "ar1": 164.4795994607233
+      }
+    },
+    "15": {
+      "r": 15,
+      "split_seed": 20261021,
+      "ar_seed": 20411009,
+      "estimated": {
+        "sigma": 0.00497448699379789,
+        "rho": 0.7996783763985549
+      },
+      "choices": {
+        "frozen": {
+          "current": {
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.941,
+              "mean_completion_min": 122.16,
+              "mean_wait_min": 100.106
+            }
+          },
+          "history": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.909,
+              "mean_completion_min": 114.254,
+              "mean_wait_min": 91.592
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.9,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.921,
+              "mean_completion_min": 113.478,
+              "mean_wait_min": 91.346
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "independent": {
+          "current": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.928,
+              "mean_completion_min": 123.908,
+              "mean_wait_min": 101.18
+            }
+          },
+          "history": {
+            "threshold": 0.99,
+            "target_reached": false,
+            "calibration": {
+              "success_rate": 0.889,
+              "mean_completion_min": 116.968,
+              "mean_wait_min": 93.438
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.918,
+              "mean_completion_min": 117.886,
+              "mean_wait_min": 95.434
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "ar1": {
+          "sigma": 0.00497448699379789,
+          "rho": 0.7996783763985549,
+          "threshold": 0.9,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.91,
+            "mean_completion_min": 115.238,
+            "mean_wait_min": 92.758
+          }
+        },
+        "ar1_true": {
+          "sigma": 0.005,
+          "rho": 0.8,
+          "threshold": 0.9,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.912,
+            "mean_completion_min": 115.212,
+            "mean_wait_min": 92.79
+          }
+        },
+        "conditioned": {
+          "waits_min": [
+            90.0,
+            102.0
+          ],
+          "target_reached": true
+        }
+      },
+      "rules": {
+        "frozen_current": {
+          "all": {
+            "success_rate": 0.959,
+            "mean_completion_min": 127.202
+          },
+          "short": {
+            "success_rate": 0.96,
+            "mean_completion_min": 123.352
+          },
+          "long": {
+            "success_rate": 0.958,
+            "mean_completion_min": 131.052
+          }
+        },
+        "frozen_history": {
+          "all": {
+            "success_rate": 0.802,
+            "mean_completion_min": 118.202
+          },
+          "short": {
+            "success_rate": 0.79,
+            "mean_completion_min": 113.512
+          },
+          "long": {
+            "success_rate": 0.814,
+            "mean_completion_min": 122.892
+          }
+        },
+        "frozen_smoothed": {
+          "all": {
+            "success_rate": 0.816,
+            "mean_completion_min": 117.702
+          },
+          "short": {
+            "success_rate": 0.836,
+            "mean_completion_min": 112.908
+          },
+          "long": {
+            "success_rate": 0.796,
+            "mean_completion_min": 122.496
+          }
+        },
+        "independent_current": {
+          "all": {
+            "success_rate": 0.915,
+            "mean_completion_min": 124.298
+          },
+          "short": {
+            "success_rate": 0.916,
+            "mean_completion_min": 120.332
+          },
+          "long": {
+            "success_rate": 0.914,
+            "mean_completion_min": 128.264
+          }
+        },
+        "independent_history": {
+          "all": {
+            "success_rate": 0.868,
+            "mean_completion_min": 118.082
+          },
+          "short": {
+            "success_rate": 0.856,
+            "mean_completion_min": 112.78
+          },
+          "long": {
+            "success_rate": 0.88,
+            "mean_completion_min": 123.384
+          }
+        },
+        "independent_smoothed": {
+          "all": {
+            "success_rate": 0.905,
+            "mean_completion_min": 118.476
+          },
+          "short": {
+            "success_rate": 0.908,
+            "mean_completion_min": 113.884
+          },
+          "long": {
+            "success_rate": 0.902,
+            "mean_completion_min": 123.068
+          }
+        },
+        "ar1_history": {
+          "all": {
+            "success_rate": 0.878,
+            "mean_completion_min": 116.454
+          },
+          "short": {
+            "success_rate": 0.86,
+            "mean_completion_min": 111.04
+          },
+          "long": {
+            "success_rate": 0.896,
+            "mean_completion_min": 121.868
+          }
+        },
+        "ar1_true_history": {
+          "all": {
+            "success_rate": 0.878,
+            "mean_completion_min": 116.472
+          },
+          "short": {
+            "success_rate": 0.86,
+            "mean_completion_min": 111.06
+          },
+          "long": {
+            "success_rate": 0.896,
+            "mean_completion_min": 121.884
+          }
+        },
+        "fixed": {
+          "all": {
+            "success_rate": 0.911,
+            "mean_completion_min": 121.78
+          },
+          "short": {
+            "success_rate": 0.972,
+            "mean_completion_min": 120.56
+          },
+          "long": {
+            "success_rate": 0.85,
+            "mean_completion_min": 123.0
+          }
+        },
+        "conditioned": {
+          "all": {
+            "success_rate": 0.881,
+            "mean_completion_min": 118.766
+          },
+          "short": {
+            "success_rate": 0.896,
+            "mean_completion_min": 113.12
+          },
+          "long": {
+            "success_rate": 0.866,
+            "mean_completion_min": 124.412
+          }
+        }
+      },
+      "paired": {
+        "ar1_history-independent_history": {
+          "success": 0.01,
+          "completion": -1.628
+        },
+        "ar1_history-frozen_history": {
+          "success": 0.076,
+          "completion": -1.748
+        }
+      },
+      "median_ess_90min": {
+        "independent": 9.684507202753126,
+        "ar1": 171.57600869348727
+      }
+    },
+    "16": {
+      "r": 16,
+      "split_seed": 20261022,
+      "ar_seed": 20421009,
+      "estimated": {
+        "sigma": 0.004996135099648517,
+        "rho": 0.8013307833942744
+      },
+      "choices": {
+        "frozen": {
+          "current": {
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.949,
+              "mean_completion_min": 122.902,
+              "mean_wait_min": 101.11
+            }
+          },
+          "history": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.916,
+              "mean_completion_min": 114.362,
+              "mean_wait_min": 91.968
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.9,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.919,
+              "mean_completion_min": 113.966,
+              "mean_wait_min": 91.826
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "independent": {
+          "current": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.927,
+              "mean_completion_min": 124.114,
+              "mean_wait_min": 101.396
+            }
+          },
+          "history": {
+            "threshold": 0.99,
+            "target_reached": false,
+            "calibration": {
+              "success_rate": 0.867,
+              "mean_completion_min": 118.492,
+              "mean_wait_min": 94.004
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.919,
+              "mean_completion_min": 118.548,
+              "mean_wait_min": 95.994
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "ar1": {
+          "sigma": 0.004996135099648517,
+          "rho": 0.8013307833942744,
+          "threshold": 0.9,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.902,
+            "mean_completion_min": 115.578,
+            "mean_wait_min": 92.988
+          }
+        },
+        "ar1_true": {
+          "sigma": 0.005,
+          "rho": 0.8,
+          "threshold": 0.9,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.902,
+            "mean_completion_min": 115.576,
+            "mean_wait_min": 92.986
+          }
+        },
+        "conditioned": {
+          "waits_min": [
+            92.0,
+            100.0
+          ],
+          "target_reached": true
+        }
+      },
+      "rules": {
+        "frozen_current": {
+          "all": {
+            "success_rate": 0.968,
+            "mean_completion_min": 127.424
+          },
+          "short": {
+            "success_rate": 0.97,
+            "mean_completion_min": 123.56
+          },
+          "long": {
+            "success_rate": 0.966,
+            "mean_completion_min": 131.288
+          }
+        },
+        "frozen_history": {
+          "all": {
+            "success_rate": 0.797,
+            "mean_completion_min": 118.416
+          },
+          "short": {
+            "success_rate": 0.788,
+            "mean_completion_min": 113.324
+          },
+          "long": {
+            "success_rate": 0.806,
+            "mean_completion_min": 123.508
+          }
+        },
+        "frozen_smoothed": {
+          "all": {
+            "success_rate": 0.825,
+            "mean_completion_min": 117.892
+          },
+          "short": {
+            "success_rate": 0.848,
+            "mean_completion_min": 113.136
+          },
+          "long": {
+            "success_rate": 0.802,
+            "mean_completion_min": 122.648
+          }
+        },
+        "independent_current": {
+          "all": {
+            "success_rate": 0.933,
+            "mean_completion_min": 124.214
+          },
+          "short": {
+            "success_rate": 0.928,
+            "mean_completion_min": 119.76
+          },
+          "long": {
+            "success_rate": 0.938,
+            "mean_completion_min": 128.668
+          }
+        },
+        "independent_history": {
+          "all": {
+            "success_rate": 0.869,
+            "mean_completion_min": 118.514
+          },
+          "short": {
+            "success_rate": 0.856,
+            "mean_completion_min": 112.848
+          },
+          "long": {
+            "success_rate": 0.882,
+            "mean_completion_min": 124.18
+          }
+        },
+        "independent_smoothed": {
+          "all": {
+            "success_rate": 0.92,
+            "mean_completion_min": 118.532
+          },
+          "short": {
+            "success_rate": 0.932,
+            "mean_completion_min": 113.644
+          },
+          "long": {
+            "success_rate": 0.908,
+            "mean_completion_min": 123.42
+          }
+        },
+        "ar1_history": {
+          "all": {
+            "success_rate": 0.886,
+            "mean_completion_min": 115.98
+          },
+          "short": {
+            "success_rate": 0.872,
+            "mean_completion_min": 110.164
+          },
+          "long": {
+            "success_rate": 0.9,
+            "mean_completion_min": 121.796
+          }
+        },
+        "ar1_true_history": {
+          "all": {
+            "success_rate": 0.886,
+            "mean_completion_min": 115.97
+          },
+          "short": {
+            "success_rate": 0.872,
+            "mean_completion_min": 110.152
+          },
+          "long": {
+            "success_rate": 0.9,
+            "mean_completion_min": 121.788
+          }
+        },
+        "fixed": {
+          "all": {
+            "success_rate": 0.903,
+            "mean_completion_min": 121.94
+          },
+          "short": {
+            "success_rate": 0.974,
+            "mean_completion_min": 120.52
+          },
+          "long": {
+            "success_rate": 0.832,
+            "mean_completion_min": 123.36
+          }
+        },
+        "conditioned": {
+          "all": {
+            "success_rate": 0.876,
+            "mean_completion_min": 118.8
+          },
+          "short": {
+            "success_rate": 0.92,
+            "mean_completion_min": 114.24
+          },
+          "long": {
+            "success_rate": 0.832,
+            "mean_completion_min": 123.36
+          }
+        }
+      },
+      "paired": {
+        "ar1_history-independent_history": {
+          "success": 0.017,
+          "completion": -2.534
+        },
+        "ar1_history-frozen_history": {
+          "success": 0.089,
+          "completion": -2.436
+        }
+      },
+      "median_ess_90min": {
+        "independent": 8.61930890197571,
+        "ar1": 163.63375522037308
+      }
+    },
+    "17": {
+      "r": 17,
+      "split_seed": 20261023,
+      "ar_seed": 20431009,
+      "estimated": {
+        "sigma": 0.004956709995539789,
+        "rho": 0.7980994140973823
+      },
+      "choices": {
+        "frozen": {
+          "current": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.905,
+              "mean_completion_min": 119.616,
+              "mean_wait_min": 96.062
+            }
+          },
+          "history": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.919,
+              "mean_completion_min": 114.128,
+              "mean_wait_min": 91.826
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.9,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.918,
+              "mean_completion_min": 113.804,
+              "mean_wait_min": 91.634
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "independent": {
+          "current": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.925,
+              "mean_completion_min": 124.272,
+              "mean_wait_min": 101.476
+            }
+          },
+          "history": {
+            "threshold": 0.99,
+            "target_reached": false,
+            "calibration": {
+              "success_rate": 0.896,
+              "mean_completion_min": 117.298,
+              "mean_wait_min": 93.93
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.923,
+              "mean_completion_min": 118.07,
+              "mean_wait_min": 95.676
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "ar1": {
+          "sigma": 0.004956709995539789,
+          "rho": 0.7980994140973823,
+          "threshold": 0.9,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.903,
+            "mean_completion_min": 115.802,
+            "mean_wait_min": 93.064
+          }
+        },
+        "ar1_true": {
+          "sigma": 0.005,
+          "rho": 0.8,
+          "threshold": 0.9,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.903,
+            "mean_completion_min": 115.842,
+            "mean_wait_min": 93.114
+          }
+        },
+        "conditioned": {
+          "waits_min": [
+            92.0,
+            100.0
+          ],
+          "target_reached": true
+        }
+      },
+      "rules": {
+        "frozen_current": {
+          "all": {
+            "success_rate": 0.941,
+            "mean_completion_min": 124.05
+          },
+          "short": {
+            "success_rate": 0.956,
+            "mean_completion_min": 120.112
+          },
+          "long": {
+            "success_rate": 0.926,
+            "mean_completion_min": 127.988
+          }
+        },
+        "frozen_history": {
+          "all": {
+            "success_rate": 0.81,
+            "mean_completion_min": 117.896
+          },
+          "short": {
+            "success_rate": 0.806,
+            "mean_completion_min": 113.252
+          },
+          "long": {
+            "success_rate": 0.814,
+            "mean_completion_min": 122.54
+          }
+        },
+        "frozen_smoothed": {
+          "all": {
+            "success_rate": 0.81,
+            "mean_completion_min": 118.014
+          },
+          "short": {
+            "success_rate": 0.856,
+            "mean_completion_min": 112.836
+          },
+          "long": {
+            "success_rate": 0.764,
+            "mean_completion_min": 123.192
+          }
+        },
+        "independent_current": {
+          "all": {
+            "success_rate": 0.934,
+            "mean_completion_min": 123.958
+          },
+          "short": {
+            "success_rate": 0.952,
+            "mean_completion_min": 120.004
+          },
+          "long": {
+            "success_rate": 0.916,
+            "mean_completion_min": 127.912
+          }
+        },
+        "independent_history": {
+          "all": {
+            "success_rate": 0.88,
+            "mean_completion_min": 117.722
+          },
+          "short": {
+            "success_rate": 0.872,
+            "mean_completion_min": 112.7
+          },
+          "long": {
+            "success_rate": 0.888,
+            "mean_completion_min": 122.744
+          }
+        },
+        "independent_smoothed": {
+          "all": {
+            "success_rate": 0.912,
+            "mean_completion_min": 118.368
+          },
+          "short": {
+            "success_rate": 0.94,
+            "mean_completion_min": 113.312
+          },
+          "long": {
+            "success_rate": 0.884,
+            "mean_completion_min": 123.424
+          }
+        },
+        "ar1_history": {
+          "all": {
+            "success_rate": 0.889,
+            "mean_completion_min": 116.184
+          },
+          "short": {
+            "success_rate": 0.872,
+            "mean_completion_min": 111.156
+          },
+          "long": {
+            "success_rate": 0.906,
+            "mean_completion_min": 121.212
+          }
+        },
+        "ar1_true_history": {
+          "all": {
+            "success_rate": 0.891,
+            "mean_completion_min": 116.162
+          },
+          "short": {
+            "success_rate": 0.872,
+            "mean_completion_min": 111.184
+          },
+          "long": {
+            "success_rate": 0.91,
+            "mean_completion_min": 121.14
+          }
+        },
+        "fixed": {
+          "all": {
+            "success_rate": 0.904,
+            "mean_completion_min": 121.92
+          },
+          "short": {
+            "success_rate": 0.974,
+            "mean_completion_min": 120.52
+          },
+          "long": {
+            "success_rate": 0.834,
+            "mean_completion_min": 123.32
+          }
+        },
+        "conditioned": {
+          "all": {
+            "success_rate": 0.88,
+            "mean_completion_min": 118.696
+          },
+          "short": {
+            "success_rate": 0.926,
+            "mean_completion_min": 114.072
+          },
+          "long": {
+            "success_rate": 0.834,
+            "mean_completion_min": 123.32
+          }
+        }
+      },
+      "paired": {
+        "ar1_history-independent_history": {
+          "success": 0.009,
+          "completion": -1.538
+        },
+        "ar1_history-frozen_history": {
+          "success": 0.079,
+          "completion": -1.712
+        }
+      },
+      "median_ess_90min": {
+        "independent": 9.776185796373834,
+        "ar1": 157.82184760401427
+      }
+    },
+    "18": {
+      "r": 18,
+      "split_seed": 20261024,
+      "ar_seed": 20441009,
+      "estimated": {
+        "sigma": 0.005016290928459095,
+        "rho": 0.8007370164946087
+      },
+      "choices": {
+        "frozen": {
+          "current": {
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.96,
+              "mean_completion_min": 122.342,
+              "mean_wait_min": 101.038
+            }
+          },
+          "history": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.926,
+              "mean_completion_min": 114.19,
+              "mean_wait_min": 92.022
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.9,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.925,
+              "mean_completion_min": 113.818,
+              "mean_wait_min": 91.728
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "independent": {
+          "current": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.939,
+              "mean_completion_min": 124.25,
+              "mean_wait_min": 101.91
+            }
+          },
+          "history": {
+            "threshold": 0.99,
+            "target_reached": false,
+            "calibration": {
+              "success_rate": 0.893,
+              "mean_completion_min": 117.146,
+              "mean_wait_min": 93.63
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.926,
+              "mean_completion_min": 118.076,
+              "mean_wait_min": 95.75
+            }
+          },
+          "fixed": {
+            "wait_min": 100.0,
+            "target_reached": true
+          }
+        },
+        "ar1": {
+          "sigma": 0.005016290928459095,
+          "rho": 0.8007370164946087,
+          "threshold": 0.9,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.916,
+            "mean_completion_min": 115.4,
+            "mean_wait_min": 93.048
+          }
+        },
+        "ar1_true": {
+          "sigma": 0.005,
+          "rho": 0.8,
+          "threshold": 0.9,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.916,
+            "mean_completion_min": 115.38,
+            "mean_wait_min": 93.028
+          }
+        },
+        "conditioned": {
+          "waits_min": [
+            92.0,
+            100.0
+          ],
+          "target_reached": true
+        }
+      },
+      "rules": {
+        "frozen_current": {
+          "all": {
+            "success_rate": 0.962,
+            "mean_completion_min": 127.088
+          },
+          "short": {
+            "success_rate": 0.972,
+            "mean_completion_min": 123.048
+          },
+          "long": {
+            "success_rate": 0.952,
+            "mean_completion_min": 131.128
+          }
+        },
+        "frozen_history": {
+          "all": {
+            "success_rate": 0.805,
+            "mean_completion_min": 117.594
+          },
+          "short": {
+            "success_rate": 0.806,
+            "mean_completion_min": 112.172
+          },
+          "long": {
+            "success_rate": 0.804,
+            "mean_completion_min": 123.016
+          }
+        },
+        "frozen_smoothed": {
+          "all": {
+            "success_rate": 0.817,
+            "mean_completion_min": 117.642
+          },
+          "short": {
+            "success_rate": 0.84,
+            "mean_completion_min": 112.38
+          },
+          "long": {
+            "success_rate": 0.794,
+            "mean_completion_min": 122.904
+          }
+        },
+        "independent_current": {
+          "all": {
+            "success_rate": 0.922,
+            "mean_completion_min": 124.05
+          },
+          "short": {
+            "success_rate": 0.926,
+            "mean_completion_min": 119.788
+          },
+          "long": {
+            "success_rate": 0.918,
+            "mean_completion_min": 128.312
+          }
+        },
+        "independent_history": {
+          "all": {
+            "success_rate": 0.877,
+            "mean_completion_min": 117.894
+          },
+          "short": {
+            "success_rate": 0.864,
+            "mean_completion_min": 112.18
+          },
+          "long": {
+            "success_rate": 0.89,
+            "mean_completion_min": 123.608
+          }
+        },
+        "independent_smoothed": {
+          "all": {
+            "success_rate": 0.9,
+            "mean_completion_min": 118.494
+          },
+          "short": {
+            "success_rate": 0.916,
+            "mean_completion_min": 113.144
+          },
+          "long": {
+            "success_rate": 0.884,
+            "mean_completion_min": 123.844
+          }
+        },
+        "ar1_history": {
+          "all": {
+            "success_rate": 0.88,
+            "mean_completion_min": 116.408
+          },
+          "short": {
+            "success_rate": 0.862,
+            "mean_completion_min": 111.044
+          },
+          "long": {
+            "success_rate": 0.898,
+            "mean_completion_min": 121.772
+          }
+        },
+        "ar1_true_history": {
+          "all": {
+            "success_rate": 0.879,
+            "mean_completion_min": 116.42
+          },
+          "short": {
+            "success_rate": 0.862,
+            "mean_completion_min": 111.036
+          },
+          "long": {
+            "success_rate": 0.896,
+            "mean_completion_min": 121.804
+          }
+        },
+        "fixed": {
+          "all": {
+            "success_rate": 0.902,
+            "mean_completion_min": 121.96
+          },
+          "short": {
+            "success_rate": 0.966,
+            "mean_completion_min": 120.68
+          },
+          "long": {
+            "success_rate": 0.838,
+            "mean_completion_min": 123.24
+          }
+        },
+        "conditioned": {
+          "all": {
+            "success_rate": 0.876,
+            "mean_completion_min": 118.824
+          },
+          "short": {
+            "success_rate": 0.914,
+            "mean_completion_min": 114.408
+          },
+          "long": {
+            "success_rate": 0.838,
+            "mean_completion_min": 123.24
+          }
+        }
+      },
+      "paired": {
+        "ar1_history-independent_history": {
+          "success": 0.003,
+          "completion": -1.486
+        },
+        "ar1_history-frozen_history": {
+          "success": 0.075,
+          "completion": -1.186
+        }
+      },
+      "median_ess_90min": {
+        "independent": 9.190231478738799,
+        "ar1": 164.58258142279323
+      }
+    },
+    "19": {
+      "r": 19,
+      "split_seed": 20261025,
+      "ar_seed": 20451009,
+      "estimated": {
+        "sigma": 0.00500288127583893,
+        "rho": 0.8005373550684861
+      },
+      "choices": {
+        "frozen": {
+          "current": {
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.953,
+              "mean_completion_min": 122.438,
+              "mean_wait_min": 100.854
+            }
+          },
+          "history": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.924,
+              "mean_completion_min": 114.378,
+              "mean_wait_min": 92.254
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.9,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.931,
+              "mean_completion_min": 113.488,
+              "mean_wait_min": 91.664
+            }
+          },
+          "fixed": {
+            "wait_min": 98.0,
+            "target_reached": true
+          }
+        },
+        "independent": {
+          "current": {
+            "threshold": 0.95,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.939,
+              "mean_completion_min": 123.688,
+              "mean_wait_min": 101.476
+            }
+          },
+          "history": {
+            "threshold": 0.99,
+            "target_reached": false,
+            "calibration": {
+              "success_rate": 0.876,
+              "mean_completion_min": 117.928,
+              "mean_wait_min": 93.822
+            }
+          },
+          "smoothed": {
+            "tau_min": 16.0,
+            "threshold": 0.975,
+            "target_reached": true,
+            "calibration": {
+              "success_rate": 0.91,
+              "mean_completion_min": 118.19,
+              "mean_wait_min": 95.458
+            }
+          },
+          "fixed": {
+            "wait_min": 98.0,
+            "target_reached": true
+          }
+        },
+        "ar1": {
+          "sigma": 0.00500288127583893,
+          "rho": 0.8005373550684861,
+          "threshold": 0.95,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.936,
+            "mean_completion_min": 117.208,
+            "mean_wait_min": 95.51
+          }
+        },
+        "ar1_true": {
+          "sigma": 0.005,
+          "rho": 0.8,
+          "threshold": 0.95,
+          "target_reached": true,
+          "calibration": {
+            "success_rate": 0.936,
+            "mean_completion_min": 117.2,
+            "mean_wait_min": 95.502
+          }
+        },
+        "conditioned": {
+          "waits_min": [
+            90.0,
+            102.0
+          ],
+          "target_reached": true
+        }
+      },
+      "rules": {
+        "frozen_current": {
+          "all": {
+            "success_rate": 0.955,
+            "mean_completion_min": 126.506
+          },
+          "short": {
+            "success_rate": 0.956,
+            "mean_completion_min": 122.384
+          },
+          "long": {
+            "success_rate": 0.954,
+            "mean_completion_min": 130.628
+          }
+        },
+        "frozen_history": {
+          "all": {
+            "success_rate": 0.798,
+            "mean_completion_min": 118.096
+          },
+          "short": {
+            "success_rate": 0.794,
+            "mean_completion_min": 113.216
+          },
+          "long": {
+            "success_rate": 0.802,
+            "mean_completion_min": 122.976
+          }
+        },
+        "frozen_smoothed": {
+          "all": {
+            "success_rate": 0.821,
+            "mean_completion_min": 117.692
+          },
+          "short": {
+            "success_rate": 0.848,
+            "mean_completion_min": 112.42
+          },
+          "long": {
+            "success_rate": 0.794,
+            "mean_completion_min": 122.964
+          }
+        },
+        "independent_current": {
+          "all": {
+            "success_rate": 0.914,
+            "mean_completion_min": 123.748
+          },
+          "short": {
+            "success_rate": 0.918,
+            "mean_completion_min": 119.352
+          },
+          "long": {
+            "success_rate": 0.91,
+            "mean_completion_min": 128.144
+          }
+        },
+        "independent_history": {
+          "all": {
+            "success_rate": 0.869,
+            "mean_completion_min": 117.774
+          },
+          "short": {
+            "success_rate": 0.87,
+            "mean_completion_min": 112.284
+          },
+          "long": {
+            "success_rate": 0.868,
+            "mean_completion_min": 123.264
+          }
+        },
+        "independent_smoothed": {
+          "all": {
+            "success_rate": 0.9,
+            "mean_completion_min": 118.476
+          },
+          "short": {
+            "success_rate": 0.922,
+            "mean_completion_min": 113.22
+          },
+          "long": {
+            "success_rate": 0.878,
+            "mean_completion_min": 123.732
+          }
+        },
+        "ar1_history": {
+          "all": {
+            "success_rate": 0.93,
+            "mean_completion_min": 117.252
+          },
+          "short": {
+            "success_rate": 0.926,
+            "mean_completion_min": 111.084
+          },
+          "long": {
+            "success_rate": 0.934,
+            "mean_completion_min": 123.42
+          }
+        },
+        "ar1_true_history": {
+          "all": {
+            "success_rate": 0.93,
+            "mean_completion_min": 117.248
+          },
+          "short": {
+            "success_rate": 0.926,
+            "mean_completion_min": 111.084
+          },
+          "long": {
+            "success_rate": 0.934,
+            "mean_completion_min": 123.412
+          }
+        },
+        "fixed": {
+          "all": {
+            "success_rate": 0.871,
+            "mean_completion_min": 120.838
+          },
+          "short": {
+            "success_rate": 0.966,
+            "mean_completion_min": 118.748
+          },
+          "long": {
+            "success_rate": 0.776,
+            "mean_completion_min": 122.928
+          }
+        },
+        "conditioned": {
+          "all": {
+            "success_rate": 0.871,
+            "mean_completion_min": 119.018
+          },
+          "short": {
+            "success_rate": 0.884,
+            "mean_completion_min": 113.48
+          },
+          "long": {
+            "success_rate": 0.858,
+            "mean_completion_min": 124.556
+          }
+        }
+      },
+      "paired": {
+        "ar1_history-independent_history": {
+          "success": 0.061,
+          "completion": -0.522
+        },
+        "ar1_history-frozen_history": {
+          "success": 0.132,
+          "completion": -0.844
+        }
+      },
+      "median_ess_90min": {
+        "independent": 8.398414209312486,
+        "ar1": 157.4098326345988
+      }
+    }
+  },
+  "summary": {
+    "reached_on_evaluation": {
+      "frozen_current": 20,
+      "frozen_history": 0,
+      "frozen_smoothed": 0,
+      "independent_current": 20,
+      "independent_history": 2,
+      "independent_smoothed": 19,
+      "ar1_history": 13,
+      "ar1_true_history": 13,
+      "fixed": 19,
+      "conditioned": 6
+    },
+    "success": {
+      "frozen_current": {
+        "median": 0.959,
+        "min": 0.927,
+        "max": 0.972
+      },
+      "frozen_history": {
+        "median": 0.8115,
+        "min": 0.777,
+        "max": 0.853
+      },
+      "frozen_smoothed": {
+        "median": 0.829,
+        "min": 0.8,
+        "max": 0.86
+      },
+      "independent_current": {
+        "median": 0.9285000000000001,
+        "min": 0.914,
+        "max": 0.945
+      },
+      "independent_history": {
+        "median": 0.879,
+        "min": 0.859,
+        "max": 0.905
+      },
+      "independent_smoothed": {
+        "median": 0.914,
+        "min": 0.899,
+        "max": 0.945
+      },
+      "ar1_history": {
+        "median": 0.9155,
+        "min": 0.878,
+        "max": 0.946
+      },
+      "ar1_true_history": {
+        "median": 0.915,
+        "min": 0.878,
+        "max": 0.948
+      },
+      "fixed": {
+        "median": 0.9075,
+        "min": 0.871,
+        "max": 0.924
+      },
+      "conditioned": {
+        "median": 0.8945000000000001,
+        "min": 0.871,
+        "max": 0.925
+      }
+    },
+    "completion": {
+      "frozen_current": {
+        "median": 127.026,
+        "min": 123.512,
+        "max": 127.678
+      },
+      "frozen_history": {
+        "median": 117.928,
+        "min": 116.796,
+        "max": 118.698
+      },
+      "frozen_smoothed": {
+        "median": 117.797,
+        "min": 116.872,
+        "max": 118.492
+      },
+      "independent_current": {
+        "median": 124.21000000000001,
+        "min": 123.512,
+        "max": 124.87
+      },
+      "independent_history": {
+        "median": 117.923,
+        "min": 117.074,
+        "max": 118.792
+      },
+      "independent_smoothed": {
+        "median": 118.449,
+        "min": 117.794,
+        "max": 118.856
+      },
+      "ar1_history": {
+        "median": 116.508,
+        "min": 115.614,
+        "max": 117.744
+      },
+      "ar1_true_history": {
+        "median": 116.52699999999999,
+        "min": 115.696,
+        "max": 117.734
+      },
+      "fixed": {
+        "median": 121.83,
+        "min": 120.838,
+        "max": 121.96
+      },
+      "conditioned": {
+        "median": 119.093,
+        "min": 118.696,
+        "max": 119.616
+      }
+    },
+    "paired": {
+      "ar1_history-independent_history": {
+        "success": {
+          "median": 0.022,
+          "min": 0.003,
+          "max": 0.078
+        },
+        "completion": {
+          "median": -1.4729999999999999,
+          "min": -2.534,
+          "max": -0.228
+        }
+      },
+      "ar1_history-frozen_history": {
+        "success": {
+          "median": 0.095,
+          "min": 0.065,
+          "max": 0.145
+        },
+        "completion": {
+          "median": -1.184,
+          "min": -2.598,
+          "max": 0.22
+        }
+      }
+    },
+    "estimated": {
+      "sigma": {
+        "median": 0.004985185758996372,
+        "min": 0.004933683706664324,
+        "max": 0.00506151193787637
+      },
+      "rho": {
+        "median": 0.7994908335526147,
+        "min": 0.7944189866573337,
+        "max": 0.8038427138234568
+      }
+    },
+    "median_ess_90min": {
+      "independent": {
+        "median": 9.192556855828213,
+        "min": 8.138740684736783,
+        "max": 10.826279810631197
+      },
+      "ar1": {
+        "median": 163.10224634582445,
+        "min": 157.4098326345988,
+        "max": 174.26928143532592
+      }
+    },
+    "ar1_more_reliable_than_independent": 20
+  },
+  "limitations": [
+    "Simulation of one published model structure; not evidence about measured cells.",
+    "The AR(1) parameters are estimated from calibration residuals, which a real experiment would have to measure.",
+    "Mismatch changes only the observation model; dynamics and task are unchanged."
+  ]
+}

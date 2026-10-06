@@ -1,0 +1,6 @@
+{
+  "protocol_path": "simulation/configs/b3_waiting_margin_protocol.json",
+  "protocol_sha256": "4d3e300763d6e8bad84277ac7ce83aa17fa242c1c8b314817979896adba9f2ac",
+  "frozen_utc": "2026-10-06T12:13:20+00:00",
+  "statement": "Recorded before any shared-margin result was computed."
+}

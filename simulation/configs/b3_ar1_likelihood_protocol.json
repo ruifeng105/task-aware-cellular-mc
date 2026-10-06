@@ -1,0 +1,18 @@
+{
+  "name": "Covariance-aware likelihood for the history estimator under AR(1) observation noise on B3",
+  "version": 1,
+  "status": "frozen_before_running",
+  "date": "2026-10-06",
+  "reason": "Review of main(1) item P1: under AR(1) observation noise the frozen rules lost reliability, but recalibrating the thresholds and modelling the correlation were not separated.",
+  "observation_model": "AR(1) noise per 2-min frame with rho = 0.8 and stationary s.d. 0.005 added to the noise-free reporter; r = 0 reuses the draws of the stress study (seed 20261009 + 2 x plant + history); repeats r = 1..19 use split seed 20261006 + r and AR seed 20261009 + 10000 r (same per-plant offsets); kappa 0.5",
+  "noise_parameters": "sigma_hat and rho_hat estimated from the calibration samples only: pooled standard deviation and pooled lag-1 autocorrelation of the observation residuals y - z over both histories and all frames (a noise-characterization measurement; the noise-free reporter is known in simulation). A check uses the true values (0.005, 0.8).",
+  "arms": {
+    "frozen": "version-3 rules (thresholds, smoothing scale and white-noise estimators chosen without AR(1) data) applied to the AR(1) observations",
+    "recalibrated_independent": "the version-3 estimators with independent-noise likelihood and kernels at s.d. max(sigma_hat, 0.001); thresholds and smoothing scale re-chosen on the AR(1) calibration samples with the version-3 heuristic (target 0.9, coarse grid)",
+    "recalibrated_ar1": "the history estimator with the AR(1) Gaussian likelihood, log w_s(t_k) = -[e_1^2 / (2 sigma^2) + sum_{i=2..k} (e_i - rho e_{i-1})^2 / (2 sigma^2 (1 - rho^2))] + const with e_i = y_i - f_s(t_i), equivalent to covariance sigma^2 rho^|a-b|; estimated (sigma_hat, rho_hat); threshold re-chosen on the same AR(1) calibration samples and target",
+    "recalibrated_ar1_true": "check: the same with the true (0.005, 0.8)"
+  },
+  "evaluation": "the same evaluation samples and observations for every arm; fixed and history-conditioned fixed waits do not use observations and are reported from their calibration on the same split; references, thresholds and parameters use calibration samples only",
+  "outputs": "evaluation success and mean failure-penalized completion (all and per history) per arm; whether the calibration target was reached; median effective sample size of the history weights at 90 min after the 30-min command; paired per-sample differences recalibrated_ar1 - recalibrated_independent (history estimator) and recalibrated_ar1 - frozen with 95% bootstrap intervals for r = 0 (2000 resamples, seed 20261008, unit: evaluation posterior sample with both histories paired); over 20 splits: splits reaching 0.9 evaluation success per arm and median, minimum and maximum of success, completion and differences",
+  "reporting": "All results reported whatever their direction; no recovery to 0.9 is presumed; improvements from recalibration alone are not attributed to the covariance model; simulation of one published model structure."
+}

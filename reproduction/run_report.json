@@ -1,7 +1,7 @@
 {
   "status": "passed",
   "mode": "full",
-  "started_utc": "2026-10-06T11:09:54.905180+00:00",
+  "started_utc": "2026-10-06T12:36:57.265947+00:00",
   "environment": {
     "python": "3.13.3",
     "numpy": "2.3.2",
@@ -13,223 +13,259 @@
     {
       "name": "fit_and_predict",
       "return_code": 0,
-      "elapsed_seconds": 5.608,
+      "elapsed_seconds": 5.705,
       "log": "reproduction\\logs\\fit_and_predict.log"
     },
     {
       "name": "expanded_fresh_test",
       "return_code": 0,
-      "elapsed_seconds": 13.788,
+      "elapsed_seconds": 13.619,
       "log": "reproduction\\logs\\expanded_fresh_test.log"
     },
     {
       "name": "verify_data_and_scores",
       "return_code": 0,
-      "elapsed_seconds": 0.907,
+      "elapsed_seconds": 0.838,
       "log": "reproduction\\logs\\verify_data_and_scores.log"
     },
     {
       "name": "verify_expanded",
       "return_code": 0,
-      "elapsed_seconds": 8.285,
+      "elapsed_seconds": 8.133,
       "log": "reproduction\\logs\\verify_expanded.log"
     },
     {
       "name": "verify_b3_model",
       "return_code": 0,
-      "elapsed_seconds": 18.343,
+      "elapsed_seconds": 18.865,
       "log": "reproduction\\logs\\verify_b3_model.log"
     },
     {
       "name": "b3_forecast",
       "return_code": 0,
-      "elapsed_seconds": 82.385,
+      "elapsed_seconds": 81.974,
       "log": "reproduction\\logs\\b3_forecast.log"
     },
     {
       "name": "b3_readiness",
       "return_code": 0,
-      "elapsed_seconds": 308.372,
+      "elapsed_seconds": 306.832,
       "log": "reproduction\\logs\\b3_readiness.log"
     },
     {
       "name": "b3_readiness_example",
       "return_code": 0,
-      "elapsed_seconds": 5.75,
+      "elapsed_seconds": 5.617,
       "log": "reproduction\\logs\\b3_readiness_example.log"
     },
     {
       "name": "nested_forecast",
       "return_code": 0,
-      "elapsed_seconds": 107.78,
+      "elapsed_seconds": 106.796,
       "log": "reproduction\\logs\\nested_forecast.log"
     },
     {
       "name": "nested_phase_detail",
       "return_code": 0,
-      "elapsed_seconds": 65.984,
+      "elapsed_seconds": 65.796,
       "log": "reproduction\\logs\\nested_phase_detail.log"
     },
     {
       "name": "nested_arx",
       "return_code": 0,
-      "elapsed_seconds": 163.323,
+      "elapsed_seconds": 158.596,
       "log": "reproduction\\logs\\nested_arx.log"
     },
     {
       "name": "b3_waiting",
       "return_code": 0,
-      "elapsed_seconds": 64.78,
+      "elapsed_seconds": 58.419,
       "log": "reproduction\\logs\\b3_waiting.log"
     },
     {
       "name": "b3_waiting_robustness",
       "return_code": 0,
-      "elapsed_seconds": 457.391,
+      "elapsed_seconds": 444.064,
       "log": "reproduction\\logs\\b3_waiting_robustness.log"
     },
     {
       "name": "b3_waiting_sensitivity",
       "return_code": 0,
-      "elapsed_seconds": 53.063,
+      "elapsed_seconds": 47.507,
       "log": "reproduction\\logs\\b3_waiting_sensitivity.log"
     },
     {
       "name": "b3_noprobe",
       "return_code": 0,
-      "elapsed_seconds": 327.394,
+      "elapsed_seconds": 312.421,
       "log": "reproduction\\logs\\b3_noprobe.log"
     },
     {
       "name": "b3_waiting_baselines",
       "return_code": 0,
-      "elapsed_seconds": 67.194,
+      "elapsed_seconds": 62.58,
       "log": "reproduction\\logs\\b3_waiting_baselines.log"
     },
     {
       "name": "b3_waiting_stress",
       "return_code": 0,
-      "elapsed_seconds": 84.932,
+      "elapsed_seconds": 71.757,
       "log": "reproduction\\logs\\b3_waiting_stress.log"
+    },
+    {
+      "name": "b3_waiting_margin",
+      "return_code": 0,
+      "elapsed_seconds": 297.618,
+      "log": "reproduction\\logs\\b3_waiting_margin.log"
+    },
+    {
+      "name": "b3_noprobe_kappa",
+      "return_code": 0,
+      "elapsed_seconds": 72.737,
+      "log": "reproduction\\logs\\b3_noprobe_kappa.log"
+    },
+    {
+      "name": "b3_ar1_likelihood",
+      "return_code": 0,
+      "elapsed_seconds": 221.813,
+      "log": "reproduction\\logs\\b3_ar1_likelihood.log"
     },
     {
       "name": "verify_b3_forecast",
       "return_code": 0,
-      "elapsed_seconds": 75.491,
+      "elapsed_seconds": 70.569,
       "log": "reproduction\\logs\\verify_b3_forecast.log"
     },
     {
       "name": "verify_b3_readiness",
       "return_code": 0,
-      "elapsed_seconds": 9.324,
+      "elapsed_seconds": 8.434,
       "log": "reproduction\\logs\\verify_b3_readiness.log"
     },
     {
       "name": "verify_nested_forecast",
       "return_code": 0,
-      "elapsed_seconds": 95.453,
+      "elapsed_seconds": 89.189,
       "log": "reproduction\\logs\\verify_nested_forecast.log"
     },
     {
       "name": "verify_b3_waiting",
       "return_code": 0,
-      "elapsed_seconds": 55.438,
+      "elapsed_seconds": 51.367,
       "log": "reproduction\\logs\\verify_b3_waiting.log"
     },
     {
       "name": "verify_b3_waiting_robustness",
       "return_code": 0,
-      "elapsed_seconds": 53.592,
+      "elapsed_seconds": 51.074,
       "log": "reproduction\\logs\\verify_b3_waiting_robustness.log"
     },
     {
       "name": "verify_b3_waiting_sensitivity",
       "return_code": 0,
-      "elapsed_seconds": 25.577,
+      "elapsed_seconds": 24.144,
       "log": "reproduction\\logs\\verify_b3_waiting_sensitivity.log"
     },
     {
       "name": "verify_b3_noprobe",
       "return_code": 0,
-      "elapsed_seconds": 2.618,
+      "elapsed_seconds": 2.41,
       "log": "reproduction\\logs\\verify_b3_noprobe.log"
     },
     {
       "name": "verify_b3_waiting_baselines",
       "return_code": 0,
-      "elapsed_seconds": 13.258,
+      "elapsed_seconds": 12.345,
       "log": "reproduction\\logs\\verify_b3_waiting_baselines.log"
     },
     {
       "name": "verify_b3_waiting_stress",
       "return_code": 0,
-      "elapsed_seconds": 14.215,
+      "elapsed_seconds": 13.612,
       "log": "reproduction\\logs\\verify_b3_waiting_stress.log"
     },
     {
       "name": "verify_nested_arx",
       "return_code": 0,
-      "elapsed_seconds": 114.274,
+      "elapsed_seconds": 107.0,
       "log": "reproduction\\logs\\verify_nested_arx.log"
+    },
+    {
+      "name": "verify_b3_waiting_margin",
+      "return_code": 0,
+      "elapsed_seconds": 38.93,
+      "log": "reproduction\\logs\\verify_b3_waiting_margin.log"
+    },
+    {
+      "name": "verify_b3_noprobe_kappa",
+      "return_code": 0,
+      "elapsed_seconds": 0.977,
+      "log": "reproduction\\logs\\verify_b3_noprobe_kappa.log"
+    },
+    {
+      "name": "verify_b3_ar1_likelihood",
+      "return_code": 0,
+      "elapsed_seconds": 1.678,
+      "log": "reproduction\\logs\\verify_b3_ar1_likelihood.log"
     },
     {
       "name": "synthetic_checks",
       "return_code": 0,
-      "elapsed_seconds": 0.449,
+      "elapsed_seconds": 0.42,
       "log": "reproduction\\logs\\synthetic_checks.log"
     },
     {
       "name": "build_paper_assets",
       "return_code": 0,
-      "elapsed_seconds": 2.283,
+      "elapsed_seconds": 2.184,
       "log": "reproduction\\logs\\build_paper_assets.log"
     },
     {
       "name": "kit_pilot_design",
       "return_code": 0,
-      "elapsed_seconds": 0.057,
+      "elapsed_seconds": 0.053,
       "log": "reproduction\\logs\\kit_pilot_design.log"
     },
     {
       "name": "kit_main_design",
       "return_code": 0,
-      "elapsed_seconds": 0.056,
+      "elapsed_seconds": 0.054,
       "log": "reproduction\\logs\\kit_main_design.log"
     },
     {
       "name": "kit_sample_size",
       "return_code": 0,
-      "elapsed_seconds": 0.808,
+      "elapsed_seconds": 0.733,
       "log": "reproduction\\logs\\kit_sample_size.log"
     },
     {
       "name": "kit_registration_audit",
       "return_code": 0,
-      "elapsed_seconds": 0.055,
+      "elapsed_seconds": 0.051,
       "log": "reproduction\\logs\\kit_registration_audit.log"
     },
     {
       "name": "kit_data_contract_audit",
       "return_code": 0,
-      "elapsed_seconds": 0.37,
+      "elapsed_seconds": 0.355,
       "log": "reproduction\\logs\\kit_data_contract_audit.log"
     },
     {
       "name": "kit_software_checks",
       "return_code": 0,
-      "elapsed_seconds": 1.021,
+      "elapsed_seconds": 0.982,
       "log": "reproduction\\logs\\kit_software_checks.log"
     },
     {
       "name": "pipeline_checks",
       "return_code": 0,
-      "elapsed_seconds": 0.754,
+      "elapsed_seconds": 0.683,
       "log": "reproduction\\logs\\pipeline_checks.log"
     },
     {
       "name": "compile_paper",
       "return_code": 0,
-      "elapsed_seconds": 2.118,
+      "elapsed_seconds": 3.771,
       "log": "reproduction\\logs\\compile_paper.log"
     }
   ],
@@ -238,12 +274,12 @@
   "scope": "Fixed pilot reproduction; B3 original-author exports are reused.",
   "manuscript_reference": {
     "status": "passed",
-    "entries_compared": 1847,
+    "entries_compared": 3034,
     "max_absolute_error": 9.020562075079397e-17,
     "relative_tolerance": 1e-08,
     "absolute_tolerance": 1e-10
   },
   "calibration_result_sha256": "780f2768582a19224350d3783d19ccd3da52b1fca5d98f6a0776270df87bc6cb",
   "expanded_result_sha256": "c538d3b4f7dc8d2033e251a098b316b106b6cf18c488734dbdbe4ed465521971",
-  "finished_utc": "2026-10-06T11:48:17.464037+00:00"
+  "finished_utc": "2026-10-06T13:24:20.024122+00:00"
 }

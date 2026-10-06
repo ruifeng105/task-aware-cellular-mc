@@ -53,6 +53,8 @@ baselines = json.loads((B3_RESULTS / "waiting_baselines_results.json").read_text
 stress = json.loads((B3_RESULTS / "waiting_stress_results.json").read_text(encoding="utf-8"))
 noprobe = json.loads((B3_RESULTS / "noprobe_results.json").read_text(encoding="utf-8"))
 arx = json.loads((NESTED / "nested_arx_results.json").read_text(encoding="utf-8"))
+margin = json.loads((B3_RESULTS / "waiting_margin_results.json").read_text(encoding="utf-8"))
+ar1 = json.loads((B3_RESULTS / "ar1_likelihood_results.json").read_text(encoding="utf-8"))
 
 
 def write_table(name, spec, header, body):
@@ -357,16 +359,18 @@ body = []
 for group, label in fold_label.items():
     fold = nested["lopo"][group]
     use = fold["b3_use"]
+    used = use["fitted"] or use["architecture_likelihood"]
+    assert not used or sorted(conc_of[k] for k in used) == [2.5, 250.], used   # the caption names 2.5 and 250 ng/ml
     if use["fitted"]:
-        prior = "fit " + ", ".join(f"{conc_of[k]:g}" for k in use["fitted"])
+        prior = "fit"
     elif use["architecture_likelihood"]:
-        prior = "arch. " + ", ".join(f"{conc_of[k]:g}" for k in use["architecture_likelihood"])
+        prior = "arch."
     else:
-        prior = "other conc. arch." if group == "fgf_mixed_new" else "none"
+        prior = r"arch.$^\circ$" if group == "fgf_mixed_new" else "none"
     values = [fold["rmse"][m] for m in ("O", "M", "H")] + [arx["lopo"][group]["rmse"][m] for m in lagged]
     best = min(values)
-    body.append(f"{label} & " + " & ".join((r"\textbf{%.4f}" if v == best else "%.4f") % v for v in values) + f" & {prior}")
-write_table("lopo_core", "lcccccl", r"Held-out & O & M & H & A & A+M & B3 prior use", body)
+    body.append(f"{label} & " + " & ".join((r"\textbf{%.5f}" if v == best else "%.5f") % v for v in values) + f" & {prior}")
+write_table("lopo_core", "lcccccl", r"Held-out & O & M & H & A & A+M & B3 use", body)
 
 r0 = robust["repeats"]["0"]["0.005"]["rules"]
 rule_label = (("current", "Current obs."), ("smoothed", "Smoothed (16 min)"), ("history", "History-aware"),
@@ -377,6 +381,10 @@ body = [row_of(r0[name], label) for name, label in rule_label[:4]]
 for rule, suffix in (("pooled", ""), ("per_history", r" (each $\geq$0.9)")):
     choice = baselines["primary"]["conditioned"][rule]
     body.append(row_of(choice["evaluation"], "Fixed {:g}/{:g} min".format(*choice["waits_min"]) + suffix))
+for target in ("0.92",):
+    cell = margin["repeats"]["0"]["0.005"]["cells"][f"coarse/{target}"]
+    body.append(row_of(cell["rules"]["conditioned"], "Fixed {:g}/{:g} min".format(*cell["choices"]["conditioned"]["waits_min"])
+                       + f" (cal. {target})"))
 body.append(row_of(r0["oracle"], "Oracle"))
 write_table("waiting_history", "lcccc", r"Rule & $S_3$ (\%) & $T_3$ (min) & $S_{30}$ (\%) & $T_{30}$ (min)", body)
 
@@ -402,6 +410,18 @@ for name, label in (("ar1", r"AR(1)$^\dagger$"), ("offset", r"offset$^\dagger$")
     body.append(f"0.5 & {label} & {waiting['noise']['0.005']['choices']['fixed']['wait_min']:g} & {st_(e['fixed_calibrated'])} & "
                 f"{primary_by_history} & {st_(e['history'])} & {st_(e['smoothed'])} & {st_(e['current'])} & {st_(e['oracle'])} & "
                 f"{signed(e['history']['mean_completion_min'] - e['smoothed']['mean_completion_min'])}")
+a0 = ar1["repeats"]["0"]
+reach = lambda arm, name: "" if a0["choices"][arm][name]["target_reached"] else r"$^\ast$"
+rules = {r: st_(a0["rules"][f"independent_{r}"]["all"], reach("independent", r)) for r in ("history", "smoothed", "current")}
+fixed_wait = a0["choices"]["independent"]["fixed"]["wait_min"]
+oracle = st_(stress["mismatch"]["ar1"]["oracle"])
+smoothed_t = a0["rules"]["independent_smoothed"]["all"]["mean_completion_min"]
+ar1_mark = "" if a0["choices"]["ar1"]["target_reached"] else r"$^\ast$"
+body.append(f"0.5 & AR(1), recal.$^\\ddagger$ & {fixed_wait:g} & {st_(a0['rules']['fixed']['all'])} & {st_(a0['rules']['conditioned']['all'])} & "
+            f"{rules['history']} & {rules['smoothed']} & {rules['current']} & {oracle} & "
+            f"{signed(a0['rules']['independent_history']['all']['mean_completion_min'] - smoothed_t)}")
+body.append(f"0.5 & AR(1) lik.$^\\ddagger$ & -- & -- & -- & {st_(a0['rules']['ar1_history']['all'], ar1_mark)} & "
+            f"-- & -- & -- & {signed(a0['rules']['ar1_history']['all']['mean_completion_min'] - smoothed_t)}")
 write_table("waiting_sensitivity", "cccccccccc",
             r"$\kappa$ & Noise & Wait & Fixed & By history & History & Smoothed & Current & Oracle & $\Delta T_{\rm H-S}$", body)
 

@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "protocol_sha256": "fd29bb5653d82d0951fe86de25e733f3b833890ce81a1b85f77d71fdf552ee83",
+  "draws": {
+    "r0_equals_stress_draws": true
+  },
+  "likelihood": {
+    "explicit_covariance_max_abs_difference": 8.526512829121202e-14,
+    "rho_zero_max_abs_difference": 0.0
+  },
+  "frozen": {
+    "max_abs_difference": 0.0
+  },
+  "estimates": {
+    "max_relative_sigma_or_absolute_rho_error": 0.01326325866713527
+  },
+  "leakage": {
+    "evaluation_labels_flipped": true,
+    "threshold_unchanged": true
+  },
+  "recomputation": {
+    "max_abs_difference": 0.0
+  },
+  "scope": "Simulation of the published B3 model; not evidence about measured cells."
+}

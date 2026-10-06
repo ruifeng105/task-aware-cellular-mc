@@ -1,0 +1,36 @@
+{
+  "name": "Shared calibration margin for the calibrated waiting rules on B3",
+  "version": 1,
+  "status": "frozen_before_running",
+  "date": "2026-10-06",
+  "reason": "Review of main(1) items P0-1 and P0-2: the history-conditioned fixed waits reached 0.9 evaluation success in only 6 of 20 splits, so the 4.8-min gain may depend on a fixed comparator sitting at the edge of the empirical target; and the matched-success comparison between the history and smoothed estimators must be shown with its selection procedure.",
+  "calibration_targets": {
+    "values": [0.90, 0.92, 0.94],
+    "definition": "the same calibration target 0.9 + epsilon (epsilon 0, 0.02, 0.04) for every rule; the evaluation criterion stays 0.9; margins fixed here, never chosen from evaluation results",
+    "rules": {
+      "current_and_history": "first threshold on the grid whose calibration success reaches the target (version-3 heuristic); history likelihood s.d. max(noise, 0.001)",
+      "smoothed": "for each scale 2, 4, 8, 16 min the first such threshold; then the scale with the smallest calibration mean completion among scales reaching the target (else the scale with the largest calibration success)",
+      "single_fixed_wait": "first wait on {0, 2, ..., 120} min whose calibration success reaches the target (version 3)",
+      "conditioned_fixed_pooled": "waits (tau_3, tau_30) minimizing the equal-weight calibration mean completion subject to equal-weight calibration success >= target; ties: smaller tau_3 + tau_30, then smaller tau_3",
+      "conditioned_fixed_per_history": "the same objective subject to calibration success >= target for each history",
+      "fallback": "largest threshold or wait 120 min (both histories) with target_reached = false"
+    },
+    "threshold_grids": {
+      "coarse": "version-3 grid {0.5, 0.6, 0.7, 0.8, 0.85, 0.9, 0.95, 0.975, 0.99} (primary; target 0.90 reproduces version 3 and the robustness study)",
+      "fine": "0.50 to 0.99 in steps of 0.01 (secondary)"
+    }
+  },
+  "settings": {
+    "noise_sd": [0.005, 0.01],
+    "splits": "the 20 calibration/evaluation splits of the robustness study: split seed 20261006 + r; observation draws of version 2 for r = 0 and seed 20261005 + 10000 r otherwise (with per-plant offsets as in the robustness study), scaled to the noise level",
+    "kappa": 0.5
+  },
+  "outputs": {
+    "per_split": "calibration choices, evaluation success and mean failure-penalized completion (all and per history) for every rule and the oracle",
+    "paired": "per evaluation sample differences, each averaged over both histories: history - conditioned pooled, smoothed - conditioned pooled, history - smoothed, history - single fixed (success and completion)",
+    "bootstrap": "95% percentile intervals for r = 0 with 2000 resamples (seed 20261008); resampling unit: the evaluation posterior sample, keeping both histories and all rules paired",
+    "summary": "per setting, grid and target: splits whose evaluation success reaches 0.9 for each rule; median, minimum and maximum of success, completion and the paired differences; splits in which history (smoothed) is faster than the conditioned pooled waits and history is faster than smoothed",
+    "matched_success": "calibration-side comparison of history and smoothed on the fine grid at each target (rules frozen on calibration samples, then evaluated); plus, descriptively, the evaluation frontier points of the frozen baselines study (history and 16-min smoothed estimators) attaining evaluation success 0.90, 0.92 and 0.94: threshold, success and completion"
+  },
+  "reporting": "All results reported whatever their direction; simulation of one published model structure; the target is an empirical calibration target, not a coverage guarantee; a margin sensitivity is not a coverage guarantee either."
+}

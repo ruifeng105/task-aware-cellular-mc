@@ -315,6 +315,98 @@ def revision3_metrics():
     return values
 
 
+def revision4_metrics():
+    """Review of main(1): shared calibration margin and matched success, kappa-dependent no-probe control,
+    covariance-aware likelihood under AR(1) noise."""
+    load = lambda path: json.loads(path.read_text(encoding="utf-8"))
+    values = {}
+    margin = load(B3 / "waiting_margin_results.json")
+    for noise, repeat in margin["repeats"]["0"].items():
+        for key, cell in repeat["cells"].items():
+            prefix = f"b3/margin/r0/{noise}/{key}"
+            values[f"{prefix}/conditioned/wait_3"], values[f"{prefix}/conditioned/wait_30"] = cell["choices"]["conditioned"]["waits_min"]
+            for rule, parts in cell["rules"].items():
+                for metric, value in parts["all"].items():
+                    values[f"{prefix}/{rule}/{metric}"] = value
+            for pair, row in cell["paired"].items():
+                for metric, value in row.items():
+                    values[f"{prefix}/paired/{pair}/{metric}"] = value
+            for pair, row in cell["bootstrap"].items():
+                for metric, (low, high) in row.items():
+                    values[f"{prefix}/bootstrap/{pair}/{metric}/low"] = low
+                    values[f"{prefix}/bootstrap/{pair}/{metric}/high"] = high
+    for noise, cells in margin["summary"].items():
+        for key, block in cells.items():
+            prefix = f"b3/margin/splits/{noise}/{key}"
+            for rule, count in block["reached_on_evaluation"].items():
+                values[f"{prefix}/reached/{rule}"] = count
+            for pair, row in block["paired"].items():
+                for stat, value in row["completion"].items():
+                    values[f"{prefix}/paired/{pair}/completion/{stat}"] = value
+                values[f"{prefix}/paired/{pair}/success/median"] = row["success"]["median"]
+            for pair, count in block["faster"].items():
+                values[f"{prefix}/faster/{pair}"] = count
+    for noise, levels in margin["frontier_points"].items():
+        for level, row in levels.items():
+            for name in ("history", "smoothed"):
+                for metric in ("threshold", "success_rate", "mean_completion_min"):
+                    values[f"b3/margin/frontier/{noise}/{level}/{name}/{metric}"] = row[name][metric]
+            values[f"b3/margin/frontier/{noise}/{level}/history_minus_smoothed"] = row["history_minus_smoothed"]
+    kappa = load(B3 / "noprobe_kappa_results.json")
+    values["b3/noprobe_kappa/max_rise_without_probe_over_naive"] = kappa["max_rise_without_probe_over_naive"]
+    for k, block in kappa["kappa"].items():
+        states = block["states"]
+        prefix = f"b3/noprobe_kappa/{k}"
+        values[f"{prefix}/states"] = states["states"]
+        values[f"{prefix}/without_probe/count"] = states["success_without_probe"]["count"]
+        values[f"{prefix}/without_probe/fraction"] = states["success_without_probe"]["fraction"]
+        for history, value in states["success_without_probe"]["per_history"].items():
+            values[f"{prefix}/without_probe/{history}"] = value
+        for key, value in states["agreement"].items():
+            values[f"{prefix}/agreement/{key}"] = value
+        for noise, rescored in block["rescored"].items():
+            for label in ("original", "causal"):
+                for rule, row in rescored[label].items():
+                    for metric, value in row.items():
+                        values[f"{prefix}/{noise}/{label}/{rule}/{metric}"] = value
+            for rule, value in rescored["disagreement_at_stop"].items():
+                values[f"{prefix}/{noise}/disagreement/{rule}"] = value
+            values[f"{prefix}/{noise}/order_unchanged"] = rescored["order_unchanged"]
+    ar1 = load(B3 / "ar1_likelihood_results.json")
+    r0 = ar1["repeats"]["0"]
+    for key, value in r0["estimated"].items():
+        values[f"b3/ar1/r0/estimated/{key}"] = value
+    for rule, parts in r0["rules"].items():
+        for metric, value in parts["all"].items():
+            values[f"b3/ar1/r0/{rule}/{metric}"] = value
+    for arm in ("ar1", "ar1_true"):
+        values[f"b3/ar1/r0/{arm}/threshold"] = r0["choices"][arm]["threshold"]
+        values[f"b3/ar1/r0/{arm}/target_reached"] = r0["choices"][arm]["target_reached"]
+    values["b3/ar1/r0/independent_history/target_reached"] = r0["choices"]["independent"]["history"]["target_reached"]
+    for pair, row in r0["paired"].items():
+        for metric, value in row.items():
+            values[f"b3/ar1/r0/paired/{pair}/{metric}"] = value
+    for pair, row in r0["bootstrap"].items():
+        for metric, (low, high) in row.items():
+            values[f"b3/ar1/r0/bootstrap/{pair}/{metric}/low"] = low
+            values[f"b3/ar1/r0/bootstrap/{pair}/{metric}/high"] = high
+    for name, value in r0["median_ess_90min"].items():
+        values[f"b3/ar1/r0/ess/{name}"] = value
+    summary = ar1["summary"]
+    for rule, count in summary["reached_on_evaluation"].items():
+        values[f"b3/ar1/splits/reached/{rule}"] = count
+    for block in ("success", "completion", "estimated", "median_ess_90min"):
+        for name, stats in summary[block].items():
+            for stat, value in stats.items():
+                values[f"b3/ar1/splits/{block}/{name}/{stat}"] = value
+    for pair, row in summary["paired"].items():
+        for metric, stats in row.items():
+            for stat, value in stats.items():
+                values[f"b3/ar1/splits/paired/{pair}/{metric}/{stat}"] = value
+    values["b3/ar1/splits/ar1_more_reliable_than_independent"] = summary["ar1_more_reliable_than_independent"]
+    return values
+
+
 def phase_detail_metrics():
     """Per-condition forecast errors by phase from the frozen nested models."""
     data = json.loads((NESTED / "phase_detail.json").read_text(encoding="utf-8"))
@@ -339,6 +431,7 @@ def compare_reference():
     actual.update(phase_detail_metrics())
     actual.update(sensitivity_metrics())
     actual.update(revision3_metrics())
+    actual.update(revision4_metrics())
     if actual.keys() != expected.keys():
         raise ValueError("Manuscript metric keys differ from the frozen reference.")
     max_error = 0.0
@@ -357,7 +450,8 @@ def compare_reference():
                  B3 / "waiting_robustness_verification_results.json", B3 / "waiting_sensitivity_verification_results.json",
                  B3 / "noprobe_verification_results.json", B3 / "waiting_baselines_verification_results.json",
                  B3 / "waiting_stress_verification_results.json", NESTED / "nested_arx_verification_results.json",
-                 NESTED / "nested_verification_results.json"):
+                 B3 / "waiting_margin_verification_results.json", B3 / "noprobe_kappa_verification_results.json",
+                 B3 / "ar1_likelihood_verification_results.json", NESTED / "nested_verification_results.json"):
         if json.loads(path.read_text(encoding="utf-8"))["status"] != "passed":
             raise ValueError(f"Verification {path.relative_to(ROOT)} did not pass.")
     return {"status": "passed", "entries_compared": len(actual),
@@ -419,6 +513,9 @@ def main():
             run_step("b3_noprobe", [sys.executable, str(CODE / "b3_noprobe.py")])
             run_step("b3_waiting_baselines", [sys.executable, str(CODE / "b3_waiting_baselines.py")])
             run_step("b3_waiting_stress", [sys.executable, str(CODE / "b3_waiting_stress.py")])
+            run_step("b3_waiting_margin", [sys.executable, str(CODE / "b3_waiting_margin.py")])
+            run_step("b3_noprobe_kappa", [sys.executable, str(CODE / "b3_noprobe_kappa.py")])
+            run_step("b3_ar1_likelihood", [sys.executable, str(CODE / "b3_ar1_likelihood.py")])
         run_step("verify_b3_forecast", [sys.executable, str(CODE / "verify_b3_forecast.py")])
         run_step("verify_b3_readiness", [sys.executable, str(CODE / "verify_b3_readiness.py")])
         run_step("verify_nested_forecast", [sys.executable, str(CODE / "verify_nested_forecast.py")])
@@ -429,6 +526,9 @@ def main():
         run_step("verify_b3_waiting_baselines", [sys.executable, str(CODE / "verify_b3_waiting_baselines.py")])
         run_step("verify_b3_waiting_stress", [sys.executable, str(CODE / "verify_b3_waiting_stress.py")])
         run_step("verify_nested_arx", [sys.executable, str(CODE / "verify_nested_arx.py")])
+        run_step("verify_b3_waiting_margin", [sys.executable, str(CODE / "verify_b3_waiting_margin.py")])
+        run_step("verify_b3_noprobe_kappa", [sys.executable, str(CODE / "verify_b3_noprobe_kappa.py")])
+        run_step("verify_b3_ar1_likelihood", [sys.executable, str(CODE / "verify_b3_ar1_likelihood.py")])
         run_step("synthetic_checks", [sys.executable, str(CODE / "smoke_check.py")])
         report["manuscript_reference"] = compare_reference()
         print(f"Passed frozen manuscript comparison ({report['manuscript_reference']['entries_compared']} entries)", flush=True)
