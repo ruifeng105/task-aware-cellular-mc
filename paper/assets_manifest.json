@@ -12,9 +12,11 @@
     "forecast_rmse.tex",
     "inventory.tex",
     "inventory_core.tex",
+    "lopo_core.tex",
     "lopo_rmse.tex",
     "matched_history.tex",
-    "open_loop_rmse.tex"
+    "open_loop_rmse.tex",
+    "waiting_history.tex"
   ],
   "generated_figures": [
     "forecast_mean_10min.pdf",

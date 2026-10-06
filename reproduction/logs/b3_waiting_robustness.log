@@ -1,0 +1,24 @@
+{
+  "0": {
+    "history_target_reached": 0,
+    "history_faster_than_fixed": 20,
+    "smoothed_scales": [
+      16.0
+    ],
+    "fixed_waits": [
+      98.0,
+      100.0
+    ]
+  },
+  "0.005": {
+    "history_target_reached": 20,
+    "history_faster_than_fixed": 20,
+    "smoothed_scales": [
+      16.0
+    ],
+    "fixed_waits": [
+      98.0,
+      100.0
+    ]
+  }
+}

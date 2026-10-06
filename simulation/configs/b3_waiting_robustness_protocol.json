@@ -1,0 +1,21 @@
+{
+  "name": "Robustness of the calibrated waiting rules on B3 (supplement to readiness protocol version 3)",
+  "version": 1,
+  "status": "frozen_before_running",
+  "date": "2026-10-06",
+  "reason": "Reviewer advice of 2026-10-06: the version-3 result rests on one calibration/evaluation split and one observation-noise realization, reports only history-averaged outcomes, and selects thresholds by a first-feasible heuristic rather than by the completion-time objective.",
+  "unchanged": "Everything in configs/b3_waiting_protocol.json: simulation tables, task, noise levels 0 and 0.005, estimators, threshold grid, smoothing scales, the first-feasible threshold rule, the smoothed scale rule, fallback and the fixed-wait rule. Version-3 results remain the primary result.",
+  "repeats": {
+    "count": 20,
+    "r0": "reproduces version 3 exactly: split seed 20261006 and the version-2 observation draws (seed 20261005 + 2 x plant + history)",
+    "r_ge_1": "split seed 20261006 + r; observation draws from seed 20261005 + 10000 r + 2 x plant + history"
+  },
+  "outputs": {
+    "per_repeat": "for each noise level and rule: evaluation success rate and mean failure-penalized completion time, over both histories and separately for the 3- and 30-min histories",
+    "paired": "per evaluation parameter sample, completion and success averaged over the two histories; mean paired differences history - smoothed, history - current and history - calibrated fixed wait",
+    "bootstrap": "for r = 0 only: 95% percentile intervals of the paired differences from 2000 resamples of evaluation parameter samples (both histories kept together), seed 20261008",
+    "summary": "median, minimum and maximum over the 20 repeats of every per-repeat quantity"
+  },
+  "sensitivity": "Objective-aligned selection: among thresholds whose calibration success is >= 0.9, the one with the smallest calibration mean completion (ties: smaller threshold); for the smoothed estimator among all feasible (scale, threshold) pairs; for the fixed wait among all feasible grid waits. Same fallback as version 3. Reported beside, never instead of, the version-3 rule.",
+  "reporting": "All quantities are reported whatever their direction. Repeats describe the stability of this simulation; they are not confidence statements about measured cells, and the 90% target is an empirical calibration target, not a coverage guarantee."
+}

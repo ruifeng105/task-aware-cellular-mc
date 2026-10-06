@@ -34,14 +34,21 @@ def load_protocol():
     return json.loads(PROTOCOL.read_text(encoding='utf-8'))
 
 
-def split_samples(n):
-    order = np.random.default_rng(SPLIT_SEED).permutation(n)
+def split_samples(n, seed=SPLIT_SEED):
+    order = np.random.default_rng(seed).permutation(n)
     return np.sort(order[:n // 2]), np.sort(order[n // 2:])
 
 
-def noisy_observations(tables, noise):
+def noisy_observations(tables, noise, seed=None):
+    """Version-2 draws by default; with `seed`, the same per-plant scheme (seed + 2 x plant + history)."""
     fret = tables['history_fret'].astype(float)
-    return fret + (noise / br.NOISE_SD) * (br.observations(tables) - fret)
+    if seed is None:
+        return fret + (noise / br.NOISE_SD) * (br.observations(tables) - fret)
+    draws = np.empty_like(fret)
+    for h in range(fret.shape[0]):
+        for plant in range(fret.shape[1]):
+            draws[h, plant] = np.random.default_rng(seed + 2 * plant + h).normal(0., 1., fret.shape[2])
+    return fret + noise * draws
 
 
 def ema(series, tau):
@@ -90,11 +97,11 @@ def reference_history_probability(observed, trajectories, success, sigma):
     return (weights / weights.sum(axis=0, keepdims=True) * success).sum(0)
 
 
-def estimator_probabilities(tables, success, noise, reference, plants):
+def estimator_probabilities(tables, success, noise, reference, plants, observed=None):
     """Success-probability series per estimator, arrays (histories, len(plants), waits); a plant inside
     `reference` is left out of its own reference set."""
     fret = tables['history_fret'].astype(float)
-    observed = noisy_observations(tables, noise)
+    observed = noisy_observations(tables, noise) if observed is None else observed
     position = {int(p): i for i, p in enumerate(reference)}
     estimators = {'current': (PooledReadiness(fret[:, reference], success[:, reference], likelihood_sd(noise)), observed)}
     for tau in SMOOTH_TAUS:
@@ -135,10 +142,10 @@ def fixed_outcome(success, plants, wait):
                 mean_wait_min=float(wait))
 
 
-def calibration_choices(tables, noise):
+def calibration_choices(tables, noise, split=None, observed=None):
     success = br.success_table(tables)
-    cal, _ = split_samples(success.shape[1])
-    probability = estimator_probabilities(tables, success, noise, cal, cal)
+    cal, _ = split_samples(success.shape[1]) if split is None else split
+    probability = estimator_probabilities(tables, success, noise, cal, cal, observed)
     choices = {}
     for name in ('current', 'history'):
         threshold, outcome, reached = calibrate_threshold(probability[name], success, cal)
@@ -156,10 +163,10 @@ def calibration_choices(tables, noise):
     return json.loads(json.dumps(choices))
 
 
-def evaluate(tables, noise, choices):
+def evaluate(tables, noise, choices, split=None, observed=None):
     success = br.success_table(tables)
-    cal, ev = split_samples(success.shape[1])
-    probability = estimator_probabilities(tables, success, noise, cal, ev)
+    cal, ev = split_samples(success.shape[1]) if split is None else split
+    probability = estimator_probabilities(tables, success, noise, cal, ev, observed)
     out = {name: outcomes(probability[name], success, ev, choices[name]['threshold']) for name in ('current', 'history')}
     out['smoothed'] = outcomes(probability[f"smoothed_{choices['smoothed']['tau_min']:g}"], success, ev,
                                choices['smoothed']['threshold'])

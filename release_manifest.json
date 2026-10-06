@@ -1,7 +1,7 @@
 {
   "date": "2026-10-04",
   "project_root": "task-aware-cellular-mc",
-  "description": "Six-page ICC revision: nested P/C/O/M/H prediction on experimental FGF2/ERK data with corrected leave-one-protocol-out and phase scores, accepted execution of the authors' B3 model, and calibrated waiting rules simulated on B3 (smoothed baseline, noise ablation), with the earlier pilot, pre-registered expansion and readiness versions kept for reproduction. No controller is evaluated on measured receivers.",
+  "description": "Six-page ICC revision: nested P/C/O/M/H prediction on experimental FGF2/ERK data with corrected leave-one-protocol-out and phase scores, accepted execution of the authors' B3 model, and calibrated waiting rules simulated on B3 (smoothed baseline, noise ablation, 20-split robustness), with the earlier pilot, pre-registered expansion and readiness versions kept for reproduction. No controller is evaluated on measured receivers.",
   "verification": {
     "full_pipeline": "passed",
     "steps": [
@@ -14,11 +14,14 @@
       "b3_readiness",
       "b3_readiness_example",
       "nested_forecast",
+      "nested_phase_detail",
       "b3_waiting",
+      "b3_waiting_robustness",
       "verify_b3_forecast",
       "verify_b3_readiness",
       "verify_nested_forecast",
       "verify_b3_waiting",
+      "verify_b3_waiting_robustness",
       "synthetic_checks",
       "build_paper_assets",
       "kit_pilot_design",
@@ -30,7 +33,7 @@
       "pipeline_checks",
       "compile_paper"
     ],
-    "frozen_manuscript_entries_compared": 862,
+    "frozen_manuscript_entries_compared": 1329,
     "max_absolute_error": 9.020562075079397e-17,
     "original_source_files_verified": 47,
     "expanded_source_files_verified": 56,
@@ -51,28 +54,28 @@
       "bytes": 38453
     },
     "Paper_Notes_ZH.md": {
-      "sha256": "f0c5043ab2855df633617776981c9c10a4b60836c1b1c628b503917b9bd19dc9",
-      "bytes": 12331
+      "sha256": "cd64a43cdd903035b9d999d3fcab03f02c19fa1a12483a9cbae63a719c2bfe0e",
+      "bytes": 13322
     },
     "Paper_Simulation_Map_ZH.md": {
-      "sha256": "780e141f9d1cf2a33c55205a84b6718240b70ad970007f63f18fd1e1a8c7ada2",
-      "bytes": 6108
+      "sha256": "f0ee4731fecf4fd00027d4434288ee2fcb3fe1b63b8b03f7ba7e629676293e7d",
+      "bytes": 7020
     },
     "README.md": {
-      "sha256": "f4a2612b0123bfd60f5f563b267683a242f245d68e1b8d0a4bb8e01620122c6e",
-      "bytes": 14946
+      "sha256": "8ee15a8f2cac380938b0ebb9c588a62829e14aa4b6c55ebf7843584fe837026d",
+      "bytes": 16746
     },
     "paper/AI_MC_Cellular_Receivers_Draft.pdf": {
-      "sha256": "9e86b998f1a9846e0b9f6071ab3dded62267df63f12253083f4cd6d281dc5191",
-      "bytes": 300077
+      "sha256": "536cbcf91808f8d6b210ad936925a6c249e600fb619a475ea47dc59ec90c6a1b",
+      "bytes": 307752
     },
     "paper/IEEEtran.cls": {
       "sha256": "da751920a317ed318b7b5cd7fa585a6cc7d28502d457856382e9be24b10a3bd7",
       "bytes": 281957
     },
     "paper/assets_manifest.json": {
-      "sha256": "1d4a1cb549beb6500a4df7a6f3c12abf5d15969143f7ff5a1c28adbcb2f0f4b9",
-      "bytes": 1238
+      "sha256": "79fe6abfe4c52358333198b1623ae0fca7062cf884ebce35015dc40f1ef9a2fc",
+      "bytes": 1286
     },
     "paper/figures/forecast_mean_10min.pdf": {
       "sha256": "1134559be03d14fe7e30443e08baf501bf5b626f52d9248cf7bb0b3ff3d8e2b3",
@@ -115,20 +118,20 @@
       "bytes": 75617
     },
     "paper/figures/readiness_waiting.pdf": {
-      "sha256": "2ac5c990aee81d8a55917cd734915797ea3ef6233043bd91a9790397028fbb4d",
-      "bytes": 18364
+      "sha256": "d65027cbd3ed9331715f5418dbc003339821ae3b50638e36bb4a8e228715a1b0",
+      "bytes": 20541
     },
     "paper/figures/readiness_waiting.png": {
-      "sha256": "b25381b7423fdec98bbb5d49b876eec84638818a3bb541390a5eeb1280a54177",
-      "bytes": 77441
+      "sha256": "238a5bff7a4c03bc056ec3e63e5b08b5c9bc12da0cd7531770d865dac4bf255b",
+      "bytes": 86208
     },
     "paper/main.tex": {
-      "sha256": "5809e9cd2a5d499069ab1a581ff0aacdfa84342e2dd83e370af65684e026c1ce",
-      "bytes": 22007
+      "sha256": "0470f5ee213a27497f271078ba06a2ecd13e853a9c4b47f8d7c719ce28175641",
+      "bytes": 26602
     },
     "paper/qa_report.json": {
-      "sha256": "b85ae2f978f46650b2211b77ea40eb026da7873cf29efb366db4e0c926d6d02c",
-      "bytes": 1609
+      "sha256": "0004bac3aac6dfae65a1ebc41d93c4161be02b9731b9eab5d2ca96dcc8c69d9e",
+      "bytes": 1665
     },
     "paper/references.bib": {
       "sha256": "647349c29636896d03fde654fbb0aca6b83d1163bb08397205b874a5dcb0b062",
@@ -154,6 +157,10 @@
       "sha256": "eb0d55be1d2659070f89bda82f24938df6534ee41bff0da8727ac4b88b1bdad0",
       "bytes": 502
     },
+    "paper/tables/lopo_core.tex": {
+      "sha256": "6713c9e6020ba6bd9cb63a12d05b8ff9ac8098e50fc86db965ee60181e6b7a46",
+      "bytes": 526
+    },
     "paper/tables/lopo_rmse.tex": {
       "sha256": "29e23928357f8c746de6906d3613b4db3cae39907ff31e1d03a21c68d01c282a",
       "bytes": 525
@@ -165,6 +172,10 @@
     "paper/tables/open_loop_rmse.tex": {
       "sha256": "82cab4ad82000f5982da7df0466757f60697ff17194677aa52cadad09ef62a83",
       "bytes": 288
+    },
+    "paper/tables/waiting_history.tex": {
+      "sha256": "0cef5a7dfa6217c1597460891859d9108002d6f5b4ab56628d16dd355510c474",
+      "bytes": 366
     },
     "reproduction/logs/b3_forecast.log": {
       "sha256": "05d627bc857b2ebb0c0ff979654d93a4ac275279b38342d5efbb046c16813cee",
@@ -182,9 +193,13 @@
       "sha256": "c5f19c819690fa89e08e821e366a1efb6afee4a7b04e4fee09e6e993179fe218",
       "bytes": 4043
     },
+    "reproduction/logs/b3_waiting_robustness.log": {
+      "sha256": "25df1d7f4c472c641996a11bad1b2764423467bb4a1239cf43de0936ebdf8a3f",
+      "bytes": 364
+    },
     "reproduction/logs/build_paper_assets.log": {
-      "sha256": "1d4a1cb549beb6500a4df7a6f3c12abf5d15969143f7ff5a1c28adbcb2f0f4b9",
-      "bytes": 1238
+      "sha256": "79fe6abfe4c52358333198b1623ae0fca7062cf884ebce35015dc40f1ef9a2fc",
+      "bytes": 1286
     },
     "reproduction/logs/compile_paper.log": {
       "sha256": "b6a01e926e207ed45181326092a1dab0acd0b5e2b1e24916f8fb6f09afe6adef",
@@ -226,6 +241,10 @@
       "sha256": "7af0b89d96b8baccbb693f7e3cb6343d54c40febca84d6f851f98e9d5e0c5246",
       "bytes": 3599
     },
+    "reproduction/logs/nested_phase_detail.log": {
+      "sha256": "d2d6d1ceb91ebf59a66e21a28063e015c54fc36e86b110bcfd55d21813ec28a5",
+      "bytes": 527
+    },
     "reproduction/logs/pipeline_checks.log": {
       "sha256": "73e575461cffc9facbd78192edebc3a79d7c293fd2ed25ca30b78d9cd07d7245",
       "bytes": 34
@@ -250,6 +269,10 @@
       "sha256": "68b698f34d347818e00174fe6816bacc0c7e8fabf1f88d261336a66f9a9275f3",
       "bytes": 686
     },
+    "reproduction/logs/verify_b3_waiting_robustness.log": {
+      "sha256": "43b33b59d55c84d52dce6fa228f1387e89db2b82076a455b1a11138c4aef17c5",
+      "bytes": 565
+    },
     "reproduction/logs/verify_data_and_scores.log": {
       "sha256": "641b66d2fb1452923b2d371b54615eafd62d90d8d03071550082d9c85b8886a4",
       "bytes": 2756
@@ -259,16 +282,16 @@
       "bytes": 2276
     },
     "reproduction/logs/verify_nested_forecast.log": {
-      "sha256": "e8c88a058a5164ff2bbd6b463ac977a2397a450d47c526b2b82ca0ba8032cea6",
-      "bytes": 692
+      "sha256": "96529e78410c47a0608a9820e0e129e79f9bd596f4db5b35849eba36a49c793b",
+      "bytes": 773
     },
     "reproduction/reference_metrics.json": {
-      "sha256": "a819d7e9d4d1c81ec88e6f75c440c7c9251183dd16cf179e34deee9feda80c76",
-      "bytes": 117630
+      "sha256": "0a6834f332042099a0de9879040b6cac5a3b3c28d38526a46949b65977a34399",
+      "bytes": 181590
     },
     "reproduction/run_report.json": {
-      "sha256": "583dadc7e9ade3e943c66c3005abe2430a5f821ca2822074ec68150326a7f4dd",
-      "bytes": 4722
+      "sha256": "d68905183e16599276d981ce74a496b31a5e32281a3463a563a78e5776e22678",
+      "bytes": 5240
     },
     "requirements-reproduced.txt": {
       "sha256": "d74b9fb1c9d1ec341e9fdf25375f64ee886227c49c8076e01d6b45f78624f1fa",
@@ -279,24 +302,24 @@
       "bytes": 124
     },
     "scripts/build_paper_assets.py": {
-      "sha256": "9ff7474069575cc8235f9afa5dceee6192d8b110fdeb9002ff1b4150b92d3e30",
-      "bytes": 27817
+      "sha256": "de150a9d846217a45606f3f3584feb48df046602f8fb62b32bd5eb00282d8c5f",
+      "bytes": 30367
     },
     "scripts/reproduce.py": {
-      "sha256": "62e720251fefe69ddd99dd9e0c8397c54448ce486fb31fdc24187a7e9812811b",
-      "bytes": 17777
+      "sha256": "160b250d3cd3595b0c5d972e93a4021e06f4f7c81d2b3826931376ed93af9739",
+      "bytes": 20524
     },
     "simulation/AI_MC_Application_First_Review_ZH.md": {
       "sha256": "b82778d48db9c03113f5f04a9337db590a7c0cda13e75c1582ed27b27830acee",
       "bytes": 30518
     },
     "simulation/README.md": {
-      "sha256": "a97af2f35221a8b6e0322803c1c1752265afe37880a7070740625ea7befbd14c",
-      "bytes": 14038
+      "sha256": "9973fb80313d97df98177df872cd0b07d6150c4e5952d1b84de7d0e52b37c1a0",
+      "bytes": 15201
     },
     "simulation/checksums.json": {
-      "sha256": "4739059d5023cd8f46004a5a64ed78f62fedaee30e7daab02fee364ee9ef2d61",
-      "bytes": 30806
+      "sha256": "dbcdb55e610239a39ca100b51bb59b87e9fd2bb6c7fe37c2956d5640cdffad63",
+      "bytes": 32027
     },
     "simulation/code/b3_forecast.py": {
       "sha256": "b450291afdb8f2b2bd3af66cddf67779d7cf491f7593640f5afe6defa67c1a05",
@@ -315,8 +338,12 @@
       "bytes": 4668
     },
     "simulation/code/b3_waiting.py": {
-      "sha256": "251423e41017308e226fd20aaf09200f37f7c94bd69910d33b89475235029497",
-      "bytes": 10279
+      "sha256": "cfd2da64d047c0dcd35d19dc739b7f8b1be3c07044d68d8d4c1360afdd31cf76",
+      "bytes": 10858
+    },
+    "simulation/code/b3_waiting_robustness.py": {
+      "sha256": "367564654be20e8b32a3e5238cd8d98501ed0be0070b5b59f9e1a42bf3c5013d",
+      "bytes": 9568
     },
     "simulation/code/calibrate_fgf2.py": {
       "sha256": "c8b4a3e63478802e33d6324f5f3978337aa9983e629f6f2e04e2c77c8c620c39",
@@ -346,6 +373,10 @@
       "sha256": "1bce7bafefb92cd653c47071d97350f6d43aac6f366d43ba1089724542c6d978",
       "bytes": 12091
     },
+    "simulation/code/nested_phase_detail.py": {
+      "sha256": "f1989c958d89ff70f87e032c960927239088a1e4fc859de59684f39efb60320f",
+      "bytes": 2948
+    },
     "simulation/code/pipeline_checks.py": {
       "sha256": "f69ad64ba470fe29c8d4302cefad18ab57ab3e4f4ad52f63a15071ec01517145",
       "bytes": 9008
@@ -370,6 +401,10 @@
       "sha256": "f26f26bfbfaa7ed76d66240452454947ded9a04af6adc39646928c86dd24f097",
       "bytes": 5059
     },
+    "simulation/code/verify_b3_waiting_robustness.py": {
+      "sha256": "ef17e86c06a7d31f326b182c3bc05161527b1d39808806ecb0434c89d354c0c4",
+      "bytes": 4092
+    },
     "simulation/code/verify_expanded_fgf2.py": {
       "sha256": "7de5547b1c46682c41a02d239ec869d861341f0c664e083a16192d8e0577611f",
       "bytes": 5845
@@ -379,8 +414,8 @@
       "bytes": 6908
     },
     "simulation/code/verify_nested_forecast.py": {
-      "sha256": "8db056c4bb620bd27e394186bf357de1e5dd2609aa9d0cf340996ab7cac2c714",
-      "bytes": 4032
+      "sha256": "6314ed0b1aeffd394ee2a70209791d1de2733bb7467ceea6e86c0a54c458c039",
+      "bytes": 4936
     },
     "simulation/configs/b3_forecast_protocol.json": {
       "sha256": "54e810c770afc73c74eae3d2ae106099a5a2c46b10f8ecbee6b0cdcbe4d28acf",
@@ -397,6 +432,10 @@
     "simulation/configs/b3_waiting_protocol.json": {
       "sha256": "6e610e9b3b8aa4d1178e945d7d16c35c42bb65ea1160818bdbc0783272e63f42",
       "bytes": 3103
+    },
+    "simulation/configs/b3_waiting_robustness_protocol.json": {
+      "sha256": "820274b76262b913585a9a6b9f916d68112039f18f8a416d1aec40ed27343641",
+      "bytes": 2400
     },
     "simulation/configs/biological_split_template.json": {
       "sha256": "ab503a978af3791f9ddfb69519e7e620ed2b2645b3365b921f2ffe0435bfb868",
@@ -886,6 +925,10 @@
       "sha256": "2f065083f772989ae2c43443c80defb8695badbe21cb3d7a3205b8d56df8d8ab",
       "bytes": 273
     },
+    "simulation/results/b3/b3_waiting_robustness_protocol_freeze.json": {
+      "sha256": "332236a280e812851d494eac125eae432922c7a46a6fee8ce3f405e87a450fbd",
+      "bytes": 349
+    },
     "simulation/results/b3/forecast_results.json": {
       "sha256": "e639c47ed22703d1edfe483f64cf2a4a8bac4c28f56d0bcc822674496952013c",
       "bytes": 62093
@@ -929,6 +972,14 @@
     "simulation/results/b3/waiting_results.json": {
       "sha256": "da20ca38a861cc07d6e3b861656953a2ec2143e631585e63290450c2fa9808b6",
       "bytes": 23124
+    },
+    "simulation/results/b3/waiting_robustness_results.json": {
+      "sha256": "fdc478cbe450993f8915c7913b476cb0e536fb4fdfd6efa5d8699b468d648895",
+      "bytes": 276327
+    },
+    "simulation/results/b3/waiting_robustness_verification_results.json": {
+      "sha256": "43b33b59d55c84d52dce6fa228f1387e89db2b82076a455b1a11138c4aef17c5",
+      "bytes": 565
     },
     "simulation/results/b3/waiting_verification_results.json": {
       "sha256": "68b698f34d347818e00174fe6816bacc0c7e8fabf1f88d261336a66f9a9275f3",
@@ -987,8 +1038,12 @@
       "bytes": 128913
     },
     "simulation/results/nested/nested_verification_results.json": {
-      "sha256": "e8c88a058a5164ff2bbd6b463ac977a2397a450d47c526b2b82ca0ba8032cea6",
-      "bytes": 692
+      "sha256": "96529e78410c47a0608a9820e0e129e79f9bd596f4db5b35849eba36a49c793b",
+      "bytes": 773
+    },
+    "simulation/results/nested/phase_detail.json": {
+      "sha256": "8e3293adf6a09ef82f496a9d7e0af5210d38e61446b39b8b6a8cdb5b84a0ef3a",
+      "bytes": 9944
     },
     "simulation/results/software_verification.json": {
       "sha256": "c96eb90267ed1bea756cb09cd15c34e254eb814520c489404e5fece36d90e23e",

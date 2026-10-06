@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "protocol_sha256": "820274b76262b913585a9a6b9f916d68112039f18f8a416d1aec40ed27343641",
+  "version3": {
+    "max_abs_difference": 0.0
+  },
+  "seeds": {
+    "repeats": 20,
+    "distinct": true
+  },
+  "aligned_rule": {
+    "first_feasible": 0.5,
+    "aligned": 0.6
+  },
+  "aligned_leakage": {
+    "evaluation_labels_flipped": true,
+    "aligned_choices_unchanged": true
+  },
+  "recomputation": {
+    "repeat": 7,
+    "max_abs_difference": 0.0
+  },
+  "scope": "Stability of one simulated model structure; not evidence about measured cells."
+}

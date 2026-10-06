@@ -29,5 +29,8 @@
       "mixed_2-5ng",
       "mixed_250ng"
     ]
+  },
+  "phase_detail": {
+    "max_abs_pooling_difference": 6.938893903907228e-18
   }
 }

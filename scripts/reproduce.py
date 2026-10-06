@@ -178,6 +178,49 @@ def waiting_metrics():
     return values
 
 
+def robustness_metrics():
+    """Waiting robustness study: repeat-0 outcomes by history, paired differences and intervals, summary over repeats."""
+    data = json.loads((B3 / "waiting_robustness_results.json").read_text(encoding="utf-8"))
+    values = {}
+    for noise, r0 in data["repeats"]["0"].items():
+        for rule, parts in r0["rules"].items():
+            for part, row in parts.items():
+                for key, value in row.items():
+                    values[f"b3/robust/{noise}/r0/{rule}/{part}/{key}"] = value
+        for pair, row in r0["paired"].items():
+            for key, value in row.items():
+                values[f"b3/robust/{noise}/r0/paired/{pair}/{key}"] = value
+        for pair, row in r0["bootstrap"].items():
+            for key, (low, high) in row.items():
+                values[f"b3/robust/{noise}/r0/bootstrap/{pair}/{key}/low"] = low
+                values[f"b3/robust/{noise}/r0/bootstrap/{pair}/{key}/high"] = high
+    for noise, block in data["summary"].items():
+        for rule, parts in block["rules"].items():
+            for key, row in parts["all"].items():
+                for stat, value in row.items():
+                    values[f"b3/robust/{noise}/summary/{rule}/{key}/{stat}"] = value
+        for pair, row in block["paired"].items():
+            for key, stats_ in row.items():
+                for stat, value in stats_.items():
+                    values[f"b3/robust/{noise}/summary/paired/{pair}/{key}/{stat}"] = value
+        for key in ("history_target_reached", "history_faster_than_fixed"):
+            values[f"b3/robust/{noise}/summary/{key}"] = block[key]
+    return values
+
+
+def phase_detail_metrics():
+    """Per-condition forecast errors by phase from the frozen nested models."""
+    data = json.loads((NESTED / "phase_detail.json").read_text(encoding="utf-8"))
+    values = {}
+    for phase, conditions in data["phases"].items():
+        for condition, row in conditions.items():
+            values[f"nested/phase_detail/{phase}/{condition}/rows"] = row["rows"]
+            values[f"nested/phase_detail/{phase}/{condition}/origins"] = row["origins"]
+            for name, value in row["rmse"].items():
+                values[f"nested/phase_detail/{phase}/{condition}/{name}/rmse"] = value
+    return values
+
+
 def compare_reference():
     expected = json.loads((REPRO / "reference_metrics.json").read_text(encoding="utf-8"))["metrics"]
     actual = paper_metrics(json.loads((OUT / "calibration_results.json").read_text(encoding="utf-8")))
@@ -185,6 +228,8 @@ def compare_reference():
     actual.update(b3_metrics())
     actual.update(nested_metrics())
     actual.update(waiting_metrics())
+    actual.update(robustness_metrics())
+    actual.update(phase_detail_metrics())
     if actual.keys() != expected.keys():
         raise ValueError("Manuscript metric keys differ from the frozen reference.")
     max_error = 0.0
@@ -200,6 +245,7 @@ def compare_reference():
     for path in (OUT / "verification_results.json", EXPANDED / "verification_results.json",
                  B3 / "verification_results.json", B3 / "forecast_verification_results.json",
                  B3 / "readiness_verification_results.json", B3 / "waiting_verification_results.json",
+                 B3 / "waiting_robustness_verification_results.json",
                  NESTED / "nested_verification_results.json"):
         if json.loads(path.read_text(encoding="utf-8"))["status"] != "passed":
             raise ValueError(f"Verification {path.relative_to(ROOT)} did not pass.")
@@ -254,11 +300,14 @@ def main():
             run_step("b3_readiness", [sys.executable, str(CODE / "b3_readiness.py")])
             run_step("b3_readiness_example", [sys.executable, str(CODE / "b3_readiness_example.py")])
             run_step("nested_forecast", [sys.executable, str(CODE / "nested_forecast.py")])
+            run_step("nested_phase_detail", [sys.executable, str(CODE / "nested_phase_detail.py")])
             run_step("b3_waiting", [sys.executable, str(CODE / "b3_waiting.py")])
+            run_step("b3_waiting_robustness", [sys.executable, str(CODE / "b3_waiting_robustness.py")])
         run_step("verify_b3_forecast", [sys.executable, str(CODE / "verify_b3_forecast.py")])
         run_step("verify_b3_readiness", [sys.executable, str(CODE / "verify_b3_readiness.py")])
         run_step("verify_nested_forecast", [sys.executable, str(CODE / "verify_nested_forecast.py")])
         run_step("verify_b3_waiting", [sys.executable, str(CODE / "verify_b3_waiting.py")])
+        run_step("verify_b3_waiting_robustness", [sys.executable, str(CODE / "verify_b3_waiting_robustness.py")])
         run_step("synthetic_checks", [sys.executable, str(CODE / "smoke_check.py")])
         report["manuscript_reference"] = compare_reference()
         print(f"Passed frozen manuscript comparison ({report['manuscript_reference']['entries_compared']} entries)", flush=True)

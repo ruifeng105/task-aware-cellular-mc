@@ -48,6 +48,7 @@ example = json.loads((B3_RESULTS / "readiness_example.json").read_text(encoding=
 NESTED = PILOT / "results/nested"
 nested = json.loads((NESTED / "nested_results.json").read_text(encoding="utf-8"))
 waiting = json.loads((B3_RESULTS / "waiting_results.json").read_text(encoding="utf-8"))
+robust = json.loads((B3_RESULTS / "waiting_robustness_results.json").read_text(encoding="utf-8"))
 
 
 def write_table(name, spec, header, body):
@@ -340,6 +341,29 @@ for a, b in (("H", "M"), ("M", "O"), ("O", "C")):
     body.append(f"{a} beats {b} & " + " & ".join(counts))
 write_table("core_rmse", "lccccc", r"Model & Val. & A & B & C & A, 2 min", body)
 
+conc_of = {r["condition_id"].replace("fgf_", "", 1): r["concentration_ng_ml"] for r in expanded["inventory"]}
+fold_label = {"fgf_sus": "Sustained", "fgf_3_20": "3/20 pulses", "fgf_sp_5": "Single 5 min",
+              "fgf_sp_10": "Single 10 min", "fgf_sp_60": "Single 60 min", "fgf_mixed_new": "Mixed, 0.25/25"}
+body = []
+for group, label in fold_label.items():
+    fold = nested["lopo"][group]
+    use = fold["b3_use"]
+    if use["fitted"]:
+        prior = "fit " + ", ".join(f"{conc_of[k]:g}" for k in use["fitted"])
+    elif use["architecture_likelihood"]:
+        prior = "arch. " + ", ".join(f"{conc_of[k]:g}" for k in use["architecture_likelihood"])
+    else:
+        prior = "other conc. arch." if group == "fgf_mixed_new" else "none"
+    body.append(f"{label} & " + " & ".join(bold_min([fold["rmse"][m] for m in ("O", "M", "H")])) + f" & {prior}")
+write_table("lopo_core", "lcccl", r"Held-out protocol & O & M & H & B3 prior use", body)
+
+r0 = robust["repeats"]["0"]["0.005"]["rules"]
+rule_label = (("current", "Current obs."), ("smoothed", "Smoothed (16 min)"), ("history", "History-aware"),
+              ("fixed", f"Fixed {waiting['noise']['0.005']['choices']['fixed']['wait_min']:g} min"), ("oracle", "Oracle"))
+body = [label + " & " + " & ".join(f"{100 * r0[name][h]['success_rate']:.1f} & {r0[name][h]['mean_completion_min']:.1f}"
+                                   for h in ("short", "long")) for name, label in rule_label]
+write_table("waiting_history", "lcccc", r"Rule & $S_3$ (\%) & $T_3$ (min) & $S_{30}$ (\%) & $T_{30}$ (min)", body)
+
 MODEL_STYLE = {"P": ("#52514e", ":", "."), "C": ("#0b0b0b", "--", "x"), "O": ("#1baf7a", "-", "o"),
                "M": ("#4a3aa7", "-", "s"), "H": ("#e34948", "-", "^")}
 ex = nested["example"]
@@ -374,20 +398,20 @@ fig.savefig(FIG / "prediction_phases.pdf", bbox_inches="tight", pad_inches=.02, 
 fig.savefig(FIG / "prediction_phases.png", bbox_inches="tight", pad_inches=.02)
 plt.close(fig)
 
-POLICY = {"current": ("^", "current"), "smoothed": ("D", "smoothed"), "history": ("o", "history-aware")}
+POLICY = {"current": ("^", "current"), "smoothed": ("D", "smoothed"), "history": ("o", "history")}
 noise_main, noise_zero = waiting["noise"]["0.005"], waiting["noise"]["0"]
 fixed = noise_main["evaluation"]["fixed_calibrated"]
-fig, axes = plt.subplots(1, 3, figsize=(7.08, 2.1))
+fig, axes = plt.subplots(1, 4, figsize=(7.08, 2.15))
 ax = axes[0]
 for name, (color, style, marker, label) in SERIES.items():
     ax.plot(centre, [b[name]["readiness"] for b in bins], color=color, ls=style, lw=1.3, marker=marker, ms=3.5, label=label)
-ax.set(ylim=(-.03, 1.03), xlabel="Current reporter rise (FRET $-$ 1)", ylabel="Readiness")
-ax.set_title("(a) Readiness vs current reporter", loc="left")
+ax.set(ylim=(-.03, 1.03), xlabel="Reporter rise (FRET $-$ 1)", ylabel="Readiness")
+ax.set_title("(a) Readiness vs reporter", loc="left")
 ax.legend(loc="upper right", frameon=False, fontsize=6)
 ax = axes[1]
 ax.axhline(fixed["mean_completion_min"], color=MUTED, lw=.8, ls="--")
-ax.text(2.45, fixed["mean_completion_min"] - .4, f"fixed {noise_main['choices']['fixed']['wait_min']:g} min",
-        fontsize=6, color=MUTED, ha="right", va="top")
+ax.text(-.45, fixed["mean_completion_min"] - .4, f"fixed {noise_main['choices']['fixed']['wait_min']:g} min",
+        fontsize=6, color=MUTED, ha="left", va="top")
 for i, name in enumerate(POLICY):
     marker = POLICY[name][0]
     for noise, block, face, dx in (("0", noise_zero, "white", -.12), ("0.005", noise_main, INK, .12)):
@@ -399,8 +423,8 @@ ax.plot([], [], marker="o", mfc="white", mec=INK, ls="none", label="noise 0")
 ax.plot([], [], marker="o", mfc=INK, mec=INK, ls="none", label="noise 0.005")
 ax.set_xticks(range(len(POLICY)), [POLICY[n][1] for n in POLICY], fontsize=6)
 ax.set(xlim=(-.5, 2.5), ylim=(110.3, 123), ylabel="Mean completion (min)")
-ax.set_title("(b) Noise ablation (evaluation)", loc="left")
-ax.legend(loc="upper center", bbox_to_anchor=(.5, .86), frameon=False, fontsize=6, handletextpad=.2)
+ax.set_title("(b) Noise ablation", loc="left")
+ax.legend(loc="upper right", bbox_to_anchor=(1, .8), frameon=False, fontsize=6, handletextpad=.2)
 ax = axes[2]
 curve = waiting["fixed_wait_curve_eval"]
 ax.plot([p["mean_completion_min"] for p in curve], [p["success_rate"] for p in curve], color=MUTED, lw=1.0, zorder=1)
@@ -415,11 +439,25 @@ for name, (marker, label) in marks.items():
     ax.plot(row["mean_completion_min"], row["success_rate"], marker=marker, color=INK, ms=5.5, ls="none", zorder=3)
     ax.annotate(label, (row["mean_completion_min"], row["success_rate"]), textcoords="offset points",
                 xytext=offsets[name], fontsize=6, color=INK, ha="right" if offsets[name][0] < 0 else "left")
-ax.set(xlim=(100, 143), ylim=(.6, 1.02), xlabel="Mean completion time (min)", ylabel="Task success rate")
-ax.set_title("(c) Calibrated rules, noise 0.005", loc="left")
+ax.set(xlim=(100, 143), ylim=(.6, 1.02), xlabel="Mean completion (min)", ylabel="Task success rate")
+ax.set_title("(c) Success vs completion", loc="left")
+ax = axes[3]
+reps = [robust["repeats"][str(r)]["0.005"]["rules"] for r in range(len(robust["repeats"]))]
+ax.axhline(0, color=MUTED, lw=.8, ls="--")
+offsets = np.linspace(-.18, .18, len(reps))
+for i, name in enumerate(POLICY):
+    delta = [rep[name]["all"]["mean_completion_min"] - rep["fixed"]["all"]["mean_completion_min"] for rep in reps]
+    reached = sum(rep[name]["all"]["success_rate"] >= .9 for rep in reps)
+    ax.plot(i + offsets, delta, marker=POLICY[name][0], ms=3, ls="none", mfc="white", mec=INK, mew=.7)
+    ax.plot([i - .25, i + .25], [np.median(delta)] * 2, color=INK, lw=1.4)
+    ax.annotate(f"{reached}/{len(reps)}", (i, max(delta)), textcoords="offset points", xytext=(0, 4), ha="center",
+                fontsize=5.5, color=INK)
+ax.set_xticks(range(len(POLICY)), [POLICY[n][1] for n in POLICY], fontsize=6)
+ax.set(xlim=(-.5, 2.5), ylabel="Completion $-$ fixed wait (min)")
+ax.set_title("(d) 20 splits, noise 0.005", loc="left")
 for a in axes:
     a.grid(axis="y", alpha=.15)
-fig.subplots_adjust(left=.07, right=.99, bottom=.22, top=.88, wspace=.36)
+fig.subplots_adjust(left=.06, right=.995, bottom=.22, top=.88, wspace=.45)
 fig.savefig(FIG / "readiness_waiting.pdf", bbox_inches="tight", pad_inches=.02, metadata={"CreationDate": None})
 fig.savefig(FIG / "readiness_waiting.png", bbox_inches="tight", pad_inches=.02)
 plt.close(fig)

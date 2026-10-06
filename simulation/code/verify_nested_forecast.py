@@ -48,6 +48,22 @@ def leakage_check(rows10, groups, protocol, held='fgf_sp_5'):
     return dict(held_out=held, selection_unchanged=True, predictions_unchanged=True)
 
 
+def phase_detail_check(saved):
+    """Per-condition phase errors pool (condition-equal) back to the frozen phase scores."""
+    import nested_phase_detail as pd_
+    detail = json.loads(pd_.DETAIL.read_text(encoding='utf-8'))
+    worst = 0.
+    for phase, conditions in detail['phases'].items():
+        frozen = saved['phases']['10'][phase]
+        assert len(conditions) == frozen['n_conditions'] and sum(c['rows'] for c in conditions.values()) == frozen['n_rows']
+        for name, value in frozen['rmse'].items():
+            pooled = float(np.sqrt(np.mean([c['rmse'][name] ** 2 for c in conditions.values()])))
+            worst = max(worst, abs(pooled - value))
+    assert worst < 1e-12, worst
+    assert sorted(detail['phases']['next_command']) == ['fgf_mixed_0-25ng', 'fgf_mixed_25ng']
+    return dict(max_abs_pooling_difference=worst)
+
+
 def main():
     saved = json.loads(nf.RESULTS.read_text(encoding='utf-8'))
     forecast = json.loads(bf.RESULTS.read_text(encoding='utf-8'))
@@ -69,7 +85,8 @@ def main():
     assert roles_b3 == saved['b3_roles'] and roles_b3['fitted'] == ['sus_2-5ng', 'sus_250ng', '3_20_2-5ng', '3_20_250ng']
     report = dict(status='passed', protocol_sha256=nf.protocol_sha256(), phases=phase_checks(), nesting=nesting_checks(),
                   scores_recomputed=sum(len(m) for a in saved['main'].values() for m in a['scores'].values()),
-                  max_abs_score_difference=worst, max_abs_H_minus_M3=m3, lopo_leakage=leakage, b3_roles=roles_b3)
+                  max_abs_score_difference=worst, max_abs_H_minus_M3=m3, lopo_leakage=leakage, b3_roles=roles_b3,
+                  phase_detail=phase_detail_check(saved))
     (nf.OUT / 'nested_verification_results.json').write_text(json.dumps(report, indent=2) + '\n', newline='\n')
     print(json.dumps(report, indent=2))
 

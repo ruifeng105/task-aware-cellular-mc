@@ -1,7 +1,7 @@
 {
   "status": "passed",
   "mode": "full",
-  "started_utc": "2026-10-06T06:03:40.510246+00:00",
+  "started_utc": "2026-10-06T07:24:38.807967+00:00",
   "environment": {
     "python": "3.13.3",
     "numpy": "2.3.2",
@@ -13,145 +13,163 @@
     {
       "name": "fit_and_predict",
       "return_code": 0,
-      "elapsed_seconds": 5.619,
+      "elapsed_seconds": 5.658,
       "log": "reproduction\\logs\\fit_and_predict.log"
     },
     {
       "name": "expanded_fresh_test",
       "return_code": 0,
-      "elapsed_seconds": 13.296,
+      "elapsed_seconds": 13.313,
       "log": "reproduction\\logs\\expanded_fresh_test.log"
     },
     {
       "name": "verify_data_and_scores",
       "return_code": 0,
-      "elapsed_seconds": 0.827,
+      "elapsed_seconds": 0.871,
       "log": "reproduction\\logs\\verify_data_and_scores.log"
     },
     {
       "name": "verify_expanded",
       "return_code": 0,
-      "elapsed_seconds": 8.101,
+      "elapsed_seconds": 8.033,
       "log": "reproduction\\logs\\verify_expanded.log"
     },
     {
       "name": "verify_b3_model",
       "return_code": 0,
-      "elapsed_seconds": 20.227,
+      "elapsed_seconds": 18.407,
       "log": "reproduction\\logs\\verify_b3_model.log"
     },
     {
       "name": "b3_forecast",
       "return_code": 0,
-      "elapsed_seconds": 81.508,
+      "elapsed_seconds": 82.167,
       "log": "reproduction\\logs\\b3_forecast.log"
     },
     {
       "name": "b3_readiness",
       "return_code": 0,
-      "elapsed_seconds": 309.311,
+      "elapsed_seconds": 307.708,
       "log": "reproduction\\logs\\b3_readiness.log"
     },
     {
       "name": "b3_readiness_example",
       "return_code": 0,
-      "elapsed_seconds": 8.608,
+      "elapsed_seconds": 5.656,
       "log": "reproduction\\logs\\b3_readiness_example.log"
     },
     {
       "name": "nested_forecast",
       "return_code": 0,
-      "elapsed_seconds": 109.691,
+      "elapsed_seconds": 107.357,
       "log": "reproduction\\logs\\nested_forecast.log"
+    },
+    {
+      "name": "nested_phase_detail",
+      "return_code": 0,
+      "elapsed_seconds": 68.338,
+      "log": "reproduction\\logs\\nested_phase_detail.log"
     },
     {
       "name": "b3_waiting",
       "return_code": 0,
-      "elapsed_seconds": 58.393,
+      "elapsed_seconds": 58.926,
       "log": "reproduction\\logs\\b3_waiting.log"
+    },
+    {
+      "name": "b3_waiting_robustness",
+      "return_code": 0,
+      "elapsed_seconds": 445.536,
+      "log": "reproduction\\logs\\b3_waiting_robustness.log"
     },
     {
       "name": "verify_b3_forecast",
       "return_code": 0,
-      "elapsed_seconds": 70.905,
+      "elapsed_seconds": 70.334,
       "log": "reproduction\\logs\\verify_b3_forecast.log"
     },
     {
       "name": "verify_b3_readiness",
       "return_code": 0,
-      "elapsed_seconds": 8.533,
+      "elapsed_seconds": 8.368,
       "log": "reproduction\\logs\\verify_b3_readiness.log"
     },
     {
       "name": "verify_nested_forecast",
       "return_code": 0,
-      "elapsed_seconds": 89.845,
+      "elapsed_seconds": 88.75,
       "log": "reproduction\\logs\\verify_nested_forecast.log"
     },
     {
       "name": "verify_b3_waiting",
       "return_code": 0,
-      "elapsed_seconds": 52.053,
+      "elapsed_seconds": 51.103,
       "log": "reproduction\\logs\\verify_b3_waiting.log"
+    },
+    {
+      "name": "verify_b3_waiting_robustness",
+      "return_code": 0,
+      "elapsed_seconds": 50.701,
+      "log": "reproduction\\logs\\verify_b3_waiting_robustness.log"
     },
     {
       "name": "synthetic_checks",
       "return_code": 0,
-      "elapsed_seconds": 0.422,
+      "elapsed_seconds": 0.409,
       "log": "reproduction\\logs\\synthetic_checks.log"
     },
     {
       "name": "build_paper_assets",
       "return_code": 0,
-      "elapsed_seconds": 2.256,
+      "elapsed_seconds": 2.129,
       "log": "reproduction\\logs\\build_paper_assets.log"
     },
     {
       "name": "kit_pilot_design",
       "return_code": 0,
-      "elapsed_seconds": 0.063,
+      "elapsed_seconds": 0.053,
       "log": "reproduction\\logs\\kit_pilot_design.log"
     },
     {
       "name": "kit_main_design",
       "return_code": 0,
-      "elapsed_seconds": 0.051,
+      "elapsed_seconds": 0.05,
       "log": "reproduction\\logs\\kit_main_design.log"
     },
     {
       "name": "kit_sample_size",
       "return_code": 0,
-      "elapsed_seconds": 1.254,
+      "elapsed_seconds": 0.708,
       "log": "reproduction\\logs\\kit_sample_size.log"
     },
     {
       "name": "kit_registration_audit",
       "return_code": 0,
-      "elapsed_seconds": 0.057,
+      "elapsed_seconds": 0.05,
       "log": "reproduction\\logs\\kit_registration_audit.log"
     },
     {
       "name": "kit_data_contract_audit",
       "return_code": 0,
-      "elapsed_seconds": 0.358,
+      "elapsed_seconds": 0.33,
       "log": "reproduction\\logs\\kit_data_contract_audit.log"
     },
     {
       "name": "kit_software_checks",
       "return_code": 0,
-      "elapsed_seconds": 0.916,
+      "elapsed_seconds": 0.907,
       "log": "reproduction\\logs\\kit_software_checks.log"
     },
     {
       "name": "pipeline_checks",
       "return_code": 0,
-      "elapsed_seconds": 0.768,
+      "elapsed_seconds": 0.628,
       "log": "reproduction\\logs\\pipeline_checks.log"
     },
     {
       "name": "compile_paper",
       "return_code": 0,
-      "elapsed_seconds": 0.753,
+      "elapsed_seconds": 0.382,
       "log": "reproduction\\logs\\compile_paper.log"
     }
   ],
@@ -160,12 +178,12 @@
   "scope": "Fixed pilot reproduction; B3 original-author exports are reused.",
   "manuscript_reference": {
     "status": "passed",
-    "entries_compared": 862,
+    "entries_compared": 1329,
     "max_absolute_error": 9.020562075079397e-17,
     "relative_tolerance": 1e-08,
     "absolute_tolerance": 1e-10
   },
   "calibration_result_sha256": "780f2768582a19224350d3783d19ccd3da52b1fca5d98f6a0776270df87bc6cb",
   "expanded_result_sha256": "c538d3b4f7dc8d2033e251a098b316b106b6cf18c488734dbdbe4ed465521971",
-  "finished_utc": "2026-10-06T06:17:44.389270+00:00"
+  "finished_utc": "2026-10-06T07:47:55.727083+00:00"
 }
