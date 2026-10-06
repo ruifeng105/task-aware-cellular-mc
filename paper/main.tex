@@ -19,11 +19,11 @@
 \author{\IEEEauthorblockN{Ruifeng Zheng}\IEEEauthorblockA{Deutsche Telekom Chair of Communication Networks\\TU Dresden, Germany}}
 \begin{document}
 \maketitle
-\pagestyle{plain}
-\thispagestyle{plain}
+% \pagestyle{plain}
+% \thispagestyle{plain}
 
 \begin{abstract}
-We ask which observable information predicts a cellular molecular receiver's response to repeated chemical commands and whether it can shorten the wait between commands. On public experimental FGF2--ERK single-cell trajectories, a nested post hoc comparison with a fixed, previously calibrated mechanistic reference (the authors' B3 model) showed that, on a protocol unseen in training, reporter filtering reduced the 10-min-ahead error of a current-state predictor by 9.1\%, the B3 increment reduced the error of the filtered predictor by 4.5\% and that of a lagged non-mechanistic predictor by 6.9\%, and explicit input-history features added only 1.0\%; in the evaluated next-command windows the mechanism raised the aggregate error. In simulation on B3, feedback-driven waiting rules completed a fixed probe task 4.8~min faster than fixed waits that already use the known previous command; with every rule calibrated to a shared target of 0.92, the gap was 6.1~min at equal success and held in all 20 calibration/evaluation splits. A smoothed reporter matched the history-aware estimator at the reference noise, the latter helped at higher noise, and under correlated noise its reliability recovered only with a likelihood that models the correlation, and not in every split. No result concerns measured task reliability.
+This paper investigates task-aware reuse of cellular molecular receivers under repeated chemical stimulation. Although experimental studies of cellular molecular communication are emerging, the direct use of measured single-cell dynamics to inform communication-level receiver reuse remains limited. We address this gap using experimental FGF2-ERK single-cell trajectories together with a previously calibrated mechanistic model. Specifically, we first examine how current observations, temporal history, and mechanistic information contribute to predicting future cellular responses, and then investigate how these observations can support adaptive waiting decisions for receiver reuse. Nested prediction analyses show that reporter-state filtering and mechanistic information provide most of the improvement in predicting future responses, whereas explicit input-history features offer limited additional benefit. Model-based simulations further show that feedback-driven waiting can shorten receiver reuse time compared with fixed waits that already account for the previous command, while maintaining comparable reliability.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -31,13 +31,26 @@ Molecular communication, cellular receivers, mechanism-informed prediction, rece
 \end{IEEEkeywords}
 
 \section{Introduction}
-Molecular communication (MC) with living receivers asks a chemical command to produce a specified response in a cell. Reception then means executing the requested response on time, and a previous command can change the next response through delivery persistence, receptor dynamics, intracellular feedback, or cellular state. For repeated tasks the operational question is when the receiver can be used again at matched reliability. We ground this question in recorded biology: FGF2 stimulation of PC-12 cells with ERK activity read by a FRET reporter \cite{blum2019}, treated as a continuous receiver output without retroactive symbols or cell-fate labels.
+\IEEEPARstart{M}{olecular} communication (MC) with living cells as receivers offers a natural interface between engineered communication systems and biological processes. Unlike conventional receivers, however, a cellular receiver can retain the effect of previous chemical stimuli through receptor dynamics, intracellular signaling, feedback, and other slowly evolving cellular states. Consequently, repeated commands are not independent: a receiver that has responded to one command may not be immediately ready to execute the next one with the same reliability. This raises a communication-level question that is particularly important for repeated molecular tasks: \emph{when can a living receiver be used again, and what information is needed to make that decision?}
 
-Two lines of work bound the claim. In cell dynamics, the FGF2 data were used to infer signaling architecture, including feedback and a nontrivial washout response \cite{blum2019}; stimulation frequency shapes ERK responses \cite{ryu2015}; automated chemical feedback has controlled mammalian signaling \cite{postiglione2018}; and a learned dynamical model enabled model predictive control of thousands of single cells \cite{lugagne2024}. In MC, memory is classical: diffusion and ligand binding produce intersymbol interference and reception noise \cite{farsad2016,jamali2019,pierobon2011}, which guard intervals, ISI-aware modulation and adaptive threshold detection mitigate \cite{tepekule2015,damrath2016}. Learning-based and semantic MC \cite{cheng2024,cai2025,dong2026}, experimental and engineered biological receivers \cite{ntetsikas2025,durmaz2024,barros2020}, error control under cellular noise \cite{borges2024} and long-term experimental MC with its reuse tradeoffs \cite{scherer2025} extend this view. The open question is which information makes a \emph{next task} predictable for a living receiver, whose memory lies in its biochemistry rather than only in the channel, and how much a waiting decision gains from it.
+Experimental studies have revealed rich temporal dynamics in cellular signaling. For example, FGF2 stimulation produces history-dependent ERK responses and nontrivial washout behavior \cite{blum2019}, stimulation frequency can reshape signaling responses \cite{ryu2015}, and feedback or model-based control has been used to manipulate cellular dynamics \cite{postiglione2018,lugagne2024}. In MC, memory is commonly studied through diffusion, ligand binding, and intersymbol interference \cite{farsad2016,jamali2019,pierobon2011}, with guard intervals, ISI-aware signaling, and adaptive detection used to mitigate its effects \cite{tepekule2015,damrath2016}. Experimental and engineered biological receivers are also receiving increasing attention \cite{ntetsikas2025,durmaz2024,barros2020,scherer2025}. Nevertheless, it remains insufficiently understood how measured single-cell dynamics can be translated into information useful for communication-level receiver reuse. In particular, it is unclear whether the current reporter state is sufficient, whether explicit stimulus history is needed, and whether mechanistic knowledge provides additional value for predicting and scheduling the next molecular command.
 
-This paper makes two bounded contributions. (i) On experimental FGF2--ERK trajectories, a nested comparison quantifies in which forecast phases reporter filtering, a fixed calibrated mechanistic increment and explicit input-history features add predictive value, against a lagged non-mechanistic baseline and with leave-one-protocol-out (LOPO) validation in which predictor tuning is restricted to the training protocols. (ii) In simulation on B3, for a fixed probe task, we quantify how much feedback and history estimation add to fixed waits that already use the known previous command, under shared calibration targets, and how the gain depends on the observation-noise level and model, with no-probe, bandwidth and correlated-noise checks. The two parts are separate evidence streams (Fig.~\ref{fig:system}): the experimental predictors do not enter the simulated waiting rule.
+To address these questions, this paper combines experimental FGF2--ERK single-cell trajectories with the previously calibrated B3 signaling model of \cite{blum2019}. We first examine which observable information is most useful for predicting future cellular responses through a nested predictor design that progressively incorporates the current reporter state, causal filtering, explicit temporal history, and a mechanistic prediction increment. Building on this analysis, we formulate receiver reuse as a calibrated waiting problem, where the next molecular command is issued according to the estimated receiver readiness. The experimental prediction analysis and the model-based reuse analysis together provide a unified view of how measured cellular dynamics, temporal history, and mechanistic knowledge can support task-aware operation of living molecular receivers.
+
+The main contributions are summarized as follows:
+\begin{itemize}
+\item We develop an experimentally grounded framework to quantify the information required for predicting repeated cellular responses from FGF2--ERK single-cell trajectories.
+\item We show that reporter-state filtering and mechanistic information provide most of the predictive gain, while explicit input-history features offer limited additional benefit.
+\item We formulate cellular receiver reuse as a calibrated feedback-driven waiting problem and show that adaptive waiting can shorten reuse time compared with history-conditioned fixed waits at comparable reliability.
+\end{itemize}
 
 \section{System and Task Model}
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\linewidth]{figures/fig1_system_concept.pdf}
+  \caption{System concept for task-aware cellular receiver reuse. Repeated FGF2 commands drive a living cellular receiver whose biochemical memory shapes the ERK/FRET response $y(t)$ to subsequent commands. The observed response supports (1) future-response prediction, $\widehat{y}(t+h)$, and (2) readiness-based adaptive reuse, where the next command is issued once $\widehat{R}_t \geq c$.}
+  \label{fig:system}
+\end{figure*}
 Let $u(t)\geq0$ denote the commanded FGF2 concentration in ng/ml. Delivery to a receiver is represented abstractly as
 \begin{equation}
  \begin{aligned}
@@ -48,29 +61,31 @@ Let $u(t)\geq0$ denote the commanded FGF2 concentration in ng/ml. Delivery to a 
 \end{equation}
 where $c_R$ is the local concentration, $x_j$ the unobserved state of cell $j$, $z_j$ its noise-free normalized reporter, and $y_{j,i}$ the observation with noise $\nu_{j,i}$ at frame $t_i$. The operator $\mathcal{T}_{\vartheta}$ can include delivery lag and washout; neither it nor $c_R$ is calibrated here, and the FRET ratio is not a molecular count or a cell-fate measurement. The available information $\Hist_t$ contains the executed commands and the observations whose feedback has arrived by $t$; offline, each observation is assumed available at its recorded time.
 
-\begin{figure}[t]
-\centering
-\begin{tikzpicture}[font=\scriptsize, >=Latex,
- box/.style={draw,rounded corners=1.5pt,align=center,minimum height=7mm,text width=24mm,inner sep=2pt},
- arr/.style={->,line width=.5pt}]
-\node[box] (data) at (0,2.3) {FGF2--ERK data\\22 conditions};
-\node[box] (pred) at (2.85,2.3) {Predictors\\P, C, O, A, M, A+M, H};
-\node[box] (rmse) at (5.7,2.3) {Forecast RMSE\\roles, phases, LOPO};
-\node[box,fill=gray!12] (b3) at (2.85,1.15) {B3 model\\1,000 posterior samples};
-\node[box] (plant) at (0,0) {Simulated receiver\\previous command, $y_t$};
-\node[box] (est) at (2.85,0) {Readiness $\widehat R_t$\\current, smoothed, history};
-\node[box] (rule) at (5.7,0) {Wait until $\widehat R_t\geq c$\\evaluate $S$, $T$};
-\draw[arr] (data) -- (pred);
-\draw[arr] (pred) -- (rmse);
-\draw[arr] (b3) -- node[left]{increment} (pred);
-\draw[arr] (b3) -- node[left]{references} (est);
-\draw[arr] (b3.west) -| node[above,pos=.35]{plants} (plant.north);
-\draw[arr] (plant) -- (est);
-\draw[arr] (est) -- (rule);
-\end{tikzpicture}
-\caption{Two evidence streams. Top: experimental trajectories train and test the predictors, with B3 as a fixed, previously calibrated mechanistic increment. Bottom: B3 posterior samples act as simulated receivers and as estimator references for the waiting rule (Sec.~\ref{sec:waiting}). The experimental predictors do not enter the waiting rule; delivery and latent states are not calibrated.}
-\label{fig:system}
-\end{figure}
+% \begin{figure}[t]
+% \centering
+% \begin{tikzpicture}[font=\scriptsize, >=Latex,
+%  box/.style={draw,rounded corners=1.5pt,align=center,minimum height=7mm,text width=24mm,inner sep=2pt},
+%  arr/.style={->,line width=.5pt}]
+% \node[box] (data) at (0,2.3) {FGF2--ERK data\\22 conditions};
+% \node[box] (pred) at (2.85,2.3) {Predictors\\P, C, O, A, M, A+M, H};
+% \node[box] (rmse) at (5.7,2.3) {Forecast RMSE\\roles, phases, LOPO};
+% \node[box,fill=gray!12] (b3) at (2.85,1.15) {B3 model\\1,000 posterior samples};
+% \node[box] (plant) at (0,0) {Simulated receiver\\previous command, $y_t$};
+% \node[box] (est) at (2.85,0) {Readiness $\widehat R_t$\\current, smoothed, history};
+% \node[box] (rule) at (5.7,0) {Wait until $\widehat R_t\geq c$\\evaluate $S$, $T$};
+% \draw[arr] (data) -- (pred);
+% \draw[arr] (pred) -- (rmse);
+% \draw[arr] (b3) -- node[left]{increment} (pred);
+% \draw[arr] (b3) -- node[left]{references} (est);
+% \draw[arr] (b3.west) -| node[above,pos=.35]{plants} (plant.north);
+% \draw[arr] (plant) -- (est);
+% \draw[arr] (est) -- (rule);
+% \end{tikzpicture}
+% \caption{Two evidence streams. Top: experimental trajectories train and test the predictors, with B3 as a fixed, previously calibrated mechanistic increment. Bottom: B3 posterior samples act as simulated receivers and as estimator references for the waiting rule (Sec.~\ref{sec:waiting}). The experimental predictors do not enter the waiting rule; delivery and latent states are not calibrated.}
+% \label{fig:system}
+% \end{figure}
+
+
 
 We fix the amplitude and duration of the next command and decide only when to send it. After a previous command ending at time 0, a 5-min probe at the same amplitude is sent at $\tau\in\mathcal{T}=\{0,2,\ldots,120\}$~min. With $z_j^{\tau}$ the noise-free response when the probe is sent at $\tau$ after the recorded history, and $r_{{\rm naive},j}$ the same receiver's rise to the probe without a previous command, the task outcome and readiness are
 \begin{equation}
