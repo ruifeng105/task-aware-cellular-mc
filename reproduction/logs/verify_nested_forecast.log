@@ -9,7 +9,7 @@
     "H_equals_M3_features": true
   },
   "scores_recomputed": 90,
-  "max_abs_score_difference": 0.0,
+  "max_abs_score_difference": 2.574612073015514e-13,
   "max_abs_H_minus_M3": 8.890457814381136e-18,
   "lopo_leakage": {
     "held_out": "fgf_sp_5",

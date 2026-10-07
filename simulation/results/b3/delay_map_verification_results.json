@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "protocol_sha256": "dc700f90bf72adee5b586317b3b27a8fbb8848cbc9d2768e5b650f380acca527",
+  "checks": {
+    "frontier": {
+      "cells": [
+        "0.005/2/0",
+        "0.01/2/0"
+      ],
+      "splits": 20,
+      "max_abs_difference": 0.0
+    },
+    "causality": {
+      "weights_and_smoothing_causal": true,
+      "self_excluded": true,
+      "arrival_includes_delay": true
+    },
+    "kernel": {
+      "max_abs_probability_difference": 0.004914567633989286,
+      "tolerance": 0.01
+    },
+    "leakage": {
+      "evaluation_labels_flipped": true,
+      "choices_unchanged": true
+    },
+    "recompute": {
+      "repeat": 5,
+      "noise": 0.01,
+      "interval": 10,
+      "max_abs_difference": 0.0
+    }
+  }
+}

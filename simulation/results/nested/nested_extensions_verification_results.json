@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "protocol_sha256": "2ef043fe0ff6807ed03b0b7758c8f553c6e45a37f2469765135daa9f9d450794",
+  "checks": {
+    "reproduction": {
+      "horizons_2_10_max_abs_rmse_difference": 1.0947114742476671e-11,
+      "lopo_O_M_max_abs_difference": 1.6130208280173974e-11
+    },
+    "noise_floor": {
+      "true_sd": 0.01,
+      "estimate": 0.00995435265623921
+    },
+    "phases": {
+      "phase_indicators_from_schedule": true
+    },
+    "arithmetic": {
+      "max_abs_difference": 0.0
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "protocol_path": "simulation/configs/b3_delay_map_protocol.json",
+  "protocol_sha256": "dc700f90bf72adee5b586317b3b27a8fbb8848cbc9d2768e5b650f380acca527",
+  "frozen_utc": "2026-10-07T17:03:25+00:00",
+  "statement": "Recorded before any delay, sampling-interval or B3-predictive waiting result was computed."
+}

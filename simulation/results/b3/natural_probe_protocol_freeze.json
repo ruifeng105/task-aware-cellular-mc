@@ -1,0 +1,6 @@
+{
+  "protocol_path": "simulation/configs/natural_probe_protocol.json",
+  "protocol_sha256": "1995d58f33aeff62450b7988dedb2bad93335f91d53a50a47b4b72c4a90e8f0a",
+  "frozen_utc": "2026-10-07T17:12:15+00:00",
+  "statement": "Recorded before any natural-probe rise, success fraction or readiness prediction on measured cells was computed."
+}

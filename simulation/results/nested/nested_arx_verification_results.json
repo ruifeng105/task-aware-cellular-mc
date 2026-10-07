@@ -9,7 +9,7 @@
     "nested": true
   },
   "scores_recomputed": 20,
-  "max_abs_score_difference": 0.0,
+  "max_abs_score_difference": 1.9802676208893755e-13,
   "lopo_leakage": {
     "held_out": "fgf_sp_10",
     "selection_unchanged": true,

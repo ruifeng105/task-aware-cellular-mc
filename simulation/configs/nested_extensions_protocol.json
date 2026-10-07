@@ -1,0 +1,38 @@
+{
+  "name": "Nested forecasts at longer horizons, noise-adjusted skill, a decision-relevant crossing score, cell bootstrap intervals and phase-gated B3 increments",
+  "version": 1,
+  "status": "frozen_before_running",
+  "date": "2026-10-07",
+  "reason": "Revision plan items 6, 7 (forecast part) and 9: RMSE gains of a few percent look small because the reporter noise floor is part of every error; horizons of 2 and 10 min are shorter than the waits relevant for reuse; RMSE is not tied to a decision; no interval is reported; and the B3 increment raised the error in the next-command windows, the largest negative result.",
+  "context": [
+    "Post hoc analysis on inspected roles, like configs/nested_forecast_protocol.json, whose data roles, warmup, features, sigma grid, ridge grid, selection rules, phases and condition-equal scores it reuses unchanged.",
+    "The phase-gated variants are motivated by the observed next-command result; they are fitted on the training protocols only, and that motivation is disclosed wherever they are reported."
+  ],
+  "horizons_min": [2, 10, 20, 30],
+  "models": {
+    "nested": "P, C, O, M, H exactly as in configs/nested_forecast_protocol.json (horizons 2 and 10 must reproduce the frozen nested results)",
+    "M_phase": "M plus the indicators of the stimulation and next-command phases of the forecast row and their products with the B3 increment, the current reporter and the 2-min slope, so the weights of the reporter state and of the B3 increment may differ in the command phases; fitted and selected like M",
+    "M_switch": "a phase switch decided on training rows only: in next-command rows the O forecast is used if O has the lower condition-equal in-sample MSE than M on the next-command rows of the training role, otherwise the M forecast; M elsewhere"
+  },
+  "phases": "stimulation, next_command, early_washout and late as in configs/nested_forecast_protocol.json, assigned from the known command schedule at the forecast origin (causal)",
+  "noise_floor": {
+    "estimator": "per condition, sigma_nu = median |y(i+1) - 2 y(i) + y(i-1)| / (0.6745 sqrt(6)) over all cells and all consecutive 2-min frame triples of the exported trajectory (robust second-difference estimate of white reporter noise)",
+    "explainable_mse": "per condition, MSE - sigma_nu^2 (error with respect to the noise-free reporter when the target noise is white and independent of the forecast)",
+    "skill": "1 - mean_c(MSE_model - sigma_nu^2) / mean_c(MSE_P - sigma_nu^2), condition-equal over the role; also the noise-adjusted reduction between nested pairs and the noise fraction sigma_nu^2 / MSE_P"
+  },
+  "crossing_score": {
+    "event": "half-decay crossing: in washout rows (command off at t, no pulse starting in (t, t + h]) whose reporter excursion y_t - 1 is still above half the running maximum p_t of y - 1 since the onset of the most recent pulse, the event is y_{t+h} - 1 <= 0.5 p_t",
+    "forecast": "the event predicted by the point forecast: yhat_{t+h} - 1 <= 0.5 p_t (persistence never predicts a crossing)",
+    "score": "balanced accuracy (mean of sensitivity and specificity) per condition with at least one event and one non-event, averaged with equal condition weight; reported for horizons 10, 20 and 30 min",
+    "relevance": "the half-decay rule of readiness protocol version 2 probes at this crossing; anticipating it h minutes ahead is what a waiting rule with delay h needs"
+  },
+  "bootstrap": {
+    "unit": "cell, resampled with replacement within each condition (stratified; condition-equal weighting kept); fitted models and sigma_nu fixed",
+    "resamples": 2000,
+    "seed": 20261009,
+    "statistics": "95% percentile intervals of the relative RMSE reductions O vs C, M vs O, H vs M, M vs P and M_phase vs M, and of the noise-adjusted skill of O, M and H, per test role and horizon",
+    "caveat": "cells of one condition share a session; intervals describe cell sampling, not independent experiments"
+  },
+  "lopo": "corrected leave-one-protocol-out of configs/nested_forecast_protocol.json at 10 min for O, M and M_phase (inner leave-one-group-out penalty), reported per fold and for next-command rows of the held-out mixed fold",
+  "reporting": "All results reported whatever their direction; no significance test; phase-gated variants are post hoc remedies and are labelled as such."
+}

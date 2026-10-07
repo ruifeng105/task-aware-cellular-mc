@@ -1,0 +1,6 @@
+{
+  "protocol_path": "simulation/configs/nested_extensions_protocol.json",
+  "protocol_sha256": "2ef043fe0ff6807ed03b0b7758c8f553c6e45a37f2469765135daa9f9d450794",
+  "frozen_utc": "2026-10-07T17:07:37+00:00",
+  "statement": "Recorded before any 20- or 30-min forecast, noise-floor, crossing, bootstrap or phase-gated result was computed."
+}

@@ -1,0 +1,32 @@
+{
+  "name": "Feedback delay, sampling interval and observation noise: a condition map for model-based waiting on B3",
+  "version": 1,
+  "status": "frozen_before_running",
+  "date": "2026-10-07",
+  "reason": "Revision plan item 8: the prediction half (h-step forecasts) and the waiting half (readiness now, no delay) are disconnected, and the paper does not say when a mechanistic model is needed for reuse. With a delay d between the last usable observation and the time the next command acts on the receiver, a waiting rule must predict readiness d minutes ahead; the map compares a B3-predictive rule with a model-free reporter rule that also extrapolates (smoothed level plus slope) over delay, sampling interval and noise.",
+  "unchanged": "Simulation tables (results/b3/readiness_tables.npz), 25 ng/ml, 3- and 30-min previous commands, 5-min probe, kappa = 0.5, task window W = 20 min, failure penalty D = 140 min, arrival grid 0-120 min in 2-min steps, success and completion scored at the time the probe acts on the receiver (arrival), the 20 calibration/evaluation splits and per-plant observation draws of the robustness study (scaled to the noise level).",
+  "delay_model": {
+    "d_min": [0, 10, 20, 30, 40],
+    "definition": "lookahead d = feedback latency plus command delivery delay: a probe decided at a decision instant t acts on the receiver at arrival a = t + d, and the decision uses only observations taken at or before t",
+    "observations": "noisy reporter at t = 0, Delta, 2 Delta, ... <= 120 min (the 2-min draws of the robustness study, subsampled)",
+    "sampling_interval_min": [2, 6, 10],
+    "decision_instants": "each observation time t with t + d <= 120; the rule probes at the first instant whose estimate reaches the threshold; if none does, the probe arrives at 120 min",
+    "noise_sd": [0.0025, 0.005, 0.01]
+  },
+  "rules": {
+    "fixed": "one arrival time per history on the 2-min grid (no observations; independent of d, Delta and noise)",
+    "b3_predictive": "reference samples under the known command history weighted by the observations up to t (Gaussian likelihood with s.d. max(noise, 0.001), as the history-aware estimator); estimate = weighted mean of the references' success at arrival t + d",
+    "b3_nowcast": "the same weights; estimate = weighted mean of the references' success at t (ignores the delay; equals b3_predictive at d = 0)",
+    "smoothed_slope": "causal exponential smoothing of the sampled observations with coefficient a = exp(-Delta / l), l in {2, 4, 8, 16} min, giving level m_i and increment g_i = m_i - m_{i-1} (g_0 = 0); estimate = Gaussian-kernel average of the references' success at t_j + d over all reference states (both histories, all instants t_j with t_j + d <= 120) of the noise-free reference trajectories' (m, g); kernel covariance v [[1, 1 - a], [1 - a, 2 (1 - a)]] + 0.001^2 I with v = noise^2 (1 - a) / (1 + a), the stationary covariance of smoothed white noise; computed with linear binning on a grid of 0.2 kernel s.d. in whitened coordinates",
+    "oracle": "arrival at the first successful arrival time (lower bound; independent of d)"
+  },
+  "references": "calibration samples; on calibration samples each plant is left out of its own reference set",
+  "calibration": "as configs/b3_waiting_frontier_protocol.json: one parameter per history minimizing the calibration mean completion of that history subject to its calibration success >= 0.90; thresholds 0.50 to 0.99 in steps of 0.01; smoothed_slope chooses (l, threshold) per history (ties: smaller l, then smaller threshold); fallback: largest calibration success, flagged target_reached = false",
+  "outputs": {
+    "per_cell_and_split": "evaluation success and mean completion per history and pooled (equal weight) for every rule; whether both histories reach 0.9",
+    "paired": "per evaluation sample, pooled over histories: b3_predictive - smoothed_slope, b3_predictive - fixed, smoothed_slope - fixed, b3_nowcast - b3_predictive (success and completion)",
+    "summary": "per cell over the 20 splits: median, minimum and maximum of the paired differences, success and completion; number of splits in which b3_predictive is faster than smoothed_slope; splits meeting the per-history criterion per rule",
+    "condition_map": "per cell, class 'model helps' if b3_predictive is faster than smoothed_slope in at least 16 of 20 splits and its median pooled success is at most 0.5 points below; class 'reporter suffices' otherwise; the median completion difference is the map value"
+  },
+  "reporting": "All cells reported whatever their direction; simulation of one published model structure in which the B3 rule shares the plant's structure (optimistic for the model-based rule); not evidence about measured cells; the per-history target is an empirical calibration target, not a coverage guarantee."
+}

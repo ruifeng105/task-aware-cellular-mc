@@ -1,272 +1,146 @@
 {
   "status": "passed",
-  "mode": "full",
-  "started_utc": "2026-10-06T17:20:27.861870+00:00",
+  "mode": "verify",
+  "started_utc": "2026-10-07T17:48:25.632654+00:00",
   "environment": {
-    "python": "3.13.3",
-    "numpy": "2.3.2",
-    "pandas": "2.3.2",
-    "matplotlib": "3.10.6",
+    "python": "3.13.16",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "matplotlib": "3.10.8",
     "openpyxl": "3.1.5"
   },
   "steps": [
     {
-      "name": "fit_and_predict",
-      "return_code": 0,
-      "elapsed_seconds": 5.842,
-      "log": "reproduction\\logs\\fit_and_predict.log"
-    },
-    {
-      "name": "expanded_fresh_test",
-      "return_code": 0,
-      "elapsed_seconds": 14.464,
-      "log": "reproduction\\logs\\expanded_fresh_test.log"
-    },
-    {
       "name": "verify_data_and_scores",
       "return_code": 0,
-      "elapsed_seconds": 0.879,
-      "log": "reproduction\\logs\\verify_data_and_scores.log"
+      "elapsed_seconds": 0.894,
+      "log": "reproduction/logs/verify_data_and_scores.log"
     },
     {
       "name": "verify_expanded",
       "return_code": 0,
-      "elapsed_seconds": 8.569,
-      "log": "reproduction\\logs\\verify_expanded.log"
+      "elapsed_seconds": 11.597,
+      "log": "reproduction/logs/verify_expanded.log"
     },
     {
       "name": "verify_b3_model",
       "return_code": 0,
-      "elapsed_seconds": 19.254,
-      "log": "reproduction\\logs\\verify_b3_model.log"
-    },
-    {
-      "name": "b3_forecast",
-      "return_code": 0,
-      "elapsed_seconds": 87.953,
-      "log": "reproduction\\logs\\b3_forecast.log"
-    },
-    {
-      "name": "b3_readiness",
-      "return_code": 0,
-      "elapsed_seconds": 320.672,
-      "log": "reproduction\\logs\\b3_readiness.log"
-    },
-    {
-      "name": "b3_readiness_example",
-      "return_code": 0,
-      "elapsed_seconds": 6.252,
-      "log": "reproduction\\logs\\b3_readiness_example.log"
-    },
-    {
-      "name": "nested_forecast",
-      "return_code": 0,
-      "elapsed_seconds": 114.209,
-      "log": "reproduction\\logs\\nested_forecast.log"
-    },
-    {
-      "name": "nested_phase_detail",
-      "return_code": 0,
-      "elapsed_seconds": 70.321,
-      "log": "reproduction\\logs\\nested_phase_detail.log"
-    },
-    {
-      "name": "nested_arx",
-      "return_code": 0,
-      "elapsed_seconds": 169.077,
-      "log": "reproduction\\logs\\nested_arx.log"
-    },
-    {
-      "name": "b3_waiting",
-      "return_code": 0,
-      "elapsed_seconds": 62.656,
-      "log": "reproduction\\logs\\b3_waiting.log"
-    },
-    {
-      "name": "b3_waiting_robustness",
-      "return_code": 0,
-      "elapsed_seconds": 452.88,
-      "log": "reproduction\\logs\\b3_waiting_robustness.log"
-    },
-    {
-      "name": "b3_waiting_sensitivity",
-      "return_code": 0,
-      "elapsed_seconds": 51.081,
-      "log": "reproduction\\logs\\b3_waiting_sensitivity.log"
-    },
-    {
-      "name": "b3_noprobe",
-      "return_code": 0,
-      "elapsed_seconds": 327.206,
-      "log": "reproduction\\logs\\b3_noprobe.log"
-    },
-    {
-      "name": "b3_waiting_baselines",
-      "return_code": 0,
-      "elapsed_seconds": 65.283,
-      "log": "reproduction\\logs\\b3_waiting_baselines.log"
-    },
-    {
-      "name": "b3_waiting_stress",
-      "return_code": 0,
-      "elapsed_seconds": 81.672,
-      "log": "reproduction\\logs\\b3_waiting_stress.log"
-    },
-    {
-      "name": "b3_waiting_margin",
-      "return_code": 0,
-      "elapsed_seconds": 302.051,
-      "log": "reproduction\\logs\\b3_waiting_margin.log"
-    },
-    {
-      "name": "b3_noprobe_kappa",
-      "return_code": 0,
-      "elapsed_seconds": 75.962,
-      "log": "reproduction\\logs\\b3_noprobe_kappa.log"
-    },
-    {
-      "name": "b3_ar1_likelihood",
-      "return_code": 0,
-      "elapsed_seconds": 227.269,
-      "log": "reproduction\\logs\\b3_ar1_likelihood.log"
+      "elapsed_seconds": 51.0,
+      "log": "reproduction/logs/verify_b3_model.log"
     },
     {
       "name": "verify_b3_forecast",
       "return_code": 0,
-      "elapsed_seconds": 74.722,
-      "log": "reproduction\\logs\\verify_b3_forecast.log"
+      "elapsed_seconds": 341.501,
+      "log": "reproduction/logs/verify_b3_forecast.log"
     },
     {
       "name": "verify_b3_readiness",
       "return_code": 0,
-      "elapsed_seconds": 8.403,
-      "log": "reproduction\\logs\\verify_b3_readiness.log"
+      "elapsed_seconds": 13.56,
+      "log": "reproduction/logs/verify_b3_readiness.log"
     },
     {
       "name": "verify_nested_forecast",
       "return_code": 0,
-      "elapsed_seconds": 89.043,
-      "log": "reproduction\\logs\\verify_nested_forecast.log"
+      "elapsed_seconds": 396.585,
+      "log": "reproduction/logs/verify_nested_forecast.log"
     },
     {
       "name": "verify_b3_waiting",
       "return_code": 0,
-      "elapsed_seconds": 50.855,
-      "log": "reproduction\\logs\\verify_b3_waiting.log"
+      "elapsed_seconds": 51.554,
+      "log": "reproduction/logs/verify_b3_waiting.log"
     },
     {
       "name": "verify_b3_waiting_robustness",
       "return_code": 0,
-      "elapsed_seconds": 50.752,
-      "log": "reproduction\\logs\\verify_b3_waiting_robustness.log"
+      "elapsed_seconds": 40.614,
+      "log": "reproduction/logs/verify_b3_waiting_robustness.log"
     },
     {
       "name": "verify_b3_waiting_sensitivity",
       "return_code": 0,
-      "elapsed_seconds": 23.911,
-      "log": "reproduction\\logs\\verify_b3_waiting_sensitivity.log"
+      "elapsed_seconds": 14.296,
+      "log": "reproduction/logs/verify_b3_waiting_sensitivity.log"
     },
     {
       "name": "verify_b3_noprobe",
       "return_code": 0,
-      "elapsed_seconds": 2.39,
-      "log": "reproduction\\logs\\verify_b3_noprobe.log"
+      "elapsed_seconds": 3.132,
+      "log": "reproduction/logs/verify_b3_noprobe.log"
     },
     {
       "name": "verify_b3_waiting_baselines",
       "return_code": 0,
-      "elapsed_seconds": 12.331,
-      "log": "reproduction\\logs\\verify_b3_waiting_baselines.log"
+      "elapsed_seconds": 7.747,
+      "log": "reproduction/logs/verify_b3_waiting_baselines.log"
     },
     {
       "name": "verify_b3_waiting_stress",
       "return_code": 0,
-      "elapsed_seconds": 13.354,
-      "log": "reproduction\\logs\\verify_b3_waiting_stress.log"
+      "elapsed_seconds": 10.762,
+      "log": "reproduction/logs/verify_b3_waiting_stress.log"
     },
     {
       "name": "verify_nested_arx",
       "return_code": 0,
-      "elapsed_seconds": 106.873,
-      "log": "reproduction\\logs\\verify_nested_arx.log"
+      "elapsed_seconds": 418.435,
+      "log": "reproduction/logs/verify_nested_arx.log"
     },
     {
       "name": "verify_b3_waiting_margin",
       "return_code": 0,
-      "elapsed_seconds": 38.529,
-      "log": "reproduction\\logs\\verify_b3_waiting_margin.log"
+      "elapsed_seconds": 27.56,
+      "log": "reproduction/logs/verify_b3_waiting_margin.log"
     },
     {
       "name": "verify_b3_noprobe_kappa",
       "return_code": 0,
-      "elapsed_seconds": 0.97,
-      "log": "reproduction\\logs\\verify_b3_noprobe_kappa.log"
+      "elapsed_seconds": 1.077,
+      "log": "reproduction/logs/verify_b3_noprobe_kappa.log"
     },
     {
       "name": "verify_b3_ar1_likelihood",
       "return_code": 0,
-      "elapsed_seconds": 1.678,
-      "log": "reproduction\\logs\\verify_b3_ar1_likelihood.log"
+      "elapsed_seconds": 2.323,
+      "log": "reproduction/logs/verify_b3_ar1_likelihood.log"
+    },
+    {
+      "name": "verify_b3_waiting_frontier",
+      "return_code": 0,
+      "elapsed_seconds": 34.953,
+      "log": "reproduction/logs/verify_b3_waiting_frontier.log"
+    },
+    {
+      "name": "verify_b3_delay_map",
+      "return_code": 0,
+      "elapsed_seconds": 35.236,
+      "log": "reproduction/logs/verify_b3_delay_map.log"
+    },
+    {
+      "name": "verify_nested_extensions",
+      "return_code": 0,
+      "elapsed_seconds": 1.24,
+      "log": "reproduction/logs/verify_nested_extensions.log"
+    },
+    {
+      "name": "verify_natural_probe",
+      "return_code": 0,
+      "elapsed_seconds": 70.927,
+      "log": "reproduction/logs/verify_natural_probe.log"
     },
     {
       "name": "synthetic_checks",
       "return_code": 0,
-      "elapsed_seconds": 0.408,
-      "log": "reproduction\\logs\\synthetic_checks.log"
-    },
-    {
-      "name": "build_paper_assets",
-      "return_code": 0,
-      "elapsed_seconds": 2.167,
-      "log": "reproduction\\logs\\build_paper_assets.log"
-    },
-    {
-      "name": "kit_pilot_design",
-      "return_code": 0,
-      "elapsed_seconds": 0.054,
-      "log": "reproduction\\logs\\kit_pilot_design.log"
-    },
-    {
-      "name": "kit_main_design",
-      "return_code": 0,
-      "elapsed_seconds": 0.054,
-      "log": "reproduction\\logs\\kit_main_design.log"
-    },
-    {
-      "name": "kit_sample_size",
-      "return_code": 0,
-      "elapsed_seconds": 0.751,
-      "log": "reproduction\\logs\\kit_sample_size.log"
-    },
-    {
-      "name": "kit_registration_audit",
-      "return_code": 0,
-      "elapsed_seconds": 0.053,
-      "log": "reproduction\\logs\\kit_registration_audit.log"
-    },
-    {
-      "name": "kit_data_contract_audit",
-      "return_code": 0,
-      "elapsed_seconds": 0.359,
-      "log": "reproduction\\logs\\kit_data_contract_audit.log"
-    },
-    {
-      "name": "kit_software_checks",
-      "return_code": 0,
-      "elapsed_seconds": 0.969,
-      "log": "reproduction\\logs\\kit_software_checks.log"
+      "elapsed_seconds": 0.505,
+      "log": "reproduction/logs/synthetic_checks.log"
     },
     {
       "name": "pipeline_checks",
       "return_code": 0,
-      "elapsed_seconds": 0.717,
-      "log": "reproduction\\logs\\pipeline_checks.log"
-    },
-    {
-      "name": "compile_paper",
-      "return_code": 0,
-      "elapsed_seconds": 1.969,
-      "log": "reproduction\\logs\\compile_paper.log"
+      "elapsed_seconds": 0.79,
+      "log": "reproduction/logs/pipeline_checks.log"
     }
   ],
   "controller_evaluated": false,
@@ -274,12 +148,12 @@
   "scope": "Fixed pilot reproduction; B3 original-author exports are reused.",
   "manuscript_reference": {
     "status": "passed",
-    "entries_compared": 3038,
-    "max_absolute_error": 9.020562075079397e-17,
+    "entries_compared": 14165,
+    "max_absolute_error": 4.345477970513212e-12,
     "relative_tolerance": 1e-08,
     "absolute_tolerance": 1e-10
   },
   "calibration_result_sha256": "780f2768582a19224350d3783d19ccd3da52b1fca5d98f6a0776270df87bc6cb",
   "expanded_result_sha256": "c538d3b4f7dc8d2033e251a098b316b106b6cf18c488734dbdbe4ed465521971",
-  "finished_utc": "2026-10-06T18:09:32.767274+00:00"
+  "finished_utc": "2026-10-07T18:14:02.046314+00:00"
 }

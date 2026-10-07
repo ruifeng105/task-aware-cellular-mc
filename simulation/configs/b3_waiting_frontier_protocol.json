@@ -1,0 +1,39 @@
+{
+  "name": "Per-history reliability constraint, oracle-gap closure and reliability-latency frontiers for calibrated waiting on B3",
+  "version": 1,
+  "status": "frozen_before_running",
+  "date": "2026-10-07",
+  "reason": "Revision plan items 5 and 7 (decision part): the pooled constraint lets one history fall below the target (the fixed 100-min wait reached 97.4% after the 3-min command but 85.0% after the 30-min command), completion gains of a few minutes are hard to judge without the oracle as a scale, a reliability-latency frontier shows the trade-off instead of single operating points, and the task threshold kappa and the failure penalty D need a stated basis.",
+  "unchanged": "Simulation tables (results/b3/readiness_tables.npz), 25 ng/ml, 3- and 30-min previous commands, 5-min probe, decision grid 0-120 min in 2-min steps, task window W = 20 min, kappa = 0.5, failure penalty D = 140 min (except in the penalty sensitivity), estimators of readiness protocol version 3 (current; smoothed with scales 2, 4, 8, 16 min; history with likelihood s.d. max(noise, 0.001)), leave-one-out references on calibration samples, calibration samples as references on evaluation samples.",
+  "settings": {
+    "noise_sd": [0.005, 0.01],
+    "splits": "the 20 calibration/evaluation splits and observation draws of the robustness study (split seed 20261006 + r; version-2 draws for r = 0, seed 20261005 + 10000 r otherwise, scaled to the noise level)",
+    "threshold_grid": "0.50 to 0.99 in steps of 0.01",
+    "targets": [0.90, 0.92, 0.94]
+  },
+  "per_history_calibration": {
+    "principle": "the previous command is known, so every rule may use one parameter per history; for each history separately the parameter minimizes the calibration mean failure-penalized completion of that history subject to the calibration success of that history >= target",
+    "current_and_history": "one threshold per history on the threshold grid; ties: smaller threshold",
+    "smoothed": "one (scale, threshold) pair per history; ties: smaller scale, then smaller threshold",
+    "fixed": "one wait per history on the decision grid; ties: smaller wait",
+    "fallback": "if nothing is feasible for a history: the parameter with the largest calibration success of that history (ties: smaller completion), flagged target_reached = false",
+    "evaluation": "against 0.9 for each history; a rule meets the per-history criterion on a split only if both histories reach 0.9 on the evaluation samples"
+  },
+  "outputs": {
+    "per_split": "for every split, noise and target: choices, evaluation success and mean completion per history and pooled (equal weight) for current, smoothed, history, per-history fixed waits and the oracle",
+    "paired": "per evaluation sample: history - fixed, smoothed - fixed, history - smoothed (success and completion), per history and pooled; 95% percentile bootstrap intervals for r = 0 (2000 resamples, seed 20261008, unit: evaluation posterior sample, histories and rules paired)",
+    "oracle_gap_closure": "G = (T_fixed - T_rule) / (T_fixed - T_oracle) on evaluation samples, per history and pooled, with the per-history fixed waits at the same target as comparator; the same ratio for the frozen version-3 pooled rules relative to the pooled history-conditioned fixed waits (re-expression of saved results, no new calibration)",
+    "summary": "over the 20 splits: splits meeting the per-history criterion per rule; median, minimum and maximum of success, completion, paired differences and G; splits in which each adaptive rule is faster than the per-history fixed waits",
+    "frontier": "descriptive, primary split (r = 0), noise 0.005 and 0.01: evaluation success and mean completion per history for current and history at every grid threshold, for smoothed at every (scale, threshold), for fixed waits at every grid wait, and the oracle; the non-dominated points per rule and history; for evaluation success levels 0.90, 0.92 and 0.94 the smallest completion on each rule's points (never used to choose a rule)"
+  },
+  "kappa_feasibility": {
+    "kappa": [0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.65, 0.70],
+    "outputs": "over all 1000 posterior samples (no split): oracle success within 120 min per history and pooled, oracle mean completion, and the first fixed wait whose pooled success reaches 0.9 (none if none); describes the task, not a rule"
+  },
+  "penalty_sensitivity": {
+    "D_min": [140, 160, 200, 260],
+    "definition": "the per-history calibration at target 0.90 repeated with completion penalty D in calibration and evaluation, noise 0.005, all 20 splits; outputs as in summary for history, smoothed and fixed",
+    "basis": "D = 140 min is the latest possible completion of a success (120 + 20); larger D penalizes failures more"
+  },
+  "reporting": "All results reported whatever their direction; simulation of one published model structure, not evidence about measured cells; per-history targets are empirical calibration targets, not coverage guarantees; frontier points selected on evaluation samples are descriptive."
+}

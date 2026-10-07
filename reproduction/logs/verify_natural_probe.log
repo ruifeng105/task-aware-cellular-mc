@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "protocol_sha256": "1995d58f33aeff62450b7988dedb2bad93335f91d53a50a47b4b72c4a90e8f0a",
+  "checks": {
+    "operator": {
+      "rise_operator": true,
+      "decision_frame_precedes_onset": true
+    },
+    "auc": {
+      "auc_matches_pairwise_count": true
+    },
+    "estimators": {
+      "constant_is_b3_readiness": true,
+      "later_frames_unused": true
+    },
+    "recompute": {
+      "max_abs_difference": 0.0
+    }
+  }
+}

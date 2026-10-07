@@ -1,0 +1,1713 @@
+{
+  "status": "complete",
+  "protocol_sha256": "1995d58f33aeff62450b7988dedb2bad93335f91d53a50a47b4b72c4a90e8f0a",
+  "frozen_utc": "2026-10-07T17:12:15+00:00",
+  "noise_floor": {
+    "fgf_3_20_25ng": 0.007868388103825254,
+    "fgf_mixed_25ng": 0.007384179605128293,
+    "fgf_sp_5_25ng": 0.007704967735515241
+  },
+  "cells_complete": {
+    "fgf_3_20_25ng": 58,
+    "fgf_mixed_25ng": 84,
+    "fgf_sp_5_25ng": 92
+  },
+  "naive_reference": {
+    "mixed_measured_median": 0.13928333333333343,
+    "mixed_b3_median": 0.13267208451716228,
+    "three_twenty_measured_median": 0.14655000000000007,
+    "three_twenty_b3_median": 0.13315205419123788
+  },
+  "probes": {
+    "fgf_3_20_25ng/pulse_2": {
+      "onset_min": 23.0,
+      "wait_min": 20.0,
+      "decision_frame_min": 23.0,
+      "likelihood_sd": 0.007868388103825254,
+      "rise_over_naive": {
+        "measured_median": 0.15851125114059483,
+        "b3_median": 0.08097621832185234
+      },
+      "kappa": {
+        "0.4": {
+          "b3_population_readiness": 0.0,
+          "median_history_ess": 1.2010908142095469,
+          "n_cells": 58,
+          "observed_success": 0.22413793103448276,
+          "estimators": {
+            "constant": {
+              "mean_prediction": 0.0,
+              "brier": 0.22413793103448276,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.22413793103448276
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.22413793103448276
+                }
+              }
+            },
+            "current": {
+              "mean_prediction": 0.0,
+              "brier": 0.22413793103448276,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.22413793103448276
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.22413793103448276
+                }
+              }
+            },
+            "smoothed": {
+              "mean_prediction": 0.0,
+              "brier": 0.22413793103448276,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.22413793103448276
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.22413793103448276
+                }
+              }
+            },
+            "history": {
+              "mean_prediction": 0.0,
+              "brier": 0.22413793103448276,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.22413793103448276
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.22413793103448276
+                }
+              }
+            }
+          },
+          "brier_observed_fraction": 0.17390011890606422
+        },
+        "0.5": {
+          "b3_population_readiness": 0.0,
+          "median_history_ess": 1.2010908142095469,
+          "n_cells": 58,
+          "observed_success": 0.1896551724137931,
+          "estimators": {
+            "constant": {
+              "mean_prediction": 0.0,
+              "brier": 0.1896551724137931,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.1896551724137931
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.1896551724137931
+                }
+              }
+            },
+            "current": {
+              "mean_prediction": 0.0,
+              "brier": 0.1896551724137931,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.1896551724137931
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.1896551724137931
+                }
+              }
+            },
+            "smoothed": {
+              "mean_prediction": 0.0,
+              "brier": 0.1896551724137931,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.1896551724137931
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.1896551724137931
+                }
+              }
+            },
+            "history": {
+              "mean_prediction": 0.0,
+              "brier": 0.1896551724137931,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.1896551724137931
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.1896551724137931
+                }
+              }
+            }
+          },
+          "brier_observed_fraction": 0.1536860879904875
+        },
+        "0.6": {
+          "b3_population_readiness": 0.0,
+          "median_history_ess": 1.2010908142095469,
+          "n_cells": 58,
+          "observed_success": 0.10344827586206896,
+          "estimators": {
+            "constant": {
+              "mean_prediction": 0.0,
+              "brier": 0.10344827586206896,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.10344827586206896
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.10344827586206896
+                }
+              }
+            },
+            "current": {
+              "mean_prediction": 0.0,
+              "brier": 0.10344827586206896,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.10344827586206896
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.10344827586206896
+                }
+              }
+            },
+            "smoothed": {
+              "mean_prediction": 0.0,
+              "brier": 0.10344827586206896,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.10344827586206896
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.10344827586206896
+                }
+              }
+            },
+            "history": {
+              "mean_prediction": 0.0,
+              "brier": 0.10344827586206896,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.10344827586206896
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.10344827586206896
+                }
+              }
+            }
+          },
+          "brier_observed_fraction": 0.09274673008323424
+        }
+      }
+    },
+    "fgf_3_20_25ng/pulse_3": {
+      "onset_min": 46.0,
+      "wait_min": 20.0,
+      "decision_frame_min": 45.0,
+      "likelihood_sd": 0.007868388103825254,
+      "rise_over_naive": {
+        "measured_median": 0.11497506974717624,
+        "b3_median": 0.008485654596296396
+      },
+      "kappa": {
+        "0.4": {
+          "b3_population_readiness": 0.0,
+          "median_history_ess": 1.400958850890449,
+          "n_cells": 58,
+          "observed_success": 0.1206896551724138,
+          "estimators": {
+            "constant": {
+              "mean_prediction": 0.0,
+              "brier": 0.1206896551724138,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.1206896551724138
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.1206896551724138
+                }
+              }
+            },
+            "current": {
+              "mean_prediction": 0.0,
+              "brier": 0.1206896551724138,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.1206896551724138
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.1206896551724138
+                }
+              }
+            },
+            "smoothed": {
+              "mean_prediction": 0.0,
+              "brier": 0.1206896551724138,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.1206896551724138
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.1206896551724138
+                }
+              }
+            },
+            "history": {
+              "mean_prediction": 0.0,
+              "brier": 0.1206896551724138,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.1206896551724138
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.1206896551724138
+                }
+              }
+            }
+          },
+          "brier_observed_fraction": 0.10612366230677765
+        },
+        "0.5": {
+          "b3_population_readiness": 0.0,
+          "median_history_ess": 1.400958850890449,
+          "n_cells": 58,
+          "observed_success": 0.08620689655172414,
+          "estimators": {
+            "constant": {
+              "mean_prediction": 0.0,
+              "brier": 0.08620689655172414,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.08620689655172414
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.08620689655172414
+                }
+              }
+            },
+            "current": {
+              "mean_prediction": 0.0,
+              "brier": 0.08620689655172414,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.08620689655172414
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.08620689655172414
+                }
+              }
+            },
+            "smoothed": {
+              "mean_prediction": 0.0,
+              "brier": 0.08620689655172414,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.08620689655172414
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.08620689655172414
+                }
+              }
+            },
+            "history": {
+              "mean_prediction": 0.0,
+              "brier": 0.08620689655172414,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.08620689655172414
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.08620689655172414
+                }
+              }
+            }
+          },
+          "brier_observed_fraction": 0.07877526753864447
+        },
+        "0.6": {
+          "b3_population_readiness": 0.0,
+          "median_history_ess": 1.400958850890449,
+          "n_cells": 58,
+          "observed_success": 0.05172413793103448,
+          "estimators": {
+            "constant": {
+              "mean_prediction": 0.0,
+              "brier": 0.05172413793103448,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.05172413793103448
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.05172413793103448
+                }
+              }
+            },
+            "current": {
+              "mean_prediction": 0.0,
+              "brier": 0.05172413793103448,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.05172413793103448
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.05172413793103448
+                }
+              }
+            },
+            "smoothed": {
+              "mean_prediction": 0.0,
+              "brier": 0.05172413793103448,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.05172413793103448
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.05172413793103448
+                }
+              }
+            },
+            "history": {
+              "mean_prediction": 0.0,
+              "brier": 0.05172413793103448,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.05172413793103448
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.05172413793103448
+                }
+              }
+            }
+          },
+          "brier_observed_fraction": 0.0490487514863258
+        }
+      }
+    },
+    "fgf_3_20_25ng/pulse_4": {
+      "onset_min": 69.0,
+      "wait_min": 20.0,
+      "decision_frame_min": 69.0,
+      "likelihood_sd": 0.007868388103825254,
+      "rise_over_naive": {
+        "measured_median": 0.059816917635441356,
+        "b3_median": 0.010317928300880958
+      },
+      "kappa": {
+        "0.4": {
+          "b3_population_readiness": 0.0,
+          "median_history_ess": 1.115687208096431,
+          "n_cells": 58,
+          "observed_success": 0.06896551724137931,
+          "estimators": {
+            "constant": {
+              "mean_prediction": 0.0,
+              "brier": 0.06896551724137931,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.06896551724137931
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.06896551724137931
+                }
+              }
+            },
+            "current": {
+              "mean_prediction": 0.0,
+              "brier": 0.06896551724137931,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.06896551724137931
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.06896551724137931
+                }
+              }
+            },
+            "smoothed": {
+              "mean_prediction": 0.0,
+              "brier": 0.06896551724137931,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.06896551724137931
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.06896551724137931
+                }
+              }
+            },
+            "history": {
+              "mean_prediction": 0.0,
+              "brier": 0.06896551724137931,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.06896551724137931
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.06896551724137931
+                }
+              }
+            }
+          },
+          "brier_observed_fraction": 0.06420927467300833
+        },
+        "0.5": {
+          "b3_population_readiness": 0.0,
+          "median_history_ess": 1.115687208096431,
+          "n_cells": 58,
+          "observed_success": 0.05172413793103448,
+          "estimators": {
+            "constant": {
+              "mean_prediction": 0.0,
+              "brier": 0.05172413793103448,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.05172413793103448
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.05172413793103448
+                }
+              }
+            },
+            "current": {
+              "mean_prediction": 0.0,
+              "brier": 0.05172413793103448,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.05172413793103448
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.05172413793103448
+                }
+              }
+            },
+            "smoothed": {
+              "mean_prediction": 0.0,
+              "brier": 0.05172413793103448,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.05172413793103448
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.05172413793103448
+                }
+              }
+            },
+            "history": {
+              "mean_prediction": 0.0,
+              "brier": 0.05172413793103448,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.05172413793103448
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.05172413793103448
+                }
+              }
+            }
+          },
+          "brier_observed_fraction": 0.0490487514863258
+        },
+        "0.6": {
+          "b3_population_readiness": 0.0,
+          "median_history_ess": 1.115687208096431,
+          "n_cells": 58,
+          "observed_success": 0.05172413793103448,
+          "estimators": {
+            "constant": {
+              "mean_prediction": 0.0,
+              "brier": 0.05172413793103448,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.05172413793103448
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.05172413793103448
+                }
+              }
+            },
+            "current": {
+              "mean_prediction": 0.0,
+              "brier": 0.05172413793103448,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.05172413793103448
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.05172413793103448
+                }
+              }
+            },
+            "smoothed": {
+              "mean_prediction": 0.0,
+              "brier": 0.05172413793103448,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.05172413793103448
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.05172413793103448
+                }
+              }
+            },
+            "history": {
+              "mean_prediction": 0.0,
+              "brier": 0.05172413793103448,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.05172413793103448
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.05172413793103448
+                }
+              }
+            }
+          },
+          "brier_observed_fraction": 0.0490487514863258
+        }
+      }
+    },
+    "fgf_3_20_25ng/pulse_5": {
+      "onset_min": 92.0,
+      "wait_min": 20.0,
+      "decision_frame_min": 91.0,
+      "likelihood_sd": 0.007868388103825254,
+      "rise_over_naive": {
+        "measured_median": 0.09097816538356836,
+        "b3_median": 0.0049162391757627474
+      },
+      "kappa": {
+        "0.4": {
+          "b3_population_readiness": 0.0,
+          "median_history_ess": 1.10975452938552,
+          "n_cells": 58,
+          "observed_success": 0.08620689655172414,
+          "estimators": {
+            "constant": {
+              "mean_prediction": 0.0,
+              "brier": 0.08620689655172414,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.08620689655172414
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.08620689655172414
+                }
+              }
+            },
+            "current": {
+              "mean_prediction": 0.0,
+              "brier": 0.08620689655172414,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.08620689655172414
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.08620689655172414
+                }
+              }
+            },
+            "smoothed": {
+              "mean_prediction": 0.0,
+              "brier": 0.08620689655172414,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.08620689655172414
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.08620689655172414
+                }
+              }
+            },
+            "history": {
+              "mean_prediction": 0.0,
+              "brier": 0.08620689655172414,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.08620689655172414
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.08620689655172414
+                }
+              }
+            }
+          },
+          "brier_observed_fraction": 0.07877526753864447
+        },
+        "0.5": {
+          "b3_population_readiness": 0.0,
+          "median_history_ess": 1.10975452938552,
+          "n_cells": 58,
+          "observed_success": 0.034482758620689655,
+          "estimators": {
+            "constant": {
+              "mean_prediction": 0.0,
+              "brier": 0.034482758620689655,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.034482758620689655
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.034482758620689655
+                }
+              }
+            },
+            "current": {
+              "mean_prediction": 0.0,
+              "brier": 0.034482758620689655,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.034482758620689655
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.034482758620689655
+                }
+              }
+            },
+            "smoothed": {
+              "mean_prediction": 0.0,
+              "brier": 0.034482758620689655,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.034482758620689655
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.034482758620689655
+                }
+              }
+            },
+            "history": {
+              "mean_prediction": 0.0,
+              "brier": 0.034482758620689655,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.034482758620689655
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.034482758620689655
+                }
+              }
+            }
+          },
+          "brier_observed_fraction": 0.03329369797859691
+        },
+        "0.6": {
+          "b3_population_readiness": 0.0,
+          "median_history_ess": 1.10975452938552,
+          "n_cells": 58,
+          "observed_success": 0.017241379310344827,
+          "estimators": {
+            "constant": {
+              "mean_prediction": 0.0,
+              "brier": 0.017241379310344827,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.017241379310344827
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.017241379310344827
+                }
+              }
+            },
+            "current": {
+              "mean_prediction": 0.0,
+              "brier": 0.017241379310344827,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.017241379310344827
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.017241379310344827
+                }
+              }
+            },
+            "smoothed": {
+              "mean_prediction": 0.0,
+              "brier": 0.017241379310344827,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.017241379310344827
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.017241379310344827
+                }
+              }
+            },
+            "history": {
+              "mean_prediction": 0.0,
+              "brier": 0.017241379310344827,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.017241379310344827
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.017241379310344827
+                }
+              }
+            }
+          },
+          "brier_observed_fraction": 0.01694411414982164
+        }
+      }
+    },
+    "fgf_3_20_25ng/pulse_6": {
+      "onset_min": 115.0,
+      "wait_min": 20.0,
+      "decision_frame_min": 115.0,
+      "likelihood_sd": 0.007868388103825254,
+      "rise_over_naive": {
+        "measured_median": 0.08126054167165059,
+        "b3_median": 0.009182478782192083
+      },
+      "kappa": {
+        "0.4": {
+          "b3_population_readiness": 0.0,
+          "median_history_ess": 1.0400580254673124,
+          "n_cells": 58,
+          "observed_success": 0.06896551724137931,
+          "estimators": {
+            "constant": {
+              "mean_prediction": 0.0,
+              "brier": 0.06896551724137931,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.06896551724137931
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.06896551724137931
+                }
+              }
+            },
+            "current": {
+              "mean_prediction": 0.0,
+              "brier": 0.06896551724137931,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.06896551724137931
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.06896551724137931
+                }
+              }
+            },
+            "smoothed": {
+              "mean_prediction": 0.0,
+              "brier": 0.06896551724137931,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.06896551724137931
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.06896551724137931
+                }
+              }
+            },
+            "history": {
+              "mean_prediction": 0.0,
+              "brier": 0.06896551724137931,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.06896551724137931
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.06896551724137931
+                }
+              }
+            }
+          },
+          "brier_observed_fraction": 0.06420927467300833
+        },
+        "0.5": {
+          "b3_population_readiness": 0.0,
+          "median_history_ess": 1.0400580254673124,
+          "n_cells": 58,
+          "observed_success": 0.05172413793103448,
+          "estimators": {
+            "constant": {
+              "mean_prediction": 0.0,
+              "brier": 0.05172413793103448,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.05172413793103448
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.05172413793103448
+                }
+              }
+            },
+            "current": {
+              "mean_prediction": 0.0,
+              "brier": 0.05172413793103448,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.05172413793103448
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.05172413793103448
+                }
+              }
+            },
+            "smoothed": {
+              "mean_prediction": 0.0,
+              "brier": 0.05172413793103448,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.05172413793103448
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.05172413793103448
+                }
+              }
+            },
+            "history": {
+              "mean_prediction": 0.0,
+              "brier": 0.05172413793103448,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.05172413793103448
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.05172413793103448
+                }
+              }
+            }
+          },
+          "brier_observed_fraction": 0.0490487514863258
+        },
+        "0.6": {
+          "b3_population_readiness": 0.0,
+          "median_history_ess": 1.0400580254673124,
+          "n_cells": 58,
+          "observed_success": 0.017241379310344827,
+          "estimators": {
+            "constant": {
+              "mean_prediction": 0.0,
+              "brier": 0.017241379310344827,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.017241379310344827
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.017241379310344827
+                }
+              }
+            },
+            "current": {
+              "mean_prediction": 0.0,
+              "brier": 0.017241379310344827,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.017241379310344827
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.017241379310344827
+                }
+              }
+            },
+            "smoothed": {
+              "mean_prediction": 0.0,
+              "brier": 0.017241379310344827,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.017241379310344827
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.017241379310344827
+                }
+              }
+            },
+            "history": {
+              "mean_prediction": 0.0,
+              "brier": 0.017241379310344827,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.017241379310344827
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.017241379310344827
+                }
+              }
+            }
+          },
+          "brier_observed_fraction": 0.01694411414982164
+        }
+      }
+    },
+    "fgf_mixed_25ng/pulse_3": {
+      "onset_min": 114.0,
+      "wait_min": 60.0,
+      "decision_frame_min": 114.0,
+      "likelihood_sd": 0.007384179605128293,
+      "rise_over_naive": {
+        "measured_median": 0.04086394639224668,
+        "b3_median": 0.3137009833999499
+      },
+      "kappa": {
+        "0.4": {
+          "b3_population_readiness": 0.024,
+          "median_history_ess": 1.0015248004875459,
+          "n_cells": 84,
+          "observed_success": 0.011904761904761904,
+          "estimators": {
+            "constant": {
+              "mean_prediction": 0.023999999999999994,
+              "brier": 0.011909333333333333,
+              "auc": 0.5,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.011904761904761904
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.011904761904761904
+                }
+              }
+            },
+            "current": {
+              "mean_prediction": 0.1256080341021674,
+              "brier": 0.09300603009721543,
+              "auc": 0.9879518072289156,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 9,
+                  "success_if_ready": 0.1111111111111111,
+                  "success_if_waiting": 0.0
+                },
+                "0.9": {
+                  "n_ready": 8,
+                  "success_if_ready": 0.125,
+                  "success_if_waiting": 0.0
+                }
+              }
+            },
+            "smoothed": {
+              "mean_prediction": 0.18941781681947387,
+              "brier": 0.14549705068404065,
+              "auc": 1.0,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 15,
+                  "success_if_ready": 0.06666666666666667,
+                  "success_if_waiting": 0.0
+                },
+                "0.9": {
+                  "n_ready": 11,
+                  "success_if_ready": 0.09090909090909091,
+                  "success_if_waiting": 0.0
+                }
+              }
+            },
+            "history": {
+              "mean_prediction": 0.029687921159588345,
+              "brier": 0.01700548967136655,
+              "auc": 0.9879518072289156,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 3,
+                  "success_if_ready": 0.3333333333333333,
+                  "success_if_waiting": 0.0
+                },
+                "0.9": {
+                  "n_ready": 1,
+                  "success_if_ready": 0.0,
+                  "success_if_waiting": 0.012048192771084338
+                }
+              }
+            }
+          },
+          "brier_observed_fraction": 0.011763038548752835
+        },
+        "0.5": {
+          "b3_population_readiness": 0.0,
+          "median_history_ess": 1.0015248004875459,
+          "n_cells": 84,
+          "observed_success": 0.0,
+          "estimators": {
+            "constant": {
+              "mean_prediction": 0.0,
+              "brier": 0.0,
+              "auc": null,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.0
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.0
+                }
+              }
+            },
+            "current": {
+              "mean_prediction": 0.0,
+              "brier": 0.0,
+              "auc": null,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.0
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.0
+                }
+              }
+            },
+            "smoothed": {
+              "mean_prediction": 0.0,
+              "brier": 0.0,
+              "auc": null,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.0
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.0
+                }
+              }
+            },
+            "history": {
+              "mean_prediction": 0.0,
+              "brier": 0.0,
+              "auc": null,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.0
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.0
+                }
+              }
+            }
+          },
+          "brier_observed_fraction": 0.0
+        },
+        "0.6": {
+          "b3_population_readiness": 0.0,
+          "median_history_ess": 1.0015248004875459,
+          "n_cells": 84,
+          "observed_success": 0.0,
+          "estimators": {
+            "constant": {
+              "mean_prediction": 0.0,
+              "brier": 0.0,
+              "auc": null,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.0
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.0
+                }
+              }
+            },
+            "current": {
+              "mean_prediction": 0.0,
+              "brier": 0.0,
+              "auc": null,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.0
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.0
+                }
+              }
+            },
+            "smoothed": {
+              "mean_prediction": 0.0,
+              "brier": 0.0,
+              "auc": null,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.0
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.0
+                }
+              }
+            },
+            "history": {
+              "mean_prediction": 0.0,
+              "brier": 0.0,
+              "auc": null,
+              "ready_calls": {
+                "0.5": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.0
+                },
+                "0.9": {
+                  "n_ready": 0,
+                  "success_if_ready": null,
+                  "success_if_waiting": 0.0
+                }
+              }
+            }
+          },
+          "brier_observed_fraction": 0.0
+        }
+      }
+    }
+  },
+  "pooled_3_20": {
+    "0.4": {
+      "n_cells": 290,
+      "observed_success": 0.11379310344827587,
+      "estimators": {
+        "constant": {
+          "mean_prediction": 0.0,
+          "brier": 0.11379310344827587,
+          "auc": 0.5,
+          "ready_calls": {
+            "0.5": {
+              "n_ready": 0,
+              "success_if_ready": null,
+              "success_if_waiting": 0.11379310344827587
+            },
+            "0.9": {
+              "n_ready": 0,
+              "success_if_ready": null,
+              "success_if_waiting": 0.11379310344827587
+            }
+          }
+        },
+        "current": {
+          "mean_prediction": 0.0,
+          "brier": 0.11379310344827587,
+          "auc": 0.5,
+          "ready_calls": {
+            "0.5": {
+              "n_ready": 0,
+              "success_if_ready": null,
+              "success_if_waiting": 0.11379310344827587
+            },
+            "0.9": {
+              "n_ready": 0,
+              "success_if_ready": null,
+              "success_if_waiting": 0.11379310344827587
+            }
+          }
+        },
+        "smoothed": {
+          "mean_prediction": 0.0,
+          "brier": 0.11379310344827587,
+          "auc": 0.5,
+          "ready_calls": {
+            "0.5": {
+              "n_ready": 0,
+              "success_if_ready": null,
+              "success_if_waiting": 0.11379310344827587
+            },
+            "0.9": {
+              "n_ready": 0,
+              "success_if_ready": null,
+              "success_if_waiting": 0.11379310344827587
+            }
+          }
+        },
+        "history": {
+          "mean_prediction": 0.0,
+          "brier": 0.11379310344827587,
+          "auc": 0.5,
+          "ready_calls": {
+            "0.5": {
+              "n_ready": 0,
+              "success_if_ready": null,
+              "success_if_waiting": 0.11379310344827587
+            },
+            "0.9": {
+              "n_ready": 0,
+              "success_if_ready": null,
+              "success_if_waiting": 0.11379310344827587
+            }
+          }
+        }
+      },
+      "brier_observed_fraction": 0.10084423305588586
+    },
+    "0.5": {
+      "n_cells": 290,
+      "observed_success": 0.08275862068965517,
+      "estimators": {
+        "constant": {
+          "mean_prediction": 0.0,
+          "brier": 0.08275862068965517,
+          "auc": 0.5,
+          "ready_calls": {
+            "0.5": {
+              "n_ready": 0,
+              "success_if_ready": null,
+              "success_if_waiting": 0.08275862068965517
+            },
+            "0.9": {
+              "n_ready": 0,
+              "success_if_ready": null,
+              "success_if_waiting": 0.08275862068965517
+            }
+          }
+        },
+        "current": {
+          "mean_prediction": 0.0,
+          "brier": 0.08275862068965517,
+          "auc": 0.5,
+          "ready_calls": {
+            "0.5": {
+              "n_ready": 0,
+              "success_if_ready": null,
+              "success_if_waiting": 0.08275862068965517
+            },
+            "0.9": {
+              "n_ready": 0,
+              "success_if_ready": null,
+              "success_if_waiting": 0.08275862068965517
+            }
+          }
+        },
+        "smoothed": {
+          "mean_prediction": 0.0,
+          "brier": 0.08275862068965517,
+          "auc": 0.5,
+          "ready_calls": {
+            "0.5": {
+              "n_ready": 0,
+              "success_if_ready": null,
+              "success_if_waiting": 0.08275862068965517
+            },
+            "0.9": {
+              "n_ready": 0,
+              "success_if_ready": null,
+              "success_if_waiting": 0.08275862068965517
+            }
+          }
+        },
+        "history": {
+          "mean_prediction": 0.0,
+          "brier": 0.08275862068965517,
+          "auc": 0.5,
+          "ready_calls": {
+            "0.5": {
+              "n_ready": 0,
+              "success_if_ready": null,
+              "success_if_waiting": 0.08275862068965517
+            },
+            "0.9": {
+              "n_ready": 0,
+              "success_if_ready": null,
+              "success_if_waiting": 0.08275862068965517
+            }
+          }
+        }
+      },
+      "brier_observed_fraction": 0.07590963139120095
+    },
+    "0.6": {
+      "n_cells": 290,
+      "observed_success": 0.04827586206896552,
+      "estimators": {
+        "constant": {
+          "mean_prediction": 0.0,
+          "brier": 0.04827586206896552,
+          "auc": 0.5,
+          "ready_calls": {
+            "0.5": {
+              "n_ready": 0,
+              "success_if_ready": null,
+              "success_if_waiting": 0.04827586206896552
+            },
+            "0.9": {
+              "n_ready": 0,
+              "success_if_ready": null,
+              "success_if_waiting": 0.04827586206896552
+            }
+          }
+        },
+        "current": {
+          "mean_prediction": 0.0,
+          "brier": 0.04827586206896552,
+          "auc": 0.5,
+          "ready_calls": {
+            "0.5": {
+              "n_ready": 0,
+              "success_if_ready": null,
+              "success_if_waiting": 0.04827586206896552
+            },
+            "0.9": {
+              "n_ready": 0,
+              "success_if_ready": null,
+              "success_if_waiting": 0.04827586206896552
+            }
+          }
+        },
+        "smoothed": {
+          "mean_prediction": 0.0,
+          "brier": 0.04827586206896552,
+          "auc": 0.5,
+          "ready_calls": {
+            "0.5": {
+              "n_ready": 0,
+              "success_if_ready": null,
+              "success_if_waiting": 0.04827586206896552
+            },
+            "0.9": {
+              "n_ready": 0,
+              "success_if_ready": null,
+              "success_if_waiting": 0.04827586206896552
+            }
+          }
+        },
+        "history": {
+          "mean_prediction": 0.0,
+          "brier": 0.04827586206896552,
+          "auc": 0.5,
+          "ready_calls": {
+            "0.5": {
+              "n_ready": 0,
+              "success_if_ready": null,
+              "success_if_waiting": 0.04827586206896552
+            },
+            "0.9": {
+              "n_ready": 0,
+              "success_if_ready": null,
+              "success_if_waiting": 0.04827586206896552
+            }
+          }
+        }
+      },
+      "brier_observed_fraction": 0.04594530321046374
+    }
+  },
+  "limitations": [
+    "One dose in two recorded protocols with fixed probe times; no completion-time comparison.",
+    "The mixed-protocol naive reference comes from different cells (single 5-min pulse).",
+    "Cells of one condition share a session; 3/20 cells repeat across pulses."
+  ]
+}

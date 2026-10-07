@@ -336,8 +336,10 @@ cmp10, cmp2 = nested["main"]["10"]["comparisons"], nested["main"]["2"]["comparis
 acmp10, acmp2 = arx["main"]["10"]["comparisons"], arx["main"]["2"]["comparisons"]
 lagged = ("A", "A+M")
 rmse_of = lambda cmp, acmp, role, m: (acmp if m in lagged else cmp)[role]["rmse"][m]
-core = (("P", "P: persistence"), ("C", "C: current + slope"), ("O", "O: C + reporter filters"), ("A", "A: C + lags"),
-        ("M", "M: O + B3 increment"), ("A+M", "A+M: A + B3 increment"), ("H", "H: M + input history"))
+# Descriptive predictor names (revision plan item 2); code keys P/C/O/A/M/A+M/H are unchanged.
+SHORT = {"P": "Persist", "C": "Current", "O": "Filter", "A": "Lag", "M": "Filter+B3", "A+M": "Lag+B3", "H": "F+B3+Input",
+         "M_phase": "F+B3 (phase)"}
+core = tuple((m, SHORT[m]) for m in ("P", "C", "O", "A", "M", "A+M", "H"))
 getters = ([lambda m, r=r: rmse_of(cmp10, acmp10, r, m) for r in core_cols]
            + [lambda m: rmse_of(cmp2, acmp2, "test_new_protocol", m)])
 cells = {m: [] for m, _ in core}
@@ -345,11 +347,11 @@ for get in getters:
     for (m, _), cell in zip(core, bold_min([get(m) for m, _ in core])):
         cells[m].append(cell)
 body = [label + " & " + " & ".join(cells[m]) for m, label in core] + [r"\midrule"]
-for a, b in (("H", "M"), ("M", "O"), ("A+M", "A"), ("O", "C")):
+for a, b in (("O", "C"), ("M", "O"), ("A+M", "A"), ("H", "M")):
     pick = lambda cmp, acmp: acmp if (a, b) == ("A+M", "A") else cmp
     counts = [f"{pick(cmp10, acmp10)[r][f'{a}_beats_{b}']['conditions']}/{cmp10[r]['n_conditions']}" for r in core_cols]
     counts.append(f"{pick(cmp2, acmp2)['test_new_protocol'][f'{a}_beats_{b}']['conditions']}/{cmp2['test_new_protocol']['n_conditions']}")
-    body.append(f"{a} beats {b} & " + " & ".join(counts))
+    body.append(f"{SHORT[a]} $<$ {SHORT[b]} & " + " & ".join(counts))
 write_table("core_rmse", "lccccc", r"Model & Val. & A & B & C & A, 2 min", body)
 
 conc_of = {r["condition_id"].replace("fgf_", "", 1): r["concentration_ng_ml"] for r in expanded["inventory"]}
@@ -370,7 +372,7 @@ for group, label in fold_label.items():
     values = [fold["rmse"][m] for m in ("O", "M", "H")] + [arx["lopo"][group]["rmse"][m] for m in lagged]
     best = min(values)
     body.append(f"{label} & " + " & ".join((r"\textbf{%.5f}" if v == best else "%.5f") % v for v in values) + f" & {prior}")
-write_table("lopo_core", "lcccccl", r"Held-out & O & M & H & A & A+M & B3 use", body)
+write_table("lopo_core", "lcccccl", r"Held-out & Filter & F+B3 & F+B3+In & Lag & Lag+B3 & B3 use", body)
 
 r0 = robust["repeats"]["0"]["0.005"]["rules"]
 rule_label = (("current", "Current obs."), ("smoothed", "Smoothed (16 min)"), ("history", "History-aware"),
@@ -427,7 +429,7 @@ write_table("waiting_sensitivity", "cccccccccc",
 
 MODEL_STYLE = {"P": ("#52514e", ":", "."), "C": ("#0b0b0b", "--", "x"), "O": ("#1baf7a", "-", "o"),
                "A": ("#eda100", "-", "v"), "M": ("#4a3aa7", "-", "s"), "A+M": ("#e87ba4", "-", "P"), "H": ("#e34948", "-", "^")}
-fig, ax = plt.subplots(figsize=(3.45, 1.75))
+fig, ax = plt.subplots(figsize=(3.45, 1.95))
 phases = nested["phases"]["10"]
 order = [p for p in ("stimulation", "next_command", "early_washout", "late") if p in phases]
 tick = {"stimulation": "stimulation", "next_command": "next command", "early_washout": "early washout", "late": "late"}
@@ -435,10 +437,10 @@ phase_rmse = lambda p, name: arx["phases"]["10"]["pooled"][p][name] if name in l
 for j, name in enumerate(MODEL_STYLE):
     color, _, marker = MODEL_STYLE[name]
     ax.plot([i + (j - 3) * .1 for i in range(len(order))], [phase_rmse(p, name) for p in order],
-            ls="none", marker=marker, ms=4, color=color, mew=1, label=name)
+            ls="none", marker=marker, ms=4, color=color, mew=1, label=SHORT[name])
 ax.set_xticks(range(len(order)), [f"{tick[p]}\n({phases[p]['n_conditions']} cond.)" for p in order], fontsize=6)
 ax.set(ylabel="10-min RMSE", xlim=(-.5, len(order) - .5))
-ax.legend(loc="lower left", ncol=7, frameon=False, fontsize=6, handletextpad=.1, columnspacing=.5, borderaxespad=.1)
+ax.legend(loc="lower center", bbox_to_anchor=(.5, 1.0), ncol=4, frameon=False, fontsize=6, handletextpad=.1, columnspacing=.8, borderaxespad=.1)
 ax.grid(axis="y", alpha=.15)
 fig.subplots_adjust(left=.15, right=.98, bottom=.2, top=.97)
 fig.savefig(FIG / "prediction_phases.pdf", bbox_inches="tight", pad_inches=.02, metadata={"CreationDate": None})
@@ -513,6 +515,123 @@ for a in axes:
 fig.subplots_adjust(left=.06, right=.995, bottom=.22, top=.88, wspace=.45)
 fig.savefig(FIG / "readiness_waiting.pdf", bbox_inches="tight", pad_inches=.02, metadata={"CreationDate": None})
 fig.savefig(FIG / "readiness_waiting.png", bbox_inches="tight", pad_inches=.02)
+plt.close(fig)
+
+# Revision plan item 5: per-history reliability constraint, oracle-gap closure (Table III) and frontiers (Fig. 3).
+frontier = json.loads((B3_RESULTS / "waiting_frontier_results.json").read_text(encoding="utf-8"))
+MAIN_TARGET = "0.94"   # smallest pre-specified target at which every rule met 0.9 for both histories in all 20 splits
+assert all(n == 20 for n in frontier["summary"]["0.005"][MAIN_TARGET]["meets_per_history"].values())
+ADAPTIVE_RULES = ("current", "smoothed", "history")
+RULE_LABEL = {"fixed": "Fixed per history", "current": "Current obs.", "smoothed": "Smoothed", "history": "B3 belief",
+              "oracle": "Oracle"}
+body = []
+for noise in ("0.005", "0.01"):
+    cell, summ = frontier["repeats"]["0"][noise]["cells"][MAIN_TARGET], frontier["summary"][noise][MAIN_TARGET]
+    splits = [frontier["repeats"][str(r)][noise]["cells"][MAIN_TARGET]["rules"] for r in range(len(frontier["repeats"]))]
+    names = ("fixed", "current", "smoothed", "history", "oracle") if noise == "0.005" else ("smoothed", "history")
+    if noise != "0.005":
+        body += [r"\midrule", rf"\multicolumn{{8}}{{l}}{{Noise s.d.\ {float(noise):g} (same fixed waits)}}"]
+    for name in names:
+        r = cell["rules"][name]
+        label = RULE_LABEL[name]
+        if name == "fixed":
+            label += " ({:g}/{:g})".format(*(cell["choices"]["fixed"][h]["wait_min"] for h in ("short", "long")))
+        if name in ADAPTIVE_RULES:
+            dt = float(np.median([row[name]["all"]["mean_completion_min"] - row["fixed"]["all"]["mean_completion_min"]
+                                  for row in splits]))
+            gap = 100 * summ["gap_closure"][name]["all"]["median"]
+            extra = (f"{dt:+.1f} & {gap:.0f}".replace("-", "$-$") + f" & {summ['meets_per_history'][name]}/20")
+        elif name == "fixed":
+            extra = f"-- & -- & {summ['meets_per_history']['fixed']}/20"
+        else:
+            extra = "-- & 100 & --"
+        body.append(f"{label} & " + " & ".join(f"{100 * r[h]['success_rate']:.1f} & {r[h]['mean_completion_min']:.1f}"
+                                               for h in ("short", "long")) + f" & {extra}")
+write_table("waiting_per_history", "lccccccc",
+            r"Rule & $S_3$ & $T_3$ & $S_{30}$ & $T_{30}$ & $\Delta T$ & $G$ (\%) & Met", body)
+
+# Revision plan items 6, 7, 9: noise-adjusted skill by horizon on Test A (Table II(c)).
+extensions = json.loads((NESTED / "nested_extensions_results.json").read_text(encoding="utf-8"))
+HORIZONS = ("2", "10", "20", "30")
+role_a = lambda h: extensions["horizons"][h]["roles"]["test_new_protocol"]
+signed1 = lambda x: f"{x:.1f}".replace("-", "$-$")
+body = []
+for key in ("O", "M", "H", "M_phase"):
+    body.append(f"{SHORT[key]} & " + " & ".join(signed1(100 * role_a(h)["skill"][key]) for h in HORIZONS))
+    if key == "M":
+        body.append(r"\quad 95\% interval & " + " & ".join(
+            "{:.0f}--{:.0f}".format(*(100 * x for x in role_a(h)["bootstrap"]["skill_M"])) for h in HORIZONS))
+body.append(r"\midrule")
+body.append(r"Crossing BA, Filter / F+B3 & -- & " + " & ".join(
+    "{:.0f} / {:.0f}".format(100 * role_a(h)["crossing"]["O"]["balanced_accuracy"], 100 * role_a(h)["crossing"]["M"]["balanced_accuracy"])
+    for h in HORIZONS[1:]))
+write_table("skill_horizon", "lcccc", r"Horizon $h$ (min) & 2 & 10 & 20 & 30", body)
+
+delay = json.loads((B3_RESULTS / "delay_map_results.json").read_text(encoding="utf-8"))
+
+
+def non_dominated(points):
+    keep = [p for p in points if not any(q["success_rate"] >= p["success_rate"] and q["mean_completion_min"] <= p["mean_completion_min"]
+                                         and (q["success_rate"] > p["success_rate"] or q["mean_completion_min"] < p["mean_completion_min"])
+                                         for q in points)]
+    return sorted(keep, key=lambda p: p["mean_completion_min"])
+
+
+RULE_STYLE = {"fixed": (MUTED, ":", "s", "fixed wait"), "current": (INK, "--", "^", "current"),
+              "smoothed": ("#2a78d6", "-.", "D", "smoothed"), "history": ("#eb6834", "-", "o", "B3 belief")}
+f0 = frontier["repeats"]["0"]["0.005"]
+operating = f0["cells"][MAIN_TARGET]
+fig, axes = plt.subplots(1, 4, figsize=(7.08, 2.25), gridspec_kw=dict(width_ratios=[1, 1, 1, 1.18]))
+for ax, (hist, title) in zip(axes[:2], (("short", "(a) After 3-min command"), ("long", "(b) After 30-min command"))):
+    block = f0["frontier"][hist]
+    for name, (color, style, marker, label) in RULE_STYLE.items():
+        points = block[name]["points"]
+        if name == "smoothed":
+            points = [q for q in points if q["tau_min"] == operating["choices"]["smoothed"][hist]["tau_min"]]
+        front = non_dominated(points)
+        ax.plot([q["mean_completion_min"] for q in front], [100 * q["success_rate"] for q in front], color=color, ls=style,
+                lw=1.1, label=label)
+        op = operating["rules"][name][hist]
+        ax.plot(op["mean_completion_min"], 100 * op["success_rate"], marker=marker, color=color, ms=4.5, ls="none",
+                mfc="white", mew=1.1, zorder=3)
+    oracle = block["oracle"]
+    ax.plot(oracle["mean_completion_min"], 100 * oracle["success_rate"], marker="*", color=INK, ms=7, ls="none", label="oracle")
+    ax.axhline(90, color=MUTED, lw=.6, ls=":", zorder=0)
+    ax.set(xlim=(96, 141), ylim=(75, 101), xlabel="Mean completion (min)")
+    ax.set_title(title, loc="left", fontsize=8)
+axes[0].set_ylabel("Evaluation success (%)")
+axes[0].legend(loc="lower right", frameon=False, fontsize=5.5, handlelength=2.0, borderaxespad=.1)
+ax = axes[2]
+DELAY_STYLE = {"fixed": (MUTED, ":", "s", "fixed wait"), "smoothed_slope": ("#2a78d6", "-.", "D", "smoothed+slope"),
+               "b3_nowcast": (INK, "--", "v", "B3 nowcast"), "b3_predictive": ("#eb6834", "-", "o", "B3 predictive")}
+ds = delay["grid"]["delays_min"]
+for name, (color, style, marker, label) in DELAY_STYLE.items():
+    ys = [delay["summary"][f"0.005/2/{d}"]["completion"][name]["all"]["median"] for d in ds]
+    ax.plot(ds, ys, color=color, ls=style, marker=marker, ms=3.5, lw=1.1, mfc="white" if name == "fixed" else color, label=label)
+ax.plot(ds, [delay["summary"][f"0.005/2/{d}"]["completion"]["oracle"]["all"]["median"] for d in ds], color=INK, lw=.6,
+        ls=(0, (1, 2)), label="oracle")
+ax.set(xlabel="Delay $d$ (min)", ylabel="Mean completion (min)", xticks=ds)
+ax.set_title(r"(c) Delay ($\Delta$=2 min, s.d. .005)", loc="left", fontsize=8)
+ax.legend(loc="upper left", frameon=False, fontsize=5.5, handlelength=2.0, borderaxespad=.1)
+ax = axes[3]
+rows = [(n, i) for n in delay["grid"]["noise_sd"] for i in delay["grid"]["intervals_min"]]
+values = np.array([[delay["summary"][f"{n:g}/{i}/{d}"]["map_value_min"] for d in ds] for n, i in rows])
+helps = np.array([[delay["summary"][f"{n:g}/{i}/{d}"]["map_class"] == "model helps" for d in ds] for n, i in rows])
+limit = max(1., float(np.abs(values).max()))
+image = ax.imshow(values, cmap="RdBu", vmin=-limit, vmax=limit, aspect="auto")
+for (r_, c_), v in np.ndenumerate(values):
+    ax.text(c_, r_, "0.0" if abs(v) < .05 else f"{v:+.1f}".replace("-", "−"), ha="center", va="center", fontsize=5,
+            color="white" if abs(v) > .6 * limit else INK, fontweight="bold" if helps[r_, c_] else "normal")
+ax.set_xticks(range(len(ds)), [f"{d:g}" for d in ds], fontsize=6)
+ax.set_yticks(range(len(rows)), [f"{n:g}".replace("0.", ".") + f", {i}" for n, i in rows], fontsize=5.5)
+ax.set(xlabel="Delay $d$ (min)")
+ax.set_ylabel(r"Noise s.d., $\Delta$ (min)", fontsize=6.5, labelpad=1)
+ax.set_title(r"(d) $\Delta T$, B3 pred. $-$ smooth.+slope", loc="left", fontsize=8)
+for a in axes[:3]:
+    a.grid(axis="y", alpha=.15)
+fig.subplots_adjust(left=.06, right=.995, bottom=.2, top=.9, wspace=.5)
+fig.savefig(FIG / "waiting_frontier.pdf", bbox_inches="tight", pad_inches=.02, metadata={"CreationDate": None})
+fig.savefig(FIG / "waiting_frontier.png", bbox_inches="tight", pad_inches=.02)
 plt.close(fig)
 
 audit = {
