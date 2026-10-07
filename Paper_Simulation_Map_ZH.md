@@ -4,7 +4,7 @@
 
 | 论文内容 | 数据或结果 | 对应程序与状态 |
 |---|---|---|
-| Sec. I 引言：MC 定位（带记忆接收机、保护间隔/检测区间、序贯检测与最优停止） | `paper/references.bib` 新增 kilinc2013、mosayebi2014、cao2020、tung2018、wald1945、poor2009 | 只按摘要层面引用；kilinc2013、cao2020、tung2018 未附 DOI |
+| Sec. I 引言：MC 定位（带记忆接收机、保护间隔/检测区间、序贯检测与最优停止） | `paper/references.bib` 新增 kilinc2013、mosayebi2014、cao2020、tung2019、wald1945、poor2009 | 只按摘要层面引用；均经 Crossref 核对并附 DOI（原 tung2018 的题目在 Crossref 查不到：Tung & Mitra 在 ISTC 2018 的论文实为 "Increasing Robustness to Synchronisation Errors in Molecular Communications"，doi 10.1109/ISTC.2018.8625364；改引更贴合序贯检测的 ICC 2019 DFE-SPRT 论文） |
 | Sec. II 式 (1)–(3)：系统、任务、逐历史约束的设计问题；κ 与 $T_{\rm f}$ 的依据 | `simulation/results/b3/waiting_frontier_results.json` 的 `kappa_feasibility`、`summary/penalty` | `b3_waiting_frontier.py`（方案 `b3_waiting_frontier_protocol.json`）：κ = 0.5 是 oracle 成功率仍 > 99% 的最大取值；$T_{\rm f}=140$ 为任何成功的最晚完成时间，160–260 为敏感性 |
 | Table I：预测器特征表 | 正文内 | 特征定义见 `nested_forecast.nested_features`、`nested_arx.py`；细节见 `paper/supplementary_details.md` S2 |
 | Sec. III-A 式 (4)–(5)：滤波与 B3 增量 | `simulation/results/nested/nested_results.json` | `nested_forecast.py`（方案 `nested_forecast_protocol.json`） |

@@ -34,7 +34,7 @@
     "original_source_files_verified": 47,
     "expanded_source_files_verified": 56,
     "b3_source_files_verified": 3,
-    "pdf_pages": 6,
+    "pdf_pages": 7,
     "environment": {
       "python": "3.13.16",
       "numpy": "2.3.5",
@@ -58,20 +58,20 @@
       "bytes": 38453
     },
     "Paper_Notes_ZH.md": {
-      "sha256": "ac85992fc256044ab65cd90b0286edc27df5c746746670bcffb99308699d425e",
-      "bytes": 16680
+      "sha256": "755811fb9707f67c2fafd5b775341c1ff7b0f5274ade0e93c4e736a63e6acf7d",
+      "bytes": 18330
     },
     "Paper_Simulation_Map_ZH.md": {
-      "sha256": "fba0add72a33553a777b8748e10e70ac9ae8fc36980125a6803b5209b92c5381",
-      "bytes": 7595
+      "sha256": "4a9bd0b95aa4bfd375e49367dea064ae44262362a7e5fc84c8ea418ab0f61f49",
+      "bytes": 7848
     },
     "README.md": {
       "sha256": "64dd11180e7a00bddb213ddd5ebb5163884062a5152f2af3ea90ca7925711bfc",
       "bytes": 24601
     },
     "paper/AI_MC_Cellular_Receivers_Draft.pdf": {
-      "sha256": "a31f2d7dcd49934820241852f19114dfcafa0140a04bd6e3bd7791fae2ebbafa",
-      "bytes": 396519
+      "sha256": "1a3be6165d747d45997642e6515b1622882a0b54db61b4b27bafd094158580ff",
+      "bytes": 399243
     },
     "paper/IEEEtran.cls": {
       "sha256": "da751920a317ed318b7b5cd7fa585a6cc7d28502d457856382e9be24b10a3bd7",
@@ -142,16 +142,16 @@
       "bytes": 128306
     },
     "paper/main.tex": {
-      "sha256": "424b9b565204f5822f70d0f7eb963a042f726ec11ed38d20b951b2926d33c641",
-      "bytes": 29123
+      "sha256": "50d5b8528700811151479f5c4002aa1854dbd1de4017c20dc312b9e27508db0d",
+      "bytes": 34677
     },
     "paper/qa_report.json": {
-      "sha256": "b31c108b794dff9a5a54dd21344c8231ff69f93c3609e6b25218a9c62bc6aae1",
-      "bytes": 2267
+      "sha256": "9480b70238adf05597a6baece3dc03e52e2570ba1a1c79b448ac7441b4c97580",
+      "bytes": 2544
     },
     "paper/references.bib": {
-      "sha256": "96d566749fa13ee435c717a796b448186a23123b260ec5428a84c0339208725b",
-      "bytes": 9956
+      "sha256": "d3db13a4ce2bef4df95a874ae854fd2b9c2db9ebacf2f5178bfa55b2e2ae3f43",
+      "bytes": 10332
     },
     "paper/supplementary_details.md": {
       "sha256": "c7b948babadcd5c7b0be61f19d19bf24cd835187a5ef551ba7e06e4c24f8aa98",
@@ -262,8 +262,8 @@
       "bytes": 1317
     },
     "reproduction/logs/compile_paper.log": {
-      "sha256": "7ec026b587378d15f4932bb56d1bd5cc3c5993bab352b72f2decb80f03d5bf82",
-      "bytes": 43619
+      "sha256": "53f61dae8639386cd62de2cbad8f55d429d908b9e752bfde90ff600c99278f66",
+      "bytes": 29396
     },
     "reproduction/logs/expanded_fresh_test.log": {
       "sha256": "318da1f7cc12d7f19e32db4e12c79865b9fcd805bffff745e912baba529cc694",
@@ -414,8 +414,8 @@
       "bytes": 124
     },
     "revision/Revision_Response_ZH.md": {
-      "sha256": "23eb112947af50176daf12b4322bd751b61cfc4acde550c676d4090a65d6f750",
-      "bytes": 8753
+      "sha256": "f2057f59fabe02ff8dbde9b76eb79490790e68777c8e62a4999c6efe8e7a0e62",
+      "bytes": 14381
     },
     "revision/receiver_reuse_revision_plan.xlsx": {
       "sha256": "681f632427505a628c0292555020c761f9eeee05fc474047470c4307f59323e9",
@@ -438,8 +438,8 @@
       "bytes": 19685
     },
     "simulation/checksums.json": {
-      "sha256": "d6099826c01832b84a888becf083efed4b8bbb791b855bf553c7b094252aef8c",
-      "bytes": 39442
+      "sha256": "0d1ff09990460a62ce9fb45a15aadc830ceb44447056210e8fee14a1673b9b67",
+      "bytes": 43076
     },
     "simulation/code/b3_ar1_likelihood.py": {
       "sha256": "2e16bb3c33bccb0340ec9387205513b384eb70c6ab7a03379a677b39dc8b4c23",

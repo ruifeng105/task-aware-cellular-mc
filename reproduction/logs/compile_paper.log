@@ -3,12 +3,41 @@ I changed them all to CP936
 Rc files read:
   NONE
 Latexmk: This is Latexmk, John Collins, 27 Dec. 2024. Version 4.86a.
+Latexmk: applying rule 'bibtex AI_MC_Cellular_Receivers_Draft'...
+Rule 'bibtex AI_MC_Cellular_Receivers_Draft':  Reasons for rerun
+Changed files or newly in use/created:
+  ./references.bib
+Category 'changed_user':
+  ./references.bib
+
+------------
+Run number 1 of rule 'bibtex AI_MC_Cellular_Receivers_Draft'
+------------
+------------
+Running 'bibtex  "AI_MC_Cellular_Receivers_Draft.aux"'
+------------
+This is BibTeX, Version 0.99d (TeX Live 2025)
+The top-level auxiliary file: AI_MC_Cellular_Receivers_Draft.aux
+The style file: IEEEtran.bst
+Database file #1: references.bib
+-- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+
+Done.
 Latexmk: applying rule 'pdflatex'...
 Rule 'pdflatex':  Reasons for rerun
 Changed files or newly in use/created:
+  AI_MC_Cellular_Receivers_Draft.bbl
+  figures/prediction_phases.pdf
   main.tex
+  tables/core_rmse.tex
+  tables/lopo_core.tex
 Category 'changed_user':
+  figures/prediction_phases.pdf
   main.tex
+  tables/core_rmse.tex
+  tables/lopo_core.tex
 
 ------------
 Run number 1 of rule 'pdflatex'
@@ -49,106 +78,6 @@ For additional information on amsmath, use the `?' option.
 (c:/texlive/2025/texmf-dist/tex/latex/graphics-def/pdftex.def)))
 (c:/texlive/2025/texmf-dist/tex/latex/booktabs/booktabs.sty)
 (c:/texlive/2025/texmf-dist/tex/latex/cite/cite.sty)
-(c:/texlive/2025/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
-(c:/texlive/2025/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
-(c:/texlive/2025/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/pgf.revision.tex)))
-(c:/texlive/2025/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
-(c:/texlive/2025/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.co
-de.tex)) (c:/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def))
-)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
-)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
-)) (c:/texlive/2025/texmf-dist/tex/latex/xcolor/xcolor.sty
-(c:/texlive/2025/texmf-dist/tex/latex/graphics-cfg/color.cfg)
-(c:/texlive/2025/texmf-dist/tex/latex/graphics/mathcolor.ltx))
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.te
-x)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric
-.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.t
-ex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.co
-de.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex
-)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.te
-x)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex
-)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithm
-etics.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex))
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.cod
-e.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.te
-x)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code
-.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.c
-ode.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex)
-
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.co
-de.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
-) (c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
-)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code
-.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
-) (c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex)))
- (c:/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex)
-(c:/texlive/2025/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.st
-y)
-(c:/texlive/2025/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.st
-y)) (c:/texlive/2025/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
-(c:/texlive/2025/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex))
-(c:/texlive/2025/texmf-dist/tex/latex/pgf/math/pgfmath.sty
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex))
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.co
-de.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzli
-brarytopaths.code.tex)))
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.cod
-e.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzli
-brarypositioning.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzli
-brarydecorations.pathreplacing.code.tex
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzli
-brarydecorations.code.tex
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.t
-ex))
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydec
-orations.pathreplacing.code.tex))
 (c:/texlive/2025/texmf-dist/tex/latex/preprint/balance.sty)
 (c:/texlive/2025/texmf-dist/tex/latex/hyperref/hyperref.sty
 (c:/texlive/2025/texmf-dist/tex/generic/iftex/iftex.sty)
@@ -184,32 +113,63 @@ orations.pathreplacing.code.tex))
 ) (c:/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 (c:/texlive/2025/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
 (./AI_MC_Cellular_Receivers_Draft.out) (./AI_MC_Cellular_Receivers_Draft.out)
-Underfull \hbox (badness 2080) in paragraph at lines 29--31
+Underfull \hbox (badness 2080) in paragraph at lines 26--28
 \T1/ptm/b/n/9 mechanism-informed pre-dic-tion, Bayesian fil-ter-ing, re-ceiver
-** WARNING: \IEEEPARstart is locked out when in conference mode (line 34).
+** WARNING: \IEEEPARstart is locked out when in conference mode (line 31).
+
+LaTeX Warning: Citation `kilinc2013' on page 1 undefined on input line 33.
+
+
+LaTeX Warning: Citation `mosayebi2014' on page 1 undefined on input line 33.
+
+
+LaTeX Warning: Citation `cao2020' on page 1 undefined on input line 33.
+
+
+LaTeX Warning: Citation `wald1945' on page 1 undefined on input line 33.
+
+
+LaTeX Warning: Citation `tung2019' on page 1 undefined on input line 33.
+
+
+LaTeX Warning: Citation `poor2009' on page 1 undefined on input line 33.
+
 
 (c:/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (c:/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd)
+Underfull \vbox (badness 4543) has occurred while \output is active
 [1{c:/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/texlive/202
 5/texmf-dist/fonts/enc/dvips/base/8r.enc}]
+(c:/texlive/2025/texmf-dist/tex/latex/psnfss/t1phv.fd)
 
-[2 <./figures/fig1_system_concept.pdf>]
-(./tables/inventory_core.tex)
-[3 <./figures/prediction_phases.pdf>] (./tables/core_rmse.tex)
-(./tables/lopo_core.tex) (./tables/waiting_history.tex)
-(./tables/waiting_sensitivity.tex)
+LaTeX Warning: Reference `tab:features' on page 2 undefined on input line 95.
 
-[4]
-Underfull \vbox (badness 10000) has occurred while \output is active
 
-Underfull \vbox (badness 10000) has occurred while \output is active
-[5 <./figures/readiness_waiting.pdf>]
-(./AI_MC_Cellular_Receivers_Draft.bbl
 
-Package balance Warning: You have called \balance in second column
-(balance)                Columns might not be balanced.
+LaTeX Warning: Citation `wald1945' on page 2 undefined on input line 120.
 
-[6]
+
+LaTeX Warning: Reference `eq:design' on page 2 undefined on input line 120.
+
+
+[2]
+(./tables/inventory_core.tex) (./tables/core_rmse.tex) (./tables/lopo_core.tex)
+(./tables/skill_horizon.tex)
+Underfull \vbox (badness 1668) has occurred while \output is active
+[3 <./figures/fig1_system_concept.pdf>]
+
+LaTeX Warning: Reference `sec:natural' on page 4 undefined on input line 167.
+
+
+[4 <./figures/prediction_phases.pdf>] (./tables/waiting_per_history.tex)
+
+[5]
+
+LaTeX Warning: Citation `mosayebi2014' on page 6 undefined on input line 195.
+
+
+
+[6 <./figures/waiting_frontier.pdf>] (./AI_MC_Cellular_Receivers_Draft.bbl
 Underfull \hbox (badness 3118) in paragraph at lines 79--83
 \T1/ptm/m/n/8 old de-tec-tion for molec-u-lar com-mu-ni-ca-tion,'' \T1/ptm/m/it
 /8 IEEE Trans-ac-tions
@@ -217,6 +177,7 @@ Underfull \hbox (badness 3118) in paragraph at lines 79--83
 Underfull \hbox (badness 4341) in paragraph at lines 79--83
 \T1/ptm/m/it/8 on NanoBio-science\T1/ptm/m/n/8 , vol. 15, no. 3, pp. 200--208, 
 2016, doi:
+
 (c:/texlive/2025/texmf-dist/tex/latex/psnfss/t1pcr.fd))
 
 ** Conference Paper **
@@ -230,39 +191,56 @@ Before submitting the final camera ready copy, remember to:
  process uses the appropriate paper size.
 
 
-
 [7] (./AI_MC_Cellular_Receivers_Draft.aux)
+
+LaTeX Warning: There were undefined references.
+
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
+
+Package rerunfilecheck Warning: File `AI_MC_Cellular_Receivers_Draft.out' has c
+hanged.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
  )
-(see the transcript file for additional information)<c:/texlive/2025/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2025/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/publi
-c/amsfonts/cmextra/cmex8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmmi10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmmi5.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb>
-<c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texliv
-e/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2025/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2025/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2025/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr7.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
-10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:
-/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2
-025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2025/texmf-
-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2025/texmf-dist
-/fonts/type1/public/amsfonts/symbols/msbm7.pfb><c:/texlive/2025/texmf-dist/font
-s/type1/urw/courier/ucrr8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/time
-s/utmb8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/
-texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2025/texmf
--dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on AI_MC_Cellular_Receivers_Draft.pdf (7 pages, 376840 bytes).
+(see the transcript file for additional information)
+pdfTeX warning (dest): name{subsection.4.2} has been referenced but does not ex
+ist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{subsection.4.1} has been referenced but does not ex
+ist, replaced by a fixed one
+
+<c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texli
+ve/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2025/t
+exmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><c:/texlive/2025/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2025/texmf-dist/font
+s/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2025/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmmi6.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmmi7.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
+i8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:
+/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/20
+25/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2025/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2025/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmsy6.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmsy7.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.
+pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+<c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/
+texlive/2025/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb><c:/texlive/2025/tex
+mf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb><c:/texlive/2025/texmf-dist/fonts/t
+ype1/urw/times/utmb8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/times/utm
+bi8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texli
+ve/2025/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on AI_MC_Cellular_Receivers_Draft.pdf (7 pages, 397093 bytes).
 Transcript written on AI_MC_Cellular_Receivers_Draft.log.
 Latexmk: Getting log file 'AI_MC_Cellular_Receivers_Draft.log'
 Latexmk: Examining 'AI_MC_Cellular_Receivers_Draft.fls'
 Latexmk: Examining 'AI_MC_Cellular_Receivers_Draft.log'
 Latexmk: Found input bbl file 'AI_MC_Cellular_Receivers_Draft.bbl'
+Latexmk: References changed.
 Latexmk: References changed.
 Latexmk: Log file says output to 'AI_MC_Cellular_Receivers_Draft.pdf'
 Latexmk: Found bibliography file(s):
@@ -273,7 +251,7 @@ Changed files or newly in use/created:
   AI_MC_Cellular_Receivers_Draft.aux
 
 ------------
-Run number 1 of rule 'bibtex AI_MC_Cellular_Receivers_Draft'
+Run number 2 of rule 'bibtex AI_MC_Cellular_Receivers_Draft'
 ------------
 ------------
 Running 'bibtex  "AI_MC_Cellular_Receivers_Draft.aux"'
@@ -292,6 +270,7 @@ Rule 'pdflatex':  Reasons for rerun
 Changed files or newly in use/created:
   AI_MC_Cellular_Receivers_Draft.aux
   AI_MC_Cellular_Receivers_Draft.bbl
+  AI_MC_Cellular_Receivers_Draft.out
 
 ------------
 Run number 2 of rule 'pdflatex'
@@ -332,106 +311,6 @@ For additional information on amsmath, use the `?' option.
 (c:/texlive/2025/texmf-dist/tex/latex/graphics-def/pdftex.def)))
 (c:/texlive/2025/texmf-dist/tex/latex/booktabs/booktabs.sty)
 (c:/texlive/2025/texmf-dist/tex/latex/cite/cite.sty)
-(c:/texlive/2025/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
-(c:/texlive/2025/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
-(c:/texlive/2025/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/pgf.revision.tex)))
-(c:/texlive/2025/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
-(c:/texlive/2025/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.co
-de.tex)) (c:/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def))
-)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
-)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
-)) (c:/texlive/2025/texmf-dist/tex/latex/xcolor/xcolor.sty
-(c:/texlive/2025/texmf-dist/tex/latex/graphics-cfg/color.cfg)
-(c:/texlive/2025/texmf-dist/tex/latex/graphics/mathcolor.ltx))
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.te
-x)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric
-.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.t
-ex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.co
-de.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex
-)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.te
-x)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex
-)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithm
-etics.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex))
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.cod
-e.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.te
-x)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code
-.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.c
-ode.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex)
-
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.co
-de.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
-) (c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
-)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code
-.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
-) (c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex)))
- (c:/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex)
-(c:/texlive/2025/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.st
-y)
-(c:/texlive/2025/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.st
-y)) (c:/texlive/2025/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
-(c:/texlive/2025/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex))
-(c:/texlive/2025/texmf-dist/tex/latex/pgf/math/pgfmath.sty
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex))
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.co
-de.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzli
-brarytopaths.code.tex)))
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.cod
-e.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzli
-brarypositioning.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzli
-brarydecorations.pathreplacing.code.tex
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzli
-brarydecorations.code.tex
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.t
-ex))
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydec
-orations.pathreplacing.code.tex))
 (c:/texlive/2025/texmf-dist/tex/latex/preprint/balance.sty)
 (c:/texlive/2025/texmf-dist/tex/latex/hyperref/hyperref.sty
 (c:/texlive/2025/texmf-dist/tex/generic/iftex/iftex.sty)
@@ -467,39 +346,61 @@ orations.pathreplacing.code.tex))
 ) (c:/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 (c:/texlive/2025/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
 (./AI_MC_Cellular_Receivers_Draft.out) (./AI_MC_Cellular_Receivers_Draft.out)
-Underfull \hbox (badness 2080) in paragraph at lines 29--31
+Underfull \hbox (badness 2080) in paragraph at lines 26--28
 \T1/ptm/b/n/9 mechanism-informed pre-dic-tion, Bayesian fil-ter-ing, re-ceiver
-** WARNING: \IEEEPARstart is locked out when in conference mode (line 34).
+** WARNING: \IEEEPARstart is locked out when in conference mode (line 31).
+
+LaTeX Warning: Citation `kilinc2013' on page 1 undefined on input line 33.
+
+
+LaTeX Warning: Citation `mosayebi2014' on page 1 undefined on input line 33.
+
+
+LaTeX Warning: Citation `cao2020' on page 1 undefined on input line 33.
+
+
+LaTeX Warning: Citation `wald1945' on page 1 undefined on input line 33.
+
+
+LaTeX Warning: Citation `tung2019' on page 1 undefined on input line 33.
+
+
+LaTeX Warning: Citation `poor2009' on page 1 undefined on input line 33.
+
 
 (c:/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (c:/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd)
+Underfull \vbox (badness 4543) has occurred while \output is active
 [1{c:/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/texlive/202
 5/texmf-dist/fonts/enc/dvips/base/8r.enc}]
+(c:/texlive/2025/texmf-dist/tex/latex/psnfss/t1phv.fd)
 
-[2 <./figures/fig1_system_concept.pdf>]
-(./tables/inventory_core.tex)
-[3 <./figures/prediction_phases.pdf>] (./tables/core_rmse.tex)
-(./tables/lopo_core.tex) (./tables/waiting_history.tex)
-(./tables/waiting_sensitivity.tex)
+LaTeX Warning: Citation `wald1945' on page 2 undefined on input line 120.
 
-[4]
-Underfull \vbox (badness 10000) has occurred while \output is active
 
-Underfull \vbox (badness 10000) has occurred while \output is active
-[5 <./figures/readiness_waiting.pdf>]
-(./AI_MC_Cellular_Receivers_Draft.bbl
+[2]
+(./tables/inventory_core.tex) (./tables/core_rmse.tex) (./tables/lopo_core.tex)
+(./tables/skill_horizon.tex)
+Underfull \vbox (badness 1668) has occurred while \output is active
+[3 <./figures/fig1_system_concept.pdf>]
 
-Package balance Warning: You have called \balance in second column
-(balance)                Columns might not be balanced.
+[4 <./figures/prediction_phases.pdf>] (./tables/waiting_per_history.tex)
 
-[6]
-Underfull \hbox (badness 3118) in paragraph at lines 79--83
+[5]
+
+LaTeX Warning: Citation `mosayebi2014' on page 6 undefined on input line 195.
+
+
+
+[6 <./figures/waiting_frontier.pdf>] (./AI_MC_Cellular_Receivers_Draft.bbl
+Underfull \hbox (badness 3118) in paragraph at lines 51--55
 \T1/ptm/m/n/8 old de-tec-tion for molec-u-lar com-mu-ni-ca-tion,'' \T1/ptm/m/it
 /8 IEEE Trans-ac-tions
 
-Underfull \hbox (badness 4341) in paragraph at lines 79--83
+Underfull \hbox (badness 4341) in paragraph at lines 51--55
 \T1/ptm/m/it/8 on NanoBio-science\T1/ptm/m/n/8 , vol. 15, no. 3, pp. 200--208, 
 2016, doi:
+
 (c:/texlive/2025/texmf-dist/tex/latex/psnfss/t1pcr.fd))
 
 ** Conference Paper **
@@ -513,8 +414,10 @@ Before submitting the final camera ready copy, remember to:
  process uses the appropriate paper size.
 
 
-
 [7] (./AI_MC_Cellular_Receivers_Draft.aux)
+
+LaTeX Warning: There were undefined references.
+
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
@@ -534,13 +437,14 @@ nts/cm/cmr8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
 10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:
 /texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2
 025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2025/texmf-
-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2025/texmf-dist
-/fonts/type1/public/amsfonts/symbols/msbm7.pfb><c:/texlive/2025/texmf-dist/font
-s/type1/urw/courier/ucrr8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/time
-s/utmb8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/
-texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2025/texmf
--dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on AI_MC_Cellular_Receivers_Draft.pdf (7 pages, 374221 bytes).
+dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2025/texmf-dist
+/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2025/texmf-dist/fon
+ts/type1/urw/courier/ucrr8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/hel
+vetic/uhvr8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><
+c:/texlive/2025/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2025/t
+exmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2025/texmf-dist/fonts/ty
+pe1/urw/times/utmri8a.pfb>
+Output written on AI_MC_Cellular_Receivers_Draft.pdf (7 pages, 399099 bytes).
 Transcript written on AI_MC_Cellular_Receivers_Draft.log.
 Latexmk: Getting log file 'AI_MC_Cellular_Receivers_Draft.log'
 Latexmk: Examining 'AI_MC_Cellular_Receivers_Draft.fls'
@@ -556,7 +460,7 @@ Changed files or newly in use/created:
   AI_MC_Cellular_Receivers_Draft.aux
 
 ------------
-Run number 2 of rule 'bibtex AI_MC_Cellular_Receivers_Draft'
+Run number 3 of rule 'bibtex AI_MC_Cellular_Receivers_Draft'
 ------------
 ------------
 Running 'bibtex  "AI_MC_Cellular_Receivers_Draft.aux"'
@@ -614,106 +518,6 @@ For additional information on amsmath, use the `?' option.
 (c:/texlive/2025/texmf-dist/tex/latex/graphics-def/pdftex.def)))
 (c:/texlive/2025/texmf-dist/tex/latex/booktabs/booktabs.sty)
 (c:/texlive/2025/texmf-dist/tex/latex/cite/cite.sty)
-(c:/texlive/2025/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
-(c:/texlive/2025/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
-(c:/texlive/2025/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/pgf.revision.tex)))
-(c:/texlive/2025/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
-(c:/texlive/2025/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.co
-de.tex)) (c:/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def))
-)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
-)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
-)) (c:/texlive/2025/texmf-dist/tex/latex/xcolor/xcolor.sty
-(c:/texlive/2025/texmf-dist/tex/latex/graphics-cfg/color.cfg)
-(c:/texlive/2025/texmf-dist/tex/latex/graphics/mathcolor.ltx))
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.te
-x)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric
-.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.t
-ex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.co
-de.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex
-)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.te
-x)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex
-)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithm
-etics.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex))
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.cod
-e.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.te
-x)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code
-.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.c
-ode.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex)
-
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.co
-de.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
-) (c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
-)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code
-.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
-) (c:/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex)))
- (c:/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex)
-(c:/texlive/2025/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.st
-y)
-(c:/texlive/2025/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.st
-y)) (c:/texlive/2025/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
-(c:/texlive/2025/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex))
-(c:/texlive/2025/texmf-dist/tex/latex/pgf/math/pgfmath.sty
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex))
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.co
-de.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzli
-brarytopaths.code.tex)))
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.cod
-e.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzli
-brarypositioning.code.tex)
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzli
-brarydecorations.pathreplacing.code.tex
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzli
-brarydecorations.code.tex
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.t
-ex))
-(c:/texlive/2025/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydec
-orations.pathreplacing.code.tex))
 (c:/texlive/2025/texmf-dist/tex/latex/preprint/balance.sty)
 (c:/texlive/2025/texmf-dist/tex/latex/hyperref/hyperref.sty
 (c:/texlive/2025/texmf-dist/tex/generic/iftex/iftex.sty)
@@ -749,39 +553,36 @@ orations.pathreplacing.code.tex))
 ) (c:/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 (c:/texlive/2025/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
 (./AI_MC_Cellular_Receivers_Draft.out) (./AI_MC_Cellular_Receivers_Draft.out)
-Underfull \hbox (badness 2080) in paragraph at lines 29--31
+Underfull \hbox (badness 2080) in paragraph at lines 26--28
 \T1/ptm/b/n/9 mechanism-informed pre-dic-tion, Bayesian fil-ter-ing, re-ceiver
-** WARNING: \IEEEPARstart is locked out when in conference mode (line 34).
+** WARNING: \IEEEPARstart is locked out when in conference mode (line 31).
 
 (c:/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (c:/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd)
+Underfull \vbox (badness 4543) has occurred while \output is active
 [1{c:/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/texlive/202
 5/texmf-dist/fonts/enc/dvips/base/8r.enc}]
+(c:/texlive/2025/texmf-dist/tex/latex/psnfss/t1phv.fd)
 
-[2 <./figures/fig1_system_concept.pdf>]
-(./tables/inventory_core.tex)
-[3 <./figures/prediction_phases.pdf>] (./tables/core_rmse.tex)
-(./tables/lopo_core.tex) (./tables/waiting_history.tex)
-(./tables/waiting_sensitivity.tex)
+[2]
+(./tables/inventory_core.tex) (./tables/core_rmse.tex) (./tables/lopo_core.tex)
+(./tables/skill_horizon.tex)
+Underfull \vbox (badness 1668) has occurred while \output is active
+[3 <./figures/fig1_system_concept.pdf>]
 
-[4]
-Underfull \vbox (badness 10000) has occurred while \output is active
+[4 <./figures/prediction_phases.pdf>] (./tables/waiting_per_history.tex)
 
-Underfull \vbox (badness 10000) has occurred while \output is active
-[5 <./figures/readiness_waiting.pdf>]
-(./AI_MC_Cellular_Receivers_Draft.bbl
+[5]
 
-Package balance Warning: You have called \balance in second column
-(balance)                Columns might not be balanced.
-
-[6]
-Underfull \hbox (badness 3118) in paragraph at lines 79--83
+[6 <./figures/waiting_frontier.pdf>] (./AI_MC_Cellular_Receivers_Draft.bbl
+Underfull \hbox (badness 3118) in paragraph at lines 51--55
 \T1/ptm/m/n/8 old de-tec-tion for molec-u-lar com-mu-ni-ca-tion,'' \T1/ptm/m/it
 /8 IEEE Trans-ac-tions
 
-Underfull \hbox (badness 4341) in paragraph at lines 79--83
+Underfull \hbox (badness 4341) in paragraph at lines 51--55
 \T1/ptm/m/it/8 on NanoBio-science\T1/ptm/m/n/8 , vol. 15, no. 3, pp. 200--208, 
 2016, doi:
+
 (c:/texlive/2025/texmf-dist/tex/latex/psnfss/t1pcr.fd))
 
 ** Conference Paper **
@@ -793,7 +594,6 @@ Before submitting the final camera ready copy, remember to:
  2. Ensure that any PostScript and/or PDF output post-processing
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
-
 
 
 [7] (./AI_MC_Cellular_Receivers_Draft.aux) )
@@ -812,13 +612,14 @@ nts/cm/cmr8.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
 10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:
 /texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2
 025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2025/texmf-
-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2025/texmf-dist
-/fonts/type1/public/amsfonts/symbols/msbm7.pfb><c:/texlive/2025/texmf-dist/font
-s/type1/urw/courier/ucrr8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/time
-s/utmb8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/
-texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2025/texmf
--dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on AI_MC_Cellular_Receivers_Draft.pdf (7 pages, 374181 bytes).
+dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2025/texmf-dist
+/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2025/texmf-dist/fon
+ts/type1/urw/courier/ucrr8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/hel
+vetic/uhvr8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><
+c:/texlive/2025/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2025/t
+exmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2025/texmf-dist/fonts/ty
+pe1/urw/times/utmri8a.pfb>
+Output written on AI_MC_Cellular_Receivers_Draft.pdf (7 pages, 399243 bytes).
 Transcript written on AI_MC_Cellular_Receivers_Draft.log.
 Latexmk: Getting log file 'AI_MC_Cellular_Receivers_Draft.log'
 Latexmk: Examining 'AI_MC_Cellular_Receivers_Draft.fls'
