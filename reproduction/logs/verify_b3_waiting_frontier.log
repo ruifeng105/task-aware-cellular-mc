@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "protocol_sha256": "337af9deeb93539a76bf54a4a0406908ff96062502c3362156aef59d21bbd21d",
+  "checks": {
+    "crossing": {
+      "thresholds": 50,
+      "matches_first_crossing": true
+    },
+    "fixed": {
+      "per_history_waits": [
+        90.0,
+        106.0
+      ],
+      "equals_frozen_conditioned_per_history": true
+    },
+    "leakage": {
+      "evaluation_labels_flipped": true,
+      "choices_unchanged": true
+    },
+    "oracle": {
+      "kappa_0_5_oracle_equals_readiness_v2": true
+    },
+    "gap": {
+      "max_abs_difference": 0.0
+    },
+    "recompute": {
+      "repeat": 3,
+      "noise": 0.01,
+      "max_abs_difference": 0.0
+    }
+  }
+}

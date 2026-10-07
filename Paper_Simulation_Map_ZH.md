@@ -1,30 +1,25 @@
 # 论文与仿真、数据和结果的对应
 
-本表对应随包附带的初稿（2026-10-06 修订版，六页含参考文献，三图四表）。所有路径相对于项目根目录。
+本表对应随包附带的初稿（2026-10-07 按补强清单修订版，六页含参考文献，三图四表）。所有路径相对于项目根目录。正文使用描述性预测器名称，与代码键的对应为：Persist = P、Current = C、Filter = O、Lag = A、Filter+B3 = M、Lag+B3 = A+M、F+B3+Input = H、F+B3 (phase) = M_phase。
 
 | 论文内容 | 数据或结果 | 对应程序与状态 |
 |---|---|---|
-| Sec. II 式 (1)–(2)、Fig. 1：两条证据流（实验预测与 B3 仿真等待，互不连接）、探测任务与准备度定义 | `paper/main.tex` 内的 TikZ 图 | 下一命令的幅度和持续时间固定，只决定发送时刻；任务门槛 $\kappa=0.5$、窗口 20 min、失败惩罚 $D=140$ min。实验数据没有任务标签，只在 B3 上仿真 |
-| Sec. III-A 式 (3)–(4)：嵌套预测器 P/C/O/M/H | `simulation/results/nested/nested_results.json` 的 `main` | `nested_forecast.py`（方案 `simulation/configs/nested_forecast_protocol.json`，冻结记录 `results/nested/nested_forecast_protocol_freeze.json`）。C 等于预登记的 IR + slope，H 的特征集合等于旧 M3 |
-| Sec. III-B 式 (5)：校准的等待规则 | `simulation/results/b3/waiting_results.json` | `b3_waiting.py`（准备度方案第 3 版 `b3_waiting_protocol.json`，冻结记录 `results/b3/b3_waiting_protocol_freeze.json`）；后验样本按种子 20261006 分成校准组和评价组各 500 个 |
-| Table I：协议、角色、细胞数与 B3 用途 | `fgf2_expanded/expanded_results.json` 的 `inventory`；`nested_results.json` 的 `b3_roles` | B3 用途由 `nested_forecast.b3_data_roles` 从作者推断配置 `config_fgf_sus_3_20.xml` 读出（LFNS 拟合实验与 ComputeLikelihood 结构比较实验） |
-| Table II：核心模型 RMSE 与逐条件方向 | `nested_results.json` 的 `main` 下 10 分钟和 2 分钟的 `comparisons` | 由 `scripts/build_paper_assets.py` 生成 `paper/tables/core_rmse.tex`；`verify_nested_forecast.py` 从保存的模型重算 90 个分数，并核对 H 与旧 M3 一致 |
-| Table II 中的 A、A+M 行和 LOPO 列：ARX 基线 | `simulation/results/nested/nested_arx_results.json` | `nested_arx.py`（方案 `nested_arx_protocol.json`）：C 加上前 5/15/30 帧的报告量和命令滞后，窗口与惩罚系数在验证集上选（LOPO 中用内层留一组）；`verify_nested_arx.py` 核对滞后只用过去值、嵌套关系、重算分数与 LOPO 扰动测试 |
-| Table III、IV 中按历史确定的固定等待；细阈值网格 | `simulation/results/b3/waiting_baselines_results.json` | `b3_waiting_baselines.py`（方案 `b3_waiting_baselines_protocol.json`）：在校准组上对 61² 个等待组合联合选择；主划分、20 次重复、κ 敏感性；`verify_b3_waiting_baselines.py` |
-| Fig. 3(b)、Table IV 失配行：噪声与带宽、观测模型失配 | `simulation/results/b3/waiting_stress_results.json` | `b3_waiting_stress.py`（方案 `b3_waiting_stress_protocol.json`）；`verify_b3_waiting_stress.py` |
-| Table III「cal. 0.92」行、Sec. V-C：共享校准目标与匹配成功率 | `simulation/results/b3/waiting_margin_results.json` | `b3_waiting_margin.py`（方案 `b3_waiting_margin_protocol.json`）：所有规则统一校准到 0.90/0.92/0.94，粗/细阈值网格，噪声 0.005/0.01，20 次划分；`verify_b3_waiting_margin.py` |
-| Sec. II 因果判据、Sec. V-C：不同 κ 的 no-probe 对照 | `simulation/results/b3/noprobe_kappa_results.json` | `b3_noprobe_kappa.py`（方案 `b3_noprobe_kappa_protocol.json`，复用 `noprobe_tables.npz`，不重新仿真）；`verify_b3_noprobe_kappa.py` |
-| Table IV「AR(1), recal.」「AR(1) lik.」行、Sec. V-C：协方差似然 | `simulation/results/b3/ar1_likelihood_results.json` | `b3_ar1_likelihood.py`（方案 `b3_ar1_likelihood_protocol.json`）；`verify_b3_ar1_likelihood.py`（对照显式协方差高斯似然） |
-| Sec. V-C：no-probe 对照 | `simulation/results/b3/noprobe_results.json`、`noprobe_tables.npz` | `b3_noprobe.py`（方案 `b3_noprobe_protocol.json`，重新仿真有/无探测的轨迹）；`verify_b3_noprobe.py` |
-| Sec. IV-A：归一化只用刺激前数据 | 原始导出文件 | `pipeline_checks.check_normalization_causal`：混合协议原始 10–30 分钟（原点为原始 42 分钟），其他协议逐细胞原始 2–38 分钟均值（截断从原始 44 分钟开始） |
-| Fig. 2、Sec. V-B：分阶段误差（含 A、A+M） | `nested_results.json` 的 `phases`；按条件拆分见 `results/nested/phase_detail.json` | `nested_forecast.phase`：刺激期、下一命令窗口、早期洗脱（停药后 ≤30 min）、后期；核查脚本在切换时刻做 11 个边界测试。`nested_phase_detail.py` 用冻结模型给出每个测试条件在各阶段的误差，核查脚本确认等权汇总后与冻结的分阶段结果一致 |
-| Table II(b)、Sec. V-C：修正的留一方案检验 | `nested_results.json` 的 `lopo`（含每折 B3 此前用途） | `nested_forecast.lopo_fold`：σ 在训练组上选，惩罚系数用训练组内的留一组交叉验证选；核查脚本把留出组目标值整体 +1，确认所选参数和预测都不变 |
-| Fig. 3(a)–(c)、Sec. V-D：校准等待、平滑基线与噪声消融 | `waiting_results.json`；Fig. 3(a) 来自 `readiness_results.json` 的 `matched_reporter_readiness` | `verify_b3_waiting.py`：与 v2 估计器等价、只用过去观测、翻转评价组标签后校准选择不变、回退规则、重算评价结果，并给出权重坍缩诊断（有效样本数） |
-| Fig. 3(d)、Table III、Sec. V-D：等待规则的稳定性、分历史结果与配对区间 | `simulation/results/b3/waiting_robustness_results.json` | `b3_waiting_robustness.py`（方案 `b3_waiting_robustness_protocol.json`，冻结记录 `results/b3/b3_waiting_robustness_protocol_freeze.json`）：20 次重复划分（第 0 次复现 v3），每次重新抽观测噪声；按参数样本配对的差值及 bootstrap 区间；按目标选阈值的敏感性分析。`verify_b3_waiting_robustness.py` 核对第 0 次与 v3 一致、种子与划分互不重复、按目标选阈值的规则、防泄漏，并重算一次重复 |
-| Table IV、Sec. V-D：等待规则对任务门槛 κ 与观测噪声的敏感性 | `simulation/results/b3/waiting_sensitivity_results.json` | `b3_waiting_sensitivity.py`（方案 `b3_waiting_sensitivity_protocol.json`，冻结记录 `results/b3/b3_waiting_sensitivity_protocol_freeze.json`）；κ 通过把 naive 上升量按 κ/0.5 缩放来实现；`verify_b3_waiting_sensitivity.py` 核对 κ 的实现、κ = 0.5 与 v3 一致、防泄漏，并重算一个设定 |
-| Sec. V-E：对分子通信设计的启示 | 表 III、表 IV 的结果 | 把固定等待解释为保护间隔、把反馈等待解释为自适应门限检测的类比；给出前瞻实验的具体要求（随机化预处理、等待延长到 60–120 分钟、同批次未预处理对照测 naive 响应、以独立批次计数） |
-| Sec. IV-B：B3 执行与验收 | `simulation/results/b3/verification_results.json` | `b3_model.py`、`verify_b3.py`；来源清单 `fgf2_b3_source_manifest.json` |
-| 来源、时序与因果性核查 | `fgf2_source_manifest.json`（47 个）、`fgf2_expanded_source_manifest.json`（56 个）、`fgf2_b3_source_manifest.json`（3 个） | `verify_fgf2_pipeline.py`、`verify_expanded_fgf2.py`、`verify_b3.py` |
+| Sec. I 引言：MC 定位（带记忆接收机、保护间隔/检测区间、序贯检测与最优停止） | `paper/references.bib` 新增 kilinc2013、mosayebi2014、cao2020、tung2018、wald1945、poor2009 | 只按摘要层面引用；kilinc2013、cao2020、tung2018 未附 DOI |
+| Sec. II 式 (1)–(3)：系统、任务、逐历史约束的设计问题；κ 与 $T_{\rm f}$ 的依据 | `simulation/results/b3/waiting_frontier_results.json` 的 `kappa_feasibility`、`summary/penalty` | `b3_waiting_frontier.py`（方案 `b3_waiting_frontier_protocol.json`）：κ = 0.5 是 oracle 成功率仍 > 99% 的最大取值；$T_{\rm f}=140$ 为任何成功的最晚完成时间，160–260 为敏感性 |
+| Table I：预测器特征表 | 正文内 | 特征定义见 `nested_forecast.nested_features`、`nested_arx.py`；细节见 `paper/supplementary_details.md` S2 |
+| Sec. III-A 式 (4)–(5)：滤波与 B3 增量 | `simulation/results/nested/nested_results.json` | `nested_forecast.py`（方案 `nested_forecast_protocol.json`） |
+| Sec. III-B 式 (6)：等待规则、逐历史校准、B3 预测与"平滑 + 斜率" | `waiting_frontier_results.json`、`delay_map_results.json` | `b3_waiting_frontier.py`、`b3_delay_map.py`（方案 `b3_delay_map_protocol.json`） |
+| Sec. IV 式 (7)：评分、噪声调整 skill、细胞 bootstrap | `simulation/results/nested/nested_extensions_results.json` | `nested_extensions.py`（方案 `nested_extensions_protocol.json`）；`verify_nested_extensions.py` 核对 2/10 分钟与冻结结果一致（差 < 1e-10） |
+| Table II：协议、角色与 B3 用途 | `fgf2_expanded/expanded_results.json`；`nested_results.json` 的 `b3_roles` | 同上一版 |
+| Table III(a)(b)：核心 RMSE 与修正 LOPO | `nested_results.json`、`nested_arx_results.json` | `scripts/build_paper_assets.py` 生成 `core_rmse.tex`、`lopo_core.tex` |
+| Table III(c)：噪声调整 skill 随预测时域（2/10/20/30 分钟）、Filter+B3 的 95% 区间、半衰减穿越的平衡准确率 | `nested_extensions_results.json` 的 `horizons/*/roles/test_new_protocol` | 生成 `skill_horizon.tex` |
+| Fig. 2、Sec. V-B：分阶段误差与相位门控 | `nested_results.json` 的 `phases`；`nested_extensions_results.json` 的 `phases`、`lopo` | 相位门控两种变体只用训练协议拟合；切换规则被训练数据否决，相位权重使下一命令窗口误差升到 0.03571 |
+| Table IV、Sec. V-C：逐历史约束下的等待与 oracle 差距弥合比例 | `waiting_frontier_results.json` 的 `repeats/0/*/cells/0.94`、`summary` | 生成 `waiting_per_history.tex`；`verify_b3_waiting_frontier.py` 核对逐历史固定等待等于冻结的 per-history 结果、防泄漏与单次重算 |
+| Fig. 3(a)(b)：可靠性—时延前沿 | `waiting_frontier_results.json` 的 `repeats/0/0.005/frontier` | 评价集上扫阈值，只作描述；空心点为 0.94 的校准工作点 |
+| Fig. 3(c)(d)、Sec. V-D：延迟与条件图 | `delay_map_results.json` 的 `summary` | `verify_b3_delay_map.py`：d = 0、Δ = 2 时与前沿研究逐位一致；因果性、核估计误差（< 0.01）、防泄漏、单次重算 |
+| Sec. V-E：真实数据自然探测 | `simulation/results/b3/natural_probe_results.json` | `natural_probe.py`（方案 `natural_probe_protocol.json`）；`verify_natural_probe.py` 单元测试并整体重算 |
+| Sec. V-C 末尾提到的早期敏感性分析 | `waiting_sensitivity_results.json`、`waiting_margin_results.json`、`ar1_likelihood_results.json` 等 | 原 Table IV 移到复现包（`paper/tables/waiting_sensitivity.tex`） |
+| Sec. V-G：证据边界 | — | 原先分散在各节的限定语集中于此 |
 
 ## 移出正文、保留在复现包中的内容
 
@@ -37,12 +32,15 @@
 | 探索性历史匹配（原 VI-G） | `paper/tables/matched_history.tex`；`exploratory_matched_history_pairs.csv` | 不能识别因果历史效应 |
 | 准备度 v1/v2 结果与原 Fig. 3 | `readiness_results_v1.json`、`readiness_results.json`；`paper/figures/readiness_policies.*` | v2 的阈值和固定等待在同一批样本上选取并评价，正文改用 v3 结果 |
 | 单样本等待示例（原 Fig. 2） | `readiness_example.json`；`paper/figures/readiness_example.*` | 由 `b3_readiness_example.py` 生成，作为补充材料 |
+| 原 Table III（合并约束下的分历史结果）与原 Table IV（κ、噪声、失配敏感性） | `paper/tables/waiting_history.tex`、`paper/tables/waiting_sensitivity.tex` | 2026-10-07 版改用逐历史约束（新 Table IV），早期敏感性在正文用一句话概括 |
+| 原 Fig. 3（四面板：准备度、噪声、成功—完成、20 次划分） | `paper/figures/readiness_waiting.*` | 由新 Fig. 3（前沿 + 延迟条件图）取代 |
+| 归一化、滞后填充、B3 执行、校准细节、因果判据、AR(1) 似然 | `paper/supplementary_details.md` | 补强清单第 3 项：从正文移到仓库 |
 | MPC 式与完整前瞻验证路线 | `simulation/configs/prospective_receiver_reuse.json`、`validation_kit/`、`AI_MC_Complete_Validation_Plan_ZH.md` | 正文只保留等待型复用 |
 
 ## 使用统一入口
 
 `python scripts/reproduce.py --mode verify` 核查保存的预测、扩展检验、B3 执行、B3 预测与准备度（v2 和单样本示例）、嵌套对照与修正 LOPO、校准等待研究，以及固定论文数值（需要 SciPy，约 6 分钟）。`--mode full` 从随包数据重跑全部分析（B3 准备度仿真约 5 分钟，嵌套对照约 2 分钟），再核查并重建图表与规划工具输出。两种模式都不增加训练数据、不重新推断 B3 参数，也不在真实接收器上执行任务控制。
 
-固定参照在 `reproduction/reference_metrics.json`：原 69 项冻结值保持不变，新增条目及原因写在 `extensions` 字段中，共 3038 项。`pipeline_checks.py` 检查正文中所有四位以上小数都在固定参照中，并检查正文引用的每个表、图都存在。`reproduction/run_report.json` 记录本次执行状态和环境，日志位于同目录的 `logs/`。
+固定参照在 `reproduction/reference_metrics.json`：原 69 项冻结值保持不变，新增条目及原因写在 `extensions` 字段中，共 14165 项。`pipeline_checks.py` 检查正文中所有四位以上小数都在固定参照中，并检查正文引用的每个表、图都存在。`reproduction/run_report.json` 记录本次执行状态和环境，日志位于同目录的 `logs/`。
 
 `release_manifest.json` 和 `simulation/checksums.json` 描述打包时的文件。所有生成文件都写成 LF，`.gitattributes` 保证在任何平台上检出的文本文件与清单逐字节一致。在不同库版本下重跑，结果的最后几位浮点数可能变化，论文数值以固定参照比较为准。

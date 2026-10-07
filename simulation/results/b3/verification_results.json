@@ -8,7 +8,7 @@
   },
   "conservation": {
     "samples_checked": 20,
-    "max_conservation_error": 1.509903313490213e-14
+    "max_conservation_error": 1.2212453270876722e-14
   },
   "unstimulated": {
     "samples_checked": 20,
@@ -22,14 +22,14 @@
     "gate_max_abs": 0.001,
     "conditions": {
       "2-5ng": {
-        "max_abs_mean_difference": 7.869598689369539e-06,
-        "median_samplewise_rmse": 9.9649689286257e-05,
+        "max_abs_mean_difference": 7.869596495346798e-06,
+        "median_samplewise_rmse": 9.964969363173497e-05,
         "n_samples": 1000,
         "passes": true
       },
       "250ng": {
-        "max_abs_mean_difference": 8.52343784929488e-06,
-        "median_samplewise_rmse": 9.963561513488505e-05,
+        "max_abs_mean_difference": 8.52344038659858e-06,
+        "median_samplewise_rmse": 9.96356137099044e-05,
         "n_samples": 1000,
         "passes": true
       }

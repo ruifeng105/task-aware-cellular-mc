@@ -16,16 +16,20 @@
     "lopo_rmse.tex",
     "matched_history.tex",
     "open_loop_rmse.tex",
+    "skill_horizon.tex",
     "waiting_history.tex",
+    "waiting_per_history.tex",
     "waiting_sensitivity.tex"
   ],
   "generated_figures": [
+    "fig1_system_concept.pdf",
     "forecast_mean_10min.pdf",
     "mixed_response.pdf",
     "prediction_phases.pdf",
     "readiness_example.pdf",
     "readiness_policies.pdf",
-    "readiness_waiting.pdf"
+    "readiness_waiting.pdf",
+    "waiting_frontier.pdf"
   ],
   "fitted_models": false,
   "note": "Plots summarize saved pilot outputs; B3 is an original-author selection-exposed reference."

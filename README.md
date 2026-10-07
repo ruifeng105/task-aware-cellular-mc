@@ -1,9 +1,9 @@
 # 论文初稿与仿真合并包
 
 **Task-Aware Reuse of Cellular Molecular Receivers: Response Prediction and Feedback-Driven Waiting**
-整理日期：2026-10-06（ICC 投稿六页修订版）。
+整理日期：2026-10-07（按《receiver_reuse_revision_plan》补强清单修订的 ICC 六页版，含参考文献共 6 页）。
 
-本包把英文论文初稿（六页，含参考文献）、LaTeX 源码、真实数据学习试验、预先登记的扩展检验、作者仿真参照和结果核查，以及前瞻验证方案与规划工具包（2026-10-05 整合）放在同一项目中。可先打开 `paper/AI_MC_Cellular_Receivers_Draft.pdf` 阅读论文，再按下方入口复现。中文研究说明见 `Paper_Notes_ZH.md`，论文与程序的逐项对应见 `Paper_Simulation_Map_ZH.md`。
+本包把英文论文初稿（六页，含参考文献）、LaTeX 源码、真实数据学习试验、预先登记的扩展检验、作者仿真参照和结果核查，以及前瞻验证方案与规划工具包（2026-10-05 整合）放在同一项目中。可先打开 `paper/AI_MC_Cellular_Receivers_Draft.pdf` 阅读论文，再按下方入口复现。中文研究说明见 `Paper_Notes_ZH.md`，论文与程序的逐项对应见 `Paper_Simulation_Map_ZH.md`，补强清单逐项落实情况见 `revision/Revision_Response_ZH.md`（状态已回填到 `revision/receiver_reuse_revision_plan.xlsx`）；从正文移出的实现细节见 `paper/supplementary_details.md`。
 
 ## 快速运行
 
@@ -14,7 +14,7 @@ python -m pip install -r requirements.txt
 python scripts/reproduce.py --mode verify
 ```
 
-`verify` 不重新训练，依次核查：试点的 47 个作者来源文件、输入时序、特征因果性、混合条件归一化和保存评分；扩展检验的 56 个新增来源文件、冻结方案哈希、10 分钟单脉冲时序（对照 XML）、60 分钟单脉冲时序推断、特征因果性和从保存系数重算的 70 个评分；B3 机制模型的来源、结构、守恒律与复现验收，B3 同反馈预测（M0–M3）和仿真准备度研究的重算；嵌套对照 P/C/O/M/H 的阶段规则、分数重算与修正 LOPO 的防泄漏测试；校准等待研究的估计器等价性、只用过去观测、校准防泄漏与结果重算；合成数据单元检查；等待规则稳健性研究（第 0 次重复复现 v3、种子与划分互不重复、按目标选阈值的防泄漏测试与重算）；等待规则对任务门槛和噪声的敏感性研究（κ = 0.5 与 v3 一致、κ 的实现、防泄漏与重算）；第 3 轮审稿补充分析（no-probe 对照、按历史确定的固定等待与细阈值网格、噪声与带宽、观测模型失配、ARX 基线、共享校准目标、不同 κ 下的 no-probe 对照、AR(1) 协方差似然）的核查；最后与 3038 项论文数值固定参照逐项比较，确认正文中所有四位以上小数都在固定参照中、正文引用的表图都存在，并检查生成文件均为 LF 换行。
+`verify` 不重新训练，依次核查：试点的 47 个作者来源文件、输入时序、特征因果性、混合条件归一化和保存评分；扩展检验的 56 个新增来源文件、冻结方案哈希、10 分钟单脉冲时序（对照 XML）、60 分钟单脉冲时序推断、特征因果性和从保存系数重算的 70 个评分；B3 机制模型的来源、结构、守恒律与复现验收，B3 同反馈预测（M0–M3）和仿真准备度研究的重算；嵌套对照 P/C/O/M/H 的阶段规则、分数重算与修正 LOPO 的防泄漏测试；校准等待研究的估计器等价性、只用过去观测、校准防泄漏与结果重算；合成数据单元检查；等待规则稳健性研究（第 0 次重复复现 v3、种子与划分互不重复、按目标选阈值的防泄漏测试与重算）；等待规则对任务门槛和噪声的敏感性研究（κ = 0.5 与 v3 一致、κ 的实现、防泄漏与重算）；第 3 轮审稿补充分析（no-probe 对照、按历史确定的固定等待与细阈值网格、噪声与带宽、观测模型失配、ARX 基线、共享校准目标、不同 κ 下的 no-probe 对照、AR(1) 协方差似然）的核查；2026-10-07 补强分析（逐历史约束与可靠性—时延前沿、延迟条件图、20/30 分钟预测与噪声地板、自然探测）的核查；最后与 14165 项论文数值固定参照逐项比较，确认正文中所有四位以上小数都在固定参照中、正文引用的表图都存在，并检查生成文件均为 LF 换行。
 
 完整重跑模型拟合、扩展检验、核查和论文图表：
 
@@ -30,8 +30,8 @@ python scripts/reproduce.py --mode full
 
 | 路径 | 内容 |
 |---|---|
-| `paper/AI_MC_Cellular_Receivers_Draft.pdf` | 已编译的英文初稿（6 页，三图四表） |
-| `paper/main.tex`、`paper/references.bib`、`paper/IEEEtran.cls` | LaTeX 源码、19 篇参考文献（IEEEtran 文献样式）与排版类文件 |
+| `paper/AI_MC_Cellular_Receivers_Draft.pdf` | 已编译的英文初稿（6 页含参考文献，三图四表） |
+| `paper/main.tex`、`paper/references.bib`、`paper/IEEEtran.cls` | LaTeX 源码、正文引用的 21 篇参考文献（bib 文件共 25 条，IEEEtran 文献样式）与排版类文件；`paper/supplementary_details.md` 为从正文移出的实现细节 |
 | `paper/figures/`、`paper/tables/` | 正文用到的图 2、图 3、表 I、表 II，以及移出正文的补充图表，均由脚本从保存结果生成 |
 | `simulation/code/` | 试点（`calibrate_fgf2.py`）、扩展检验（`expanded_fgf2.py`）、核查、合成单元检查与通用分析程序 |
 | `simulation/configs/fgf2_expanded_protocol.json` | 下载新数据前冻结的扩展检验方案 |
@@ -59,6 +59,19 @@ python scripts/reproduce.py --mode full
 **B3 参照**：直接执行作者的 B3 模型文件，没有重新推断参数。作者用持续刺激和 3/20 脉冲在 2.5、250 ng/ml 下的均值拟合 B3，并用 5 分钟单脉冲和混合刺激在同样浓度下比较结构，因此 M 和 H 用的是已校准的参照，不是对这些协议的盲测。
 
 **等待型复用**：下一命令的幅度和持续时间固定，只决定发送时刻，规则为估计的成功概率首次达到阈值即发送。只在 B3 上仿真，阈值在校准样本上选、在评价样本上评。完整的 MPC（同时优化幅度、持续时间与等待）只保留在配置草案中，没有实现。
+
+## 2026-10-07 补强（按补强清单 P0–P2）
+
+正文改为描述性预测器名称：P = Persist、C = Current、O = Filter、A = Lag、M = Filter+B3、A+M = Lag+B3、H = F+B3+Input（代码与结果文件中的键不变）。新增四项分析，均在运行前冻结方案并只运行一次，各有核查脚本：
+
+| 分析 | 程序与方案 | 主要结果 |
+|---|---|---|
+| 逐历史可靠性约束、oracle 差距、可靠性—时延前沿（清单 5、7） | `b3_waiting_frontier.py`、`b3_waiting_frontier_protocol.json` | 每条规则对每种前次命令各取一个参数。校准目标 0.90 时所有规则（含固定等待）只在 7–11/20 次划分中两种历史都达到 0.9；目标 0.94 时全部 20/20。此时 B3 信念与平滑规则比逐历史固定等待（94/110 分钟）快 7.2 与 7.7 分钟（20/20 次更快），弥合固定等待到 oracle 差距的 42% 与 45%；原合并约束下为 33% 与 38%。噪声 0.01 时 B3 信念每次都比平滑快 1.5–1.7 分钟。κ = 0.5 是 oracle 成功率仍 > 99% 的最大取值（99.25%；0.55 时 95.1%，0.6 时 82.0%）；失败惩罚加大到 160–260 分钟时增益为 5.9–8.7 分钟，规则排序不变 |
+| 延迟 d 条件图（清单 8） | `b3_delay_map.py`、`b3_delay_map_protocol.json` | d ∈ {0,…,40} 分钟 × 采样间隔 2/6/10 分钟 × 噪声 0.0025/0.005/0.01，共 45 格 × 20 次划分。忽略延迟的 nowcast 从 d = 20 分钟起比固定等待还慢；两种预测型规则从 d = 0 到 40 只慢约 3 分钟，但相对固定等待的增益从 5.5–5.9 降到 2.2–2.6 分钟。噪声 0.01 时 B3 预测规则在每格每次划分都比"平滑 + 斜率"快 0.9–5.5 分钟，且采样间隔 ≥ 6 分钟时无模型规则反而比固定等待慢；参考噪声下只在稀疏采样时有帮助（0.3–1.1 分钟）；低噪声或密集采样时"平滑 + 斜率"更快 |
+| 20/30 分钟预测、噪声地板、bootstrap、相位门控（清单 6、7、9） | `nested_extensions.py`、`nested_extensions_protocol.json` | 白噪声地板 0.006–0.009；扣除后 Test A 10 分钟 Filter+B3 的 skill 为 15.5%（95% 区间 11.0–19.5），20/30 分钟为 21%（Filter 为 9–13%）；三项 RMSE 降幅的细胞 bootstrap 区间为 7.4–10.9%、3.0–6.1%、0.6–1.4%。显式输入历史在长时域失稳（Test B 上 −50%）。机理增量提高对半衰减穿越的预判（平衡准确率 57–67% 对 52–57%）。两种相位门控都没修好下一命令窗口：训练数据不支持切换，相位权重反而更差（0.03571） |
+| 真实数据自然探测（清单 10） | `natural_probe.py`、`natural_probe_protocol.json` | 25 ng/ml 下 3/20 协议的后续脉冲（前次 3 分钟脉冲后 20 分钟）与混合协议第三个脉冲（30 分钟脉冲后 60 分钟）。B3 对两处都预测无一成功，估计器无"就绪"判定；实测 3/20 首个探测 19% 达标、之后 3–9%，混合协议 0/84。但 B3 高估了长命令后的恢复（预测 naive 上升的 31%，实测 4%），与下一命令窗口的预测失败一致；B3 权重在实测细胞上坍缩（有效样本数 1.0–1.4） |
+
+P3（conformal 风险控制、POMDP 联合优化、多细胞接收机、结构失配、前瞻实验）留给期刊版，未在本轮实现；作者仓库只有 B3 一个结构的模型文件，结构失配检验需要另行获取 B1/B2。
 
 ## 论文对应的主要结果
 
@@ -167,7 +180,7 @@ python scripts/verify_planning_tools.py
 python scripts/reproduce.py --mode verify --compile-paper
 ```
 
-也可在 `paper/` 中运行 `latexmk -pdf -interaction=nonstopmode -halt-on-error -jobname=AI_MC_Cellular_Receivers_Draft main.tex`。没有 `latexmk` 时，依次运行 `pdflatex`、`bibtex AI_MC_Cellular_Receivers_Draft`，再运行两次 `pdflatex`。Overleaf 上传 `paper/` 下的文件并选择 `main.tex`。本稿使用 IEEEtran 会议版式，共 6 页；投稿前请按目标会议的征稿要求核对页数与格式。
+也可在 `paper/` 中运行 `latexmk -pdf -interaction=nonstopmode -halt-on-error -jobname=AI_MC_Cellular_Receivers_Draft main.tex`。没有 `latexmk` 时，依次运行 `pdflatex`、`bibtex AI_MC_Cellular_Receivers_Draft`，再运行两次 `pdflatex`。Overleaf 上传 `paper/` 下的文件并选择 `main.tex`。本稿使用 IEEEtran 会议版式，共 6 页（含参考文献；此前版本为 7 页）；投稿前请按目标会议的征稿要求核对页数与格式。
 
 仅重建论文图表可运行 `python scripts/build_paper_assets.py`，该步骤读取保存结果，不重新训练。
 

@@ -414,6 +414,56 @@ def revision4_metrics():
     return values
 
 
+def flatten(prefix, obj):
+    """Numeric leaves (bool, int, float) of a saved result as prefix/key paths; None and text are skipped."""
+    if isinstance(obj, dict):
+        out = {}
+        for key, value in obj.items():
+            out.update(flatten(f"{prefix}/{key}", value))
+        return out
+    if isinstance(obj, (list, tuple)):
+        out = {}
+        for i, value in enumerate(obj):
+            out.update(flatten(f"{prefix}/{i}", value))
+        return out
+    if isinstance(obj, bool) or isinstance(obj, (int, float)):
+        return {prefix: obj}
+    return {}
+
+
+def revision5_metrics():
+    """Revision plan 2026-10-07: per-history calibration, oracle-gap closure and frontiers; delay condition map;
+    longer horizons, noise-adjusted skill, crossing score, cell bootstrap and phase-gated increments; natural probes."""
+    load = lambda path: json.loads(path.read_text(encoding="utf-8"))
+    values = {}
+    frontier = load(B3 / "waiting_frontier_results.json")
+    values.update(flatten("b3/frontier/summary", frontier["summary"]))
+    values.update(flatten("b3/frontier/version3_gap", frontier["version3_gap_closure"]))
+    values.update(flatten("b3/frontier/kappa", frontier["kappa_feasibility"]))
+    for noise, row in frontier["repeats"]["0"].items():
+        for target, cell in row["cells"].items():
+            values.update(flatten(f"b3/frontier/r0/{noise}/{target}", {k: cell[k] for k in
+                                  ("choices", "rules", "gap_closure", "paired", "bootstrap", "meets_per_history")}))
+        for hist, block in row["frontier"].items():
+            for name, front in block.items():
+                if name == "oracle":
+                    values.update(flatten(f"b3/frontier/curve/{noise}/{hist}/oracle", front))
+                else:
+                    values.update(flatten(f"b3/frontier/curve/{noise}/{hist}/{name}/levels", front["levels"]))
+    delay = load(B3 / "delay_map_results.json")
+    for key, block in delay["summary"].items():
+        values.update(flatten(f"b3/delay/{key}", {k: v for k, v in block.items() if k != "map_class"}))
+        values[f"b3/delay/{key}/model_helps"] = block["map_class"] == "model helps"
+    extensions = load(NESTED / "nested_extensions_results.json")
+    values.update(flatten("nested/ext/noise_floor", extensions["noise_floor"]))
+    values.update(flatten("nested/ext/horizons", extensions["horizons"]))
+    values.update(flatten("nested/ext/lopo", extensions["lopo"]))
+    probes = load(B3 / "natural_probe_results.json")
+    values.update(flatten("b3/natural", {k: probes[k] for k in
+                                          ("noise_floor", "cells_complete", "naive_reference", "probes", "pooled_3_20")}))
+    return values
+
+
 def phase_detail_metrics():
     """Per-condition forecast errors by phase from the frozen nested models."""
     data = json.loads((NESTED / "phase_detail.json").read_text(encoding="utf-8"))
@@ -439,6 +489,7 @@ def compare_reference():
     actual.update(sensitivity_metrics())
     actual.update(revision3_metrics())
     actual.update(revision4_metrics())
+    actual.update(revision5_metrics())
     if actual.keys() != expected.keys():
         raise ValueError("Manuscript metric keys differ from the frozen reference.")
     max_error = 0.0
@@ -458,7 +509,9 @@ def compare_reference():
                  B3 / "noprobe_verification_results.json", B3 / "waiting_baselines_verification_results.json",
                  B3 / "waiting_stress_verification_results.json", NESTED / "nested_arx_verification_results.json",
                  B3 / "waiting_margin_verification_results.json", B3 / "noprobe_kappa_verification_results.json",
-                 B3 / "ar1_likelihood_verification_results.json", NESTED / "nested_verification_results.json"):
+                 B3 / "ar1_likelihood_verification_results.json", NESTED / "nested_verification_results.json",
+                 B3 / "waiting_frontier_verification_results.json", B3 / "delay_map_verification_results.json",
+                 NESTED / "nested_extensions_verification_results.json", B3 / "natural_probe_verification_results.json"):
         if json.loads(path.read_text(encoding="utf-8"))["status"] != "passed":
             raise ValueError(f"Verification {path.relative_to(ROOT)} did not pass.")
     return {"status": "passed", "entries_compared": len(actual),
@@ -523,6 +576,10 @@ def main():
             run_step("b3_waiting_margin", [sys.executable, str(CODE / "b3_waiting_margin.py")])
             run_step("b3_noprobe_kappa", [sys.executable, str(CODE / "b3_noprobe_kappa.py")])
             run_step("b3_ar1_likelihood", [sys.executable, str(CODE / "b3_ar1_likelihood.py")])
+            run_step("b3_waiting_frontier", [sys.executable, str(CODE / "b3_waiting_frontier.py")])
+            run_step("b3_delay_map", [sys.executable, str(CODE / "b3_delay_map.py")])
+            run_step("nested_extensions", [sys.executable, str(CODE / "nested_extensions.py")])
+            run_step("natural_probe", [sys.executable, str(CODE / "natural_probe.py")])
         run_step("verify_b3_forecast", [sys.executable, str(CODE / "verify_b3_forecast.py")])
         run_step("verify_b3_readiness", [sys.executable, str(CODE / "verify_b3_readiness.py")])
         run_step("verify_nested_forecast", [sys.executable, str(CODE / "verify_nested_forecast.py")])
@@ -536,6 +593,10 @@ def main():
         run_step("verify_b3_waiting_margin", [sys.executable, str(CODE / "verify_b3_waiting_margin.py")])
         run_step("verify_b3_noprobe_kappa", [sys.executable, str(CODE / "verify_b3_noprobe_kappa.py")])
         run_step("verify_b3_ar1_likelihood", [sys.executable, str(CODE / "verify_b3_ar1_likelihood.py")])
+        run_step("verify_b3_waiting_frontier", [sys.executable, str(CODE / "verify_b3_waiting_frontier.py")])
+        run_step("verify_b3_delay_map", [sys.executable, str(CODE / "verify_b3_delay_map.py")])
+        run_step("verify_nested_extensions", [sys.executable, str(CODE / "verify_nested_extensions.py")])
+        run_step("verify_natural_probe", [sys.executable, str(CODE / "verify_natural_probe.py")])
         run_step("synthetic_checks", [sys.executable, str(CODE / "smoke_check.py")])
         report["manuscript_reference"] = compare_reference()
         print(f"Passed frozen manuscript comparison ({report['manuscript_reference']['entries_compared']} entries)", flush=True)

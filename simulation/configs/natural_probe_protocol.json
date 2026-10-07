@@ -1,0 +1,31 @@
+{
+  "name": "Natural probes in measured cells: real-data check of the B3-based readiness estimators",
+  "version": 1,
+  "status": "frozen_before_running",
+  "date": "2026-10-07",
+  "reason": "Revision plan item 10: the waiting results are simulation-only. Two recorded protocols contain later pulses that act as natural probes at fixed waits after a known previous command; they allow a check of whether readiness predicted from B3 references and each cell's own past reporter matches what measured cells do at those waits. A fixed probe time cannot score completion time, so the check scores readiness predictions and ready calls, not waiting rules.",
+  "dose_ng_per_ml": 25,
+  "dose_reason": "the dose of the B3 waiting study; neither 25 ng/ml protocol below entered the B3 fit or architecture comparison",
+  "probes": {
+    "fgf_3_20_25ng": "pulses 2 to 6 (onsets 23, 46, 69, 92, 115 min), each a 3-min pulse 20 min after the end of the previous 3-min pulse; naive reference: the same cell's (or B3 sample's) rise to pulse 1",
+    "fgf_mixed_25ng": "pulse 3 (5 min, onset 114 min), 60 min after the end of the 30-min pulse (24-54 min; a 3-min pulse at 1-4 min precedes it); naive reference: the median rise of the single 5-min pulse cells at 25 ng/ml (fgf_sp_5_25ng; different cells) for measured cells, and the median B3 rise to the same pulse over posterior samples for B3"
+  },
+  "rise": "pre-probe level = mean of the last two frames at or before the onset (for an onset at 0 without earlier frames: 1 for measured cells, the value at 0 for B3); rise = maximum over frames in (onset, onset + 20] of the centred 3-frame moving average minus the pre-probe level; the same operator is applied to B3 trajectories sampled at the measured frame times",
+  "success": "rise >= kappa x naive reference; kappa 0.5 (primary), 0.4 and 0.6",
+  "b3_references": "the 1000 posterior samples simulated noise-free under the recorded command schedule of each protocol (and of fgf_sp_5_25ng for the naive reference); success of each sample by the same definition",
+  "estimators": {
+    "constant": "B3 population readiness: fraction of posterior samples that succeed at the probe (what a fixed wait implies)",
+    "current": "Gaussian kernel over B3 samples of (reporter at the last frame at or before onset, success), s.d. s_L",
+    "smoothed": "the same with causal exponential smoothing (scale 16 min, a = exp(-frame interval / 16)) of measured and B3 reporters, s.d. max(s_L sqrt((1-a)/(1+a)), 0.005)",
+    "history": "B3 samples weighted by all measured frames from the first frame to the last frame at or before onset, Gaussian likelihood s.d. s_L",
+    "likelihood_sd": "s_L = max(sigma_nu, 0.005), sigma_nu the robust second-difference noise estimate of configs/nested_extensions_protocol.json for the condition"
+  },
+  "scores": {
+    "calibration": "observed success fraction versus mean predicted readiness per probe",
+    "brier": "mean squared difference between predicted readiness and observed success per estimator, and for the constant",
+    "discrimination": "area under the ROC curve of predicted readiness for observed success (ties counted half), when both outcomes occur",
+    "ready_calls": "for thresholds c = 0.5 and 0.9: number of cells called ready (estimate >= c) and their observed success fraction, and the observed success fraction of cells not called ready",
+    "pooling": "per probe; for the 3/20 protocol also pooled over probes 2-6 (cells repeat across probes)"
+  },
+  "reporting": "All results reported whatever their direction; a check of one dose in two recorded protocols with fixed probe times; success uses a measured naive reference (within-cell for 3/20, between-cell for the mixed protocol); cells of one condition share a session."
+}

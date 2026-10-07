@@ -1,0 +1,6 @@
+{
+  "protocol_path": "simulation/configs/b3_waiting_frontier_protocol.json",
+  "protocol_sha256": "337af9deeb93539a76bf54a4a0406908ff96062502c3362156aef59d21bbd21d",
+  "frozen_utc": "2026-10-07T17:00:24+00:00",
+  "statement": "Recorded before any per-history calibration, oracle-gap, frontier, kappa-feasibility or penalty-sensitivity result was computed."
+}
