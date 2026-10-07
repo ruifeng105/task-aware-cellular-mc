@@ -1,8 +1,8 @@
 {
-  "date": "2026-10-07",
+  "date": "2026-10-08",
   "status": "passed",
-  "pdf_pages": 7,
-  "visual_review": "All 7 pages rendered with pdftoppm and inspected: title block, equations (1)-(7) without overflow, Table I (predictor features), Table II (inventory), Table III (a) 10-min RMSE by role, (b) corrected LOPO, (c) noise-adjusted skill and crossing balanced accuracy, Table IV (per-history waiting with oracle-gap closure), all with one-line captions and their symbols defined in the text, Fig. 1 (author system-concept figure, full width), Fig. 2 (phase panel), Fig. 3 (frontiers, delay curves and condition map, full width) and the 21-entry reference list fit without label collisions.",
+  "pdf_pages": 8,
+  "visual_review": "All 8 pages rendered with pdftoppm and inspected at overview resolution (2026-10-08); Fig. 3 (frontiers, delay curves and the condition map at target 0.94 with bold headline cells and n.c. marks) inspected at full resolution; tables, equations and the 21-entry reference list as in the 2026-10-07 review.",
   "latex_overfull_boxes": 0,
   "latex_underfull_boxes": 5,
   "undefined_references": 0,
@@ -12,10 +12,10 @@
   "expanded_source_git_blobs_verified": 56,
   "b3_source_git_blobs_verified": 3,
   "numerical_scores_recomputed": true,
-  "manuscript_numbers_checked": "All 12 numbers with at least four decimals match frozen values (pipeline_checks); after the 2026-10-07 text revision every percentage, minute, count and range in the changed sentences was re-checked against the result files by independent read-only reviews.",
-  "controller_evaluated": "calibrated waiting rules in simulation on B3 only (fixed amplitude and duration), including feedback delay; readiness calls checked on measured cells at two natural probes (no completion time)",
+  "manuscript_numbers_checked": "All 17 numbers with at least four decimals match frozen values (pipeline_checks). The numbers in the sentences added on 2026-10-08 were computed from the result files while drafting; the independent multi-agent review of these sentences was started and paused before completion and is still to be run.",
+  "controller_evaluated": "calibrated waiting rules in simulation on B3 only (fixed amplitude and duration), including feedback delay and stylized recovery errors of the model (hidden and reporter-visible lags, recalibration on outcomes); readiness calls checked on measured cells at two natural probes (no completion time)",
   "IEEEtran_class_git_blob_sha": "8d2b1c6478f81e0e2f65cb62debabbf236fb0304",
   "bibliography_notes": "Scherer et al. updated to TMBMC vol. 12, pp. 22-41, 2026 (Crossref); Mendeley v2 creator is M. Dobrzynski (DataCite) with Y. Blum as contributor; Postiglione et al. pages added; Barros final issue year 2020. Revision 2026-10-07 added Kilinc & Akan (JSAC 2013), Mosayebi et al. (JSAC 2014), Cao et al. (TMBMC 2020), Tung & Mitra (ICC 2019; replaces an ISTC 2018 entry whose title is not in Crossref), Wald (Ann. Math. Statist. 1945) and Poor & Hadjiliadis (Cambridge, 2008 print year of the DOI record); the DOIs of all six were checked against Crossref.",
-  "page_limit_note": "Six-page limit (including references) assumed from past IEEE ICC practice; the draft currently has 7 pages and fitting is deferred to the final version, as the author requested. Confirm the limit against the ICC call before submission.",
+  "page_limit_note": "Six-page limit (including references) assumed from past IEEE ICC practice; the draft currently has 8 pages and fitting is deferred to the final version, as the author requested. Confirm the limit against the ICC call before submission.",
   "scope": "Document quality and frozen-result consistency; no independent-day validation and no policy validation on measured cells."
 }

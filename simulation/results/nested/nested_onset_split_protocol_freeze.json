@@ -1,0 +1,6 @@
+{
+  "protocol_path": "simulation/configs/nested_onset_split_protocol.json",
+  "protocol_sha256": "4d51ed75edd7634a370b39fb2db3f34ea1cd55e98f08defebac78767a957a4ef",
+  "frozen_utc": "2026-10-07T20:35:14+00:00",
+  "statement": "Recorded before any next-command error was split by the following pulse."
+}

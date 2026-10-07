@@ -1,7 +1,7 @@
 {
-  "date": "2026-10-07",
+  "date": "2026-10-08",
   "project_root": "task-aware-cellular-mc",
-  "description": "ICC six-page revision following the 2026-10-07 revision plan: nested prediction on experimental FGF2/ERK data with descriptive predictor names, corrected leave-one-protocol-out, phase scores, 20- and 30-min horizons, noise-adjusted skill, cell bootstrap intervals and phase-gated B3 increments; accepted execution of the authors' B3 model; calibrated waiting rules simulated on B3 with a per-history reliability constraint, oracle-gap closure, reliability-latency frontiers and a feedback-delay / sampling-interval / noise condition map; natural probes in measured cells; earlier analyses (pilot, pre-registered expansion, readiness versions, robustness, sensitivity, baselines, stress, margin, kappa no-probe, AR(1) likelihood) kept for reproduction. No controller is evaluated on measured receivers.",
+  "description": "ICC six-page revision following the 2026-10-07 revision plan: nested prediction on experimental FGF2/ERK data with descriptive predictor names, corrected leave-one-protocol-out, phase scores, 20- and 30-min horizons, noise-adjusted skill, cell bootstrap intervals and phase-gated B3 increments; accepted execution of the authors' B3 model; calibrated waiting rules simulated on B3 with a per-history reliability constraint, oracle-gap closure, reliability-latency frontiers a feedback-delay / sampling-interval / noise condition map (calibration targets 0.90, 0.92 and 0.94) and robustness to recovery errors of the model; next-command errors split by the following pulse; natural probes in measured cells; earlier analyses (pilot, pre-registered expansion, readiness versions, robustness, sensitivity, baselines, stress, margin, kappa no-probe, AR(1) likelihood) kept for reproduction. No controller is evaluated on measured receivers.",
   "verification": {
     "mode": "verify",
     "status": "passed",
@@ -34,7 +34,7 @@
     "original_source_files_verified": 47,
     "expanded_source_files_verified": 56,
     "b3_source_files_verified": 3,
-    "pdf_pages": 7,
+    "pdf_pages": 8,
     "environment": {
       "python": "3.13.16",
       "numpy": "2.3.5",
@@ -42,7 +42,24 @@
       "matplotlib": "3.10.8",
       "openpyxl": "3.1.5"
     },
-    "note": "The four 2026-10-07 analyses (b3_waiting_frontier, b3_delay_map, nested_extensions, natural_probe) were each run once after their protocols were frozen and are checked here by their verify scripts; the earlier full-pipeline run of 2026-10-06 is not repeated."
+    "note": "The four 2026-10-07 analyses (b3_waiting_frontier, b3_delay_map, nested_extensions, natural_probe) were each run once after their protocols were frozen and are checked here by their verify scripts; the earlier full-pipeline run of 2026-10-06 is not repeated.",
+    "checks_2026_10_08": {
+      "verify_scripts_passed": [
+        "verify_b3_waiting_mismatch",
+        "verify_b3_delay_map_target",
+        "verify_nested_onset_split"
+      ],
+      "frozen_manuscript_entries_compared": 41716,
+      "max_absolute_error": 4.345477970513212e-12,
+      "pipeline_checks": "passed (8 checks)",
+      "environment": {
+        "python": "3.13.3",
+        "numpy": "2.3.2",
+        "pandas": "2.3.2",
+        "matplotlib": "3.10.6"
+      },
+      "note": "Run individually on 2026-10-08. A full verify-mode run including these steps was started and paused at the author's request before it finished, so the steps list above is that of the 2026-10-07 run and reproduction/run_report.json is unchanged."
+    }
   },
   "files": {
     ".gitattributes": {
@@ -58,28 +75,28 @@
       "bytes": 38453
     },
     "Paper_Notes_ZH.md": {
-      "sha256": "755811fb9707f67c2fafd5b775341c1ff7b0f5274ade0e93c4e736a63e6acf7d",
-      "bytes": 18330
+      "sha256": "f181c0a92b59c9649a36068e4a07e3e04a8be825b281ba932c27859ee335868f",
+      "bytes": 20532
     },
     "Paper_Simulation_Map_ZH.md": {
-      "sha256": "4a9bd0b95aa4bfd375e49367dea064ae44262362a7e5fc84c8ea418ab0f61f49",
-      "bytes": 7848
+      "sha256": "cff6241e0899f97306bea9c06c78e15d73f994557ec93c65faffb3eaab5afe3a",
+      "bytes": 9090
     },
     "README.md": {
-      "sha256": "64dd11180e7a00bddb213ddd5ebb5163884062a5152f2af3ea90ca7925711bfc",
-      "bytes": 24601
+      "sha256": "d98ca124b008e2a0a69361d1678d887bfa9f85653d13d3ab7c6c049f8be49151",
+      "bytes": 29105
     },
     "paper/AI_MC_Cellular_Receivers_Draft.pdf": {
-      "sha256": "1a3be6165d747d45997642e6515b1622882a0b54db61b4b27bafd094158580ff",
-      "bytes": 399243
+      "sha256": "e6f4f525b6055420a28157693360236d4ee905ab4954db6008eac6e776deeccd",
+      "bytes": 405087
     },
     "paper/IEEEtran.cls": {
       "sha256": "da751920a317ed318b7b5cd7fa585a6cc7d28502d457856382e9be24b10a3bd7",
       "bytes": 281957
     },
     "paper/assets_manifest.json": {
-      "sha256": "de73b9bf6bae633b71fc77f269cc7be7b067df23863b74be0681c7b65a805fae",
-      "bytes": 1432
+      "sha256": "90652bce9cdfd6f3a67a77e36ddeb0c47b8d0f8c0f50323f8112fd4f5966c7db",
+      "bytes": 1539
     },
     "paper/figures/fig1_system_concept.pdf": {
       "sha256": "cbce45ad5d92985c8cbf2034c3a482e35b26c8c1dbafc88b21689d69d9a42a07",
@@ -134,20 +151,20 @@
       "bytes": 99426
     },
     "paper/figures/waiting_frontier.pdf": {
-      "sha256": "7e27ec11c757a6c56745b4687cbbc55b0fd3ddd55e3688e13442255ea2932a42",
-      "bytes": 30017
+      "sha256": "ded9c7055d425a0e4ac7cc0fc80fbaeb0b2b1a22cebaf3839b4d52ec016f5778",
+      "bytes": 30238
     },
     "paper/figures/waiting_frontier.png": {
-      "sha256": "3363775273fc6e76bcf98c13a5a9a8b3ef31f5b3579549c6c48e9860a1534ad6",
-      "bytes": 128306
+      "sha256": "a214aed1a09ec6d12d66f4aa8f4cf63cd9882d33bde255cc9c94579ea044c548",
+      "bytes": 96407
     },
     "paper/main.tex": {
-      "sha256": "50d5b8528700811151479f5c4002aa1854dbd1de4017c20dc312b9e27508db0d",
-      "bytes": 34677
+      "sha256": "8a6e696cbe614d67bf59aed45237599560a4df4f84673dd8dba53b16ed4b6670",
+      "bytes": 40419
     },
     "paper/qa_report.json": {
-      "sha256": "9480b70238adf05597a6baece3dc03e52e2570ba1a1c79b448ac7441b4c97580",
-      "bytes": 2544
+      "sha256": "c87076f685b5f34928ade660202b2271c103f948808d2c4f07d115a9fa198358",
+      "bytes": 2414
     },
     "paper/references.bib": {
       "sha256": "d3db13a4ce2bef4df95a874ae854fd2b9c2db9ebacf2f5178bfa55b2e2ae3f43",
@@ -398,8 +415,8 @@
       "bytes": 791
     },
     "reproduction/reference_metrics.json": {
-      "sha256": "893755ebff94709ad9f3d0e4913b2ec584e5405713289a2705ce750e0d90050a",
-      "bytes": 2097319
+      "sha256": "bdc0a8bc77c3703dd2c8c9aa9be506f5617b4931c0ffe546284080220a0424fd",
+      "bytes": 6944545
     },
     "reproduction/run_report.json": {
       "sha256": "6219da701c4f404bec88681ae6a6cc2581e293a84cf072358be2d3ee531addfb",
@@ -414,32 +431,32 @@
       "bytes": 124
     },
     "revision/Revision_Response_ZH.md": {
-      "sha256": "f2057f59fabe02ff8dbde9b76eb79490790e68777c8e62a4999c6efe8e7a0e62",
-      "bytes": 14381
+      "sha256": "b6137725727b936137e34c67bc7bc430cde8b0f9292b5167f855c00fc0ac37d5",
+      "bytes": 17179
     },
     "revision/receiver_reuse_revision_plan.xlsx": {
       "sha256": "681f632427505a628c0292555020c761f9eeee05fc474047470c4307f59323e9",
       "bytes": 13847
     },
     "scripts/build_paper_assets.py": {
-      "sha256": "2d0258dda1d69ffbcfe0376ef81daed2fe9493374628ecff7552d729d96b4e5c",
-      "bytes": 42885
+      "sha256": "b3a2154c7fe7487007ed7acf2f42f3ea71af7d95a72cce66158e03c414e59366",
+      "bytes": 43700
     },
     "scripts/reproduce.py": {
-      "sha256": "86a58dd8c653cc66f7a69659f11b8d9216fdefb2a6a88118105dd3346c1ce130",
-      "bytes": 38745
+      "sha256": "41a926d37fdfac4820530ebb2dcd0f31e27b97f38d5745f9a4178ce2ab8274f9",
+      "bytes": 43609
     },
     "simulation/AI_MC_Application_First_Review_ZH.md": {
       "sha256": "b82778d48db9c03113f5f04a9337db590a7c0cda13e75c1582ed27b27830acee",
       "bytes": 30518
     },
     "simulation/README.md": {
-      "sha256": "d471d88161eda3810e592b5e820169c386b920999b3c1c380ae34592cb08c832",
-      "bytes": 19685
+      "sha256": "d3da6180bc5c54198ddd2d639af6d01060dc7f038b07345912100901f26fa0b6",
+      "bytes": 22239
     },
     "simulation/checksums.json": {
-      "sha256": "0d1ff09990460a62ce9fb45a15aadc830ceb44447056210e8fee14a1673b9b67",
-      "bytes": 43076
+      "sha256": "52c31f60cfb1e4d1bc3cab249ae31631ed508ee141c2e3b975893478f80af956",
+      "bytes": 46140
     },
     "simulation/code/b3_ar1_likelihood.py": {
       "sha256": "2e16bb3c33bccb0340ec9387205513b384eb70c6ab7a03379a677b39dc8b4c23",
@@ -448,6 +465,10 @@
     "simulation/code/b3_delay_map.py": {
       "sha256": "7a588c7b6276afc2a63e8218e10576a3093ea09435ec12fa43603d50d1d87e5d",
       "bytes": 15069
+    },
+    "simulation/code/b3_delay_map_target.py": {
+      "sha256": "a5be1df42a04e6317a4bd7acd676b24743f3ba1477802fc6e293735e0260ee9c",
+      "bytes": 8914
     },
     "simulation/code/b3_forecast.py": {
       "sha256": "b450291afdb8f2b2bd3af66cddf67779d7cf491f7593640f5afe6defa67c1a05",
@@ -488,6 +509,10 @@
     "simulation/code/b3_waiting_margin.py": {
       "sha256": "d7966afa891b136d2455aec25f138c0be1bae9040fc380f1e8cfa9294dcdb977",
       "bytes": 10521
+    },
+    "simulation/code/b3_waiting_mismatch.py": {
+      "sha256": "96b7d3c5b0a644a24673fe73be9101939f78ca92348719b3a105a2e32e213cd7",
+      "bytes": 27918
     },
     "simulation/code/b3_waiting_robustness.py": {
       "sha256": "367564654be20e8b32a3e5238cd8d98501ed0be0070b5b59f9e1a42bf3c5013d",
@@ -541,9 +566,17 @@
       "sha256": "1bce7bafefb92cd653c47071d97350f6d43aac6f366d43ba1089724542c6d978",
       "bytes": 12091
     },
+    "simulation/code/nested_onset_split.py": {
+      "sha256": "91e29883504e88124e331134891faedcf67275bc63ff1c58f51f9766411f0e67",
+      "bytes": 10370
+    },
     "simulation/code/nested_phase_detail.py": {
       "sha256": "f1989c958d89ff70f87e032c960927239088a1e4fc859de59684f39efb60320f",
       "bytes": 2948
+    },
+    "simulation/code/parallel_jobs.py": {
+      "sha256": "2cc1845bd1c65a3d5fcb3825f35979d450a2dfa72a7b615a92f1867635180e98",
+      "bytes": 1541
     },
     "simulation/code/pipeline_checks.py": {
       "sha256": "45f3e256035d6cd731c6f41a6db439d9085fdcbda07230a1d7ef54f5c515c748",
@@ -564,6 +597,10 @@
     "simulation/code/verify_b3_delay_map.py": {
       "sha256": "0490e7589fa49201215505c25c73e002eddf51e8cb9df8aeff11b334021b4496",
       "bytes": 5839
+    },
+    "simulation/code/verify_b3_delay_map_target.py": {
+      "sha256": "4b8431281e35d43c2a83bb52839b2331bf07ed7dec1762bddd1bef9ed601aaaa",
+      "bytes": 4703
     },
     "simulation/code/verify_b3_forecast.py": {
       "sha256": "edd5861d5e7cb4681addf75c1debf5c647e2ec81235e718c2a52c0a4d7a5da3d",
@@ -596,6 +633,10 @@
     "simulation/code/verify_b3_waiting_margin.py": {
       "sha256": "fd221f68572bd2f5b6bf63cba6670d06410bbc498b3d798641079cc883541595",
       "bytes": 4894
+    },
+    "simulation/code/verify_b3_waiting_mismatch.py": {
+      "sha256": "9aa3c2588049e37b95e8f405feaf655605039b1d6ddc316e4251813784201afd",
+      "bytes": 12146
     },
     "simulation/code/verify_b3_waiting_robustness.py": {
       "sha256": "ef17e86c06a7d31f326b182c3bc05161527b1d39808806ecb0434c89d354c0c4",
@@ -633,6 +674,10 @@
       "sha256": "6314ed0b1aeffd394ee2a70209791d1de2733bb7467ceea6e86c0a54c458c039",
       "bytes": 4936
     },
+    "simulation/code/verify_nested_onset_split.py": {
+      "sha256": "0ace5d61f4ac213db5d791b0e248dd4fd6c2d64ae33fdff79775128875f26143",
+      "bytes": 1980
+    },
     "simulation/configs/b3_ar1_likelihood_protocol.json": {
       "sha256": "fd29bb5653d82d0951fe86de25e733f3b833890ce81a1b85f77d71fdf552ee83",
       "bytes": 3045
@@ -640,6 +685,10 @@
     "simulation/configs/b3_delay_map_protocol.json": {
       "sha256": "dc700f90bf72adee5b586317b3b27a8fbb8848cbc9d2768e5b650f380acca527",
       "bytes": 4850
+    },
+    "simulation/configs/b3_delay_map_target_protocol.json": {
+      "sha256": "4835f2ea3544cfb290a1abf16f51657b8243de3814d58a86b5a3e321b055412b",
+      "bytes": 4332
     },
     "simulation/configs/b3_forecast_protocol.json": {
       "sha256": "54e810c770afc73c74eae3d2ae106099a5a2c46b10f8ecbee6b0cdcbe4d28acf",
@@ -672,6 +721,10 @@
     "simulation/configs/b3_waiting_margin_protocol.json": {
       "sha256": "4d3e300763d6e8bad84277ac7ce83aa17fa242c1c8b314817979896adba9f2ac",
       "bytes": 3821
+    },
+    "simulation/configs/b3_waiting_mismatch_protocol.json": {
+      "sha256": "8ab22138b2b88bd075f1b32428bb0386c72b510713c9c7ae4411c2ff50bb1e05",
+      "bytes": 15709
     },
     "simulation/configs/b3_waiting_protocol.json": {
       "sha256": "6e610e9b3b8aa4d1178e945d7d16c35c42bb65ea1160818bdbc0783272e63f42",
@@ -716,6 +769,10 @@
     "simulation/configs/nested_forecast_protocol.json": {
       "sha256": "af737c6c0d91a33b140096c115c94a2d944bae910c50b3ae3ed3365e836df008",
       "bytes": 3941
+    },
+    "simulation/configs/nested_onset_split_protocol.json": {
+      "sha256": "4d51ed75edd7634a370b39fb2db3f34ea1cd55e98f08defebac78767a957a4ef",
+      "bytes": 4089
     },
     "simulation/configs/plif_run_plan.json": {
       "sha256": "87c830f66f63693af8ad260199bf66cbc92ec2e0883d02376b365b61888be552",
@@ -1189,6 +1246,10 @@
       "sha256": "9cac2a576a17a0840d7dc964fdb96a54a7207068d8d6f1d56932969d85856210",
       "bytes": 314
     },
+    "simulation/results/b3/b3_delay_map_target_protocol_freeze.json": {
+      "sha256": "9c2732c7acf2d3f290df547acddc06815b075d236165542d7b6789eb27d1f436",
+      "bytes": 298
+    },
     "simulation/results/b3/b3_forecast_protocol_freeze.json": {
       "sha256": "7240c64a49ca3edc38db2556d7e9d944adaaac4ce5e35e8a39b007220d112443",
       "bytes": 340
@@ -1221,6 +1282,10 @@
       "sha256": "20a10d730891db4ce9223d88f3a017e63bcdf917f97d05dccaaa4bb3241a6756",
       "bytes": 283
     },
+    "simulation/results/b3/b3_waiting_mismatch_protocol_freeze.json": {
+      "sha256": "82c826c97eccab5872dd38ca1695c68f2ac2750f860710f7933ce3ef4bd577b9",
+      "bytes": 381
+    },
     "simulation/results/b3/b3_waiting_protocol_freeze.json": {
       "sha256": "2f065083f772989ae2c43443c80defb8695badbe21cb3d7a3205b8d56df8d8ab",
       "bytes": 273
@@ -1240,6 +1305,14 @@
     "simulation/results/b3/delay_map_results.json": {
       "sha256": "632f008f200f7e6f1ded41d202c1b5e4846625b5dcce002a5280b915c4f9e4d4",
       "bytes": 4597079
+    },
+    "simulation/results/b3/delay_map_target_results.json": {
+      "sha256": "e9c6c2dcfd336e2478d4d94737a5642ad903fab7554ba51aa946da9761c9e644",
+      "bytes": 9891496
+    },
+    "simulation/results/b3/delay_map_target_verification_results.json": {
+      "sha256": "0e0fa6cb50ede486399d147a62d03682196d42cc1318b2a4b547bfdc8400bb08",
+      "bytes": 746
     },
     "simulation/results/b3/delay_map_verification_results.json": {
       "sha256": "dfce7110705c64e5b6898f99213d18cc56b6b7378d2f154a63cff1b7865ebdcd",
@@ -1340,6 +1413,18 @@
     "simulation/results/b3/waiting_margin_verification_results.json": {
       "sha256": "bbf9f9ad0542f408882e760541848aadcd61610c21bd0c62fbaab0f0e4bd0700",
       "bytes": 641
+    },
+    "simulation/results/b3/waiting_mismatch_results.json": {
+      "sha256": "e54ea0d1acf84d31795ee0bc3b4c620671ba3834cae724f70484822cff6248fa",
+      "bytes": 4005450
+    },
+    "simulation/results/b3/waiting_mismatch_splits.json": {
+      "sha256": "fc7cf06c8991f8da7aab70f4dfb466b5dc87122e2de6bdedce4699b34dfc701a",
+      "bytes": 18466310
+    },
+    "simulation/results/b3/waiting_mismatch_verification_results.json": {
+      "sha256": "70cc246fedb0a4ae8b183fe5bdd3e4a04060e9b2584489db621e0c4c713e3c28",
+      "bytes": 955
     },
     "simulation/results/b3/waiting_results.json": {
       "sha256": "da20ca38a861cc07d6e3b861656953a2ec2143e631585e63290450c2fa9808b6",
@@ -1445,6 +1530,10 @@
       "sha256": "6db7c0379f79bda7a4b24a85c9c9d895ff518f7ee4065258c0f1adff73b23ee2",
       "bytes": 289
     },
+    "simulation/results/nested/nested_onset_split_protocol_freeze.json": {
+      "sha256": "108c46b8a7ed5132deb4c2b0f957123874652bd3b97a7277d6e2587bc4176394",
+      "bytes": 302
+    },
     "simulation/results/nested/nested_results.json": {
       "sha256": "86ec1eac601859091fd5b47dd822b2c7a513a8284f6ca09c22d46438f6888e31",
       "bytes": 128913
@@ -1452,6 +1541,14 @@
     "simulation/results/nested/nested_verification_results.json": {
       "sha256": "aeba52612b4121efc1a57cc54652ebb206f1f1c4592379e61df246e0cdbaaf8d",
       "bytes": 791
+    },
+    "simulation/results/nested/onset_split_results.json": {
+      "sha256": "24245a24392b294708c77a924356e92b63244e7643be7704f71a5688dc254357",
+      "bytes": 7103
+    },
+    "simulation/results/nested/onset_split_verification_results.json": {
+      "sha256": "2f193d6b638a7a73971aeec74181a6c25c08a5e47b6de05d4ce253fd42b16384",
+      "bytes": 408
     },
     "simulation/results/nested/phase_detail.json": {
       "sha256": "8e3293adf6a09ef82f496a9d7e0af5210d38e61446b39b8b6a8cdb5b84a0ef3a",

@@ -464,6 +464,63 @@ def revision5_metrics():
     return values
 
 
+CLASS_CODE = {"model helps": 1, "reporter suffices": 0, "not classifiable": -1}
+VERDICT_CODE = {"B3 belief more robust": 1, "no consistent difference": 0, "smoothing more robust": -1}
+
+
+def cell_digest(block):
+    """Paper-relevant numbers of a summarized waiting cell: requirement counts, medians, paired medians, gap closure."""
+    out = {k: block[k] for k in ("meets_per_history", "feasible_evaluation", "feasible_calibration",
+                                 "target_reached_on_calibration", "faster") if k in block}
+    out["success"] = {r: {p: v["median"] for p, v in parts.items()} for r, parts in block["success"].items()}
+    out["completion"] = {r: {p: v["median"] for p, v in parts.items()} for r, parts in block["completion"].items()}
+    out["paired_completion"] = {p: v["completion"]["median"] for p, v in block["paired"].items()}
+    out["gap_closure"] = {r: {p: (v["median"] if v else None) for p, v in parts.items()}
+                          for r, parts in block["gap_closure"].items()}
+    return out
+
+
+def revision6_metrics():
+    """Review after the verified text revision (2026-10-07): robustness of the waiting rules to recovery errors of B3,
+    condition map at calibration targets 0.92 and 0.94, next-command errors split by the following pulse."""
+    load = lambda path: json.loads(path.read_text(encoding="utf-8"))
+    values = {}
+    mismatch = load(B3 / "waiting_mismatch_results.json")
+    for noise, block in mismatch["summary"].items():
+        for target in ("0.90", "0.94"):
+            values.update(flatten(f"b3/mismatch/{noise}/baseline/{target}", cell_digest(block["baseline"][target])))
+            values.update(flatten(f"b3/mismatch/{noise}/baseline_delay/{target}", cell_digest(block["baseline_delay"][target])))
+            for scenario in ("hidden_lag", "visible_lag"):
+                for arm, lags in block[scenario].items():
+                    for lag, cells in lags.items():
+                        values.update(flatten(f"b3/mismatch/{noise}/{scenario}/{arm}/{lag}/{target}", cell_digest(cells[target])))
+            for cut, entry in block["slow_posterior_tail"].items():
+                values.update(flatten(f"b3/mismatch/{noise}/slow/{cut}/sizes",
+                                      {k: entry[k] for k in ("n_evaluation", "n_calibration", "never_ready_evaluation")}))
+                for arm in ("model_calibrated", "outcome_recalibrated", "outcome_recalibrated_delay"):
+                    values.update(flatten(f"b3/mismatch/{noise}/slow/{cut}/{arm}/{target}", cell_digest(entry[arm][target])))
+    values.update(flatten("b3/mismatch/statements", mismatch["statements"]))
+    for noise, block in mismatch["statements"]["M2"].items():
+        for lag, row in block.items():
+            values[f"b3/mismatch/statements/M2/{noise}/{lag}/verdict_code"] = VERDICT_CODE[row["verdict"]]
+    values.update(flatten("b3/mismatch/descriptive", mismatch["descriptive"]))
+    values.update(flatten("b3/mismatch/slow_subsets", mismatch["slow_subsets"]))
+    target = load(B3 / "delay_map_target_results.json")
+    for t, cells in target["summary"].items():
+        for key, block in cells.items():
+            values.update(flatten(f"b3/delay_target/{t}/{key}",
+                                  {k: v for k, v in block.items() if k not in ("map_class", "per_history_class")}))
+            values[f"b3/delay_target/{t}/{key}/class_code"] = CLASS_CODE[block["map_class"]]
+            values[f"b3/delay_target/{t}/{key}/per_history_class_code"] = CLASS_CODE[block["per_history_class"]]
+    values["b3/delay_target/headline_cells"] = len(target["headline_model_helps_cells"])
+    for key in target["headline_model_helps_cells"]:
+        values[f"b3/delay_target/headline/{key}"] = True
+    values.update(flatten("b3/delay_target/class_changes", target["class_changes_090_to_094"]))
+    onset = load(NESTED / "onset_split_results.json")
+    values.update(flatten("nested/onset", {k: onset[k] for k in ("groups", "share_of_increase", "reading")}))
+    return values
+
+
 def phase_detail_metrics():
     """Per-condition forecast errors by phase from the frozen nested models."""
     data = json.loads((NESTED / "phase_detail.json").read_text(encoding="utf-8"))
@@ -490,6 +547,7 @@ def compare_reference():
     actual.update(revision3_metrics())
     actual.update(revision4_metrics())
     actual.update(revision5_metrics())
+    actual.update(revision6_metrics())
     if actual.keys() != expected.keys():
         raise ValueError("Manuscript metric keys differ from the frozen reference.")
     max_error = 0.0
@@ -511,7 +569,9 @@ def compare_reference():
                  B3 / "waiting_margin_verification_results.json", B3 / "noprobe_kappa_verification_results.json",
                  B3 / "ar1_likelihood_verification_results.json", NESTED / "nested_verification_results.json",
                  B3 / "waiting_frontier_verification_results.json", B3 / "delay_map_verification_results.json",
-                 NESTED / "nested_extensions_verification_results.json", B3 / "natural_probe_verification_results.json"):
+                 NESTED / "nested_extensions_verification_results.json", B3 / "natural_probe_verification_results.json",
+                 B3 / "waiting_mismatch_verification_results.json", B3 / "delay_map_target_verification_results.json",
+                 NESTED / "onset_split_verification_results.json"):
         if json.loads(path.read_text(encoding="utf-8"))["status"] != "passed":
             raise ValueError(f"Verification {path.relative_to(ROOT)} did not pass.")
     return {"status": "passed", "entries_compared": len(actual),
@@ -580,6 +640,9 @@ def main():
             run_step("b3_delay_map", [sys.executable, str(CODE / "b3_delay_map.py")])
             run_step("nested_extensions", [sys.executable, str(CODE / "nested_extensions.py")])
             run_step("natural_probe", [sys.executable, str(CODE / "natural_probe.py")])
+            run_step("b3_waiting_mismatch", [sys.executable, str(CODE / "b3_waiting_mismatch.py")])
+            run_step("b3_delay_map_target", [sys.executable, str(CODE / "b3_delay_map_target.py")])
+            run_step("nested_onset_split", [sys.executable, str(CODE / "nested_onset_split.py")])
         run_step("verify_b3_forecast", [sys.executable, str(CODE / "verify_b3_forecast.py")])
         run_step("verify_b3_readiness", [sys.executable, str(CODE / "verify_b3_readiness.py")])
         run_step("verify_nested_forecast", [sys.executable, str(CODE / "verify_nested_forecast.py")])
@@ -597,6 +660,9 @@ def main():
         run_step("verify_b3_delay_map", [sys.executable, str(CODE / "verify_b3_delay_map.py")])
         run_step("verify_nested_extensions", [sys.executable, str(CODE / "verify_nested_extensions.py")])
         run_step("verify_natural_probe", [sys.executable, str(CODE / "verify_natural_probe.py")])
+        run_step("verify_b3_waiting_mismatch", [sys.executable, str(CODE / "verify_b3_waiting_mismatch.py")])
+        run_step("verify_b3_delay_map_target", [sys.executable, str(CODE / "verify_b3_delay_map_target.py")])
+        run_step("verify_nested_onset_split", [sys.executable, str(CODE / "verify_nested_onset_split.py")])
         run_step("synthetic_checks", [sys.executable, str(CODE / "smoke_check.py")])
         report["manuscript_reference"] = compare_reference()
         print(f"Passed frozen manuscript comparison ({report['manuscript_reference']['entries_compared']} entries)", flush=True)

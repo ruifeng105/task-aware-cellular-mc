@@ -1,0 +1,6 @@
+{
+  "protocol_path": "simulation/configs/b3_delay_map_target_protocol.json",
+  "protocol_sha256": "4835f2ea3544cfb290a1abf16f51657b8243de3814d58a86b5a3e321b055412b",
+  "frozen_utc": "2026-10-07T20:35:14+00:00",
+  "statement": "Recorded before any 0.92 or 0.94 condition-map result was computed."
+}

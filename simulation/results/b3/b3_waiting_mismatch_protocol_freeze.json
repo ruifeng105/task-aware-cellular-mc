@@ -1,0 +1,6 @@
+{
+  "protocol_path": "simulation/configs/b3_waiting_mismatch_protocol.json",
+  "protocol_sha256": "8ab22138b2b88bd075f1b32428bb0386c72b510713c9c7ae4411c2ff50bb1e05",
+  "frozen_utc": "2026-10-07T20:35:14+00:00",
+  "statement": "Recorded before the 20-split run; independent design reviews had computed split-0 diagnostics listed under pre_freeze_checks, which shaped the design."
+}

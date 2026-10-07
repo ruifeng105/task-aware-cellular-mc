@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "protocol_sha256": "4d51ed75edd7634a370b39fb2db3f34ea1cd55e98f08defebac78767a957a4ef",
+  "onsets": {
+    "cases": 8
+  },
+  "structure": {
+    "origins_and_rows": true,
+    "shares_sum_to_one": true
+  },
+  "combined_max_abs_difference": 1.3877787807814457e-17,
+  "recomputation": {
+    "identical": true
+  },
+  "scope": "Descriptive breakdown of frozen models on inspected roles."
+}

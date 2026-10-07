@@ -567,7 +567,9 @@ body.append(r"Crossing BA, Filter / F+B3 & -- & " + " & ".join(
     for h in HORIZONS[1:]))
 write_table("skill_horizon", "lcccc", r"Horizon $h$ (min) & 2 & 10 & 20 & 30", body)
 
-delay = json.loads((B3_RESULTS / "delay_map_results.json").read_text(encoding="utf-8"))
+delay_target = json.loads((B3_RESULTS / "delay_map_target_results.json").read_text(encoding="utf-8"))
+delay = {"grid": delay_target["grid"], "summary": delay_target["summary"][MAIN_TARGET]}   # Fig. 3(c),(d) use the 0.94 map
+headline_cells = set(delay_target["headline_model_helps_cells"])   # model helps at 0.90 and, per history, at 0.94
 
 
 def non_dominated(points):
@@ -612,14 +614,21 @@ ax.plot(ds, [delay["summary"][f"0.005/2/{d}"]["completion"]["oracle"]["all"]["me
         ls=(0, (1, 2)), label="oracle")
 ax.set(xlabel="Delay $d$ (min)", ylabel="Mean completion (min)", xticks=ds)
 ax.set_title(r"(c) Delay ($\Delta$=2 min, s.d. .005)", loc="left", fontsize=8)
-ax.legend(loc="upper left", frameon=False, fontsize=5.5, handlelength=2.0, borderaxespad=.1)
+ax.legend(loc="upper left", frameon=False, fontsize=5.5, handlelength=1.8, borderaxespad=.1, labelspacing=.25)
 ax = axes[3]
 rows = [(n, i) for n in delay["grid"]["noise_sd"] for i in delay["grid"]["intervals_min"]]
 values = np.array([[delay["summary"][f"{n:g}/{i}/{d}"]["map_value_min"] for d in ds] for n, i in rows])
-helps = np.array([[delay["summary"][f"{n:g}/{i}/{d}"]["map_class"] == "model helps" for d in ds] for n, i in rows])
-limit = max(1., float(np.abs(values).max()))
-image = ax.imshow(values, cmap="RdBu", vmin=-limit, vmax=limit, aspect="auto")
+helps = np.array([[f"{n:g}/{i}/{d}" in headline_cells for d in ds] for n, i in rows])
+unclassified = np.array([[delay["summary"][f"{n:g}/{i}/{d}"]["per_history_class"] == "not classifiable" for d in ds]
+                         for n, i in rows])   # B3 never reached the target on calibration
+limit = max(1., float(np.abs(values[~unclassified]).max()))
+cmap = plt.get_cmap("RdBu").copy()
+cmap.set_bad("#e4e4e4")
+image = ax.imshow(np.ma.masked_where(unclassified, values), cmap=cmap, vmin=-limit, vmax=limit, aspect="auto")
 for (r_, c_), v in np.ndenumerate(values):
+    if unclassified[r_, c_]:
+        ax.text(c_, r_, "n.c.", ha="center", va="center", fontsize=4.5, color=MUTED)
+        continue
     ax.text(c_, r_, "0.0" if abs(v) < .05 else f"{v:+.1f}".replace("-", "−"), ha="center", va="center", fontsize=5,
             color="white" if abs(v) > .6 * limit else INK, fontweight="bold" if helps[r_, c_] else "normal")
 ax.set_xticks(range(len(ds)), [f"{d:g}" for d in ds], fontsize=6)
@@ -642,6 +651,7 @@ audit = {
     "b3_readiness_example_sha256": hashlib.sha256((B3_RESULTS / "readiness_example.json").read_bytes()).hexdigest(),
     "nested_result_sha256": hashlib.sha256((NESTED / "nested_results.json").read_bytes()).hexdigest(),
     "b3_waiting_result_sha256": hashlib.sha256((B3_RESULTS / "waiting_results.json").read_bytes()).hexdigest(),
+    "b3_delay_map_target_result_sha256": hashlib.sha256((B3_RESULTS / "delay_map_target_results.json").read_bytes()).hexdigest(),
     "generated_tables": [p.name for p in sorted(TAB.glob("*.tex"))],
     "generated_figures": [p.name for p in sorted(FIG.glob("*.pdf"))],
     "fitted_models": False,

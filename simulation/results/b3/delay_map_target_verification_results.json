@@ -1,0 +1,40 @@
+{
+  "status": "passed",
+  "protocol_sha256": "4835f2ea3544cfb290a1abf16f51657b8243de3814d58a86b5a3e321b055412b",
+  "reproduction_at_090": 0.0,
+  "frontier": {
+    "splits_compared": 40
+  },
+  "fixed": {
+    "identical_across_cells": true
+  },
+  "feasibility": {
+    "feasible_choices_checked": 14076
+  },
+  "leakage": {
+    "r": 6,
+    "noise": 0.01,
+    "interval": 6,
+    "evaluation_outcomes_inverted": true,
+    "choices_unchanged": true
+  },
+  "recomputation": {
+    "jobs": [
+      [
+        4,
+        0.005,
+        10
+      ],
+      [
+        11,
+        0.01,
+        2
+      ]
+    ],
+    "identical": true
+  },
+  "classes": {
+    "cells": 90
+  },
+  "scope": "Simulation of the published B3 model; not evidence about measured cells."
+}
