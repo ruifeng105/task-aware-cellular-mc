@@ -429,7 +429,7 @@ write_table("waiting_sensitivity", "cccccccccc",
 
 MODEL_STYLE = {"P": ("#52514e", ":", "."), "C": ("#0b0b0b", "--", "x"), "O": ("#1baf7a", "-", "o"),
                "A": ("#eda100", "-", "v"), "M": ("#4a3aa7", "-", "s"), "A+M": ("#e87ba4", "-", "P"), "H": ("#e34948", "-", "^")}
-fig, ax = plt.subplots(figsize=(3.45, 1.95))
+fig, (ax, bx) = plt.subplots(2, 1, figsize=(3.45, 3.7), gridspec_kw=dict(height_ratios=[1, .9], hspace=.75))
 phases = nested["phases"]["10"]
 order = [p for p in ("stimulation", "next_command", "early_washout", "late") if p in phases]
 tick = {"stimulation": "stimulation", "next_command": "next command", "early_washout": "early washout", "late": "late"}
@@ -442,7 +442,24 @@ ax.set_xticks(range(len(order)), [f"{tick[p]}\n({phases[p]['n_conditions']} cond
 ax.set(ylabel="10-min RMSE", xlim=(-.5, len(order) - .5))
 ax.legend(loc="lower center", bbox_to_anchor=(.5, 1.0), ncol=4, frameon=False, fontsize=6, handletextpad=.1, columnspacing=.8, borderaxespad=.1)
 ax.grid(axis="y", alpha=.15)
-fig.subplots_adjust(left=.15, right=.98, bottom=.2, top=.97)
+ax.text(-.12, 1.02, "(a)", transform=ax.transAxes, fontsize=7, fontweight="bold", va="bottom")
+# (b) Noise-adjusted skill by horizon on Test A (formerly Table III(c)); band: 95% cell-bootstrap interval of Filter+B3.
+extensions = json.loads((NESTED / "nested_extensions_results.json").read_text(encoding="utf-8"))
+horizons = (2, 10, 20, 30)
+test_a = lambda h: extensions["horizons"][f"{h}"]["roles"]["test_new_protocol"]
+band = np.array([test_a(h)["bootstrap"]["skill_M"] for h in horizons]) * 100
+bx.fill_between(horizons, band[:, 0], band[:, 1], color=MODEL_STYLE["M"][0], alpha=.14, lw=0, label="95% interval")
+for key, extra in (("O", {}), ("M", {}), ("H", {}), ("M_phase", dict(ls="--", mfc="white"))):
+    color, _, marker = MODEL_STYLE["M" if key == "M_phase" else key]
+    bx.plot(horizons, [100 * test_a(h)["skill"][key] for h in horizons], color=color, marker=marker, ms=3.5, lw=1.1,
+            label=SHORT[key], **extra)
+bx.axhline(0, color=MUTED, lw=.6, zorder=0)
+bx.set(xlabel="Forecast horizon $h$ (min)", ylabel="Noise-adj. skill (%)", xticks=horizons, xlim=(0, 32))
+bx.legend(loc="lower center", bbox_to_anchor=(.5, 1.0), ncol=3, frameon=False, fontsize=5.5, handlelength=1.8,
+          columnspacing=.8, borderaxespad=.1)
+bx.grid(axis="y", alpha=.15)
+bx.text(-.12, 1.02, "(b)", transform=bx.transAxes, fontsize=7, fontweight="bold", va="bottom")
+fig.subplots_adjust(left=.15, right=.98, bottom=.11, top=.93)
 fig.savefig(FIG / "prediction_phases.pdf", bbox_inches="tight", pad_inches=.02, metadata={"CreationDate": None})
 fig.savefig(FIG / "prediction_phases.png", bbox_inches="tight", pad_inches=.02)
 plt.close(fig)
@@ -643,6 +660,55 @@ fig.savefig(FIG / "waiting_frontier.pdf", bbox_inches="tight", pad_inches=.02, m
 fig.savefig(FIG / "waiting_frontier.png", bbox_inches="tight", pad_inches=.02)
 plt.close(fig)
 
+# Fig. 4: B3's recovery error on measured cells (recovery check) and its cost for waiting (mismatch study).
+recovery = json.loads((B3_RESULTS / "recovery_check_results.json").read_text(encoding="utf-8"))
+mismatch = json.loads((B3_RESULTS / "waiting_mismatch_results.json").read_text(encoding="utf-8"))
+fig, (ax, bx) = plt.subplots(2, 1, figsize=(3.45, 3.45), gridspec_kw=dict(height_ratios=[1, 1], hspace=.55))
+DOSE_LABEL = {"2-5ng": "2.5", "25ng": "25", "250ng": "250"}
+B3_COLOR, NULL_COLOR = "#eb6834", "#c9c7c2"
+groups = (("mixed", 0., "after 30-min pulse, probe +60 min"), ("three_twenty", 3.6, "after 3-min pulse, probe +20 min"))
+for name, offset, title in groups:
+    for i, dose in enumerate(DOSE_LABEL):
+        x, block = offset + i, recovery[name][dose]
+        null, b3q = block["null"], block["b3"]
+        ax.add_patch(plt.Rectangle((x - .36, null["q25"]), .72, null["q75"] - null["q25"], color=NULL_COLOR, alpha=.55, lw=0,
+                                   label="noise only (IQR)" if (name, i) == ("mixed", 0) else None))
+        ax.add_patch(plt.Rectangle((x - .2, b3q["q05"]), .4, b3q["q95"] - b3q["q05"], color=B3_COLOR, alpha=.35, lw=0,
+                                   label="B3 posterior 5–95%" if (name, i) == ("mixed", 0) else None))
+        ax.plot([x - .2, x + .2], [b3q["median"]] * 2, color=B3_COLOR, lw=1.2)
+        lo, hi = block["interval95"]
+        ax.errorbar(x, block["measured"], yerr=[[block["measured"] - lo], [hi - block["measured"]]], fmt="o", ms=3.5,
+                    color=INK, capsize=1.8, lw=.9, label="measured (95% CI)" if (name, i) == ("mixed", 0) else None)
+    ax.text(offset + 1, -.2, title, ha="center", va="top", fontsize=5.8, color=INK,
+            transform=matplotlib.transforms.blended_transform_factory(ax.transData, ax.transAxes))
+ax.set_xticks([o + i for _, o, _ in groups for i in range(3)], [DOSE_LABEL[d] for _ in groups for d in DOSE_LABEL], fontsize=6)
+ax.set(xlim=(-.6, 6.2), ylim=(0, 1.), ylabel="Probe rise / naive rise")
+ax.legend(loc="upper left", frameon=False, fontsize=5.5, handlelength=1.4, borderaxespad=.1)
+ax.grid(axis="y", alpha=.15)
+ax.text(-.12, 1.02, "(a)", transform=ax.transAxes, fontsize=7, fontweight="bold", va="bottom")
+hidden = mismatch["summary"]["0.005"]["hidden_lag"]["model_calibrated"]
+lags = sorted(int(k) for k in hidden)
+LAG_STYLE = {"fixed": (MUTED, ":", "s", "fixed wait"), "current": (INK, "--", "^", "current"),
+             "smoothed": ("#2a78d6", "-.", "D", "smoothed"), "history": (B3_COLOR, "-", "o", "B3 belief")}
+for name, (color, style, marker, label) in LAG_STYLE.items():
+    bx.plot(lags, [100 * hidden[f"{L}"]["0.94"]["success"][name]["long"]["median"] for L in lags], color=color, ls=style,
+            marker=marker, ms=3, markevery=2, lw=1.1, mfc="white" if name == "fixed" else color, label=label)
+bx.plot(lags, [100 * hidden[f"{L}"]["0.94"]["success"]["oracle"]["long"]["median"] for L in lags], color=INK, lw=.6,
+        ls=(0, (1, 2)), label="oracle")
+shift = mismatch["descriptive"]["shift_equivalents"]["mixed"]["shift_equivalent_min"]
+bx.axvspan(shift, max(lags), color=NULL_COLOR, alpha=.45, lw=0)
+bx.text(shift + .6, 62, "measured\nprobe:\n$\\geq$%.1f min" % shift, fontsize=5.5, color=INK, va="center")
+bx.axhline(90, color=MUTED, lw=.6, ls=":", zorder=0)
+bx.set(xlabel="Hidden recovery lag $L$ after the 30-min command (min)", ylabel="Success after 30 min (%)",
+       xlim=(0, max(lags)), ylim=(0, 101), xticks=range(0, max(lags) + 1, 8))
+bx.legend(loc="lower left", ncol=1, frameon=False, fontsize=5.5, handlelength=2.0, borderaxespad=.1)
+bx.grid(axis="y", alpha=.15)
+bx.text(-.12, 1.02, "(b)", transform=bx.transAxes, fontsize=7, fontweight="bold", va="bottom")
+fig.subplots_adjust(left=.15, right=.98, bottom=.1, top=.95)
+fig.savefig(FIG / "model_mismatch.pdf", bbox_inches="tight", pad_inches=.02, metadata={"CreationDate": None})
+fig.savefig(FIG / "model_mismatch.png", bbox_inches="tight", pad_inches=.02)
+plt.close(fig)
+
 audit = {
     "source_result_sha256": hashlib.sha256((OUT / "calibration_results.json").read_bytes()).hexdigest(),
     "expanded_result_sha256": hashlib.sha256((EXPANDED / "expanded_results.json").read_bytes()).hexdigest(),
@@ -652,6 +718,8 @@ audit = {
     "nested_result_sha256": hashlib.sha256((NESTED / "nested_results.json").read_bytes()).hexdigest(),
     "b3_waiting_result_sha256": hashlib.sha256((B3_RESULTS / "waiting_results.json").read_bytes()).hexdigest(),
     "b3_delay_map_target_result_sha256": hashlib.sha256((B3_RESULTS / "delay_map_target_results.json").read_bytes()).hexdigest(),
+    "b3_recovery_check_result_sha256": hashlib.sha256((B3_RESULTS / "recovery_check_results.json").read_bytes()).hexdigest(),
+    "b3_waiting_mismatch_result_sha256": hashlib.sha256((B3_RESULTS / "waiting_mismatch_results.json").read_bytes()).hexdigest(),
     "generated_tables": [p.name for p in sorted(TAB.glob("*.tex"))],
     "generated_figures": [p.name for p in sorted(FIG.glob("*.pdf"))],
     "fitted_models": False,

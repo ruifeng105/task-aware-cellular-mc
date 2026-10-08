@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "protocol_sha256": "dbf94a58997de28bca53dfc9c9f7c67573e84d54bfda96a7cdd94c06f38f389b",
+  "natural_probe": {
+    "measured_ratios_equal": true,
+    "three_twenty_b3_equal": true,
+    "mixed_b3_natural_probe_definition": 0.3137009850854474,
+    "mixed_b3_per_sample_ratio_median": 0.3138887204930337
+  },
+  "units": {
+    "residuals": true,
+    "ess": true,
+    "rise": true
+  },
+  "recompute": {
+    "identical_within": "1e-9 + 1e-5 |value|"
+  },
+  "reading": {
+    "rules_rederived": [
+      "R1",
+      "R2",
+      "R3",
+      "R4"
+    ]
+  },
+  "scope": "Descriptive check of the published B3 posterior against measured cells; nothing is re-fitted."
+}

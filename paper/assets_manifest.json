@@ -7,6 +7,8 @@
   "nested_result_sha256": "86ec1eac601859091fd5b47dd822b2c7a513a8284f6ca09c22d46438f6888e31",
   "b3_waiting_result_sha256": "da20ca38a861cc07d6e3b861656953a2ec2143e631585e63290450c2fa9808b6",
   "b3_delay_map_target_result_sha256": "e9c6c2dcfd336e2478d4d94737a5642ad903fab7554ba51aa946da9761c9e644",
+  "b3_recovery_check_result_sha256": "f986f0e67220e3d308a89909035a06d03f937898c8370c2748c876311a641215",
+  "b3_waiting_mismatch_result_sha256": "e54ea0d1acf84d31795ee0bc3b4c620671ba3834cae724f70484822cff6248fa",
   "generated_tables": [
     "core_rmse.tex",
     "expanded_rmse.tex",
@@ -26,6 +28,7 @@
     "fig1_system_concept.pdf",
     "forecast_mean_10min.pdf",
     "mixed_response.pdf",
+    "model_mismatch.pdf",
     "prediction_phases.pdf",
     "readiness_example.pdf",
     "readiness_policies.pdf",

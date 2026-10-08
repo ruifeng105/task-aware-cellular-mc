@@ -521,6 +521,12 @@ def revision6_metrics():
     return values
 
 
+def revision7_metrics():
+    """Posterior predictive check of B3 recovery at three doses and diagnosis of the weight collapse (2026-10-08)."""
+    check = json.loads((B3 / "recovery_check_results.json").read_text(encoding="utf-8"))
+    return flatten("b3/recovery_check", {k: check[k] for k in ("mixed", "three_twenty", "collapse", "reading")})
+
+
 def phase_detail_metrics():
     """Per-condition forecast errors by phase from the frozen nested models."""
     data = json.loads((NESTED / "phase_detail.json").read_text(encoding="utf-8"))
@@ -548,6 +554,7 @@ def compare_reference():
     actual.update(revision4_metrics())
     actual.update(revision5_metrics())
     actual.update(revision6_metrics())
+    actual.update(revision7_metrics())
     if actual.keys() != expected.keys():
         raise ValueError("Manuscript metric keys differ from the frozen reference.")
     max_error = 0.0
@@ -571,7 +578,7 @@ def compare_reference():
                  B3 / "waiting_frontier_verification_results.json", B3 / "delay_map_verification_results.json",
                  NESTED / "nested_extensions_verification_results.json", B3 / "natural_probe_verification_results.json",
                  B3 / "waiting_mismatch_verification_results.json", B3 / "delay_map_target_verification_results.json",
-                 NESTED / "onset_split_verification_results.json"):
+                 NESTED / "onset_split_verification_results.json", B3 / "recovery_check_verification_results.json"):
         if json.loads(path.read_text(encoding="utf-8"))["status"] != "passed":
             raise ValueError(f"Verification {path.relative_to(ROOT)} did not pass.")
     return {"status": "passed", "entries_compared": len(actual),
@@ -643,6 +650,7 @@ def main():
             run_step("b3_waiting_mismatch", [sys.executable, str(CODE / "b3_waiting_mismatch.py")])
             run_step("b3_delay_map_target", [sys.executable, str(CODE / "b3_delay_map_target.py")])
             run_step("nested_onset_split", [sys.executable, str(CODE / "nested_onset_split.py")])
+            run_step("b3_recovery_check", [sys.executable, str(CODE / "b3_recovery_check.py")])
         run_step("verify_b3_forecast", [sys.executable, str(CODE / "verify_b3_forecast.py")])
         run_step("verify_b3_readiness", [sys.executable, str(CODE / "verify_b3_readiness.py")])
         run_step("verify_nested_forecast", [sys.executable, str(CODE / "verify_nested_forecast.py")])
@@ -663,6 +671,7 @@ def main():
         run_step("verify_b3_waiting_mismatch", [sys.executable, str(CODE / "verify_b3_waiting_mismatch.py")])
         run_step("verify_b3_delay_map_target", [sys.executable, str(CODE / "verify_b3_delay_map_target.py")])
         run_step("verify_nested_onset_split", [sys.executable, str(CODE / "verify_nested_onset_split.py")])
+        run_step("verify_b3_recovery_check", [sys.executable, str(CODE / "verify_b3_recovery_check.py")])
         run_step("synthetic_checks", [sys.executable, str(CODE / "smoke_check.py")])
         report["manuscript_reference"] = compare_reference()
         print(f"Passed frozen manuscript comparison ({report['manuscript_reference']['entries_compared']} entries)", flush=True)

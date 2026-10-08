@@ -1,0 +1,6 @@
+{
+  "protocol_path": "simulation/configs/b3_recovery_check_protocol.json",
+  "protocol_sha256": "dbf94a58997de28bca53dfc9c9f7c67573e84d54bfda96a7cdd94c06f38f389b",
+  "frozen_utc": "2026-10-08T11:19:50+00:00",
+  "statement": "Recorded after an exploratory analysis of the same quantities (values listed in the protocol) and before the only recorded run."
+}
