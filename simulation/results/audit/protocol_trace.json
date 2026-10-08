@@ -1,0 +1,671 @@
+{
+  "status": "passed",
+  "sources": {
+    "xml": "public_data/fgf2_author_repository/FGF2_models/Fgf_B3/config_fgf_sus_3_20.xml",
+    "summary": "public_data/fgf2_author_repository/Inference_results/Fgf_B3/results/sus_3_20/sim_post_model_summary.txt",
+    "mixed_pulse_record": "public_data/fgf2_author_repository/FGF2_models/data/fgf_mixed/pulses.txt",
+    "time_unit": "min"
+  },
+  "schedules": [
+    {
+      "experiment": "sus_0-25ng",
+      "model_segments": [
+        [
+          0.0,
+          300.0
+        ]
+      ],
+      "pulses_listed": 1,
+      "dose_ng_per_ml": 0.25,
+      "matches_xml": true,
+      "matches_summary": true
+    },
+    {
+      "experiment": "sus_2-5ng",
+      "model_segments": [
+        [
+          0.0,
+          300.0
+        ]
+      ],
+      "pulses_listed": 1,
+      "dose_ng_per_ml": 2.5,
+      "matches_xml": true,
+      "matches_summary": true
+    },
+    {
+      "experiment": "sus_25ng",
+      "model_segments": [
+        [
+          0.0,
+          300.0
+        ]
+      ],
+      "pulses_listed": 1,
+      "dose_ng_per_ml": 25.0,
+      "matches_xml": null,
+      "matches_summary": true
+    },
+    {
+      "experiment": "sus_250ng",
+      "model_segments": [
+        [
+          0.0,
+          300.0
+        ]
+      ],
+      "pulses_listed": 1,
+      "dose_ng_per_ml": 250.0,
+      "matches_xml": true,
+      "matches_summary": true
+    },
+    {
+      "experiment": "3_20_2-5ng",
+      "model_segments": [
+        [
+          0.0,
+          3.0
+        ],
+        [
+          23.0,
+          26.0
+        ],
+        [
+          46.0,
+          49.0
+        ],
+        [
+          69.0,
+          72.0
+        ],
+        [
+          92.0,
+          95.0
+        ],
+        [
+          115.0,
+          118.0
+        ]
+      ],
+      "pulses_listed": 6,
+      "dose_ng_per_ml": 2.5,
+      "matches_xml": true,
+      "matches_summary": true
+    },
+    {
+      "experiment": "3_20_25ng",
+      "model_segments": [
+        [
+          0.0,
+          3.0
+        ],
+        [
+          23.0,
+          26.0
+        ],
+        [
+          46.0,
+          49.0
+        ],
+        [
+          69.0,
+          72.0
+        ],
+        [
+          92.0,
+          95.0
+        ],
+        [
+          115.0,
+          118.0
+        ]
+      ],
+      "pulses_listed": 6,
+      "dose_ng_per_ml": 25.0,
+      "matches_xml": true,
+      "matches_summary": true
+    },
+    {
+      "experiment": "3_20_250ng",
+      "model_segments": [
+        [
+          0.0,
+          3.0
+        ],
+        [
+          23.0,
+          26.0
+        ],
+        [
+          46.0,
+          49.0
+        ],
+        [
+          69.0,
+          72.0
+        ],
+        [
+          92.0,
+          95.0
+        ],
+        [
+          115.0,
+          118.0
+        ]
+      ],
+      "pulses_listed": 6,
+      "dose_ng_per_ml": 250.0,
+      "matches_xml": true,
+      "matches_summary": true
+    },
+    {
+      "experiment": "sp_5_0-25ng",
+      "model_segments": [
+        [
+          0.0,
+          5.0
+        ]
+      ],
+      "pulses_listed": 1,
+      "dose_ng_per_ml": 0.25,
+      "matches_xml": true,
+      "matches_summary": true
+    },
+    {
+      "experiment": "sp_5_2-5ng",
+      "model_segments": [
+        [
+          0.0,
+          5.0
+        ]
+      ],
+      "pulses_listed": 1,
+      "dose_ng_per_ml": 2.5,
+      "matches_xml": true,
+      "matches_summary": true
+    },
+    {
+      "experiment": "sp_5_25ng",
+      "model_segments": [
+        [
+          0.0,
+          5.0
+        ]
+      ],
+      "pulses_listed": 1,
+      "dose_ng_per_ml": 25.0,
+      "matches_xml": true,
+      "matches_summary": true
+    },
+    {
+      "experiment": "sp_5_250ng",
+      "model_segments": [
+        [
+          0.0,
+          5.0
+        ]
+      ],
+      "pulses_listed": 1,
+      "dose_ng_per_ml": 250.0,
+      "matches_xml": true,
+      "matches_summary": true
+    },
+    {
+      "experiment": "sp_10_0-25ng",
+      "model_segments": [
+        [
+          0.0,
+          10.0
+        ]
+      ],
+      "pulses_listed": 1,
+      "dose_ng_per_ml": 0.25,
+      "matches_xml": true,
+      "matches_summary": true
+    },
+    {
+      "experiment": "sp_10_2-5ng",
+      "model_segments": [
+        [
+          0.0,
+          10.0
+        ]
+      ],
+      "pulses_listed": 1,
+      "dose_ng_per_ml": 2.5,
+      "matches_xml": true,
+      "matches_summary": true
+    },
+    {
+      "experiment": "sp_10_25ng",
+      "model_segments": [
+        [
+          0.0,
+          10.0
+        ]
+      ],
+      "pulses_listed": 1,
+      "dose_ng_per_ml": 25.0,
+      "matches_xml": true,
+      "matches_summary": true
+    },
+    {
+      "experiment": "sp_10_250ng",
+      "model_segments": [
+        [
+          0.0,
+          10.0
+        ]
+      ],
+      "pulses_listed": 1,
+      "dose_ng_per_ml": 250.0,
+      "matches_xml": true,
+      "matches_summary": true
+    },
+    {
+      "experiment": "sp_60_0-25ng",
+      "model_segments": [
+        [
+          0.0,
+          60.0
+        ]
+      ],
+      "pulses_listed": 1,
+      "dose_ng_per_ml": 0.25,
+      "matches_xml": null,
+      "matches_summary": true
+    },
+    {
+      "experiment": "sp_60_2-5ng",
+      "model_segments": [
+        [
+          0.0,
+          60.0
+        ]
+      ],
+      "pulses_listed": 1,
+      "dose_ng_per_ml": 2.5,
+      "matches_xml": null,
+      "matches_summary": true
+    },
+    {
+      "experiment": "sp_60_25ng",
+      "model_segments": [
+        [
+          0.0,
+          60.0
+        ]
+      ],
+      "pulses_listed": 1,
+      "dose_ng_per_ml": 25.0,
+      "matches_xml": null,
+      "matches_summary": true
+    },
+    {
+      "experiment": "sp_60_250ng",
+      "model_segments": [
+        [
+          0.0,
+          60.0
+        ]
+      ],
+      "pulses_listed": 1,
+      "dose_ng_per_ml": 250.0,
+      "matches_xml": null,
+      "matches_summary": true
+    },
+    {
+      "experiment": "mixed_0-25ng",
+      "model_segments": [
+        [
+          1.0,
+          4.0
+        ],
+        [
+          24.0,
+          54.0
+        ],
+        [
+          114.0,
+          119.0
+        ]
+      ],
+      "pulses_listed": 3,
+      "dose_ng_per_ml": 0.25,
+      "matches_xml": null,
+      "matches_summary": true
+    },
+    {
+      "experiment": "mixed_2-5ng",
+      "model_segments": [
+        [
+          1.0,
+          4.0
+        ],
+        [
+          24.0,
+          54.0
+        ],
+        [
+          114.0,
+          119.0
+        ]
+      ],
+      "pulses_listed": 3,
+      "dose_ng_per_ml": 2.5,
+      "matches_xml": true,
+      "matches_summary": true
+    },
+    {
+      "experiment": "mixed_25ng",
+      "model_segments": [
+        [
+          1.0,
+          4.0
+        ],
+        [
+          24.0,
+          54.0
+        ],
+        [
+          114.0,
+          119.0
+        ]
+      ],
+      "pulses_listed": 3,
+      "dose_ng_per_ml": 25.0,
+      "matches_xml": true,
+      "matches_summary": true
+    },
+    {
+      "experiment": "mixed_250ng",
+      "model_segments": [
+        [
+          1.0,
+          4.0
+        ],
+        [
+          24.0,
+          54.0
+        ],
+        [
+          114.0,
+          119.0
+        ]
+      ],
+      "pulses_listed": 3,
+      "dose_ng_per_ml": 250.0,
+      "matches_xml": true,
+      "matches_summary": true
+    }
+  ],
+  "mixed": {
+    "recorded_pulses_raw_min": [
+      [
+        43.0,
+        46.0
+      ],
+      [
+        66.0,
+        96.0
+      ],
+      [
+        156.0,
+        161.0
+      ]
+    ],
+    "truncation_first_index_matlab": 22,
+    "origin_raw_min": 42.0,
+    "recorded_minus_origin": [
+      [
+        1.0,
+        4.0
+      ],
+      [
+        24.0,
+        54.0
+      ],
+      [
+        114.0,
+        119.0
+      ]
+    ],
+    "pulses_trunc": [
+      [
+        1.0,
+        4.0
+      ],
+      [
+        24.0,
+        54.0
+      ],
+      [
+        114.0,
+        119.0
+      ]
+    ],
+    "model_segments": [
+      [
+        1.0,
+        4.0
+      ],
+      [
+        24.0,
+        54.0
+      ],
+      [
+        114.0,
+        119.0
+      ]
+    ],
+    "normalization": "each cell divided by its median over raw 10-30 min (normalize_data.m); the script names 250ng but the same cut reproduces every dose",
+    "doses": {
+      "0-25ng": {
+        "cells": 87,
+        "max_abs_difference_to_trunc": 0.0,
+        "frames_before": 22,
+        "median_max_abs_deviation_before": 0.027059999999999973,
+        "median_max_rise_first_20_min": 0.05269999999999997
+      },
+      "2-5ng": {
+        "cells": 78,
+        "max_abs_difference_to_trunc": 0.0001402809039341424,
+        "frames_before": 22,
+        "median_max_abs_deviation_before": 0.026555923932324255,
+        "median_max_rise_first_20_min": 0.15411059760714607
+      },
+      "25ng": {
+        "cells": 84,
+        "max_abs_difference_to_trunc": 0.00013779276405734286,
+        "frames_before": 22,
+        "median_max_abs_deviation_before": 0.023815290623250218,
+        "median_max_rise_first_20_min": 0.1533492268011475
+      },
+      "250ng": {
+        "cells": 76,
+        "max_abs_difference_to_trunc": 0.00013545647558377283,
+        "frames_before": 22,
+        "median_max_abs_deviation_before": 0.02895462537667376,
+        "median_max_rise_first_20_min": 0.1320308950226996
+      }
+    }
+  },
+  "truncation": {
+    "fgf_sus": {
+      "raw_frames": 101,
+      "truncated_frames": 79,
+      "frames_cut": 22,
+      "origin_raw_min": 43.0,
+      "first_truncated_frame_min": 1.0,
+      "doses": {
+        "0-25ng": {
+          "cells": 64,
+          "max_abs_difference_to_trunc": 0.0,
+          "frames_before": 22,
+          "median_max_abs_deviation_before": 0.02027000000000001,
+          "median_max_rise_first_20_min": 0.11745000000000005
+        },
+        "2-5ng": {
+          "cells": 59,
+          "max_abs_difference_to_trunc": 0.0,
+          "frames_before": 22,
+          "median_max_abs_deviation_before": 0.018689999999999984,
+          "median_max_rise_first_20_min": 0.16609999999999991
+        },
+        "25ng": {
+          "cells": 54,
+          "max_abs_difference_to_trunc": 0.0,
+          "frames_before": 22,
+          "median_max_abs_deviation_before": 0.02034999999999998,
+          "median_max_rise_first_20_min": 0.16469999999999996
+        },
+        "250ng": {
+          "cells": 71,
+          "max_abs_difference_to_trunc": 0.0,
+          "frames_before": 22,
+          "median_max_abs_deviation_before": 0.01970000000000005,
+          "median_max_rise_first_20_min": 0.15779999999999994
+        }
+      }
+    },
+    "fgf_3_20": {
+      "raw_frames": 101,
+      "truncated_frames": 79,
+      "frames_cut": 22,
+      "origin_raw_min": 43.0,
+      "first_truncated_frame_min": 1.0,
+      "doses": {
+        "2-5ng": {
+          "cells": 70,
+          "max_abs_difference_to_trunc": 0.0,
+          "frames_before": 22,
+          "median_max_abs_deviation_before": 0.016579999999999984,
+          "median_max_rise_first_20_min": 0.12930000000000008
+        },
+        "25ng": {
+          "cells": 58,
+          "max_abs_difference_to_trunc": 0.0,
+          "frames_before": 22,
+          "median_max_abs_deviation_before": 0.019469999999999987,
+          "median_max_rise_first_20_min": 0.16335
+        },
+        "250ng": {
+          "cells": 79,
+          "max_abs_difference_to_trunc": 0.0,
+          "frames_before": 22,
+          "median_max_abs_deviation_before": 0.019600000000000062,
+          "median_max_rise_first_20_min": 0.14179999999999993
+        }
+      }
+    },
+    "fgf_sp_5": {
+      "raw_frames": 91,
+      "truncated_frames": 69,
+      "frames_cut": 22,
+      "origin_raw_min": 43.0,
+      "first_truncated_frame_min": 1.0,
+      "doses": {
+        "0-25ng": {
+          "cells": 105,
+          "max_abs_difference_to_trunc": 0.0,
+          "frames_before": 22,
+          "median_max_abs_deviation_before": 0.020279999999999965,
+          "median_max_rise_first_20_min": 0.04849999999999999
+        },
+        "2-5ng": {
+          "cells": 88,
+          "max_abs_difference_to_trunc": 0.0,
+          "frames_before": 22,
+          "median_max_abs_deviation_before": 0.018374999999999975,
+          "median_max_rise_first_20_min": 0.15185000000000004
+        },
+        "25ng": {
+          "cells": 92,
+          "max_abs_difference_to_trunc": 0.0,
+          "frames_before": 22,
+          "median_max_abs_deviation_before": 0.01970000000000005,
+          "median_max_rise_first_20_min": 0.1643
+        },
+        "250ng": {
+          "cells": 85,
+          "max_abs_difference_to_trunc": 0.0,
+          "frames_before": 22,
+          "median_max_abs_deviation_before": 0.015560000000000018,
+          "median_max_rise_first_20_min": 0.1319999999999999
+        }
+      }
+    },
+    "fgf_sp_10": {
+      "raw_frames": 91,
+      "truncated_frames": 69,
+      "frames_cut": 22,
+      "origin_raw_min": 43.0,
+      "first_truncated_frame_min": 1.0,
+      "doses": {
+        "0-25ng": {
+          "cells": 56,
+          "max_abs_difference_to_trunc": 0.0,
+          "frames_before": 22,
+          "median_max_abs_deviation_before": 0.022210000000000008,
+          "median_max_rise_first_20_min": 0.08389999999999997
+        },
+        "2-5ng": {
+          "cells": 67,
+          "max_abs_difference_to_trunc": 0.0,
+          "frames_before": 22,
+          "median_max_abs_deviation_before": 0.02059999999999995,
+          "median_max_rise_first_20_min": 0.12870000000000004
+        },
+        "25ng": {
+          "cells": 64,
+          "max_abs_difference_to_trunc": 0.0,
+          "frames_before": 22,
+          "median_max_abs_deviation_before": 0.020764999999999978,
+          "median_max_rise_first_20_min": 0.13
+        },
+        "250ng": {
+          "cells": 61,
+          "max_abs_difference_to_trunc": 0.0,
+          "frames_before": 22,
+          "median_max_abs_deviation_before": 0.026839999999999975,
+          "median_max_rise_first_20_min": 0.08840000000000003
+        }
+      }
+    },
+    "fgf_sp_60": {
+      "raw_frames": 91,
+      "truncated_frames": 69,
+      "frames_cut": 22,
+      "origin_raw_min": 44.0,
+      "first_truncated_frame_min": 0.0,
+      "doses": {
+        "2-5ng": {
+          "cells": 66,
+          "max_abs_difference_to_trunc": 0.0,
+          "frames_before": 22,
+          "median_max_abs_deviation_before": 0.01794499999999999,
+          "median_max_rise_first_20_min": 0.17205000000000004
+        },
+        "25ng": {
+          "cells": 63,
+          "max_abs_difference_to_trunc": 0.0,
+          "frames_before": 22,
+          "median_max_abs_deviation_before": 0.016710000000000003,
+          "median_max_rise_first_20_min": 0.17090000000000005
+        },
+        "250ng": {
+          "cells": 38,
+          "max_abs_difference_to_trunc": 0.0,
+          "frames_before": 22,
+          "median_max_abs_deviation_before": 0.01769499999999996,
+          "median_max_rise_first_20_min": 0.1584500000000001
+        }
+      }
+    }
+  },
+  "notes": [
+    "Commanded concentrations, not measured local concentrations; only the mixed protocol has a recorded pulse file.",
+    "fgf_sp_60 has no XML input; its [0, 60) pulse is listed in the authors' simulation summary. Its truncated frames start at 0 min whereas fgf_sp_5 and fgf_sp_10 start at 1 min after the same raw cut, so its onset is uncertain by 1 min (covered by the registered +-1 min timing sensitivity).",
+    "No pulse precedes the recorded first pulse of the mixed protocol; the reporter before it is summarized in mixed/doses/*/median_max_abs_deviation_before."
+  ]
+}

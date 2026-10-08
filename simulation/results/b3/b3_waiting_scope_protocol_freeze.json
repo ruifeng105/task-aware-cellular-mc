@@ -1,0 +1,6 @@
+{
+  "protocol_path": "simulation/configs/b3_waiting_scope_protocol.json",
+  "protocol_sha256": "9bc6c0bea1b026d5387b11218d4b6a3362a8e409488526e49786f96b899a5195",
+  "frozen_utc": "2026-10-08T21:21:46+00:00",
+  "statement": "Recorded after the E1-E3 runs and the probe-window simulation (W = 20 reproduced the readiness tables within 7.5e-9) and before any E4 quantity was computed."
+}

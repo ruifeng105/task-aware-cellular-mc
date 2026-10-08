@@ -1,0 +1,49 @@
+{
+  "name": "E4: sensitivity of the strict waiting comparison to the task definition and to the form of model mismatch",
+  "version": 1,
+  "status": "frozen_before_running",
+  "date": "2026-10-08",
+  "reason": "Revision plan E4. The waiting results rest on one task (kappa = 0.5, W = 20 min, failure penalty D = 140 min) and the earlier mismatch study on one mismatch form (a common hidden time shift). This study re-runs the certified comparison of E1 one factor at a time for kappa, W and D, and scores the E1 rules, and rules re-certified on true outcomes, under an amplitude reduction, a slowed recovery, receiver-to-receiver differences in recovery speed and, for reference, the time shift; amplitude and speed anchored to the single measured mixed-protocol probe are reported separately from the stress tests.",
+  "unchanged": "E1 receivers, roles, noise 0.005, splits and certified calibration (fixed sequence, alpha 0.025 per history, 120-min fallback); estimators and references of E1 with the cell's own success labels; decision grid and 5-min probe.",
+  "inputs_sha256": {
+    "simulation/results/b3/readiness_tables.npz": "a6e1caef4fcea969a6f3ac56180d605c330c24f254038fe595616e00d6694401",
+    "simulation/configs/b3_waiting_strict_protocol.json": "6e9933dd3b66ee3fc1e1db32516c4fb6c4395ab9c15e7aca2fbf5ae76345eb21",
+    "simulation/results/b3/window_tables.npz": "9e0f4a4a68fdad3e6e124da180b239b95e2c43b6e4d52638439d138725c99481",
+    "simulation/results/b3/natural_probe_results.json": "fda3c8fff5346734dd9d892c7fd918652e401bba223d725b3575cf7c3d925584"
+  },
+  "window_tables": "b3_window_tables.py: every posterior sample's FRET on a 1-min grid from the probe onset w to w + 30 min (3- and 30-min histories, w = 0, 2, ..., 120) and the naive response over [0, 30], with the solver, tolerances and schedules of b3_readiness; rise for W = 10, 20, 30 min. W = 20 must reproduce readiness_tables.npz within 1e-6; the W = 20 cells use readiness_tables.npz itself.",
+  "part_A_task_cells": {
+    "baseline": "kappa 0.5, W 20, D 140 (reproduces the E1 certified arm)",
+    "kappa_0.4": "kappa 0.4, W 20, D 140",
+    "kappa_0.6": "kappa 0.6, W 20, D 140",
+    "kappa_0.8": "kappa 0.8, W 20, D 140 (the earlier readiness protocol version 1 found this task infeasible for every sample; kept)",
+    "window_10": "kappa 0.5, W 10, D 130 (D = horizon 120 + W)",
+    "window_30": "kappa 0.5, W 30, D 150",
+    "penalty_200": "kappa 0.5, W 20, D 200",
+    "penalty_260": "kappa 0.5, W 20, D 260",
+    "note": "one factor at a time around the baseline; completion = wait + W on success and D on failure; success = rise_W >= kappa x naive_W of the same receiver"
+  },
+  "part_B_mismatch": {
+    "shared": "applied to the plant's outcomes only; the reporter, the references and the model-calibrated choices are unchanged, so no estimate can reveal the mismatch; the 3-min history is unchanged except for heterogeneity",
+    "shift": "after the 30-min command the plant's outcome at t is the model's at t - L (failure for t < L), L = 4, 8, 16 min",
+    "amplitude": "after the 30-min command success iff a x rho(t) >= kappa, a = 0.9, 0.8, 0.7 (rho = rise / naive rise)",
+    "rate": "after the 30-min command success iff rho(t / s) >= kappa, rho linearly interpolated on the decision grid, s = 1.1, 1.25, 1.5",
+    "heterogeneity": "both histories: success iff rho_i(t / s_i) >= kappa with s_i = exp(sigma z_i), z_i standard normal per posterior sample (seed 20261016, the same draws in every split), sigma = 0.1, 0.2; an arbitrary speed spread, not fitted to cells",
+    "anchored": "a* = measured mixed-probe ratio at 60 min (natural_probe_results.json, fgf_mixed_25ng/pulse_3, measured_median) / posterior-median rho after the 30-min command at 60 min; s* = 60 / the rising-branch crossing of that median curve with the measured ratio (the 24.46-min crossing behind the 35.5-min shift equivalent); each fits one measured point; only the model-calibrated arm and the oracle are reported",
+    "arms": {
+      "model_calibrated": "E1 certified choices on model outcomes, scored on the plant",
+      "recalibrated": "certified on the calibration receivers' complete plant outcome curves (ideal information), estimators and references unchanged; not for the anchored variants"
+    }
+  },
+  "metrics": "Per split, cell or mismatch level and arm, on the test receivers: success per history with one-sided Clopper-Pearson bounds, failure-penalized completion, completion among successes, mean wait, paired completion differences against the same arm's fixed waits with bootstrap intervals, the oracle's success per history, certified flags.",
+  "summary": "Over the 20 splits: splits meeting 0.9 per history per rule; splits in which the oracle meets 0.9 for both histories (task feasibility); median, minimum, maximum of completion, of the paired difference and of the 30-min-history success; splits in which each adaptive rule is faster than the fixed waits; certified counts.",
+  "statements": {
+    "E4-S1": "Part A: for every task cell, splits meeting 0.9 per history for each rule, oracle feasibility and the median paired completion difference of current, smoothed and B3 belief against the certified fixed waits.",
+    "E4-S2": "Part B stress tests: model-calibrated splits meeting 0.9 per history and median 30-min-history success per rule; re-certified splits meeting 0.9, certified counts and median paired completion difference.",
+    "E4-S3": "Anchored variants: the anchors, oracle success after the 30-min command and the model-calibrated success."
+  },
+  "checks": "Freeze hash; window tables (W = 20 reproduction, rise non-decreasing in W); the baseline cell equals the E1 certified arm in every split; neutral mismatch levels equal the model, severity monotone, readiness monotone in time; anchors equal the stored crossing of b3_waiting_mismatch; leakage: inverting all test plant outcomes leaves every re-certified choice unchanged; window_10 and kappa_0.8 cells and the mismatch job of split 0 recomputed from scratch; summary re-derived.",
+  "known_before_freezing": "E1-E3 results were known. From earlier studies: the per-history task is feasible for kappa 0.30-0.70 and infeasible at kappa 0.8 (readiness protocol version 1); under the hidden time shift of the earlier mismatch study (target 0.94, full-information calibration) the per-history requirement held up to 0 min for the smoothed and B3-belief rules and up to 2 min for the current rule and the fixed waits; the anchors a* = 0.125 and s* = 2.45 were computed before freezing. No E4 quantity on the strict roles had been computed.",
+  "interpretation_limits": "Stress tests on one model structure; the mismatch forms are stylized and hidden from the reporter, which is the least favourable case for feedback; the anchored variants fit one measured point and cannot distinguish delay, amplitude, rate or mixture; heterogeneity is not calibrated on measured single cells. Results describe where the simulated benefit holds, not measured cells.",
+  "reporting": "All cells and levels reported whatever their direction; if the benefit is not robust the applicability statement is narrowed, not the scenario set."
+}

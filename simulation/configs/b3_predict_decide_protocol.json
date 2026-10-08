@@ -1,0 +1,37 @@
+{
+  "name": "E3: from response prediction to waiting decisions on B3 (forecast error, window error, calibration and decisions on one test set)",
+  "version": 1,
+  "status": "frozen_before_running",
+  "date": "2026-10-08",
+  "reason": "Revision plan E3. The measured-data analysis ranks predictors by their average 10-min forecast error; the waiting studies rank rules by reliability and completion time. Whether a lower average forecast error yields fewer false ready calls or shorter reliable waits has not been tested. This study builds the conversion predicted response -> recovery statistic of Eq. (2) -> calibrated success probability -> waiting action for six predictors, including compact data-driven ARX and NARX baselines, and reports all metrics on the same simulated test receivers.",
+  "unchanged": "The E1 receivers, roles, noise (0.005) and splits (b3_waiting_strict.roles, noise_seed); tables, task (kappa 0.5, W 20 min, D 140 min) and decision grid of E1; the running-maximum threshold-crossing action with the 120-min fallback; the certified calibration of E1 (fixed sequence over thresholds 0.99, 0.98, ..., 0.50, alpha 0.025 per history) for the threshold and the certified fixed waits of E1 as comparator.",
+  "inputs_sha256": {
+    "simulation/results/b3/readiness_tables.npz": "a6e1caef4fcea969a6f3ac56180d605c330c24f254038fe595616e00d6694401",
+    "simulation/configs/b3_waiting_strict_protocol.json": "6e9933dd3b66ee3fc1e1db32516c4fb6c4395ab9c15e7aca2fbf5ae76345eb21"
+  },
+  "information_set": "At decision time t: the receiver's noisy reporter observations at 0, 2, ..., t min and the known previous command (3 or 30 min at 25 ng/ml).",
+  "targets": {
+    "recovery_statistic": "rho(t) = rise within W = 20 min after a 5-min probe at t / the same receiver's naive rise (the quantity thresholded by kappa in Eq. (2)); success iff rho(t) >= 0.5",
+    "reporter_forecast": "noise-free reporter 10 min ahead, f(t + 10), for t = 0, 2, ..., 110 under the history alone (no new command), the analogue of the measured-data forecast error"
+  },
+  "predictors": {
+    "history_mean": "mean over the R receivers with the same history of rho(t) (reporter: of f(t + 10)); the information of a history-conditioned fixed wait",
+    "current": "Gaussian-kernel regression on the current observation over the pooled (state, value) pairs of the R receivers, bandwidth max(noise, 0.001) as in b3_waiting.PooledReadiness; reporter forecast: persistence y(t)",
+    "smoothed": "the same on the causal exponential smoothing with scale 16 min, bandwidth b3_waiting.smoothed_sd; reporter forecast: the smoothed value",
+    "arx": "ridge regression on [y(t), y(t-2), y(t-4), y(t-6), y(t-8), t/120, l, l t/120] with l = 1 after the 30-min command (lags before 0 take the value at 0), standardized features, unpenalized intercept, trained on the R receivers' noisy observations; the same features for the reporter forecast; ridge parameter from {1e-6, 1e-4, 1e-2, 1, 100} by 5-fold cross-validation over R receivers",
+    "narx": "as arx after a full degree-2 polynomial expansion of the eight features",
+    "b3_belief": "B3-likelihood weights over the R receivers with the same history (b3_waiting.reference_history_probability weights) applied to their rho(t) (reporter: f(t + 10))"
+  },
+  "conversion": "P(success at t) = g_h(rho_hat(t)) with g_h a non-decreasing (pool-adjacent-violators) map from predicted rho to success, fitted per history on out-of-fold predictions for the R receivers (5 folds over R receivers, seed 20261015, the same folds for every predictor; kernel and B3 predictors use the other folds as references). The action probes at the first decision time at which the running maximum of P reaches the certified threshold c (else at 120 min); c is certified on C as in E1. C and T outcomes never enter g_h.",
+  "test_metrics": "On T (references and training = R): (a) RMSE of the 10-min reporter forecast over t = 0-110 min; (b) RMSE of rho over all decision times and over t = 60-120 min; (c) Brier score and 10-bin expected calibration error of P(success) over all (receiver, history, decision time); (d) false-ready rate per history = failed probes / probes sent at a threshold crossing (fallback probes at 120 min excluded; their number reported); (e) success per history with one-sided 95% Clopper-Pearson bound, mean failure-penalized completion, paired completion difference against the E1 certified fixed waits of the same split with a 95% bootstrap interval (2000 resamples, seed 20261012).",
+  "summary": "Medians and ranges over the 20 splits of every metric; for each split the Spearman rank correlation over the six predictors between (a) and completion, and between (b, all times) and completion; splits meeting 0.9 per history.",
+  "statements": {
+    "E3-S1": "Split 0: the ordering of the six predictors by (a), by (b) at 60-120 min, by Brier score and by completion; whether the predictor with the lowest (a) also has the shortest completion among predictors meeting 0.9 per history.",
+    "E3-S2": "Median over splits of the Spearman correlation between (a) and completion and between (b) and completion.",
+    "E3-S3": "Split 0 and over splits: ARX and NARX against the B3 belief and smoothing in (a), (b), Brier score, false-ready rate and completion."
+  },
+  "checks": "Freeze hash; causality: predictions and features at t are unchanged when observations after t are replaced by NaN; the calibration maps are unchanged when every C and T outcome and rho is replaced by NaN; history_mean equals a direct average; leakage: inverting all test outcomes leaves the certified thresholds unchanged; split 0 recomputed from scratch within 1e-12; summary and statements re-derived with independent code.",
+  "known_before_freezing": "E1 and E2 results (results/b3/waiting_strict_results.json, waiting_budget_results.json) were known; no E3 quantity had been computed. Predictor set, features and ridge grid were set without trial fits.",
+  "interpretation_limits": "Simulation of one model structure in which B3 is the plant, so the B3 belief and the model-trained kernels are correctly specified while ARX and NARX are not structurally informed; seen posterior vectors; population-mean uncertainty. Measured cells carry labels only for the probes actually sent, so no counterfactual decision evaluation is made on measured data.",
+  "reporting": "All predictors, metrics and splits reported whatever their direction, including agreement or disagreement between forecast error and decision quality."
+}

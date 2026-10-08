@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "checks": {
+    "freeze": {
+      "protocol_sha256": "1fc7a5c0018a9f9faf04f18f19467cb21e813d1b452f26112f9525b483ca4078"
+    },
+    "oracle": {
+      "second_probe_refused": true,
+      "calls_equal_budget": true
+    },
+    "monotone": {
+      "readiness_non_decreasing": true,
+      "ladders_non_increasing": true
+    },
+    "pava": {
+      "random_cases": 200
+    },
+    "selection": {
+      "hand_computed_certified_rung": 0
+    },
+    "leakage": {
+      "test_outcomes_inverted_choices_unchanged": true
+    },
+    "summary": {
+      "summary_rederived": true,
+      "statements_rederived": true
+    },
+    "recompute": {
+      "recomputed_split": 0
+    }
+  }
+}

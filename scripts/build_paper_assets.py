@@ -660,6 +660,27 @@ fig.savefig(FIG / "waiting_frontier.pdf", bbox_inches="tight", pad_inches=.02, m
 fig.savefig(FIG / "waiting_frontier.png", bbox_inches="tight", pad_inches=.02)
 plt.close(fig)
 
+# Single-column condition map for the paper; the four-panel waiting figure above is in the supplement.
+fig, ax = plt.subplots(figsize=(3.45, 2.0))
+ax.imshow(np.ma.masked_where(unclassified, values), cmap=cmap, vmin=-limit, vmax=limit, aspect="auto")
+for (r_, c_), v in np.ndenumerate(values):
+    if unclassified[r_, c_]:
+        ax.text(c_, r_, "n.c.", ha="center", va="center", fontsize=5, color=MUTED)
+        continue
+    ax.text(c_, r_, "0.0" if abs(v) < .05 else f"{v:+.1f}".replace("-", "−"), ha="center", va="center", fontsize=5.5,
+            color="white" if abs(v) > .6 * limit else INK, fontweight="bold" if helps[r_, c_] else "normal")
+    if helps[r_, c_]:
+        ax.add_patch(plt.Rectangle((c_ - .47, r_ - .43), .94, .86, fill=False, lw=.9, ec=INK))
+ax.set_xticks(range(len(ds)), [f"{d:g}" for d in ds], fontsize=6)
+ax.set_yticks(range(len(rows)), [f"{n:g}".replace("0.", ".") + f", {i}" for n, i in rows], fontsize=6)
+ax.set_xlabel("Feedback delay $d$ (min)", fontsize=7, labelpad=1)
+ax.set_ylabel(r"Noise s.d., $\Delta$ (min)", fontsize=7, labelpad=1)
+ax.tick_params(length=2)
+fig.subplots_adjust(left=.2, right=.99, bottom=.17, top=.99)
+fig.savefig(FIG / "condition_map.pdf", bbox_inches="tight", pad_inches=.02, metadata={"CreationDate": None})
+fig.savefig(FIG / "condition_map.png", bbox_inches="tight", pad_inches=.02)
+plt.close(fig)
+
 # Fig. 4: B3's recovery error on measured cells (recovery check) and its cost for waiting (mismatch study).
 recovery = json.loads((B3_RESULTS / "recovery_check_results.json").read_text(encoding="utf-8"))
 mismatch = json.loads((B3_RESULTS / "waiting_mismatch_results.json").read_text(encoding="utf-8"))
@@ -685,7 +706,7 @@ ax.set_xticks([o + i for _, o, _ in groups for i in range(3)], [DOSE_LABEL[d] fo
 ax.set(xlim=(-.6, 6.2), ylim=(0, 1.), ylabel="Probe rise / naive rise")
 ax.legend(loc="upper left", frameon=False, fontsize=5.5, handlelength=1.4, borderaxespad=.1)
 ax.grid(axis="y", alpha=.15)
-ax.text(-.12, 1.02, "(a)", transform=ax.transAxes, fontsize=7, fontweight="bold", va="bottom")
+ax.text(0., 1.04, "(a)", transform=ax.transAxes, fontsize=7, fontweight="bold", va="bottom")
 hidden = mismatch["summary"]["0.005"]["hidden_lag"]["model_calibrated"]
 lags = sorted(int(k) for k in hidden)
 LAG_STYLE = {"fixed": (MUTED, ":", "s", "fixed wait"), "current": (INK, "--", "^", "current"),
@@ -696,18 +717,180 @@ for name, (color, style, marker, label) in LAG_STYLE.items():
 bx.plot(lags, [100 * hidden[f"{L}"]["0.94"]["success"]["oracle"]["long"]["median"] for L in lags], color=INK, lw=.6,
         ls=(0, (1, 2)), label="oracle")
 shift = mismatch["descriptive"]["shift_equivalents"]["mixed"]["shift_equivalent_min"]
-bx.axvspan(shift, max(lags), color=NULL_COLOR, alpha=.45, lw=0)
-bx.text(shift + .6, 62, "measured\nprobe:\n$\\geq$%.1f min" % shift, fontsize=5.5, color=INK, va="center")
-bx.axhline(90, color=MUTED, lw=.6, ls=":", zorder=0)
-bx.set(xlabel="Hidden recovery lag $L$ after the 30-min command (min)", ylabel="Success after 30 min (%)",
+bx.axvline(shift, color=INK, lw=.8, ls=(0, (2, 1.5)), zorder=0)
+bx.text(shift - .6, 62, "measured probe:\n$\\approx$%.1f min\n(pure shift)" % shift, fontsize=5.5, color=INK,
+        va="center", ha="right")
+bx.axhline(90, color=MUTED, lw=.8, ls="--", zorder=0)
+bx.text(21, 91.5, "$q=0.9$", fontsize=5.5, color=MUTED, va="bottom")
+bx.set(xlabel="Hidden recovery lag $L$ after the 30-min command (min)", ylabel="Success, 30-min history (%)",
        xlim=(0, max(lags)), ylim=(0, 101), xticks=range(0, max(lags) + 1, 8))
 bx.legend(loc="lower left", ncol=1, frameon=False, fontsize=5.5, handlelength=2.0, borderaxespad=.1)
 bx.grid(axis="y", alpha=.15)
-bx.text(-.12, 1.02, "(b)", transform=bx.transAxes, fontsize=7, fontweight="bold", va="bottom")
+bx.text(0., 1.04, "(b)", transform=bx.transAxes, fontsize=7, fontweight="bold", va="bottom")
 fig.subplots_adjust(left=.15, right=.98, bottom=.1, top=.95)
 fig.savefig(FIG / "model_mismatch.pdf", bbox_inches="tight", pad_inches=.02, metadata={"CreationDate": None})
 fig.savefig(FIG / "model_mismatch.png", bbox_inches="tight", pad_inches=.02)
 plt.close(fig)
+
+# Revision 2026-10-08: strict evaluation (E1), one-probe budgets (E2), prediction to decision (E3), scope (E4).
+strict = json.loads((B3_RESULTS / "waiting_strict_results.json").read_text(encoding="utf-8"))
+budget = json.loads((B3_RESULTS / "waiting_budget_results.json").read_text(encoding="utf-8"))
+decide = json.loads((B3_RESULTS / "predict_decide_results.json").read_text(encoding="utf-8"))
+scope = json.loads((B3_RESULTS / "waiting_scope_results.json").read_text(encoding="utf-8"))
+RULE_NAMES = {"fixed": "Fixed", "current": "Current", "smoothed": "Smoothed", "history": "B3 belief",
+              "history_delay": "B3 belief + delay", "oracle": "Oracle"}
+
+
+def signed(v, digits=1):
+    text = f"{v:+.{digits}f}"
+    return text.replace("-", "$-$") if v < 0 else text
+
+
+def pct(v):
+    return f"{100 * v:.1f}"
+
+
+def strict_rows(noise, names):
+    split0, summary = strict["repeats"]["0"][noise], strict["summary"][noise]["certified"]
+    rows = []
+    for name in names:
+        rule = split0["oracle"] if name == "oracle" else split0["arms"]["certified"]["rules"][name]
+        cells = [f"{pct(rule[h]['success_rate'])} ({pct(rule[h]['lower_95'])})" for h in ("short", "long")]
+        cells.append(f"{rule['all']['mean_completion_min']:.1f}")
+        if name in ("current", "smoothed", "history"):
+            pair = split0["arms"]["certified"]["paired"][name]["all"]
+            lo, hi = pair["completion_ci"]
+            cells.append(f"{signed(pair['completion'])} [{signed(lo)}, {signed(hi)}]")
+        else:
+            cells.append("--")
+        cells.append("--" if name == "oracle" else f"{summary['meets_per_history'][name]}/20")
+        label = RULE_NAMES[name]
+        if name == "fixed":
+            choice = split0["arms"]["certified"]["choices"]["fixed"]
+            label += f" ({choice['short']['wait_min']:g}/{choice['long']['wait_min']:g})"
+        rows.append(" & ".join([label] + cells))
+    return rows
+
+
+write_table("strict_waiting", "lccccc",
+            r"Rule & $S_3$ (LB) & $S_{30}$ (LB) & $T$ & $\Delta T$ [95\% CI] & Met",
+            strict_rows("0.005", ("fixed", "current", "smoothed", "history", "oracle"))
+            + [r"\midrule", r"\multicolumn{6}{l}{Noise s.d.\ 0.01 (same roles; the fixed waits do not change)}"]
+            + strict_rows("0.01", ("smoothed", "history")))
+
+# Supplement: the three calibration arms of E1 over the 20 splits (met per history / joint bound).
+arm_rows = []
+for noise in ("0.005", "0.01"):
+    for arm, label in (("certified", "certified"), ("plugin_090", "plug-in 0.90"), ("plugin_094", "plug-in 0.94$^*$")):
+        block = strict["summary"][noise][arm]
+        arm_rows.append(" & ".join([noise, label] + [f"{block['meets_per_history'][n]}/{block['joint_bound'][n]}"
+                                                     for n in ("fixed", "current", "smoothed", "history")]
+                                   + [signed(block["paired_completion"][n]["median"]) for n in ("smoothed", "history")]))
+write_table("strict_arms", "llcccccc",
+            r"Noise & Arm & Fixed & Current & Smoothed & B3 & $\Delta T_{\mathrm{sm}}$ & $\Delta T_{\mathrm{B3}}$", arm_rows)
+
+# Fig. 2: calibration budget with one probe per calibration receiver (E2).
+BUDGETS = (50, 100, 200)
+RULE_COLOR = {"fixed": MUTED, "smoothed": "#2a78d6", "history_delay": "#eb6834"}
+CONDITION = {("one_probe", "plugin"): ("-", "o", "one probe, plug-in"),
+             ("one_probe", "certified"): ("--", "s", "one probe, certified"),
+             ("full_curve", "certified"): (":", "^", "full curves, certified")}
+OFFSET = {"fixed": -.09, "smoothed": 0., "history_delay": .09}
+fig, (ax, bx) = plt.subplots(1, 2, figsize=(3.45, 1.85), gridspec_kw=dict(wspace=.5))
+for rule, color in RULE_COLOR.items():
+    for (info, sel), (style, marker, _) in CONDITION.items():
+        blocks = [budget["summary"]["baseline"][str(n)][info][sel] for n in BUDGETS]
+        x = np.arange(len(BUDGETS)) + OFFSET[rule]
+        face = "white" if sel == "certified" else color
+        ax.plot(x, [b["meets_per_history"][rule] for b in blocks], color=color, ls=style, marker=marker, ms=2.8, lw=.9, mfc=face)
+        bx.plot(x, [b["completion"][rule]["median"] for b in blocks], color=color, ls=style, marker=marker, ms=2.8, lw=.9,
+                mfc=face)
+e1 = strict["summary"]["0.005"]["certified"]
+for rule in ("fixed", "smoothed"):
+    ax.plot([3 + OFFSET[rule]], [e1["meets_per_history"][rule]], marker="*", ms=5, color=RULE_COLOR[rule], ls="none")
+    bx.plot([3 + OFFSET[rule]], [e1["completion"][rule]["median"]], marker="*", ms=5, color=RULE_COLOR[rule], ls="none")
+for axis in (ax, bx):
+    axis.set_xticks(range(4), ["50", "100", "200", "316$^\\star$"], fontsize=6)
+    axis.set_xlabel("Receivers per history", fontsize=6.5, labelpad=1)
+    axis.grid(axis="y", alpha=.15)
+    axis.tick_params(length=2, labelsize=6)
+ax.set(ylim=(-.5, 20.5), yticks=(0, 5, 10, 15, 20))
+ax.set_ylabel("Splits meeting $q$ (of 20)", fontsize=6.5, labelpad=1)
+bx.set_ylabel("Mean completion (min)", fontsize=6.5, labelpad=1)
+bx.set(ylim=(110, 143))
+bx.text(1.0, 140.8, "fallback (120 min)", fontsize=5, color=INK, ha="center", va="bottom")
+handles = [matplotlib.lines.Line2D([], [], color=c, lw=1.2) for c in RULE_COLOR.values()]
+handles += [matplotlib.lines.Line2D([], [], color=INK, ls=s, marker=m, ms=2.8, lw=.8, mfc="white" if "certified" in l else INK)
+            for s, m, l in CONDITION.values()]
+labels = ["fixed", "smoothed", "B3 + delay"] + [l for _, _, l in CONDITION.values()]
+fig.legend(handles, labels, loc="upper center", ncol=3, frameon=False, fontsize=5.2, handlelength=1.8,
+           bbox_to_anchor=(.53, 1.13), columnspacing=.8)
+ax.text(-.32, 1.02, "(a)", transform=ax.transAxes, fontsize=7, fontweight="bold", va="bottom")
+bx.text(-.32, 1.02, "(b)", transform=bx.transAxes, fontsize=7, fontweight="bold", va="bottom")
+fig.subplots_adjust(left=.12, right=.99, bottom=.2, top=.86)
+fig.savefig(FIG / "probe_budget.pdf", bbox_inches="tight", pad_inches=.02, metadata={"CreationDate": None})
+fig.savefig(FIG / "probe_budget.png", bbox_inches="tight", pad_inches=.02)
+plt.close(fig)
+
+# Supplement: E2 in full, met per history / median completion (baseline and hidden lag 8 min).
+BUDGET_RULES = ("fixed", "current", "smoothed", "history", "history_delay")
+budget_rows = []
+for scenario, tag in (("baseline", "model"), ("hidden_lag_8", "lag 8")):
+    for n in BUDGETS:
+        for info, sel in (("one_probe", "plugin"), ("one_probe", "certified"), ("full_curve", "plugin"), ("full_curve", "certified")):
+            block = budget["summary"][scenario][str(n)][info][sel]
+            cells = [f"{block['meets_per_history'][r]}/{block['completion'][r]['median']:.0f}" for r in BUDGET_RULES]
+            budget_rows.append(" & ".join([tag, str(n), info.replace("_", " "), sel] + cells))
+write_table("probe_budget", "llllccccc",
+            r"Plant & $n$ & Information & Selection & Fixed & Current & Smoothed & B3 & B3+delay", budget_rows)
+
+# Table: from prediction to decision (E3), medians over the 20 splits.
+PRED_NAMES = {"history_mean": "Hist.\\ mean", "current": "Current", "smoothed": "Smoothed",
+              "arx": "ARX", "narx": "NARX", "b3_belief": "B3 belief"}
+pred_rows = []
+for name, label in PRED_NAMES.items():
+    m = decide["summary"]["metrics"][name]
+    false_ready = decide["summary"]["false_ready"][name]
+    pred_rows.append(" & ".join([
+        label, f"{1e3 * m['forecast_rmse']['median']:.1f}", f"{1e3 * m['rho_rmse_late']['median']:.0f}",
+        f"{1e3 * m['brier']['median']:.0f}",
+        "/".join("--" if false_ready[h]["median"] is None else f"{100 * false_ready[h]['median']:.1f}" for h in ("short", "long")),
+        f"{decide['summary']['completion'][name]['median']:.1f}", signed(decide["summary"]["paired_completion"][name]["median"]),
+        f"{decide['summary']['meets_per_history'][name]}/20"]))
+write_table("predict_decide", "lccccccc",
+            r"Predictor & $e_{10}$ & $e_\rho$ & Brier & FR (\%) & $T$ & $\Delta T$ & Met", pred_rows)
+
+# Supplement: E4 task cells and mismatch forms.
+CELL_NAMES = {"baseline": "Baseline", "kappa_0.4": r"$\kappa=0.4$", "kappa_0.6": r"$\kappa=0.6$",
+              "kappa_0.8": r"$\kappa=0.8$", "window_10": r"$W=10$", "window_30": r"$W=30$",
+              "penalty_200": r"$T_{\rm f}=200$", "penalty_260": r"$T_{\rm f}=260$"}
+cell_rows = []
+for cell, label in CELL_NAMES.items():
+    b = scope["summary"]["task"][cell]
+    cell_rows.append(" & ".join([label, f"{b['oracle_feasible']}/20"]
+                                + [str(b["meets_per_history"][n]) for n in ("fixed", "current", "smoothed", "history")]
+                                + [signed(b["paired_completion"][n]["median"]) for n in ("smoothed", "history")]))
+write_table("scope_task", "lccccccc",
+            r"Task & Oracle & Fix. & Cur. & Sm. & B3 & $\Delta T_{\mathrm{sm}}$ & $\Delta T_{\mathrm{B3}}$", cell_rows)
+FORM_NAMES = {"shift": "Shift $L$ (min)", "amplitude": "Amplitude $a$", "rate": "Slowing $s$", "heterogeneity": r"Spread $\sigma$",
+              "anchored_amplitude": "Anchored $a^*$", "anchored_rate": "Anchored $s^*$"}
+form_rows = []
+for key, b in scope["summary"]["mismatch"].items():
+    form, level = key.split("/")
+    model = b["model_calibrated"]
+    cells = [FORM_NAMES[form], f"{float(level):.3g}", pct(b["oracle"]["success_long"]["median"])]
+    cells += [pct(model["success_long"][n]["median"]) for n in ("fixed", "smoothed", "history")]
+    if "recalibrated" in b:
+        recal = b["recalibrated"]
+        cells += [str(recal["meets_per_history"][n]) for n in ("fixed", "smoothed", "history")]
+        cells.append(signed(recal["paired_completion"]["smoothed"]["median"]))
+    else:
+        cells += ["--"] * 4
+    form_rows.append(" & ".join(cells))
+write_table("scope_mismatch", "llcccccccc",
+            r"Form & Level & Oracle & \multicolumn{3}{c}{Model-calibrated $S_{30}$ (\%)} & \multicolumn{3}{c}{Re-certified, met} & $\Delta T_{\mathrm{sm}}$",
+            [r" & & $S_{30}$ & Fixed & Sm. & B3 & Fixed & Sm. & B3 & "] + form_rows)
+
 
 audit = {
     "source_result_sha256": hashlib.sha256((OUT / "calibration_results.json").read_bytes()).hexdigest(),
@@ -720,6 +903,10 @@ audit = {
     "b3_delay_map_target_result_sha256": hashlib.sha256((B3_RESULTS / "delay_map_target_results.json").read_bytes()).hexdigest(),
     "b3_recovery_check_result_sha256": hashlib.sha256((B3_RESULTS / "recovery_check_results.json").read_bytes()).hexdigest(),
     "b3_waiting_mismatch_result_sha256": hashlib.sha256((B3_RESULTS / "waiting_mismatch_results.json").read_bytes()).hexdigest(),
+    "b3_waiting_strict_result_sha256": hashlib.sha256((B3_RESULTS / "waiting_strict_results.json").read_bytes()).hexdigest(),
+    "b3_waiting_budget_result_sha256": hashlib.sha256((B3_RESULTS / "waiting_budget_results.json").read_bytes()).hexdigest(),
+    "b3_predict_decide_result_sha256": hashlib.sha256((B3_RESULTS / "predict_decide_results.json").read_bytes()).hexdigest(),
+    "b3_waiting_scope_result_sha256": hashlib.sha256((B3_RESULTS / "waiting_scope_results.json").read_bytes()).hexdigest(),
     "generated_tables": [p.name for p in sorted(TAB.glob("*.tex"))],
     "generated_figures": [p.name for p in sorted(FIG.glob("*.pdf"))],
     "fitted_models": False,

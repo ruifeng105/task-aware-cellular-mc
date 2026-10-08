@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "checks": {
+    "freeze": {
+      "protocol_sha256": "9bc6c0bea1b026d5387b11218d4b6a3362a8e409488526e49786f96b899a5195"
+    },
+    "windows": {
+      "w20_max_abs_difference": 7.450580596923828e-09,
+      "rise_non_decreasing_in_window": true
+    },
+    "baseline": {
+      "baseline_equals_e1_certified": true
+    },
+    "plants": {
+      "neutral_levels_equal_model": true,
+      "monotone_in_severity": true,
+      "readiness_monotone_in_time": true
+    },
+    "anchors": {
+      "crossing_equals_mismatch_study": true,
+      "shift_equivalent_min": 35.54389278020065
+    },
+    "leakage": {
+      "test_outcomes_inverted_choices_unchanged": true
+    },
+    "recompute": {
+      "recomputed": [
+        "cell window_10 split 0",
+        "cell kappa_0.8 split 0",
+        "mismatch split 0"
+      ]
+    },
+    "summary": {
+      "summary_rederived": true
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "protocol_path": "simulation/configs/b3_waiting_strict_protocol.json",
+  "protocol_sha256": "6e9933dd3b66ee3fc1e1db32516c4fb6c4395ab9c15e7aca2fbf5ae76345eb21",
+  "frozen_utc": "2026-10-08T20:41:34+00:00",
+  "statement": "Recorded before any E1 quantity was computed. The design (disjoint roles, distinct vectors, certified calibration) was chosen after the earlier waiting studies and the twin audit, whose results are listed in the protocol."
+}

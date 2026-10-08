@@ -1,0 +1,6 @@
+{
+  "protocol_path": "simulation/configs/b3_waiting_budget_protocol.json",
+  "protocol_sha256": "1fc7a5c0018a9f9faf04f18f19467cb21e813d1b452f26112f9525b483ca4078",
+  "frozen_utc": "2026-10-08T20:51:44+00:00",
+  "statement": "Recorded after the E1 run (its results are listed in the protocol) and before any E2 quantity was computed."
+}

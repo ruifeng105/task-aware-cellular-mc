@@ -1,0 +1,43 @@
+{
+  "status": "passed",
+  "checks": {
+    "freeze": {
+      "protocol_sha256": "1705efa9e9f38ea623744f5d0cc9347e62b2f0c84482b923fdef87e2af60b953"
+    },
+    "rho": {
+      "rho_reproduces_success": true
+    },
+    "causality": {
+      "cuts": [
+        0,
+        20,
+        45
+      ],
+      "predictors": [
+        "history_mean",
+        "current",
+        "smoothed",
+        "arx",
+        "narx",
+        "b3_belief"
+      ]
+    },
+    "reference_only": {
+      "maps_use_reference_receivers_only": true,
+      "history_mean_is_direct_average": true
+    },
+    "comparator": {
+      "fixed_choices_equal_e1": true
+    },
+    "leakage": {
+      "test_outcomes_inverted_thresholds_unchanged": true
+    },
+    "summary": {
+      "summary_rederived": true,
+      "statements_rederived": true
+    },
+    "recompute": {
+      "recomputed_split": 0
+    }
+  }
+}

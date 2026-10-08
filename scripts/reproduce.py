@@ -527,6 +527,29 @@ def revision7_metrics():
     return flatten("b3/recovery_check", {k: check[k] for k in ("mixed", "three_twenty", "collapse", "reading")})
 
 
+def revision8_metrics():
+    """Revision plan of 2026-10-08 (P0 audits, E1-E4): protocol trace and sample-role audit, strict reliability
+    evaluation with disjoint roles, one-probe calibration budgets, prediction-to-decision link, and task and
+    mismatch-form sensitivity."""
+    values = {}
+    audit = ROOT / "simulation/results/audit"
+    trace = json.loads((audit / "protocol_trace.json").read_text(encoding="utf-8"))
+    values.update(flatten("audit/protocol", {k: trace[k] for k in ("mixed", "truncation")}))
+    design = json.loads((audit / "waiting_design_audit.json").read_text(encoding="utf-8"))
+    values.update(flatten("audit/waiting_design", {k: design[k] for k in ("posterior", "twins_per_split", "rescored")}))
+    strict = json.loads((B3 / "waiting_strict_results.json").read_text(encoding="utf-8"))
+    values.update(flatten("b3/strict", {k: strict[k] for k in ("summary", "statements")}))
+    values.update(flatten("b3/strict/split0", {noise: strict["repeats"]["0"][noise]["arms"] for noise in ("0.005", "0.01")}))
+    budget = json.loads((B3 / "waiting_budget_results.json").read_text(encoding="utf-8"))
+    values.update(flatten("b3/budget", {k: budget[k] for k in ("summary", "statements")}))
+    decide = json.loads((B3 / "predict_decide_results.json").read_text(encoding="utf-8"))
+    values.update(flatten("b3/predict_decide", {k: decide[k] for k in ("summary", "statements")}))
+    values.update(flatten("b3/predict_decide/split0", decide["repeats"]["0"]))
+    scope = json.loads((B3 / "waiting_scope_results.json").read_text(encoding="utf-8"))
+    values.update(flatten("b3/scope", {k: scope[k] for k in ("anchors", "summary", "statements")}))
+    return values
+
+
 def phase_detail_metrics():
     """Per-condition forecast errors by phase from the frozen nested models."""
     data = json.loads((NESTED / "phase_detail.json").read_text(encoding="utf-8"))
@@ -555,6 +578,7 @@ def compare_reference():
     actual.update(revision5_metrics())
     actual.update(revision6_metrics())
     actual.update(revision7_metrics())
+    actual.update(revision8_metrics())
     if actual.keys() != expected.keys():
         raise ValueError("Manuscript metric keys differ from the frozen reference.")
     max_error = 0.0
@@ -578,7 +602,9 @@ def compare_reference():
                  B3 / "waiting_frontier_verification_results.json", B3 / "delay_map_verification_results.json",
                  NESTED / "nested_extensions_verification_results.json", B3 / "natural_probe_verification_results.json",
                  B3 / "waiting_mismatch_verification_results.json", B3 / "delay_map_target_verification_results.json",
-                 NESTED / "onset_split_verification_results.json", B3 / "recovery_check_verification_results.json"):
+                 NESTED / "onset_split_verification_results.json", B3 / "recovery_check_verification_results.json",
+                 B3 / "waiting_strict_verification_results.json", B3 / "waiting_budget_verification_results.json",
+                 B3 / "predict_decide_verification_results.json", B3 / "waiting_scope_verification_results.json"):
         if json.loads(path.read_text(encoding="utf-8"))["status"] != "passed":
             raise ValueError(f"Verification {path.relative_to(ROOT)} did not pass.")
     return {"status": "passed", "entries_compared": len(actual),
@@ -651,6 +677,11 @@ def main():
             run_step("b3_delay_map_target", [sys.executable, str(CODE / "b3_delay_map_target.py")])
             run_step("nested_onset_split", [sys.executable, str(CODE / "nested_onset_split.py")])
             run_step("b3_recovery_check", [sys.executable, str(CODE / "b3_recovery_check.py")])
+            run_step("b3_window_tables", [sys.executable, str(CODE / "b3_window_tables.py")])
+            run_step("b3_waiting_strict", [sys.executable, str(CODE / "b3_waiting_strict.py")])
+            run_step("b3_waiting_budget", [sys.executable, str(CODE / "b3_waiting_budget.py")])
+            run_step("b3_predict_decide", [sys.executable, str(CODE / "b3_predict_decide.py")])
+            run_step("b3_waiting_scope", [sys.executable, str(CODE / "b3_waiting_scope.py")])
         run_step("verify_b3_forecast", [sys.executable, str(CODE / "verify_b3_forecast.py")])
         run_step("verify_b3_readiness", [sys.executable, str(CODE / "verify_b3_readiness.py")])
         run_step("verify_nested_forecast", [sys.executable, str(CODE / "verify_nested_forecast.py")])
@@ -672,6 +703,13 @@ def main():
         run_step("verify_b3_delay_map_target", [sys.executable, str(CODE / "verify_b3_delay_map_target.py")])
         run_step("verify_nested_onset_split", [sys.executable, str(CODE / "verify_nested_onset_split.py")])
         run_step("verify_b3_recovery_check", [sys.executable, str(CODE / "verify_b3_recovery_check.py")])
+        run_step("audit_protocols", [sys.executable, str(CODE / "audit_protocols.py")])
+        run_step("audit_waiting_design", [sys.executable, str(CODE / "audit_waiting_design.py")])
+        run_step("verify_strict_eval", [sys.executable, str(CODE / "verify_strict_eval.py")])
+        run_step("verify_b3_waiting_strict", [sys.executable, str(CODE / "verify_b3_waiting_strict.py")])
+        run_step("verify_b3_waiting_budget", [sys.executable, str(CODE / "verify_b3_waiting_budget.py")])
+        run_step("verify_b3_predict_decide", [sys.executable, "-W", "ignore", str(CODE / "verify_b3_predict_decide.py")])
+        run_step("verify_b3_waiting_scope", [sys.executable, str(CODE / "verify_b3_waiting_scope.py")])
         run_step("synthetic_checks", [sys.executable, str(CODE / "smoke_check.py")])
         report["manuscript_reference"] = compare_reference()
         print(f"Passed frozen manuscript comparison ({report['manuscript_reference']['entries_compared']} entries)", flush=True)
@@ -691,6 +729,8 @@ def main():
                        "-jobname=AI_MC_Cellular_Receivers_Draft", "main.tex"]
             if shutil.which("latexmk"):
                 run_step("compile_paper", ["latexmk", "-pdf", *options], ROOT / "paper")
+                run_step("compile_supplement", ["latexmk", "-pdf", "-interaction=nonstopmode", "-halt-on-error",
+                                                "-jobname=AI_MC_Cellular_Receivers_Supplement", "supplement.tex"], ROOT / "paper")
             elif shutil.which("pdflatex") and shutil.which("bibtex"):
                 run_step("latex_pass_1", ["pdflatex", *options], ROOT / "paper")
                 run_step("bibliography", ["bibtex", "AI_MC_Cellular_Receivers_Draft"], ROOT / "paper")

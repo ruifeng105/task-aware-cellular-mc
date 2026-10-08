@@ -1,0 +1,6 @@
+{
+  "protocol_path": "simulation/configs/b3_predict_decide_protocol.json",
+  "protocol_sha256": "1705efa9e9f38ea623744f5d0cc9347e62b2f0c84482b923fdef87e2af60b953",
+  "frozen_utc": "2026-10-08T21:03:26+00:00",
+  "statement": "Recorded after the E1 and E2 runs (listed in the protocol) and before any E3 quantity was computed."
+}

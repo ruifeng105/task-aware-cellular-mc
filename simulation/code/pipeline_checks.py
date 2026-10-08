@@ -81,10 +81,17 @@ def check_pilot_result_fields():
     return failures
 
 
+MANUSCRIPTS = (ROOT / 'paper/main.tex', ROOT / 'paper/supplement.tex')   # the paper and its supplementary material
+
+
+def manuscript_text():
+    return '\n'.join(path.read_text(encoding='utf-8') for path in MANUSCRIPTS if path.is_file())
+
+
 def check_manuscript_assets():
     """Every table and figure the manuscript includes exists, and the frozen reference covers the expanded analysis."""
     failures = []
-    tex = (ROOT / 'paper/main.tex').read_text(encoding='utf-8')
+    tex = manuscript_text()
     for name in re.findall(r'\\input\{tables/([^}]+)\}', tex):
         path = ROOT / 'paper/tables' / (name if name.endswith('.tex') else name + '.tex')
         if not path.is_file():
@@ -104,7 +111,7 @@ def check_manuscript_assets():
 def check_manuscript_numbers_frozen():
     """Every number printed with four or more decimals in the manuscript must
     equal a frozen reference value at the printed precision."""
-    tex = (ROOT / 'paper/main.tex').read_text(encoding='utf-8')
+    tex = manuscript_text()
     reference = json.loads((ROOT / 'reproduction/reference_metrics.json').read_text(encoding='utf-8'))['metrics']
     frozen = [float(v) for v in reference.values() if isinstance(v, (int, float)) and not isinstance(v, bool)]
     failures = []

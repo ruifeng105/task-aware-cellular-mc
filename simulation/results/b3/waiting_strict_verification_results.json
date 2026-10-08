@@ -1,0 +1,34 @@
+{
+  "status": "passed",
+  "checks": {
+    "freeze": {
+      "protocol_sha256": "6e9933dd3b66ee3fc1e1db32516c4fb6c4395ab9c15e7aca2fbf5ae76345eb21",
+      "inputs_pinned": 2
+    },
+    "roles": {
+      "splits": 20,
+      "receivers_per_role": 316,
+      "distinct": 948
+    },
+    "candidates": {
+      "candidates_equal_frontier": true
+    },
+    "leakage": {
+      "test_outcomes_inverted_choices_unchanged": true
+    },
+    "fallback": {
+      "all_certified_choices_fall_back": true,
+      "scored_at_120": true
+    },
+    "recompute": {
+      "recomputed_splits": [
+        0,
+        7
+      ]
+    },
+    "summary": {
+      "summary_rederived": true,
+      "statements_rederived": true
+    }
+  }
+}

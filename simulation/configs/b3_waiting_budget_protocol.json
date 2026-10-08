@@ -1,0 +1,47 @@
+{
+  "name": "E2: calibration of the per-history waiting rules from one probe outcome per calibration receiver",
+  "version": 1,
+  "status": "frozen_before_running",
+  "date": "2026-10-08",
+  "reason": "Revision plan E2. Every earlier calibration, including E1, used the complete outcome curve of each calibration receiver (its success at every decision time), which an experiment cannot observe: a cell gives one probe outcome after one command history. This study limits calibration to one probe per calibration receiver at a randomly assigned rung of a pre-specified ladder and asks how much of the feedback gain and of the per-history reliability survives at budgets of 50, 100 and 200 receivers per history.",
+  "unchanged": "Everything listed as unchanged in configs/b3_waiting_strict_protocol.json (tables, task, estimators, crossing rule, 120-min horizon); the E1 receivers, roles and noise draws of each split (b3_waiting_strict.roles and noise_seed); estimator references are the R receivers' model trajectories and model outcomes and consume no probe budget.",
+  "inputs_sha256": {
+    "simulation/results/b3/readiness_tables.npz": "a6e1caef4fcea969a6f3ac56180d605c330c24f254038fe595616e00d6694401",
+    "simulation/configs/b3_waiting_strict_protocol.json": "6e9933dd3b66ee3fc1e1db32516c4fb6c4395ab9c15e7aca2fbf5ae76345eb21"
+  },
+  "noise": 0.005,
+  "splits": "the 20 E1 splits; split 0 primary",
+  "budgets_per_history": [50, 100, 200],
+  "calibration_draw": "For split r and history h the first n receivers of a permutation of the 316 C receivers with seed 20261013 + 1000 r + h (nested budgets; the two histories are drawn independently, so one parameter vector can serve both histories, each with its own probe).",
+  "ladders": {
+    "description": "20 rungs per rule, rung 0 the most conservative; every rule is the same as in E1 except that its parameter is restricted to the ladder",
+    "fixed": "probe at 120, 116, ..., 44 min",
+    "current": "running-maximum threshold crossing at 0.99, 0.98, ..., 0.80",
+    "smoothed": "16-min smoothing scale (the scale chosen in every E1 split and in every earlier full-information calibration; disclosed), thresholds 0.99, 0.98, ..., 0.80",
+    "history": "B3 belief, thresholds 0.99, 0.98, ..., 0.80",
+    "history_delay": "B3 belief crossing 0.90, then a post-trigger delay delta = 38, 36, ..., 0 min; probe at min(crossing + delta, 120)"
+  },
+  "information": {
+    "one_probe": "Each calibration receiver is assigned a rung j_i uniformly at random (seed 20261014 + 1000 r + h, shared by all rules) and probed once, at its own decision time under rung j_i; only that outcome is returned (an accessor that refuses a second request per receiver and rule). Each rule's calibration is a separate experiment with the same budget.",
+    "full_curve": "Ideal-information benchmark at the same budget: the same n receivers with their outcome under every rung."
+  },
+  "selection": {
+    "plugin": "one_probe: pool-adjacent-violators fit of a non-increasing success rate over the rungs that received probes (weights = receivers per rung); full_curve: the empirical success of each rung. The most aggressive rung whose estimate is >= 0.9 is chosen; if none, the probe is sent at 120 min.",
+    "certified": "Fixed sequence from rung 0: rung j is admitted if p = P(Bin(m_j, 0.9) >= k_j) <= 0.025, where for one_probe m_j and k_j count the receivers probed at rung j or a more aggressive rung and their successes (each such receiver's outcome under its own rung cannot exceed its outcome under rung j, because decision times are monotone in the rung and readiness is monotone in time, so the test is conservative), and for full_curve all n receivers' outcomes under rung j; the sequence stops at the first rung not admitted; the most aggressive admitted rung is chosen; if none, the probe is sent at 120 min (certified false)."
+  },
+  "scenarios": {
+    "baseline": "primary; the model is the plant",
+    "hidden_lag_8": "secondary; after the 30-min command the plant's outcome at decision time t is the model's outcome at t - 8 min (failure for t < 8), reporter and references unchanged; calibration labels and test outcomes come from the plant"
+  },
+  "test_metrics": "As in E1 on the T receivers (references R): per scenario, budget, information, selection, rule and history: chosen rung, certified flag, success rate, one-sided 95% Clopper-Pearson lower bound, mean failure-penalized completion, mean wait; paired completion difference of each adaptive rule minus the fixed rule with the same budget, information and selection.",
+  "summary": "Over the 20 splits for every scenario, budget, information, selection and rule: splits meeting 0.9 per history on test; splits certified for both histories (certified selection); median, minimum and maximum of test success per history and of mean completion; median paired completion difference against the fixed rule and the number of splits in which it is negative; retained gain = median over splits of (T_fixed - T_rule) under one_probe divided by the median of the same quantity under full_curve at the same budget and selection.",
+  "statements": {
+    "E2-S1": "Baseline, one_probe: for each budget, selection and rule the splits meeting 0.9 per history and the median mean completion.",
+    "E2-S2": "Baseline: retained gain of the smoothed, B3-belief and delay rules for each budget under certified and plugin selection; with the E1 full-information certified result (316 receivers, full grid) as reference.",
+    "E2-S3": "Hidden lag 8 min, one_probe: splits meeting 0.9 per history for each budget, selection and rule."
+  },
+  "checks": "Freeze hash; the label accessor is called exactly once per calibration receiver, rule and history and refuses a second call; readiness (model and lagged) is non-decreasing in decision time for every receiver and history, and decision indices are non-increasing along every ladder, the two conditions of the conservative one-probe test; the pool-adjacent-violators fit equals a brute-force isotonic fit on random inputs; a hand-computed certified selection on a synthetic example; inverting all test outcomes leaves every choice unchanged; split 0 recomputed from scratch equals the saved result within 1e-12; the summary and E2-S1 to E2-S3 re-derived with independent code.",
+  "known_before_freezing": "The E1 results (results/b3/waiting_strict_results.json) were known: full-grid certified calibration on 316 receivers met 0.9 per history on test in 18-20 of 20 splits, the smoothed and B3-belief rules finished 7.5 and 6.6 min (medians) earlier than certified fixed waits, and the B3-belief chain failed at its first rung (0.99) for the 3-min history in 4 of 20 splits. The certification needs >= 295 of 316 successes; with one probe per receiver and 20 rungs no outcome of this study had been computed. Ladders, budgets and the delay rung c = 0.90 were set from the E1 choices (thresholds 0.93-0.98, fixed waits 94-110 min).",
+  "interpretation_limits": "As in E1 (seen posterior vectors, one model structure, population-mean uncertainty). The probe design (uniform rung assignment) is one simple design; adaptive probe allocation is not studied. The hidden-lag scenario is a stylized stress test, not calibrated on measured cells.",
+  "reporting": "All cells reported whatever their direction, including budgets at which calibration is infeasible or the gain vanishes; these are reported as deployment limits."
+}
