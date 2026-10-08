@@ -16,7 +16,7 @@
       "arrival_includes_delay": true
     },
     "kernel": {
-      "max_abs_probability_difference": 0.004914567633989286,
+      "max_abs_probability_difference": 0.004914567633989564,
       "tolerance": 0.01
     },
     "leakage": {

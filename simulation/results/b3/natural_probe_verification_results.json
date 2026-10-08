@@ -14,7 +14,8 @@
       "later_frames_unused": true
     },
     "recompute": {
-      "max_abs_difference": 0.0
+      "max_abs_difference": 1.7089664305913743e-07,
+      "max_rel_difference": 1.3152624340620312e-06
     }
   }
 }

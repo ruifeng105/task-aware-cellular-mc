@@ -9,7 +9,7 @@
   },
   "resimulation": {
     "entries_resimulated": 60,
-    "max_abs_difference": 5.958142801354427e-08
+    "max_abs_difference": 5.9581427791499664e-08
   },
   "version1": {
     "max_recovered_fraction": 0.7916608197645788,

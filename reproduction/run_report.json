@@ -1,145 +1,163 @@
 {
   "status": "passed",
   "mode": "verify",
-  "started_utc": "2026-10-07T17:48:25.632654+00:00",
+  "started_utc": "2026-10-08T05:39:34.546291+00:00",
   "environment": {
-    "python": "3.13.16",
-    "numpy": "2.3.5",
-    "pandas": "2.2.3",
-    "matplotlib": "3.10.8",
+    "python": "3.13.3",
+    "numpy": "2.3.2",
+    "pandas": "2.3.2",
+    "matplotlib": "3.10.6",
     "openpyxl": "3.1.5"
   },
   "steps": [
     {
       "name": "verify_data_and_scores",
       "return_code": 0,
-      "elapsed_seconds": 0.894,
+      "elapsed_seconds": 0.887,
       "log": "reproduction/logs/verify_data_and_scores.log"
     },
     {
       "name": "verify_expanded",
       "return_code": 0,
-      "elapsed_seconds": 11.597,
+      "elapsed_seconds": 8.15,
       "log": "reproduction/logs/verify_expanded.log"
     },
     {
       "name": "verify_b3_model",
       "return_code": 0,
-      "elapsed_seconds": 51.0,
+      "elapsed_seconds": 18.479,
       "log": "reproduction/logs/verify_b3_model.log"
     },
     {
       "name": "verify_b3_forecast",
       "return_code": 0,
-      "elapsed_seconds": 341.501,
+      "elapsed_seconds": 71.303,
       "log": "reproduction/logs/verify_b3_forecast.log"
     },
     {
       "name": "verify_b3_readiness",
       "return_code": 0,
-      "elapsed_seconds": 13.56,
+      "elapsed_seconds": 8.544,
       "log": "reproduction/logs/verify_b3_readiness.log"
     },
     {
       "name": "verify_nested_forecast",
       "return_code": 0,
-      "elapsed_seconds": 396.585,
+      "elapsed_seconds": 88.967,
       "log": "reproduction/logs/verify_nested_forecast.log"
     },
     {
       "name": "verify_b3_waiting",
       "return_code": 0,
-      "elapsed_seconds": 51.554,
+      "elapsed_seconds": 52.202,
       "log": "reproduction/logs/verify_b3_waiting.log"
     },
     {
       "name": "verify_b3_waiting_robustness",
       "return_code": 0,
-      "elapsed_seconds": 40.614,
+      "elapsed_seconds": 52.038,
       "log": "reproduction/logs/verify_b3_waiting_robustness.log"
     },
     {
       "name": "verify_b3_waiting_sensitivity",
       "return_code": 0,
-      "elapsed_seconds": 14.296,
+      "elapsed_seconds": 24.321,
       "log": "reproduction/logs/verify_b3_waiting_sensitivity.log"
     },
     {
       "name": "verify_b3_noprobe",
       "return_code": 0,
-      "elapsed_seconds": 3.132,
+      "elapsed_seconds": 2.363,
       "log": "reproduction/logs/verify_b3_noprobe.log"
     },
     {
       "name": "verify_b3_waiting_baselines",
       "return_code": 0,
-      "elapsed_seconds": 7.747,
+      "elapsed_seconds": 12.459,
       "log": "reproduction/logs/verify_b3_waiting_baselines.log"
     },
     {
       "name": "verify_b3_waiting_stress",
       "return_code": 0,
-      "elapsed_seconds": 10.762,
+      "elapsed_seconds": 13.474,
       "log": "reproduction/logs/verify_b3_waiting_stress.log"
     },
     {
       "name": "verify_nested_arx",
       "return_code": 0,
-      "elapsed_seconds": 418.435,
+      "elapsed_seconds": 106.608,
       "log": "reproduction/logs/verify_nested_arx.log"
     },
     {
       "name": "verify_b3_waiting_margin",
       "return_code": 0,
-      "elapsed_seconds": 27.56,
+      "elapsed_seconds": 39.437,
       "log": "reproduction/logs/verify_b3_waiting_margin.log"
     },
     {
       "name": "verify_b3_noprobe_kappa",
       "return_code": 0,
-      "elapsed_seconds": 1.077,
+      "elapsed_seconds": 0.951,
       "log": "reproduction/logs/verify_b3_noprobe_kappa.log"
     },
     {
       "name": "verify_b3_ar1_likelihood",
       "return_code": 0,
-      "elapsed_seconds": 2.323,
+      "elapsed_seconds": 1.62,
       "log": "reproduction/logs/verify_b3_ar1_likelihood.log"
     },
     {
       "name": "verify_b3_waiting_frontier",
       "return_code": 0,
-      "elapsed_seconds": 34.953,
+      "elapsed_seconds": 49.772,
       "log": "reproduction/logs/verify_b3_waiting_frontier.log"
     },
     {
       "name": "verify_b3_delay_map",
       "return_code": 0,
-      "elapsed_seconds": 35.236,
+      "elapsed_seconds": 6.77,
       "log": "reproduction/logs/verify_b3_delay_map.log"
     },
     {
       "name": "verify_nested_extensions",
       "return_code": 0,
-      "elapsed_seconds": 1.24,
+      "elapsed_seconds": 0.931,
       "log": "reproduction/logs/verify_nested_extensions.log"
     },
     {
       "name": "verify_natural_probe",
       "return_code": 0,
-      "elapsed_seconds": 70.927,
+      "elapsed_seconds": 16.705,
       "log": "reproduction/logs/verify_natural_probe.log"
+    },
+    {
+      "name": "verify_b3_waiting_mismatch",
+      "return_code": 0,
+      "elapsed_seconds": 176.633,
+      "log": "reproduction/logs/verify_b3_waiting_mismatch.log"
+    },
+    {
+      "name": "verify_b3_delay_map_target",
+      "return_code": 0,
+      "elapsed_seconds": 9.246,
+      "log": "reproduction/logs/verify_b3_delay_map_target.log"
+    },
+    {
+      "name": "verify_nested_onset_split",
+      "return_code": 0,
+      "elapsed_seconds": 65.854,
+      "log": "reproduction/logs/verify_nested_onset_split.log"
     },
     {
       "name": "synthetic_checks",
       "return_code": 0,
-      "elapsed_seconds": 0.505,
+      "elapsed_seconds": 0.414,
       "log": "reproduction/logs/synthetic_checks.log"
     },
     {
       "name": "pipeline_checks",
       "return_code": 0,
-      "elapsed_seconds": 0.79,
+      "elapsed_seconds": 0.757,
       "log": "reproduction/logs/pipeline_checks.log"
     }
   ],
@@ -148,12 +166,12 @@
   "scope": "Fixed pilot reproduction; B3 original-author exports are reused.",
   "manuscript_reference": {
     "status": "passed",
-    "entries_compared": 14165,
-    "max_absolute_error": 4.345477970513212e-12,
+    "entries_compared": 41716,
+    "max_absolute_error": 9.020562075079397e-17,
     "relative_tolerance": 1e-08,
     "absolute_tolerance": 1e-10
   },
   "calibration_result_sha256": "780f2768582a19224350d3783d19ccd3da52b1fca5d98f6a0776270df87bc6cb",
   "expanded_result_sha256": "c538d3b4f7dc8d2033e251a098b316b106b6cf18c488734dbdbe4ed465521971",
-  "finished_utc": "2026-10-07T18:14:02.046314+00:00"
+  "finished_utc": "2026-10-08T05:53:23.632014+00:00"
 }

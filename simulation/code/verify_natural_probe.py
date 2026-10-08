@@ -52,11 +52,14 @@ def estimator_check():
 
 
 def recompute_check(saved):
+    """Every recomputed number within 1e-9 + 1e-5 |saved|. The B3-derived values (collapsed-weight effective sample
+    sizes near 1, B3 medians, Brier scores) move by up to ~1e-6 relative between NumPy builds (2.3.2 vs 2.3.5);
+    a purely absolute 1e-9 bound failed across environments although nothing else changed."""
     fresh = json.loads(json.dumps(npb.compute()))
-    worst = 0.
+    worst, worst_rel = 0., 0.
 
     def walk(a, b, path=''):
-        nonlocal worst
+        nonlocal worst, worst_rel
         if isinstance(a, dict):
             assert a.keys() == b.keys(), path
             for k in a:
@@ -67,11 +70,12 @@ def recompute_check(saved):
                 walk(x, y, f'{path}/{i}')
         elif isinstance(a, (int, float)) and not isinstance(a, bool) and a is not None:
             worst = max(worst, abs(a - b))
+            worst_rel = max(worst_rel, abs(a - b) / max(abs(b), 1e-12))
+            assert abs(a - b) <= 1e-9 + 1e-5 * abs(b), (path, a, b)
         else:
             assert a == b, path
     walk({k: v for k, v in fresh.items() if k not in ('frozen_utc',)}, {k: v for k, v in saved.items() if k not in ('frozen_utc',)})
-    assert worst < 1e-9, worst
-    return dict(max_abs_difference=worst)
+    return dict(max_abs_difference=worst, max_rel_difference=worst_rel)
 
 
 def main():

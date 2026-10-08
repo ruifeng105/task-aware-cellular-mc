@@ -26,40 +26,26 @@
       "verify_b3_delay_map",
       "verify_nested_extensions",
       "verify_natural_probe",
+      "verify_b3_waiting_mismatch",
+      "verify_b3_delay_map_target",
+      "verify_nested_onset_split",
       "synthetic_checks",
       "pipeline_checks"
     ],
-    "frozen_manuscript_entries_compared": 14165,
-    "max_absolute_error": 4.345477970513212e-12,
+    "frozen_manuscript_entries_compared": 41716,
+    "max_absolute_error": 9.020562075079397e-17,
     "original_source_files_verified": 47,
     "expanded_source_files_verified": 56,
     "b3_source_files_verified": 3,
     "pdf_pages": 8,
     "environment": {
-      "python": "3.13.16",
-      "numpy": "2.3.5",
-      "pandas": "2.2.3",
-      "matplotlib": "3.10.8",
+      "python": "3.13.3",
+      "numpy": "2.3.2",
+      "pandas": "2.3.2",
+      "matplotlib": "3.10.6",
       "openpyxl": "3.1.5"
     },
-    "note": "The four 2026-10-07 analyses (b3_waiting_frontier, b3_delay_map, nested_extensions, natural_probe) were each run once after their protocols were frozen and are checked here by their verify scripts; the earlier full-pipeline run of 2026-10-06 is not repeated.",
-    "checks_2026_10_08": {
-      "verify_scripts_passed": [
-        "verify_b3_waiting_mismatch",
-        "verify_b3_delay_map_target",
-        "verify_nested_onset_split"
-      ],
-      "frozen_manuscript_entries_compared": 41716,
-      "max_absolute_error": 4.345477970513212e-12,
-      "pipeline_checks": "passed (8 checks)",
-      "environment": {
-        "python": "3.13.3",
-        "numpy": "2.3.2",
-        "pandas": "2.3.2",
-        "matplotlib": "3.10.6"
-      },
-      "note": "Run individually on 2026-10-08. A full verify-mode run including these steps was started and paused at the author's request before it finished, so the steps list above is that of the 2026-10-07 run and reproduction/run_report.json is unchanged."
-    }
+    "note": "Full verify run on 2026-10-08 in the local environment listed above. The three 2026-10-08 analyses (b3_waiting_mismatch, b3_delay_map_target, nested_onset_split) and the four of 2026-10-07 were each run once after their protocols were frozen and are checked here by their verify scripts; the earlier full-pipeline run of 2026-10-06 is not repeated."
   },
   "files": {
     ".gitattributes": {
@@ -75,20 +61,20 @@
       "bytes": 38453
     },
     "Paper_Notes_ZH.md": {
-      "sha256": "f181c0a92b59c9649a36068e4a07e3e04a8be825b281ba932c27859ee335868f",
-      "bytes": 20532
+      "sha256": "bf2af417eb9af7a0ffeb6cf072a269686be9805c620d9ed4757f167240231db5",
+      "bytes": 20687
     },
     "Paper_Simulation_Map_ZH.md": {
       "sha256": "cff6241e0899f97306bea9c06c78e15d73f994557ec93c65faffb3eaab5afe3a",
       "bytes": 9090
     },
     "README.md": {
-      "sha256": "d98ca124b008e2a0a69361d1678d887bfa9f85653d13d3ab7c6c049f8be49151",
-      "bytes": 29105
+      "sha256": "4169ed2f8cf554dd3e1f781d04ce5e44e112a9a1d311dda6ad64c7633df74b4e",
+      "bytes": 30870
     },
     "paper/AI_MC_Cellular_Receivers_Draft.pdf": {
-      "sha256": "e6f4f525b6055420a28157693360236d4ee905ab4954db6008eac6e776deeccd",
-      "bytes": 405087
+      "sha256": "15d29456d3c26b5655b3be250490044273e391b614c1a61e81fb1583dd4ceae9",
+      "bytes": 415287
     },
     "paper/IEEEtran.cls": {
       "sha256": "da751920a317ed318b7b5cd7fa585a6cc7d28502d457856382e9be24b10a3bd7",
@@ -159,12 +145,12 @@
       "bytes": 96407
     },
     "paper/main.tex": {
-      "sha256": "8a6e696cbe614d67bf59aed45237599560a4df4f84673dd8dba53b16ed4b6670",
-      "bytes": 40419
+      "sha256": "63c4600b61a4b4d02a3c131c33d72d336169845865fa385fdaa7a8309b42d3b6",
+      "bytes": 42818
     },
     "paper/qa_report.json": {
-      "sha256": "c87076f685b5f34928ade660202b2271c103f948808d2c4f07d115a9fa198358",
-      "bytes": 2414
+      "sha256": "395b63b78fb9bdc8338bf98b4369089792f15a5ed7df8b6524efaf5bf174a4e3",
+      "bytes": 2829
     },
     "paper/references.bib": {
       "sha256": "d3db13a4ce2bef4df95a874ae854fd2b9c2db9ebacf2f5178bfa55b2e2ae3f43",
@@ -339,19 +325,23 @@
       "bytes": 671
     },
     "reproduction/logs/verify_b3_delay_map.log": {
-      "sha256": "dfce7110705c64e5b6898f99213d18cc56b6b7378d2f154a63cff1b7865ebdcd",
+      "sha256": "c1908b8c20c09227f717bb644c6c511dfedeba3348a14373b0e572ba7e761f4d",
       "bytes": 737
+    },
+    "reproduction/logs/verify_b3_delay_map_target.log": {
+      "sha256": "0e0fa6cb50ede486399d147a62d03682196d42cc1318b2a4b547bfdc8400bb08",
+      "bytes": 746
     },
     "reproduction/logs/verify_b3_forecast.log": {
       "sha256": "fa6c2444352dc6c250145bed17596337d9d3de83baad2d373f88946d013e1f4f",
       "bytes": 386
     },
     "reproduction/logs/verify_b3_model.log": {
-      "sha256": "e98c336e40f76c287225660cc6315236b077363c49f0d58544398a2992b185ec",
-      "bytes": 982
+      "sha256": "4c5de3bf96ac1e63976c1f28eefe5a25968565b8cbc7d21904253ed4141061da",
+      "bytes": 980
     },
     "reproduction/logs/verify_b3_noprobe.log": {
-      "sha256": "337dda1d07fd4adbb0dc2f1d62abe7bc527cd2201ea20e80fab1723b6e05a34a",
+      "sha256": "ac61c6366f858b585fb93c0685b7a04d7544d5230c4ac81c42ad40da3a1f10e5",
       "bytes": 485
     },
     "reproduction/logs/verify_b3_noprobe_kappa.log": {
@@ -359,8 +349,8 @@
       "bytes": 462
     },
     "reproduction/logs/verify_b3_readiness.log": {
-      "sha256": "33bd1141cf74251744e7f2df3d89c8f658d2565d57abe312619007fc1f19a51f",
-      "bytes": 745
+      "sha256": "0d479562020a87d19c5af5f0e8069a0b5df765b73bcb24eea855549c8b6c265d",
+      "bytes": 746
     },
     "reproduction/logs/verify_b3_waiting.log": {
       "sha256": "68b698f34d347818e00174fe6816bacc0c7e8fabf1f88d261336a66f9a9275f3",
@@ -377,6 +367,10 @@
     "reproduction/logs/verify_b3_waiting_margin.log": {
       "sha256": "bbf9f9ad0542f408882e760541848aadcd61610c21bd0c62fbaab0f0e4bd0700",
       "bytes": 641
+    },
+    "reproduction/logs/verify_b3_waiting_mismatch.log": {
+      "sha256": "70cc246fedb0a4ae8b183fe5bdd3e4a04060e9b2584489db621e0c4c713e3c28",
+      "bytes": 955
     },
     "reproduction/logs/verify_b3_waiting_robustness.log": {
       "sha256": "43b33b59d55c84d52dce6fa228f1387e89db2b82076a455b1a11138c4aef17c5",
@@ -399,28 +393,32 @@
       "bytes": 2276
     },
     "reproduction/logs/verify_natural_probe.log": {
-      "sha256": "cc372dcb4b8f100960880bd75d3fe3816db563a681ce531bde7c5d1e5db80e19",
-      "bytes": 450
+      "sha256": "7137001737a8e740e426b68bc2b48bf71a7d2c6e070d3d4a7cc186a0eac0380c",
+      "bytes": 521
     },
     "reproduction/logs/verify_nested_arx.log": {
-      "sha256": "9abc8cd18546bc7571ccd7c5f0de94c36f4bea685200cbc658c79393bd017072",
-      "bytes": 418
+      "sha256": "099a17f41b22707de555870b9d6f0d5eb55a2b2d6729ea71497a360fb94bb504",
+      "bytes": 399
     },
     "reproduction/logs/verify_nested_extensions.log": {
       "sha256": "66e6e7d4a454e14012f1391c2d70d1d03d185b6d73e4391d1b42391f10c3f013",
       "bytes": 508
     },
     "reproduction/logs/verify_nested_forecast.log": {
-      "sha256": "aeba52612b4121efc1a57cc54652ebb206f1f1c4592379e61df246e0cdbaaf8d",
-      "bytes": 791
+      "sha256": "96529e78410c47a0608a9820e0e129e79f9bd596f4db5b35849eba36a49c793b",
+      "bytes": 773
+    },
+    "reproduction/logs/verify_nested_onset_split.log": {
+      "sha256": "2f193d6b638a7a73971aeec74181a6c25c08a5e47b6de05d4ce253fd42b16384",
+      "bytes": 408
     },
     "reproduction/reference_metrics.json": {
       "sha256": "bdc0a8bc77c3703dd2c8c9aa9be506f5617b4931c0ffe546284080220a0424fd",
       "bytes": 6944545
     },
     "reproduction/run_report.json": {
-      "sha256": "6219da701c4f404bec88681ae6a6cc2581e293a84cf072358be2d3ee531addfb",
-      "bytes": 4547
+      "sha256": "c15fb411e4016bfa0ac8f599d267b332003e497c38de4de55274ba61906c3c3d",
+      "bytes": 5077
     },
     "requirements-reproduced.txt": {
       "sha256": "d74b9fb1c9d1ec341e9fdf25375f64ee886227c49c8076e01d6b45f78624f1fa",
@@ -431,8 +429,8 @@
       "bytes": 124
     },
     "revision/Revision_Response_ZH.md": {
-      "sha256": "b6137725727b936137e34c67bc7bc430cde8b0f9292b5167f855c00fc0ac37d5",
-      "bytes": 17179
+      "sha256": "e6401d00a0399c35ccebf1640a702ce3e9760cbf13fa23f54fd45f3d7327aecc",
+      "bytes": 20192
     },
     "revision/receiver_reuse_revision_plan.xlsx": {
       "sha256": "681f632427505a628c0292555020c761f9eeee05fc474047470c4307f59323e9",
@@ -443,19 +441,19 @@
       "bytes": 43700
     },
     "scripts/reproduce.py": {
-      "sha256": "41a926d37fdfac4820530ebb2dcd0f31e27b97f38d5745f9a4178ce2ab8274f9",
-      "bytes": 43609
+      "sha256": "24099b47cdf68765f04efc1b49dad6135b157ca56a5e7d625ef8e280049b7b3c",
+      "bytes": 43615
     },
     "simulation/AI_MC_Application_First_Review_ZH.md": {
       "sha256": "b82778d48db9c03113f5f04a9337db590a7c0cda13e75c1582ed27b27830acee",
       "bytes": 30518
     },
     "simulation/README.md": {
-      "sha256": "d3da6180bc5c54198ddd2d639af6d01060dc7f038b07345912100901f26fa0b6",
-      "bytes": 22239
+      "sha256": "cd6a61d0f0414dadaee88d07d03489d7a248537d2eb8a5c0cd5a503a2691e10b",
+      "bytes": 22559
     },
     "simulation/checksums.json": {
-      "sha256": "52c31f60cfb1e4d1bc3cab249ae31631ed508ee141c2e3b975893478f80af956",
+      "sha256": "089c4ea9ef3c561868b57a8915fe7dfc0acdce1c712605ab7c66cfa82d057b01",
       "bytes": 46140
     },
     "simulation/code/b3_ar1_likelihood.py": {
@@ -659,8 +657,8 @@
       "bytes": 6908
     },
     "simulation/code/verify_natural_probe.py": {
-      "sha256": "5e3f85ce878307924b70f53a81a769e6819b2d10f2438bb7777d5999bd880c7d",
-      "bytes": 3525
+      "sha256": "ea53498c29999cd34474504ee07a9d11a34a829422af1f8dd2f2720b1664a647",
+      "bytes": 4012
     },
     "simulation/code/verify_nested_arx.py": {
       "sha256": "f15cf75b9c05240b577f85119ef67eceb55fb50162663386ef8d1a8b3970c142",
@@ -1315,7 +1313,7 @@
       "bytes": 746
     },
     "simulation/results/b3/delay_map_verification_results.json": {
-      "sha256": "dfce7110705c64e5b6898f99213d18cc56b6b7378d2f154a63cff1b7865ebdcd",
+      "sha256": "c1908b8c20c09227f717bb644c6c511dfedeba3348a14373b0e572ba7e761f4d",
       "bytes": 737
     },
     "simulation/results/b3/forecast_results.json": {
@@ -1335,8 +1333,8 @@
       "bytes": 54068
     },
     "simulation/results/b3/natural_probe_verification_results.json": {
-      "sha256": "cc372dcb4b8f100960880bd75d3fe3816db563a681ce531bde7c5d1e5db80e19",
-      "bytes": 450
+      "sha256": "7137001737a8e740e426b68bc2b48bf71a7d2c6e070d3d4a7cc186a0eac0380c",
+      "bytes": 521
     },
     "simulation/results/b3/noprobe_kappa_results.json": {
       "sha256": "31df17a8bd0a19101f74bc933aa78aecf02fbc1ce0c60b20c53243588a07769b",
@@ -1355,7 +1353,7 @@
       "bytes": 3773826
     },
     "simulation/results/b3/noprobe_verification_results.json": {
-      "sha256": "337dda1d07fd4adbb0dc2f1d62abe7bc527cd2201ea20e80fab1723b6e05a34a",
+      "sha256": "ac61c6366f858b585fb93c0685b7a04d7544d5230c4ac81c42ad40da3a1f10e5",
       "bytes": 485
     },
     "simulation/results/b3/readiness_decisions.csv": {
@@ -1383,12 +1381,12 @@
       "bytes": 788002
     },
     "simulation/results/b3/readiness_verification_results.json": {
-      "sha256": "33bd1141cf74251744e7f2df3d89c8f658d2565d57abe312619007fc1f19a51f",
-      "bytes": 745
+      "sha256": "0d479562020a87d19c5af5f0e8069a0b5df765b73bcb24eea855549c8b6c265d",
+      "bytes": 746
     },
     "simulation/results/b3/verification_results.json": {
-      "sha256": "e98c336e40f76c287225660cc6315236b077363c49f0d58544398a2992b185ec",
-      "bytes": 982
+      "sha256": "4c5de3bf96ac1e63976c1f28eefe5a25968565b8cbc7d21904253ed4141061da",
+      "bytes": 980
     },
     "simulation/results/b3/waiting_baselines_results.json": {
       "sha256": "841b7947ddb4efc779da77d2fb23114dab2a0c539f7503187aae8db1748eb8aa",
@@ -1511,8 +1509,8 @@
       "bytes": 56333
     },
     "simulation/results/nested/nested_arx_verification_results.json": {
-      "sha256": "9abc8cd18546bc7571ccd7c5f0de94c36f4bea685200cbc658c79393bd017072",
-      "bytes": 418
+      "sha256": "099a17f41b22707de555870b9d6f0d5eb55a2b2d6729ea71497a360fb94bb504",
+      "bytes": 399
     },
     "simulation/results/nested/nested_extensions_protocol_freeze.json": {
       "sha256": "f2a01c2471229a133a5ee2bd236b5470e23adfce7a7bbed74e370ab17e45cde1",
@@ -1539,8 +1537,8 @@
       "bytes": 128913
     },
     "simulation/results/nested/nested_verification_results.json": {
-      "sha256": "aeba52612b4121efc1a57cc54652ebb206f1f1c4592379e61df246e0cdbaaf8d",
-      "bytes": 791
+      "sha256": "96529e78410c47a0608a9820e0e129e79f9bd596f4db5b35849eba36a49c793b",
+      "bytes": 773
     },
     "simulation/results/nested/onset_split_results.json": {
       "sha256": "24245a24392b294708c77a924356e92b63244e7643be7704f71a5688dc254357",

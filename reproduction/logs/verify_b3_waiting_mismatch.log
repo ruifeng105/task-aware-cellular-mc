@@ -1,0 +1,43 @@
+{
+  "status": "passed",
+  "protocol_sha256": "8ab22138b2b88bd075f1b32428bb0386c72b510713c9c7ae4411c2ff50bb1e05",
+  "baseline": {
+    "cells_compared": 120
+  },
+  "hidden_lag": {
+    "cells_checked": 2520
+  },
+  "slow_and_recalibration": {
+    "r": 3,
+    "noise": 0.005,
+    "slow_restriction": true,
+    "threshold_only_lag0_equals_baseline": true
+  },
+  "leakage": {
+    "r": 5,
+    "noise": 0.005,
+    "lag": 8,
+    "evaluation_outcomes_inverted": true,
+    "choices_unchanged": true
+  },
+  "recomputation": {
+    "r": 7,
+    "noise": 0.01,
+    "identical": true
+  },
+  "descriptive": {
+    "identical": true,
+    "shift_mixed_min": 35.54389278020065,
+    "null_median": 0.03882485430309947
+  },
+  "statements": {
+    "summary_rederived": true,
+    "statements_recomputed": [
+      "M1",
+      "M2",
+      "M3",
+      "M4"
+    ]
+  },
+  "scope": "Simulation of the published B3 model with stylized recovery errors; not evidence about measured cells."
+}

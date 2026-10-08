@@ -608,7 +608,7 @@ def main():
         log.write_bytes(completed.stdout.replace(b"\r\n", b"\n"))
         report["steps"].append({"name": name, "return_code": completed.returncode,
                                 "elapsed_seconds": round(time.monotonic() - start, 3),
-                                "log": str(log.relative_to(ROOT))})
+                                "log": log.relative_to(ROOT).as_posix()})
         if completed.returncode:
             raise RuntimeError(f"{name} failed; see {log.relative_to(ROOT)}")
         print(f"Passed {name}", flush=True)
