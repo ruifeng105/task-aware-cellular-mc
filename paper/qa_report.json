@@ -1,8 +1,8 @@
 {
   "date": "2026-10-08",
   "status": "passed",
-  "pdf_pages": 6,
-  "visual_review": "All 6 pages rendered with pdftoppm and inspected: title block, equations (1)-(6) without overflow, Table I (10-min RMSE by role with pairwise condition counts), Table II (per-history waiting with oracle-gap closure), Fig. 1 (author system-concept figure, full width, compressed by the author on 2026-10-08), Fig. 2 (single-column condition map at target 0.94 with bold headline cells and n.c. marks), Fig. 3 ((a) posterior predictive check of B3 recovery, (b) success under a hidden recovery lag) and the 25-entry reference list fit without label collisions. The 5-page supplement (Tables S1-S3, Figs. S1-S2) compiles without overfull boxes or undefined references.",
+  "pdf_pages": 7,
+  "visual_review": "All 7 pages rendered with pdftoppm and inspected: equations (1)-(7) without overflow, Table I (10-min RMSE by role), Table II (certified waiting on held-out simulated receivers with one-sided bounds, paired intervals and certified counts), Table III (prediction to decision), Fig. 1 (author system figure), Fig. 2 (one-probe calibration budget), Fig. 3 ((a) posterior predictive check of B3 recovery, (b) success under a hidden recovery lag with the measured probe marked as a pure-shift equivalent) and the 27-entry reference list fit without overlaps. The 9-page supplement (Tables S1-S11, Figs. S1-S2) compiles without overfull boxes or undefined references.",
   "latex_overfull_boxes": 0,
   "latex_underfull_boxes": 1,
   "undefined_references": 0,
@@ -12,10 +12,12 @@
   "expanded_source_git_blobs_verified": 56,
   "b3_source_git_blobs_verified": 3,
   "numerical_scores_recomputed": true,
-  "manuscript_numbers_checked": "All 5 numbers with at least four decimals match frozen values (pipeline_checks); after the 2026-10-07 text revision and the 2026-10-08 additions (model-mismatch section, condition map at 0.94, onset split, new abstract and contributions) every percentage, minute, count and range in the changed sentences was re-checked against the result files by independent read-only reviews; the B3 recovery-check sentences and Figs. 2(b) and 4 were checked against the frozen result files by the author.",
-  "controller_evaluated": "calibrated waiting rules in simulation on B3 only (fixed amplitude and duration), including feedback delay and stylized recovery errors of the model (hidden and reporter-visible lags, recalibration on outcomes); readiness calls checked on measured cells at two natural probes (no completion time)",
+  "manuscript_numbers_checked": "All 21 numbers with at least four decimals in the paper and the supplement match frozen values (pipeline_checks); the numbers of the 2026-10-08 revision (E1-E4, audits) were checked against their result files by the author and by an independent read-only review.",
+  "controller_evaluated": "waiting rules in simulation on B3 only (fixed amplitude and duration): certified per-history calibration with disjoint reference, calibration and test receivers, one-probe calibration budgets, a prediction-to-decision chain, task-definition sensitivity and hidden recovery errors of several forms; readiness calls checked on measured cells at two natural probes (no completion time); no rule run on cells",
   "IEEEtran_class_git_blob_sha": "8d2b1c6478f81e0e2f65cb62debabbf236fb0304",
   "bibliography_notes": "Scherer et al. updated to TMBMC vol. 12, pp. 22-41, 2026 (Crossref); Mendeley v2 creator is M. Dobrzynski (DataCite) with Y. Blum as contributor; Postiglione et al. pages added; Barros final issue year 2020. Revision 2026-10-07 added Kilinc & Akan (JSAC 2013), Mosayebi et al. (JSAC 2014), Cao et al. (TMBMC 2020), Tung & Mitra (ICC 2019; replaces an ISTC 2018 entry whose title is not in Crossref), Wald (Ann. Math. Statist. 1945) and Poor & Hadjiliadis (Cambridge, 2008 print year of the DOI record); the DOIs of all six were checked against Crossref.",
-  "page_limit_note": "ICC 2027 limits initial submissions to six printed pages including references (checked on the official site on 2026-10-08; longer papers are rejected without review); the paper has {pages} pages, and details are in the supplementary material in the repository.",
-  "scope": "Document quality and frozen-result consistency; no independent-day validation and no policy validation on measured cells."
+  "page_limit_note": "ICC 2027 limits initial submissions to six printed pages including references; the user allowed 7 pages for this revision and will compress the paper before submission.",
+  "scope": "Document quality and frozen-result consistency; no independent-day validation and no policy validation on measured cells.",
+  "supplement_pdf_pages": 9,
+  "supplement_overfull_boxes": 0
 }

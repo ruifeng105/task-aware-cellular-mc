@@ -1,0 +1,8 @@
+distinct 948 {1: 900, 2: 44, 3: 4}
+eval twins [28, 28, 32, 23, 20, 33, 19, 26, 28, 26, 30, 25, 25, 25, 26, 28, 28, 23, 22, 28]
+cal twins [24, 28, 30, 32, 33, 16, 27, 32, 24, 27, 22, 37, 32, 20, 34, 25, 26, 34, 35, 22]
+0.90 {'current': {'all': 1.067, 'without_twin': 1.085, 'twin_only': 1.514}, 'smoothed': {'all': -5.794, 'without_twin': -5.851, 'twin_only': -5.323}, 'history': {'all': -5.458, 'without_twin': -5.445, 'twin_only': -6.902}}
+0.90 meets without twin {'current': 7, 'smoothed': 12, 'history': 10, 'fixed': 8}
+0.94 {'current': {'all': 0.174, 'without_twin': 0.135, 'twin_only': -0.674}, 'smoothed': {'all': -7.705, 'without_twin': -7.692, 'twin_only': -7.791}, 'history': {'all': -7.193, 'without_twin': -7.11, 'twin_only': -8.873}}
+0.94 meets without twin {'current': 20, 'smoothed': 20, 'history': 20, 'fixed': 20}
+infeasible {}

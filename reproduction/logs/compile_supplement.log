@@ -3,6 +3,6 @@ I changed them all to CP936
 Rc files read:
   NONE
 Latexmk: This is Latexmk, John Collins, 27 Dec. 2024. Version 4.86a.
-Latexmk: Nothing to do for 'main.tex'.
-Latexmk: All targets (AI_MC_Cellular_Receivers_Draft.pdf) are up-to-date
+Latexmk: Nothing to do for 'supplement.tex'.
+Latexmk: All targets (AI_MC_Cellular_Receivers_Supplement.pdf) are up-to-date
 

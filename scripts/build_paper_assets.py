@@ -763,7 +763,7 @@ def strict_rows(noise, names):
             cells.append(f"{signed(pair['completion'])} [{signed(lo)}, {signed(hi)}]")
         else:
             cells.append("--")
-        cells.append("--" if name == "oracle" else f"{summary['meets_per_history'][name]}/20")
+        cells.append("--" if name == "oracle" else f"{summary['meets_per_history'][name]} ({summary['certified_both'][name]})")
         label = RULE_NAMES[name]
         if name == "fixed":
             choice = split0["arms"]["certified"]["choices"]["fixed"]
@@ -776,7 +776,7 @@ write_table("strict_waiting", "lccccc",
             r"Rule & $S_3$ (LB) & $S_{30}$ (LB) & $T$ & $\Delta T$ [95\% CI] & Met",
             strict_rows("0.005", ("fixed", "current", "smoothed", "history", "oracle"))
             + [r"\midrule", r"\multicolumn{6}{l}{Noise s.d.\ 0.01 (same roles; the fixed waits do not change)}"]
-            + strict_rows("0.01", ("smoothed", "history")))
+            + strict_rows("0.01", ("current", "smoothed", "history")))
 
 # Supplement: the three calibration arms of E1 over the 20 splits (met per history / joint bound).
 arm_rows = []
@@ -788,6 +788,24 @@ for noise in ("0.005", "0.01"):
                                    + [signed(block["paired_completion"][n]["median"]) for n in ("smoothed", "history")]))
 write_table("strict_arms", "llcccccc",
             r"Noise & Arm & Fixed & Current & Smoothed & B3 & $\Delta T_{\mathrm{sm}}$ & $\Delta T_{\mathrm{B3}}$", arm_rows)
+
+# Supplement: E1 per history on the primary split (certified arm, noise 0.005).
+hist_rows = []
+split0 = strict["repeats"]["0"]["0.005"]
+for name in ("fixed", "current", "smoothed", "history", "oracle"):
+    rule = split0["oracle"] if name == "oracle" else split0["arms"]["certified"]["rules"][name]
+    cells = [f"{rule[h]['mean_completion_min']:.1f}" for h in ("short", "long")]
+    cells += [f"{rule[h]['mean_completion_success_min']:.1f}" for h in ("short", "long")]
+    for h in ("short", "long"):
+        if name in ("current", "smoothed", "history"):
+            pair = split0["arms"]["certified"]["paired"][name][h]
+            lo, hi = pair["completion_ci"]
+            cells.append(f"{signed(pair['completion'])} [{signed(lo)}, {signed(hi)}]")
+        else:
+            cells.append("--")
+    hist_rows.append(" & ".join([RULE_NAMES[name]] + cells))
+write_table("strict_history", "lcccccc",
+            r"Rule & $T_3$ & $T_{30}$ & $T_3^{\rm s}$ & $T_{30}^{\rm s}$ & $\Delta T_3$ & $\Delta T_{30}$", hist_rows)
 
 # Fig. 2: calibration budget with one probe per calibration receiver (E2).
 BUDGETS = (50, 100, 200)
@@ -839,8 +857,15 @@ for scenario, tag in (("baseline", "model"), ("hidden_lag_8", "lag 8")):
     for n in BUDGETS:
         for info, sel in (("one_probe", "plugin"), ("one_probe", "certified"), ("full_curve", "plugin"), ("full_curve", "certified")):
             block = budget["summary"][scenario][str(n)][info][sel]
-            cells = [f"{block['meets_per_history'][r]}/{block['completion'][r]['median']:.0f}" for r in BUDGET_RULES]
-            budget_rows.append(" & ".join([tag, str(n), info.replace("_", " "), sel] + cells))
+            cells = []
+            for r in BUDGET_RULES:
+                cell = f"{block['meets_per_history'][r]}/{block['completion'][r]['median']:.0f}"
+                if sel == "certified":
+                    picks = [budget["repeats"][str(k)][scenario]["budgets"][str(n)][info][sel]["choices"][r] for k in range(20)]
+                    any_cert = sum(not all(p[h]["fallback"] for h in ("short", "long")) for p in picks)
+                    cell += f" [{block['certified_both'][r]}, {any_cert}]"
+                cells.append(cell)
+            budget_rows.append(" & ".join([tag, str(n), info.replace("_", " "), "plug-in" if sel == "plugin" else sel] + cells))
 write_table("probe_budget", "llllccccc",
             r"Plant & $n$ & Information & Selection & Fixed & Current & Smoothed & B3 & B3+delay", budget_rows)
 

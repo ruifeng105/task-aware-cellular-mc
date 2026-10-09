@@ -2,29 +2,29 @@
 \toprule
 Plant & $n$ & Information & Selection & Fixed & Current & Smoothed & B3 & B3+delay \\
 \midrule
-model & 50 & one probe & plugin & 3/120 & 4/120 & 3/114 & 1/114 & 6/115 \\
-model & 50 & one probe & certified & 20/140 & 20/140 & 20/140 & 20/140 & 20/140 \\
-model & 50 & full curve & plugin & 10/120 & 6/120 & 3/114 & 2/114 & 9/114 \\
-model & 50 & full curve & certified & 20/132 & 20/131 & 20/125 & 20/140 & 20/125 \\
-model & 100 & one probe & plugin & 5/119 & 5/121 & 4/114 & 3/115 & 8/115 \\
-model & 100 & one probe & certified & 20/140 & 20/140 & 20/140 & 20/140 & 20/133 \\
-model & 100 & full curve & plugin & 11/121 & 8/120 & 6/114 & 4/114 & 7/114 \\
-model & 100 & full curve & certified & 20/125 & 20/124 & 18/115 & 17/130 & 18/116 \\
-model & 200 & one probe & plugin & 9/121 & 5/121 & 5/113 & 2/114 & 9/115 \\
-model & 200 & one probe & certified & 20/140 & 20/140 & 20/140 & 19/140 & 20/127 \\
-model & 200 & full curve & plugin & 13/121 & 10/120 & 6/114 & 3/114 & 12/114 \\
-model & 200 & full curve & certified & 20/123 & 20/123 & 20/114 & 18/115 & 19/115 \\
-lag 8 & 50 & one probe & plugin & 5/123 & 2/123 & 2/118 & 1/124 & 4/118 \\
-lag 8 & 50 & one probe & certified & 20/140 & 20/140 & 20/140 & 20/140 & 20/140 \\
-lag 8 & 50 & full curve & plugin & 10/124 & 7/125 & 4/124 & 5/125 & 5/118 \\
-lag 8 & 50 & full curve & certified & 20/132 & 20/131 & 20/125 & 20/140 & 20/127 \\
-lag 8 & 100 & one probe & plugin & 5/124 & 7/125 & 2/124 & 3/125 & 5/118 \\
-lag 8 & 100 & one probe & certified & 20/140 & 20/140 & 20/140 & 20/140 & 20/134 \\
-lag 8 & 100 & full curve & plugin & 11/125 & 9/124 & 8/124 & 8/125 & 5/118 \\
-lag 8 & 100 & full curve & certified & 20/128 & 20/129 & 18/124 & 19/140 & 19/121 \\
-lag 8 & 200 & one probe & plugin & 7/124 & 6/124 & 7/124 & 6/125 & 6/118 \\
-lag 8 & 200 & one probe & certified & 20/140 & 20/140 & 20/140 & 20/140 & 20/131 \\
-lag 8 & 200 & full curve & plugin & 13/125 & 12/124 & 10/124 & 8/124 & 8/118 \\
-lag 8 & 200 & full curve & certified & 20/127 & 20/129 & 20/124 & 19/125 & 20/119 \\
+model & 50 & one probe & plug-in & 3/120 & 4/120 & 3/114 & 1/114 & 6/115 \\
+model & 50 & one probe & certified & 20/140 [0, 0] & 20/140 [0, 0] & 20/140 [0, 0] & 20/140 [0, 0] & 20/140 [1, 9] \\
+model & 50 & full curve & plug-in & 10/120 & 6/120 & 3/114 & 2/114 & 9/114 \\
+model & 50 & full curve & certified & 20/132 [10, 20] & 20/131 [3, 14] & 20/125 [5, 18] & 20/140 [0, 2] & 20/125 [10, 20] \\
+model & 100 & one probe & plug-in & 5/119 & 5/121 & 4/114 & 3/115 & 8/115 \\
+model & 100 & one probe & certified & 20/140 [0, 0] & 20/140 [0, 0] & 20/140 [1, 8] & 20/140 [0, 0] & 20/133 [19, 19] \\
+model & 100 & full curve & plug-in & 11/121 & 8/120 & 6/114 & 4/114 & 7/114 \\
+model & 100 & full curve & certified & 20/125 [20, 20] & 20/124 [18, 20] & 18/115 [19, 20] & 17/130 [6, 14] & 18/116 [20, 20] \\
+model & 200 & one probe & plug-in & 9/121 & 5/121 & 5/113 & 2/114 & 9/115 \\
+model & 200 & one probe & certified & 20/140 [0, 0] & 20/140 [0, 0] & 20/140 [1, 6] & 19/140 [0, 1] & 20/127 [20, 20] \\
+model & 200 & full curve & plug-in & 13/121 & 10/120 & 6/114 & 3/114 & 12/114 \\
+model & 200 & full curve & certified & 20/123 [20, 20] & 20/123 [20, 20] & 20/114 [20, 20] & 18/115 [12, 20] & 19/115 [20, 20] \\
+lag 8 & 50 & one probe & plug-in & 5/123 & 2/123 & 2/118 & 1/124 & 4/118 \\
+lag 8 & 50 & one probe & certified & 20/140 [0, 0] & 20/140 [0, 0] & 20/140 [0, 0] & 20/140 [0, 0] & 20/140 [0, 8] \\
+lag 8 & 50 & full curve & plug-in & 10/124 & 7/125 & 4/124 & 5/125 & 5/118 \\
+lag 8 & 50 & full curve & certified & 20/132 [3, 20] & 20/131 [0, 12] & 20/125 [0, 17] & 20/140 [0, 1] & 20/127 [3, 20] \\
+lag 8 & 100 & one probe & plug-in & 5/124 & 7/125 & 2/124 & 3/125 & 5/118 \\
+lag 8 & 100 & one probe & certified & 20/140 [0, 0] & 20/140 [0, 0] & 20/140 [0, 7] & 20/140 [0, 0] & 20/134 [0, 19] \\
+lag 8 & 100 & full curve & plug-in & 11/125 & 9/124 & 8/124 & 8/125 & 5/118 \\
+lag 8 & 100 & full curve & certified & 20/128 [12, 20] & 20/129 [0, 20] & 18/124 [0, 20] & 19/140 [0, 9] & 19/121 [12, 20] \\
+lag 8 & 200 & one probe & plug-in & 7/124 & 6/124 & 7/124 & 6/125 & 6/118 \\
+lag 8 & 200 & one probe & certified & 20/140 [0, 0] & 20/140 [0, 0] & 20/140 [0, 3] & 20/140 [0, 0] & 20/131 [0, 20] \\
+lag 8 & 200 & full curve & plug-in & 13/125 & 12/124 & 10/124 & 8/124 & 8/118 \\
+lag 8 & 200 & full curve & certified & 20/127 [20, 20] & 20/129 [1, 20] & 20/124 [0, 20] & 19/125 [0, 13] & 20/119 [20, 20] \\
 \bottomrule
 \end{tabular}

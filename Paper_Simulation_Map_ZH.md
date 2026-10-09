@@ -1,6 +1,6 @@
 # 论文与仿真、数据和结果的对应
 
-本表对应随包附带的投稿稿（2026-10-08 按修改更新方案修订：正文 7 页含参考文献，三图三表，`paper/main.tex`；补充材料 9 页，十表两图，`paper/supplement.tex`，编译为 `paper/AI_MC_Cellular_Receivers_Supplement.pdf`）。所有路径相对于项目根目录。正文使用描述性预测器名称，与代码键的对应为：Persist = P、Current = C、Filter = O、Lag = A、Filter+B3 = M、Lag+B3 = A+M、F+B3+Input = H、F+B3 (phase) = M_phase；等待规则中 B3 belief 的代码键为 `history`。
+本表对应随包附带的投稿稿（2026-10-08 按修改更新方案修订：正文 7 页含参考文献，三图三表，`paper/main.tex`；补充材料 9 页，十一表两图，`paper/supplement.tex`，编译为 `paper/AI_MC_Cellular_Receivers_Supplement.pdf`）。所有路径相对于项目根目录。正文使用描述性预测器名称，与代码键的对应为：Persist = P、Current = C、Filter = O、Lag = A、Filter+B3 = M、Lag+B3 = A+M、F+B3+Input = H、F+B3 (phase) = M_phase；等待规则中 B3 belief 的代码键为 `history`。
 
 | 论文内容（正文 / 补充材料） | 数据或结果 | 对应程序与状态 |
 |---|---|---|
@@ -13,11 +13,11 @@
 | 正文 Sec. IV；补充 S1、S8，表 S2、S4、S5：数据角色、评分、协议追溯、任务差异 | `fgf2_expanded/expanded_results.json`；`audit/protocol_trace.json`；`audit/waiting_design_audit.json` 的 `task_differences` | `audit_protocols.py`、`audit_waiting_design.py` |
 | 正文表 I、Sec. V-A；补充表 S3、图 S1(b)、S2 | `nested_results.json`、`nested_arx_results.json`、`nested_extensions_results.json` | `scripts/build_paper_assets.py` 生成 `core_rmse.tex`、`lopo_core.tex`、`prediction_phases.*` |
 | 正文 Sec. V-B；补充图 S1(a)、S3：下一命令窗口 | `nested_results.json` 的 `phases`；`phase_detail.json`；`onset_split_results.json` | `nested_onset_split.py` |
-| 正文表 II、Sec. V-C；补充 S8（孪生审计）、S9、表 S6、S7：认证校准下的等待 | `waiting_strict_results.json`（`repeats/0/0.005/arms/certified`、`summary`、`statements` E1-S1–S4）；`audit/waiting_design_audit.json` | 生成 `strict_waiting.tex`、`strict_arms.tex`；旧表 `waiting_per_history.tex` 移到表 S6 |
+| 正文表 II、Sec. V-C；补充 S8（孪生审计）、S9、表 S6–S8：认证校准下的等待（S7 为逐历史结果） | `waiting_strict_results.json`（`repeats/0/0.005/arms/certified`、`summary`、`statements` E1-S1–S4）；`audit/waiting_design_audit.json` | 生成 `strict_waiting.tex`、`strict_history.tex`、`strict_arms.tex`；旧表 `waiting_per_history.tex` 移到表 S6 |
 | 正文表 III、Sec. V-D；补充 S11：预测误差与决策 | `predict_decide_results.json`（`summary`、`statements` E3-S1–S3） | 生成 `predict_decide.tex` |
-| 正文图 2、Sec. V-E；补充 S10、表 S8：单探针校准预算 | `waiting_budget_results.json`（`summary`、`statements` E2-S1–S3） | 生成 `probe_budget.*`、`probe_budget.tex` |
+| 正文图 2、Sec. V-E；补充 S10、表 S9：单探针校准预算 | `waiting_budget_results.json`（`summary`、`statements` E2-S1–S3） | 生成 `probe_budget.*`、`probe_budget.tex` |
 | 正文图 3(a)、Sec. V-F；补充 S6：自然探测、后验预测检查、权重塌缩 | `natural_probe_results.json`、`recovery_check_results.json` | `natural_probe.py`、`b3_recovery_check.py` |
-| 正文图 3(b)、Sec. V-G；补充 S7、S12、表 S9、S10：模型失配与任务定义 | `waiting_mismatch_results.json`（图 3(b)，旧校准）；`waiting_scope_results.json`（E4-S1–S3，含锚定变体）；`window_tables.npz` | `b3_waiting_mismatch.py`、`b3_window_tables.py`、`b3_waiting_scope.py`；生成 `model_mismatch.*`、`scope_task.tex`、`scope_mismatch.tex` |
+| 正文图 3(b)、Sec. V-G；补充 S7、S12、表 S10、S11：模型失配与任务定义 | `waiting_mismatch_results.json`（图 3(b)，旧校准）；`waiting_scope_results.json`（E4-S1–S3，含锚定变体）；`window_tables.npz` | `b3_waiting_mismatch.py`、`b3_window_tables.py`、`b3_waiting_scope.py`；生成 `model_mismatch.*`、`scope_task.tex`、`scope_mismatch.tex` |
 | 补充 S4、S5、图 S2：旧评价流程的前沿、延迟与条件图 | `waiting_frontier_results.json`、`delay_map_target_results.json` | 旧条件图（原正文图 2）移到补充图 S2(d) |
 | 正文 Sec. V-H、VI：启示、证据边界、结论；补充 S13：复现入口 | — | — |
 
