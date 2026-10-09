@@ -198,3 +198,9 @@
 - [x] 正文每项核心结论都有直接对应的结果（`Paper_Simulation_Map_ZH.md`）。
 - [ ] 页数：正文 7 页，用户同意放宽，投稿前需压缩到 6 页。
 - [ ] 真实细胞上的反馈复用仍需实际执行所选策略后的独立实验验证。
+
+## 2026-10-09 题目与第三条贡献
+
+- 题目由 "Task-Aware Reuse of Cellular Molecular Receivers: Response Prediction and Feedback-Driven Waiting" 改为 "Outcome-Based Reuse of Cellular Molecular Receivers: Response Prediction and Calibrated Waiting"：落实方案用语表中"Task-Aware 指向生物功能"一条，并避免"Feedback-Driven"暗示反馈方法有效。
+- 第三条贡献由"收益的边界"改写为"速度—鲁棒性权衡"（摘要第三句、引言第三个开放问题、贡献 3、V-G 节标题与开头、图 3 图注、设计启示、结论、补充 S7）。依据：第三条贡献改写为"速度—鲁棒性权衡"：反馈规则省下的时间来自余量（就绪到探针的时间）。在旧失配研究（目标 0.94、噪声 0.005，20 次划分中位数）中，30 min 命令后固定等待、当前值、平滑、B3 信念的中位余量为 20、16、8、10 min，10% 分位数为 2、4、1、2 min；报告量看不到的恢复延迟 L 下，规则的成功率恰好等于余量 ≥ L 的接收机比例（失配研究核查脚本已验证），因此反馈规则在 8 min 延迟时只剩 60–64% 成功（固定等待 84%）。余量取自 `waiting_mismatch_splits.json`，已作为 16 个新键加入参考指标（共 48039 项）。
+- 边界：这一机制只在一个模型结构的仿真中验证；实测部分只说明 B3 高估了长刺激后的恢复，不说明反馈在真实细胞上失效。

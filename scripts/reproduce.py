@@ -547,6 +547,14 @@ def revision8_metrics():
     values.update(flatten("b3/predict_decide/split0", decide["repeats"]["0"]))
     scope = json.loads((B3 / "waiting_scope_results.json").read_text(encoding="utf-8"))
     values.update(flatten("b3/scope", {k: scope[k] for k in ("anchors", "summary", "statements")}))
+    # Slack (decision time minus readiness onset) of the earlier mismatch study: median over the 20 splits of each
+    # split's 10% and 50% quantile, target 0.94, noise 0.005 (the speed-robustness trade-off of 2026-10-09).
+    splits = json.loads((B3 / "waiting_mismatch_splits.json").read_text(encoding="utf-8"))["repeats"]
+    for rule in ("fixed", "current", "smoothed", "history"):
+        for history in ("short", "long"):
+            for q in ("0.10", "0.50"):
+                values[f"b3/mismatch_slack/0.005/0.94/{rule}/{history}/q{q}_median_over_splits"] = statistics.median(
+                    splits[str(r)]["0.005"]["slack"]["0.94"][rule][history]["quantiles"][q] for r in range(len(splits)))
     return values
 
 

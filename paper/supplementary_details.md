@@ -1,6 +1,6 @@
 # Supplementary implementation details
 
-Companion to *Task-Aware Reuse of Cellular Molecular Receivers: Response Prediction and Feedback-Driven Waiting*. These details were moved out of the six-page manuscript (revision plan item 3, 2026-10-07). Every statement refers to code and frozen protocols in this repository; numbers are those of the frozen results.
+Companion to *Outcome-Based Reuse of Cellular Molecular Receivers: Response Prediction and Calibrated Waiting*. These details were moved out of the six-page manuscript (revision plan item 3, 2026-10-07). Every statement refers to code and frozen protocols in this repository; numbers are those of the frozen results.
 
 ## S1. Data, normalization and roles
 

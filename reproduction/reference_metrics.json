@@ -48025,7 +48025,23 @@
     "b3/scope/statements/E4-S3/anchored_rate/2.45337/model_calibrated_success_long_median/fixed": 0.0,
     "b3/scope/statements/E4-S3/anchored_rate/2.45337/model_calibrated_success_long_median/current": 0.0,
     "b3/scope/statements/E4-S3/anchored_rate/2.45337/model_calibrated_success_long_median/smoothed": 0.0,
-    "b3/scope/statements/E4-S3/anchored_rate/2.45337/model_calibrated_success_long_median/history": 0.0
+    "b3/scope/statements/E4-S3/anchored_rate/2.45337/model_calibrated_success_long_median/history": 0.0,
+    "b3/mismatch_slack/0.005/0.94/fixed/short/q0.10_median_over_splits": 3.0,
+    "b3/mismatch_slack/0.005/0.94/fixed/short/q0.50_median_over_splits": 16.0,
+    "b3/mismatch_slack/0.005/0.94/fixed/long/q0.10_median_over_splits": 2.0,
+    "b3/mismatch_slack/0.005/0.94/fixed/long/q0.50_median_over_splits": 20.0,
+    "b3/mismatch_slack/0.005/0.94/current/short/q0.10_median_over_splits": 2.0,
+    "b3/mismatch_slack/0.005/0.94/current/short/q0.50_median_over_splits": 16.0,
+    "b3/mismatch_slack/0.005/0.94/current/long/q0.10_median_over_splits": 4.0,
+    "b3/mismatch_slack/0.005/0.94/current/long/q0.50_median_over_splits": 16.0,
+    "b3/mismatch_slack/0.005/0.94/smoothed/short/q0.10_median_over_splits": 0.9000000000000057,
+    "b3/mismatch_slack/0.005/0.94/smoothed/short/q0.50_median_over_splits": 8.0,
+    "b3/mismatch_slack/0.005/0.94/smoothed/long/q0.10_median_over_splits": 1.0,
+    "b3/mismatch_slack/0.005/0.94/smoothed/long/q0.50_median_over_splits": 8.0,
+    "b3/mismatch_slack/0.005/0.94/history/short/q0.10_median_over_splits": 0.0,
+    "b3/mismatch_slack/0.005/0.94/history/short/q0.50_median_over_splits": 8.0,
+    "b3/mismatch_slack/0.005/0.94/history/long/q0.10_median_over_splits": 2.0,
+    "b3/mismatch_slack/0.005/0.94/history/long/q0.50_median_over_splits": 10.0
   },
   "extensions": [
     {
@@ -96146,6 +96162,31 @@
         "b3/strict/summary/0.01/plugin_094/success/smoothed/short/max",
         "b3/strict/summary/0.01/plugin_094/success/smoothed/short/median",
         "b3/strict/summary/0.01/plugin_094/success/smoothed/short/min"
+      ]
+    },
+    {
+      "date": "2026-10-09",
+      "sources_sha256": {
+        "waiting_mismatch_splits.json": "fc7cf06c8991f8da7aab70f4dfb466b5dc87122e2de6bdedce4699b34dfc701a"
+      },
+      "reason": "Speed-robustness trade-off stated as contribution 3: median over the 20 splits of the 10% and 50% quantiles of slack (decision time minus readiness onset) per rule and history, target 0.94, noise 0.005, read from the stored splits of the frozen mismatch study (protocol 8ab22138); no new simulation.",
+      "added_keys": [
+        "b3/mismatch_slack/0.005/0.94/current/long/q0.10_median_over_splits",
+        "b3/mismatch_slack/0.005/0.94/current/long/q0.50_median_over_splits",
+        "b3/mismatch_slack/0.005/0.94/current/short/q0.10_median_over_splits",
+        "b3/mismatch_slack/0.005/0.94/current/short/q0.50_median_over_splits",
+        "b3/mismatch_slack/0.005/0.94/fixed/long/q0.10_median_over_splits",
+        "b3/mismatch_slack/0.005/0.94/fixed/long/q0.50_median_over_splits",
+        "b3/mismatch_slack/0.005/0.94/fixed/short/q0.10_median_over_splits",
+        "b3/mismatch_slack/0.005/0.94/fixed/short/q0.50_median_over_splits",
+        "b3/mismatch_slack/0.005/0.94/history/long/q0.10_median_over_splits",
+        "b3/mismatch_slack/0.005/0.94/history/long/q0.50_median_over_splits",
+        "b3/mismatch_slack/0.005/0.94/history/short/q0.10_median_over_splits",
+        "b3/mismatch_slack/0.005/0.94/history/short/q0.50_median_over_splits",
+        "b3/mismatch_slack/0.005/0.94/smoothed/long/q0.10_median_over_splits",
+        "b3/mismatch_slack/0.005/0.94/smoothed/long/q0.50_median_over_splits",
+        "b3/mismatch_slack/0.005/0.94/smoothed/short/q0.10_median_over_splits",
+        "b3/mismatch_slack/0.005/0.94/smoothed/short/q0.50_median_over_splits"
       ]
     }
   ]
